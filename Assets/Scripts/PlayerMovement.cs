@@ -13,17 +13,19 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 public class PlayerMovement : MonoBehaviour
 {
     public InputMaster controls;
-    public Vector3 direction;
 
+    [Header("Movement Variables")]
     SpriteRenderer spriteRenderer;
     Rigidbody2D rb;
-
+    private Vector2 moveVector;
     private float speed = 1f;
+    // Direction for animation, should default to down
+    [SerializeField] bool isFacingRight;
+    [SerializeField] bool isFacingLeft;
+    [SerializeField] bool isFacingUp;
 
-    /* // Currently not in use, this is for later
-    bool isFacingRight;
-    bool isFacingUp;
-    */
+    private Vector2 lastVector;
+
 
     // Dashing - Header + SerializeField creates dropdown in Player Inspector
     [Header("Dash Variables")]
@@ -44,8 +46,46 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
         dashTrail = GetComponent<TrailRenderer>();
+    }
+    public void Move(InputAction.CallbackContext context)
+    {
+        moveVector = context.ReadValue<Vector2>();   
+    }
 
-        //controls.Player.Dash.performed += context => Dash();
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            return;
+        }
+
+        rb.velocity = new Vector2(moveVector.x * speed, moveVector.y * speed);
+        
+        //Horizontal Direction
+        if (moveVector.x > 0)
+        {
+            isFacingRight = true;
+            isFacingLeft = false;
+        }
+        if (moveVector.x < 0)
+        {
+            isFacingLeft = true;
+            isFacingRight = false;
+        }
+        else
+        {
+            isFacingLeft = false;
+            isFacingRight = false;
+        }
+        //Up Direction
+        if (moveVector.y < 0)
+        {
+            isFacingUp = true;
+        }
+        else
+        {
+            isFacingUp = false;
+        }
     }
 
     private void Update()
@@ -56,14 +96,24 @@ public class PlayerMovement : MonoBehaviour
             return;
         }
 
-        // Move Player
-        var moveDirection = controls.Player.Movement.ReadValue<Vector2>();
-        direction = new Vector3(moveDirection.x, moveDirection.y, 0 );
-        transform.position += direction * speed * Time.deltaTime;
-
-        // Flip Sprite Horizontally If Move Left
-        rb.velocity = new Vector2(moveDirection.x, 0f);
-        spriteRenderer.flipX = rb.velocity.x < 0f;     
+        // TEMPORARY sprite flipping
+        if (isFacingRight)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (isFacingLeft)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if (isFacingUp)
+        {
+            spriteRenderer.flipY = true;
+        }
+        else
+        {
+            spriteRenderer.flipY = false;
+            spriteRenderer.flipX = false;
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -79,7 +129,7 @@ public class PlayerMovement : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-        rb.velocity = new Vector2(transform.localScale.x * dashPower, 0);
+        rb.velocity = new Vector2(controls.Player.Movement.ReadValue<Vector2>().x * dashPower, controls.Player.Movement.ReadValue<Vector2>().y * dashPower);
         dashTrail.emitting = true;
 
         yield return new WaitForSeconds(dashTime);

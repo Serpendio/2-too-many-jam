@@ -162,7 +162,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1323243479}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: Move
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: a6fdcb24-def1-4ad5-86ea-16ed939c6678
     m_ActionName: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]'
   - m_PersistentCalls:
@@ -238,12 +250,21 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.31407928
+        value: 0.23465729
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.34529254
+        value: 0
+        inSlope: -1.3916622
+        outSlope: -1.3916622
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.25693583
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.9730156
@@ -482,6 +503,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 723978995906314744, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303924036552635493, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: dashTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303924036552635493, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: dashPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303924036552635493, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: isFacingUp
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303924036552635493, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: dashCooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4303924036552635493, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: isFacingRight
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4670781971130670539, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
