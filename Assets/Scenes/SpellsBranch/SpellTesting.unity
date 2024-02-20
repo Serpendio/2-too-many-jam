@@ -168,6 +168,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 45469e5d-fed1-4d91-81ff-c5f504bfb68f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: 'Player/Shoot[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
     - target: {fileID: 4670781971130670539, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       propertyPath: m_Name
       value: Player
@@ -184,31 +196,10 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4670781971130670539, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+    - targetCorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 817278667}
+      addedObject: {fileID: 2064628286}
   m_SourcePrefab: {fileID: 100100000, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
---- !u!1 &817278666 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4670781971130670539, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
-  m_PrefabInstance: {fileID: 817278665}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &817278667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817278666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ee914d04e67f414ba47f849c61fffac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 4181629413923180719, guid: 2d23d7eb3cdce2f40a8d7af1a98cf31f, type: 3}
-  mana: 0
-  castCooldown: 0
-  projectileSpeed: 200
 --- !u!1 &1514215855
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +292,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2064628279 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+  m_PrefabInstance: {fileID: 817278665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2064628286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064628279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee914d04e67f414ba47f849c61fffac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5872660715789521179, guid: 4ab846aa2a04104488dca7649c58a5a6, type: 3}
+  mana: 0
+  castCooldown: 0
+  projectileSpeed: 500
+  destroyTime: 5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

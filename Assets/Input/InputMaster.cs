@@ -48,7 +48,7 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""520ac235-7b8d-40b8-8566-6f6b89d4d27e"",
+                    ""id"": ""45469e5d-fed1-4d91-81ff-c5f504bfb68f"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -233,8 +233,9 @@ public partial class @InputMaster: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""id"": ""25335e40-086b-4b37-9b86-fbca99a74ebf"",
-                    ""path"": ""<Keyboard>/q"",
+                    ""name"": """",
+                    ""id"": ""32b7d3c5-2652-4777-a11c-570ecc8b668b"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",

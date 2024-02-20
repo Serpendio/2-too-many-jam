@@ -1208,7 +1208,53 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mouseRunFrontAttack_0: -8164427703229271119
+      mouseRunFrontAttack_1: -7179424417032316089
+      mouseRunFrontAttack_10: -678338473865662323
+      mouseRunFrontAttack_11: 1674204853064355052
+      mouseRunFrontAttack_12: 860638376003408913
+      mouseRunFrontAttack_13: -2153170791333813668
+      mouseRunFrontAttack_14: 5502228654836515843
+      mouseRunFrontAttack_15: -5889315555688298184
+      mouseRunFrontAttack_16: 7795809743171049172
+      mouseRunFrontAttack_17: 7528350299453928709
+      mouseRunFrontAttack_18: -8190439608239020515
+      mouseRunFrontAttack_19: -1301724622024818733
+      mouseRunFrontAttack_2: -4395788004542706487
+      mouseRunFrontAttack_20: 5183189803280328066
+      mouseRunFrontAttack_21: 7941048976203063940
+      mouseRunFrontAttack_22: -1548796756453404539
+      mouseRunFrontAttack_23: 5688821491528700718
+      mouseRunFrontAttack_24: -6045587904713033929
+      mouseRunFrontAttack_25: -6392873828461334342
+      mouseRunFrontAttack_26: -5949880690330553924
+      mouseRunFrontAttack_27: 7503782495900487841
+      mouseRunFrontAttack_28: -2159448965325508143
+      mouseRunFrontAttack_29: -7423425709345265998
+      mouseRunFrontAttack_3: -4718789247385272397
+      mouseRunFrontAttack_30: 3775469027662059229
+      mouseRunFrontAttack_31: -3443709465897714356
+      mouseRunFrontAttack_32: 4115961129748557617
+      mouseRunFrontAttack_33: 2902005157056941397
+      mouseRunFrontAttack_34: 4271794838833773710
+      mouseRunFrontAttack_35: 144039951166788649
+      mouseRunFrontAttack_36: 2383011567823609249
+      mouseRunFrontAttack_37: -5015930988299042242
+      mouseRunFrontAttack_38: -5783571120359404039
+      mouseRunFrontAttack_39: -2239101741311809077
+      mouseRunFrontAttack_4: -3821473706626679765
+      mouseRunFrontAttack_40: -4271077490739716603
+      mouseRunFrontAttack_41: -7668145773849440674
+      mouseRunFrontAttack_42: -7205693317357427065
+      mouseRunFrontAttack_43: -2243379455883888011
+      mouseRunFrontAttack_44: 5595645491671634550
+      mouseRunFrontAttack_45: 4599130353861580372
+      mouseRunFrontAttack_5: 8138286177864857153
+      mouseRunFrontAttack_6: -1774537735625038576
+      mouseRunFrontAttack_7: 1135065329950344197
+      mouseRunFrontAttack_8: 4289978154508146574
+      mouseRunFrontAttack_9: -616962785219657548
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

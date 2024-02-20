@@ -464,7 +464,22 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mouseRunBackAttack_0: 5315487205118970024
+      mouseRunBackAttack_1: -7559567760789219019
+      mouseRunBackAttack_10: -5530481434278245329
+      mouseRunBackAttack_11: -1446145723840547867
+      mouseRunBackAttack_12: -3794515556883479157
+      mouseRunBackAttack_13: 4070147193803410156
+      mouseRunBackAttack_14: 9133823579301080683
+      mouseRunBackAttack_2: -468685844444382182
+      mouseRunBackAttack_3: 4542941270130393528
+      mouseRunBackAttack_4: -8577802405007053953
+      mouseRunBackAttack_5: 356605437948841013
+      mouseRunBackAttack_6: -4682553843107834715
+      mouseRunBackAttack_7: 6679079395564034509
+      mouseRunBackAttack_8: -5530513503548135194
+      mouseRunBackAttack_9: 2476624243029228505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

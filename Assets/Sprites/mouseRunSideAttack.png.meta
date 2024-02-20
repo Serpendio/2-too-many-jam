@@ -272,7 +272,14 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      mouseRunSideAttack_0: -2643217350317286520
+      mouseRunSideAttack_1: 7292860305071139738
+      mouseRunSideAttack_2: 8022185756646083862
+      mouseRunSideAttack_3: -7185450850781576714
+      mouseRunSideAttack_4: -7058405956926529369
+      mouseRunSideAttack_5: -1802662284988298261
+      mouseRunSideAttack_6: 114521525352958828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
