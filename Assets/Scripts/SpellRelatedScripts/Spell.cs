@@ -1,15 +1,54 @@
-public class Spell {
-    public string name {get; set;}
-    public float _castSpeed {get; set;}
-    public int _manaUsage {get; set;}
-    public Element _element {get; set;}
+using System.Collections.Generic;
+using System.Linq;
 
+public class Spell {
+    // Spell info
+    public string name {get; set;}
+
+    // Spell stats
+    public float castSpeed {get; set;}
+    public int manaUsage {get; set;}
+    public int damage {get; set;}
+
+    // Spell modifiers
+    public List<Modifier> modList = new();
+    public Element element {get; set;}
+
+    public Spell() 
+        : this(0,0,0,new List<Modifier>()) {}
     public Spell(float castSpeed, int manaUsage, Element element) 
-    {
-        _castSpeed = castSpeed;
-        _manaUsage = manaUsage;
-        _element = element;
+        : this(castSpeed, manaUsage, element, new List<Modifier>()) {}
+    public Spell(float castSpeed, int manaUsage, Element element, List<Modifier> modList) {
+        this.castSpeed = castSpeed;
+        this.manaUsage = manaUsage;
+        this.element = element;
+        this.modList = modList;
     }
+
+    public void addModifier(Modifier modifier) {
+        modList.Add(modifier);
+    }
+
+    public static Spell operator +(Spell s1, Spell s2) {
+        s1.modList.AddRange(s2.modList);
+
+        Spell rtnSpell = new()
+        {
+            castSpeed = s1.castSpeed / s2.castSpeed,
+            manaUsage = s1.manaUsage / s2.manaUsage,
+            element = s1.element,
+            modList = s1.modList
+
+        };
+
+        return rtnSpell;
+    }
+
+}
+
+public enum Modifier {
+    cool,
+    epic
 }
 
 public enum Element {
