@@ -9,7 +9,6 @@ public class EnemyBase : CreatureBase
     [SerializeField] ScriptableObject enemyData;
     [SerializeField] private Transform target;
     [SerializeField] NavMeshAgent agent;
-    [SerializeField] Animator anim;
 
     // Start is called before the first frame update
     protected override void Awake()

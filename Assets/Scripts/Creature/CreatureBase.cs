@@ -8,13 +8,21 @@ public class CreatureBase : MonoBehaviour
     [SerializeField] protected float attackCooldown { get; set; }
     [SerializeField] protected float attackRange { get; set; }
     [SerializeField] protected float attackDamage { get; set; }
-    [SerializeField, Min(0)] private float speed;
+    [SerializeField] protected float speed { get; set; }
     private float health, cooldown;
+    [SerializeField] Animator anim;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] protected bool isFacingRight;
 
     protected virtual void Awake()
     {
         health = maxHealth;
         cooldown = 0;
+    }
+
+    protected void UpdateDir(Vector2 moveDir)
+    {
+        spriteRenderer.flipX = !isFacingRight;
     }
 
     public void Damage(float damage)
