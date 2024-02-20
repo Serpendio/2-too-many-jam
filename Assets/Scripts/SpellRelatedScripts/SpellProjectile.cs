@@ -32,7 +32,9 @@ public class SpellProjectile : MonoBehaviour
     {
         if (controls.Player.Shoot.triggered) {
             GameObject spellShot = Instantiate(projectile, transform.position, transform.rotation);
-            spellShot.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector3(0, 10f, 0));
+            spellShot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            spellShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(50, 50));
+            Destroy(spellShot, 5.0f);
         }
     }
 }
