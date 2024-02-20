@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 direction;
 
     SpriteRenderer spriteRenderer;
+    Rigidbody2D body;
 
     float speed = 1f;
 
@@ -22,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
         controls = new InputMaster();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+        body = GetComponent<Rigidbody2D>();
     }
 
     private void OnEnable()
@@ -41,6 +44,10 @@ public class PlayerMovement : MonoBehaviour
         direction = new Vector3(moveDirection.x, moveDirection.y, 0 );
         transform.position += direction * speed * Time.deltaTime;
 
+        body.velocity = new Vector2(moveDirection.x, 0f);
+        spriteRenderer.flipX = body.velocity.x < 0f;
+
+        /*
         // Sprite Direction
         if (direction.x < 0)
         {
@@ -52,5 +59,6 @@ public class PlayerMovement : MonoBehaviour
             // Look Right
             spriteRenderer.flipX = false;
         }
+        */
     }
 }
