@@ -128,7 +128,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      DivingHelmet_0: 6559953689659605235
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
