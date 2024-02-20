@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 1323243477}
   - component: {fileID: 1323243476}
   - component: {fileID: 1323243479}
+  - component: {fileID: 1323243480}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -245,6 +246,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5806f11287c78244acd9b500ca0cbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+--- !u!114 &1323243480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323243475}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee914d04e67f414ba47f849c61fffac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 4181629413923180719, guid: 2d23d7eb3cdce2f40a8d7af1a98cf31f, type: 3}
+  mana: 1
+  castCooldown: 1
 --- !u!1 &2085301209
 GameObject:
   m_ObjectHideFlags: 0
