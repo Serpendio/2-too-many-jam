@@ -208,6 +208,7 @@ MonoBehaviour:
   projectile: {fileID: 4181629413923180719, guid: 2d23d7eb3cdce2f40a8d7af1a98cf31f, type: 3}
   mana: 0
   castCooldown: 0
+  projectileSpeed: 200
 --- !u!1 &1514215855
 GameObject:
   m_ObjectHideFlags: 0
