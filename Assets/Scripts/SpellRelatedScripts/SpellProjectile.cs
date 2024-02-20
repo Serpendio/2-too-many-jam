@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -31,9 +32,14 @@ public class SpellProjectile : MonoBehaviour
     void Update() 
     {
         if (controls.Player.Shoot.triggered) {
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             GameObject spellShot = Instantiate(projectile, transform.position, transform.rotation);
+
+            spellShot.GetComponent<Transform>().rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
             spellShot.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            spellShot.GetComponent<Rigidbody2D>().AddForce(new Vector2(50, 50));
+            spellShot.GetComponent<Rigidbody2D>().AddForce(spellShot.GetComponent<Transform>().up * 500);
             Destroy(spellShot, 5.0f);
         }
     }
