@@ -20,11 +20,10 @@ namespace WorldGen
         public static Direction GetOpposite(Direction dir) => (Direction)(((int)dir + 2) % 4);
 
         [HideInInspector] public Room room;
-        
-        public Door GetLinkedDoor()
+
+        public Vector2Int GetLinkedMapCoord()
         {
-            var currentCoord = room.MapCoord;
-            var targetCoord = currentCoord + direction switch
+            return room.MapCoord + direction switch
             {
                 Direction.North => Vector2Int.up,
                 Direction.East => Vector2Int.right,
@@ -32,11 +31,13 @@ namespace WorldGen
                 Direction.West => Vector2Int.left,
                 _ => Vector2Int.zero
             };
-            
+        }
+        
+        public Door GetLinkedDoor()
+        {
+            var targetCoord = GetLinkedMapCoord();
             var targetRoom = WorldGenerator.Instance.WorldRooms.FirstOrDefault(r => r.MapCoord == targetCoord);
-            if (targetRoom == null) return null;
-            
-            return targetRoom.doors.FirstOrDefault(d => d.direction == GetOpposite(direction));
+            return targetRoom == null ? null : targetRoom.doors.FirstOrDefault(d => d.direction == GetOpposite(direction));
         }
         
         private void OnTriggerEnter2D(Collider2D other)

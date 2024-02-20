@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Tweens;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace WorldGen
 {
@@ -43,31 +42,14 @@ namespace WorldGen
 
         private Room GenerateNewRoom(Door comingFrom)
         {
-            // rooms where the room has at least one door with the opposite direction that the player is coming from
-            // var filteredRooms = _roomPrefabs
-            //     .Where(room => room.doors.Count(d => d.direction == Door.GetOpposite(comingFrom.direction)) > 0)
-            //     .ToArray();
-
             var room = _roomPrefabs[Random.Range(0, _roomPrefabs.Count)];
             var roomObj = Instantiate(room, transform);
 
-            roomObj.MapCoord = _currentRoom.MapCoord + comingFrom.direction switch
-            {
-                Direction.North => Vector2Int.up,
-                Direction.East => Vector2Int.right,
-                Direction.South => Vector2Int.down,
-                Direction.West => Vector2Int.left,
-                _ => Vector2Int.zero
-            };
+            roomObj.MapCoord = comingFrom.GetLinkedMapCoord();
 
+            // temp
             roomObj.GetComponent<Renderer>().material.color =
                 new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
-
-            // var entranceDoor = roomObj.GetComponent<Room>().doors
-            //     .First(d => d.direction == Door.GetOpposite(comingFrom.direction));
-
-            // comingFrom.linkedDoor = entranceDoor;
-            // entranceDoor.linkedDoor = comingFrom;
 
             return roomObj;
         }
