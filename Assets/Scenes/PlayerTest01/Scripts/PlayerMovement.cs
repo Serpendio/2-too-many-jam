@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
+using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -10,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public InputMaster controls;
     public Vector3 direction;
 
+    SpriteRenderer spriteRenderer;
+
     float speed = 1f;
 
     // Awake is called even before Start() is called.
@@ -17,6 +20,8 @@ public class PlayerMovement : MonoBehaviour
     {
         // Need to create instance of inputs object - MUST be done first thing
         controls = new InputMaster();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void OnEnable()
@@ -31,8 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        // Move Player
         var moveDirection = controls.Player.Movement.ReadValue<Vector2>();
         direction = new Vector3(moveDirection.x, moveDirection.y, 0 );
         transform.position += direction * speed * Time.deltaTime;
+
+        // Sprite Direction
+        if (direction.x < 0)
+        {
+            // Look Left
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            // Look Right
+            spriteRenderer.flipX = false;
+        }
     }
 }
