@@ -7,6 +7,8 @@ namespace WorldGen
     {
         public List<Door> doors;
 
+        public Vector2Int MapCoord;
+
         private void Awake()
         {
             foreach (var door in doors)
