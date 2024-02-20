@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using System.Linq;
 
 public class Spell {
@@ -15,7 +17,9 @@ public class Spell {
     public Element element {get; set;}
 
     public Spell() 
-        : this(0,0,0,new List<Modifier>()) {}
+        : this(0, 0, 0, new List<Modifier>()) {}
+    public Spell(float castSpeed, int manaUsage)
+        : this(castSpeed, manaUsage, 0, new List<Modifier>()) {}
     public Spell(float castSpeed, int manaUsage, Element element) 
         : this(castSpeed, manaUsage, element, new List<Modifier>()) {}
     public Spell(float castSpeed, int manaUsage, Element element, List<Modifier> modList) {
@@ -47,11 +51,13 @@ public class Spell {
 }
 
 public enum Modifier {
+    none,
     cool,
     epic
 }
 
 public enum Element {
+    none,
     Fire,
     Water,
     Lightning,
