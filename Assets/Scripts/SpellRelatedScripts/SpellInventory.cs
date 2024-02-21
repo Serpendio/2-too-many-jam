@@ -14,9 +14,6 @@ public class SpellInventory : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("SpellPickup")) {
             spells.Add(spellRand());
-            foreach (Spell spell in spells) {
-                Debug.Log(spell.element);
-            }
         }
     }
 
@@ -41,9 +38,9 @@ public class SpellInventory : MonoBehaviour
         }
 
         // Rounds to 1 decimals
-        newSpell.castSpeed = math.round(UnityEngine.Random.Range(1.2f, 3f) * 10) / 10;
+        newSpell.stats.CastSpeed = math.round(UnityEngine.Random.Range(1.2f, 3f) * 10) / 10;
 
-        newSpell.manaUsage = UnityEngine.Random.Range(2, 10);
+        newSpell.stats.ManaUsage = UnityEngine.Random.Range(2, 10);
 
         return newSpell;
     }
