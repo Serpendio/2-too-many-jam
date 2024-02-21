@@ -8,6 +8,9 @@ public class ResizeCamera : MonoBehaviour
 {
     private void Awake()
     {
+
+        Camera.main.transform.position = new Vector3(0,0,-10);
+
         Room.OnEnteredRoom.AddListener((room) => {
             var tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
