@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a094d0f0f8c5e8948912a9a291b399ee
+guid: d1c163d6b1bdbd54e8745ba24920edd6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 711494819932708202
-    second: wall_tile_corner_0
+      213: 937490245612485050
+    second: wall_tile_corner_top_right_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_tile_corner_0
+      name: wall_tile_corner_top_right_0
       rect:
         serializedVersion: 2
         x: 0
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6d9e91e4ccbfd900800000000000000
-      internalID: 711494819932708202
+      spriteID: ab9302e4962a20d00800000000000000
+      internalID: 937490245612485050
       vertices: []
       indices: 
       edges: []
