@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 423cae98778c90a46b927b4f77211952
+guid: 8a32202e5027ee14caa64cbf9477510e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -323336545219263261
-    second: wall_tile_front_0
+      213: -4363867510923050497
+    second: floor_tile_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -83,7 +83,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -95,7 +95,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -158,7 +158,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_tile_front_0
+      name: floor_tile_0
       rect:
         serializedVersion: 2
         x: 0
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3e4cd4f0027438bf0800000000000000
-      internalID: -323336545219263261
+      spriteID: ff1409c9e9d6073c0800000000000000
+      internalID: -4363867510923050497
       vertices: []
       indices: 
       edges: []
@@ -189,7 +189,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_tile_front_0: -323336545219263261
+      floor_tile_0: -4363867510923050497
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
