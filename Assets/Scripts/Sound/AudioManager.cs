@@ -5,10 +5,24 @@ using System;
 
 public class AudioManager : MonoBehaviour
 {
+    // Make AudioManager accessible from anywhere
+    public static AudioManager Instance; 
+
     // Accesses Sound Script
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
-
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         PlayMusic("MainTheme");
