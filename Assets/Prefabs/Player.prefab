@@ -82,7 +82,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.25, y: 0.25}
+  m_Size: {x: 4.260069, y: 4.93}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -127,9 +127,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5806f11287c78244acd9b500ca0cbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFacingRight: 0
-  isFacingLeft: 0
-  isFacingUp: 0
+  maxHealth: 0
+  attackCooldown: 0
+  attackRange: 0
+  attackDamage: 0
+  speed: 0
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   canDash: 1
   isDashing: 0
   dashPower: 20
@@ -148,7 +152,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 239d69be51174534f9c61b6b51d86bd1, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:

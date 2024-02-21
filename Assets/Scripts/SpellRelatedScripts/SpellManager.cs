@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class SpellProjectile : MonoBehaviour
+public class SpellManager : MonoBehaviour
 {
     [SerializeField] GameObject projectile;
     [Header("Spell Info")]
@@ -14,26 +11,26 @@ public class SpellProjectile : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float destroyTime;
 
-    public InputMaster controls;
+    public PlayerInput controls;
 
     void Awake() {
         // Need to create instance of inputs object - MUST be done first thing
-        controls = new InputMaster();
+        controls = GetComponent<PlayerInput>();
     }
 
     void OnEnable()
     {
-        controls.Enable();
+        controls.enabled = true;
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+        controls.enabled = false;
     }
 
     void Update() 
     {
-        if (controls.Player.Shoot.triggered) {
+        if (controls.actions["Shoot"].triggered) {
             // Gets the point in world space of the cursor, then rotates the new projectile so that it is facing the mouse
             Vector2 direction = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue()) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
