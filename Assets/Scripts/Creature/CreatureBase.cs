@@ -5,18 +5,14 @@ using UnityEngine;
 public class CreatureBase : MonoBehaviour
 {
     [SerializeField] protected float maxHealth;
-    [SerializeField] protected float attackCooldown;
-    [SerializeField] protected float attackRange;
-    [SerializeField] protected float attackDamage;
     [SerializeField] protected float speed;
-    private float health, cooldown;
+    private float health;
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
 
     protected virtual void Awake()
     {
         health = maxHealth;
-        cooldown = 0;
     }
 
     protected void UpdateDir(Vector2 moveDir)
