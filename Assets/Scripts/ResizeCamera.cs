@@ -6,29 +6,68 @@ using WorldGen;
 
 public class ResizeCamera : MonoBehaviour
 {
+    [SerializeField] GameObject player;
+    bool followPlayerY = false;
+    bool followPlayerX = false;
+
+    Vector3 levelBoundsWorldSpace;
+    Bounds bounds;
+    Vector3 sizeBounds;
+    float screenAspect;
+
     private void Awake()
     {
 
-        Camera.main.transform.position = new Vector3(0,0,-10);
+        transform.position = new Vector3(0,0,-10);
 
         Room.OnEnteredRoom.AddListener((room) => {
-            var tilemap = room.GetComponent<Tilemap>();
+
+            Tilemap tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
 
-            Camera.main.transform.position = tilemap.localBounds.center + Vector3.forward * -10;
+            transform.position = tilemap.transform.TransformPoint(tilemap.localBounds.center) + Vector3.forward * -10;
 
-            Vector3 bounds = tilemap.localBounds.size;
+            bounds = tilemap.localBounds;
+            sizeBounds = bounds.size;
 
-            var screenAspect = Screen.width / Screen.height;
-            var levelAspect = bounds.x / bounds.y;
+            screenAspect = Screen.width / Screen.height;
+            float levelAspect = sizeBounds.x / sizeBounds.y;
 
-            if(screenAspect > levelAspect)
-            {
-                Camera.main.orthographicSize = bounds.y / 2 * levelAspect / screenAspect;
-            } else
-            {
-                Camera.main.orthographicSize = bounds.y / 2;
+            //extreme aspect ratio case - camera should follow player
+            followPlayerY = levelAspect < 0.5;
+            followPlayerX = levelAspect > 2;
+
+            if (!followPlayerX && !followPlayerY) {
+                if(screenAspect > levelAspect) {
+                    GetComponent<Camera>().orthographicSize = sizeBounds.y / 2 * levelAspect / screenAspect;
+                } else {
+                    GetComponent<Camera>().orthographicSize = sizeBounds.y / 2;
+                }
             }
+
         });
+    }
+
+    private void Update()
+    {
+        Vector2 min = bounds.center - bounds.size / 2;
+        Vector2 max = bounds.center + bounds.size / 2;
+        Vector2 cameraExtents = new Vector2(GetComponent<Camera>().orthographicSize * screenAspect, GetComponent<Camera>().orthographicSize);
+        if (followPlayerX) {
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
+
+            //Clamp
+            float clampedX = Mathf.Clamp(transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
+
+            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        }
+        else if (followPlayerY) {
+            transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
+
+            //Clamp
+            float clampedY = Mathf.Clamp(transform.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
+
+            transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
+        }
     }
 }
