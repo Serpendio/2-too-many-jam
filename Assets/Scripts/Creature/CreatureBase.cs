@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CreatureBase : MonoBehaviour
 {
-    [SerializeField] protected float maxHealth { get; set; }
-    [SerializeField] protected float attackCooldown { get; set; }
-    [SerializeField] protected float attackRange { get; set; }
-    [SerializeField] protected float attackDamage { get; set; }
-    [SerializeField] protected float speed { get; set; }
+    [SerializeField] protected float maxHealth;
+    [SerializeField] protected float attackCooldown;
+    [SerializeField] protected float attackRange;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] protected float speed;
     private float health, cooldown;
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;

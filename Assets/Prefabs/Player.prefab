@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5806f11287c78244acd9b500ca0cbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  spriteRenderer: {fileID: 0}
   isFacingRight: 0
-  isFacingLeft: 0
-  isFacingUp: 0
   canDash: 1
   isDashing: 0
   dashPower: 20
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 239d69be51174534f9c61b6b51d86bd1, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:

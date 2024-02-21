@@ -1,52 +1,61 @@
 fileFormatVersion: 2
-guid: 76ca874f4cb25554493ec99a771205f7
+guid: 094509c4af3c9044a83383840ba25d29
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5315487205118970024
-    second: mouseRunBackAttack_0
+      213: 3640408275912110529
+    second: mouseRunFront_0
   - first:
-      213: -7559567760789219019
-    second: mouseRunBackAttack_1
+      213: 7698577119199619912
+    second: mouseRunFront_1
   - first:
-      213: -468685844444382182
-    second: mouseRunBackAttack_2
+      213: -1620589177589662433
+    second: mouseRunFront_2
   - first:
-      213: 4542941270130393528
-    second: mouseRunBackAttack_3
+      213: 6577527685452287176
+    second: mouseRunFront_3
   - first:
-      213: -8577802405007053953
-    second: mouseRunBackAttack_4
+      213: 4667822859491014212
+    second: mouseRunFront_4
   - first:
-      213: 356605437948841013
-    second: mouseRunBackAttack_5
+      213: -2290942877067857750
+    second: mouseRunFront_5
   - first:
-      213: -4682553843107834715
-    second: mouseRunBackAttack_6
+      213: 9057713311699982061
+    second: mouseRunFront_6
   - first:
-      213: 6679079395564034509
-    second: mouseRunBackAttack_7
+      213: -4914409801374030929
+    second: mouseRunFront_7
   - first:
-      213: -5530513503548135194
-    second: mouseRunBackAttack_8
+      213: 6465082931340067744
+    second: mouseRunFront_8
   - first:
-      213: 2476624243029228505
-    second: mouseRunBackAttack_9
+      213: 5009837617573756322
+    second: mouseRunFront_9
   - first:
-      213: -5530481434278245329
-    second: mouseRunBackAttack_10
+      213: 4450088523646916949
+    second: mouseRunFront_10
   - first:
-      213: -1446145723840547867
-    second: mouseRunBackAttack_11
+      213: 385363789326031590
+    second: mouseRunFront_11
   - first:
-      213: -3794515556883479157
-    second: mouseRunBackAttack_12
+      213: -5532343671447804709
+    second: mouseRunFront_12
   - first:
-      213: 4070147193803410156
-    second: mouseRunBackAttack_13
+      213: -5023473030550666605
+    second: mouseRunFront_13
   - first:
-      213: 9133823579301080683
-    second: mouseRunBackAttack_14
+      213: -3234595509584748308
+    second: mouseRunFront_14
+  - first:
+      213: -78002919832739277
+    second: mouseRunFront_15
+  - first:
+      213: -4242721843735117755
+    second: mouseRunFront_16
+  - first:
+      213: -7112119256106373385
+    second: mouseRunFront_17
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -79,7 +88,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 2
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -93,7 +102,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 720
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,10 +123,10 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 4096
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -140,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mouseRunBackAttack_0
+      name: mouseRunFront_0
       rect:
         serializedVersion: 2
-        x: 1415
-        y: 1283
-        width: 47
-        height: 56
+        x: 350
+        y: 86
+        width: 426
+        height: 493
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8a8004d437764c940800000000000000
-      internalID: 5315487205118970024
+      spriteID: 1c1322b0a04558230800000000000000
+      internalID: 3640408275912110529
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_1
+      name: mouseRunFront_1
       rect:
         serializedVersion: 2
-        x: 1463
-        y: 1299
-        width: 45
-        height: 50
+        x: 366
+        y: 329
+        width: 7
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +184,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 539d9a28c25071790800000000000000
-      internalID: -7559567760789219019
+      spriteID: 84be7d1e917d6da60800000000000000
+      internalID: 7698577119199619912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_2
+      name: mouseRunFront_2
       rect:
         serializedVersion: 2
-        x: 1518
-        y: 1316
-        width: 48
-        height: 49
+        x: 1398
+        y: 102
+        width: 426
+        height: 477
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -196,20 +205,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a1c73aa25b4ee79f0800000000000000
-      internalID: -468685844444382182
+      spriteID: f1dfceeaab28289e0800000000000000
+      internalID: -1620589177589662433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_3
+      name: mouseRunFront_3
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 1326
-        width: 41
-        height: 54
+        x: 1414
+        y: 329
+        width: 7
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -217,20 +226,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b185910405cb0f30800000000000000
-      internalID: 4542941270130393528
+      spriteID: 8cc4ea7a492184b50800000000000000
+      internalID: 6577527685452287176
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_4
+      name: mouseRunFront_4
       rect:
         serializedVersion: 2
-        x: 1613
-        y: 1303
-        width: 169
-        height: 58
+        x: 368
+        y: 321
+        width: 6
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -238,20 +247,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7b2018e82685f880800000000000000
-      internalID: -8577802405007053953
+      spriteID: 446f866d82077c040800000000000000
+      internalID: 4667822859491014212
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_5
+      name: mouseRunFront_5
       rect:
         serializedVersion: 2
-        x: 342
-        y: 825
-        width: 413
-        height: 441
+        x: 369
+        y: 309
+        width: 9
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -259,20 +268,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53cc9e5a1cae2f400800000000000000
-      internalID: 356605437948841013
+      spriteID: aa0b8ab579fe430e0800000000000000
+      internalID: -2290942877067857750
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_6
+      name: mouseRunFront_6
       rect:
         serializedVersion: 2
-        x: 1333
-        y: 1201
-        width: 54
-        height: 70
+        x: 1416
+        y: 321
+        width: 6
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -280,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5a4dae3c61a340fb0800000000000000
-      internalID: -4682553843107834715
+      spriteID: de65435644673bd70800000000000000
+      internalID: 9057713311699982061
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_7
+      name: mouseRunFront_7
       rect:
         serializedVersion: 2
-        x: 1381
-        y: 1265
-        width: 43
-        height: 54
+        x: 1417
+        y: 309
+        width: 9
+        height: 13
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -301,20 +310,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dc9993fa25bd0bc50800000000000000
-      internalID: 6679079395564034509
+      spriteID: fa32764c2528ccbb0800000000000000
+      internalID: -4914409801374030929
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_8
+      name: mouseRunFront_8
       rect:
         serializedVersion: 2
-        x: 1390
-        y: 825
-        width: 413
-        height: 441
+        x: 364
+        y: 301
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -322,20 +331,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e8238b354baf33b0800000000000000
-      internalID: -5530513503548135194
+      spriteID: 0a347fd2ca698b950800000000000000
+      internalID: 6465082931340067744
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_9
+      name: mouseRunFront_9
       rect:
         serializedVersion: 2
-        x: 269
-        y: 449
-        width: 317
-        height: 235
+        x: 373
+        y: 305
+        width: 7
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -343,20 +352,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9dbb0e790acbe5220800000000000000
-      internalID: 2476624243029228505
+      spriteID: 2ad7fd915c4868540800000000000000
+      internalID: 5009837617573756322
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_10
+      name: mouseRunFront_10
       rect:
         serializedVersion: 2
-        x: 590
-        y: 564
-        width: 183
-        height: 83
+        x: 1412
+        y: 301
+        width: 8
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -364,20 +373,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f2cc3f0ff68cf33b0800000000000000
-      internalID: -5530481434278245329
+      spriteID: 55954074fe3e1cd30800000000000000
+      internalID: 4450088523646916949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_11
+      name: mouseRunFront_11
       rect:
         serializedVersion: 2
-        x: 1317
-        y: 449
-        width: 317
-        height: 235
+        x: 1421
+        y: 305
+        width: 7
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -385,20 +394,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e3b80d40224eebe0800000000000000
-      internalID: -1446145723840547867
+      spriteID: 6ea931c1356195500800000000000000
+      internalID: 385363789326031590
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_12
+      name: mouseRunFront_12
       rect:
         serializedVersion: 2
-        x: 1638
-        y: 564
-        width: 183
-        height: 83
+        x: 368
+        y: 289
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -406,20 +415,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b854449843c275bc0800000000000000
-      internalID: -3794515556883479157
+      spriteID: bd429ff0eba2933b0800000000000000
+      internalID: -5532343671447804709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_13
+      name: mouseRunFront_13
       rect:
         serializedVersion: 2
-        x: 342
-        y: 105
-        width: 413
-        height: 441
+        x: 1416
+        y: 289
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -427,20 +436,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cea8436ee411c7830800000000000000
-      internalID: 4070147193803410156
+      spriteID: 392c54be4e9094ab0800000000000000
+      internalID: -5023473030550666605
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunBackAttack_14
+      name: mouseRunFront_14
       rect:
         serializedVersion: 2
-        x: 1390
-        y: 126
-        width: 413
-        height: 420
+        x: 1423
+        y: 295
+        width: 6
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -448,8 +457,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b6ee35df62cd1ce70800000000000000
-      internalID: 9133823579301080683
+      spriteID: ce0a02b85886c13d0800000000000000
+      internalID: -3234595509584748308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFront_15
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 272
+        width: 10
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3322de7f1c0eaeef0800000000000000
+      internalID: -78002919832739277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFront_16
+      rect:
+        serializedVersion: 2
+        x: 1425
+        y: 277
+        width: 11
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 540c06746f2de15c0800000000000000
+      internalID: -4242721843735117755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFront_17
+      rect:
+        serializedVersion: 2
+        x: 1426
+        y: 264
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7fe609bd73dac4d90800000000000000
+      internalID: -7112119256106373385
       vertices: []
       indices: 
       edges: []
@@ -465,21 +537,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mouseRunBackAttack_0: 5315487205118970024
-      mouseRunBackAttack_1: -7559567760789219019
-      mouseRunBackAttack_10: -5530481434278245329
-      mouseRunBackAttack_11: -1446145723840547867
-      mouseRunBackAttack_12: -3794515556883479157
-      mouseRunBackAttack_13: 4070147193803410156
-      mouseRunBackAttack_14: 9133823579301080683
-      mouseRunBackAttack_2: -468685844444382182
-      mouseRunBackAttack_3: 4542941270130393528
-      mouseRunBackAttack_4: -8577802405007053953
-      mouseRunBackAttack_5: 356605437948841013
-      mouseRunBackAttack_6: -4682553843107834715
-      mouseRunBackAttack_7: 6679079395564034509
-      mouseRunBackAttack_8: -5530513503548135194
-      mouseRunBackAttack_9: 2476624243029228505
+      mouseRunFront_0: 3640408275912110529
+      mouseRunFront_1: 7698577119199619912
+      mouseRunFront_10: 4450088523646916949
+      mouseRunFront_11: 385363789326031590
+      mouseRunFront_12: -5532343671447804709
+      mouseRunFront_13: -5023473030550666605
+      mouseRunFront_14: -3234595509584748308
+      mouseRunFront_15: -78002919832739277
+      mouseRunFront_16: -4242721843735117755
+      mouseRunFront_17: -7112119256106373385
+      mouseRunFront_2: -1620589177589662433
+      mouseRunFront_3: 6577527685452287176
+      mouseRunFront_4: 4667822859491014212
+      mouseRunFront_5: -2290942877067857750
+      mouseRunFront_6: 9057713311699982061
+      mouseRunFront_7: -4914409801374030929
+      mouseRunFront_8: 6465082931340067744
+      mouseRunFront_9: 5009837617573756322
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
