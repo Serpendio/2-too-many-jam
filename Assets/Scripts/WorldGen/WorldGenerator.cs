@@ -35,9 +35,7 @@ namespace WorldGen
                 }
             });
 
-
         }
-
         private void Start() {
             _currentRoom = FindObjectsByType<Room>(FindObjectsSortMode.None).First();
             WorldRooms.Add(_currentRoom);
