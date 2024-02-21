@@ -6,6 +6,7 @@ public class SpellInventory : MonoBehaviour
 {
     List<Spell> spells = new(10) {new Spell(5, 10)};
     int currentSpell;
+    [SerializeField] public Spell test;
 
     void Awake() {
         currentSpell = 0;
