@@ -22,15 +22,14 @@ namespace WorldGen
             
             Door.OnPlayerEnterDoor.AddListener((door, player) =>
             {
-                if (door.GetLinkedDoor() != null)
-                {
+                if (door.GetLinkedDoor() != null) {
                     // go to already-generated room
                     GoThroughDoor(door, player);
                 }
-                else
-                {
+                else {
                     // make new room
                     var newRoom = GenerateNewRoom(door);
+                    newRoom.gameObject.SetActive(false);
                     WorldRooms.Add(newRoom);
                     GoThroughDoor(door, player);
                 }
