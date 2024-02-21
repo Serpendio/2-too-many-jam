@@ -5,11 +5,10 @@ public class Spell {
     public string name {get; set;}
 
     // Spell stats
-    public float castSpeed {get; set;}
-    public int manaUsage {get; set;}
-    public int damage {get; set;}
+    public Stats stats { get; set; }
 
     // Spell modifiers
+    public List<SpellModifier> spellMods {get;}
     public Element element {get; set;}
 
     public Spell() 
@@ -17,19 +16,14 @@ public class Spell {
     public Spell(float castSpeed, int manaUsage)
         : this(castSpeed, manaUsage, 0) {}
     public Spell(float castSpeed, int manaUsage, Element element) {
-        this.castSpeed = castSpeed;
-        this.manaUsage = manaUsage;
+        stats.CastSpeed = castSpeed;
+        stats.ManaUsage = manaUsage;
         this.element = element;
     }
 
+    // Doesn't work right now
     public static Spell operator +(Spell s1, Spell s2) {
-        Spell rtnSpell = new()
-        {
-            castSpeed = s1.castSpeed / s2.castSpeed,
-            manaUsage = s1.manaUsage / s2.manaUsage,
-            element = s1.element,
-
-        };
+        Spell rtnSpell = new();
 
         return rtnSpell;
     }

@@ -9,6 +9,7 @@ public class CreatureBase : MonoBehaviour
     [SerializeField] private float health;
     protected Animator anim;
     protected SpriteRenderer spriteRenderer;
+    public bool team;
 
     protected virtual void Awake()
     {

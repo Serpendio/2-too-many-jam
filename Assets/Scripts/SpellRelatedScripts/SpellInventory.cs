@@ -6,7 +6,6 @@ public class SpellInventory : MonoBehaviour
 {
     List<Spell> spells = new(10) {new Spell(5, 10)};
     int currentSpell;
-    [SerializeField] public Spell test;
 
     void Awake() {
         currentSpell = 0;
@@ -42,9 +41,9 @@ public class SpellInventory : MonoBehaviour
         }
 
         // Rounds to 1 decimals
-        newSpell.castSpeed = math.round(UnityEngine.Random.Range(1.2f, 3f) * 10) / 10;
+        newSpell.stats.CastSpeed = math.round(UnityEngine.Random.Range(1.2f, 3f) * 10) / 10;
 
-        newSpell.manaUsage = UnityEngine.Random.Range(2, 10);
+        newSpell.stats.ManaUsage = UnityEngine.Random.Range(2, 10);
 
         return newSpell;
     }
