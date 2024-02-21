@@ -39,21 +39,6 @@ public class Player : CreatureBase
 
         var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
         _rb.velocity = new Vector2(move.x * speed, move.y * speed);
-
-        //Horizontal Direction
-        if (move.x > 0)
-        {
-            isFacingRight = true;
-        }
-
-        if (move.x < 0)
-        {
-            isFacingRight = false;
-        }
-        else
-        {
-            isFacingRight = false;
-        }
     }
 
     public void Dash(InputAction.CallbackContext context)
