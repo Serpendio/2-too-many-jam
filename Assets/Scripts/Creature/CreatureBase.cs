@@ -6,9 +6,9 @@ public class CreatureBase : MonoBehaviour
 {
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float speed;
-    private float health;
-    [SerializeField] Animator anim;
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] private float health;
+    protected Animator anim;
+    protected SpriteRenderer spriteRenderer;
 
     protected virtual void Awake()
     {
