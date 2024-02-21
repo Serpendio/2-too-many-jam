@@ -1,24 +1,22 @@
-using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : CreatureBase
 {
-    public InputMaster controls;
+    private PlayerInput _playerInput;
 
     [Header("Movement Variables")]
-    Rigidbody2D rb;
-    private Vector2 moveVector;
-
+    private Rigidbody2D _rb;
 
     // Dashing - Header + SerializeField creates dropdown in Player Inspector
-    [Header("Dash Variables")]
-    [SerializeField] bool canDash = true;
-    [SerializeField] bool isDashing;
-    [SerializeField] float dashPower;
-    [SerializeField] float dashTime;
-    [SerializeField] float dashCooldown;
+    [Header("Dash Variables")] [SerializeField]
+    private bool canDash = true;
+
+    [SerializeField] private bool isDashing;
+    [SerializeField] private float dashPower;
+    [SerializeField] private float dashTime;
+    [SerializeField] private float dashCooldown;
     private TrailRenderer dashTrail;
 
     // Awake is called even before Start() is called.
@@ -26,33 +24,9 @@ public class Player : CreatureBase
     {
         base.Awake();
 
-        // Need to create instance of inputs object - MUST be done first thing
-        controls = new InputMaster();
-
+        _rb = GetComponent<Rigidbody2D>();
+        _playerInput = GetComponent<PlayerInput>();
         dashTrail = GetComponent<TrailRenderer>();
-    }
-    public void Move(InputAction.CallbackContext context)
-    {
-        moveVector = context.ReadValue<Vector2>();   
-    }
-
-    private void FixedUpdate()
-    {
-
-        
-        //Horizontal Direction
-        if (moveVector.x > 0)
-        {
-            isFacingRight = true;
-        }
-        if (moveVector.x < 0)
-        {
-            isFacingRight = false;
-        }
-        else
-        {
-            isFacingRight = false;
-        }
     }
 
     private void Update()
@@ -63,7 +37,23 @@ public class Player : CreatureBase
             return;
         }
 
-        rb.velocity = new Vector2(moveVector.x * speed, moveVector.y * speed);
+        var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
+        _rb.velocity = new Vector2(move.x * speed, move.y * speed);
+
+        //Horizontal Direction
+        if (move.x > 0)
+        {
+            isFacingRight = true;
+        }
+
+        if (move.x < 0)
+        {
+            isFacingRight = false;
+        }
+        else
+        {
+            isFacingRight = false;
+        }
     }
 
     public void Dash(InputAction.CallbackContext context)
@@ -80,7 +70,8 @@ public class Player : CreatureBase
     {
         canDash = false;
         isDashing = true;
-        rb.velocity = new Vector2(controls.Player.Movement.ReadValue<Vector2>().x * dashPower, controls.Player.Movement.ReadValue<Vector2>().y * dashPower);
+        var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
+        _rb.velocity = new Vector2(move.x * dashPower, move.y * dashPower);
         dashTrail.emitting = true;
 
         yield return new WaitForSeconds(dashTime);
@@ -89,18 +80,15 @@ public class Player : CreatureBase
 
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
-
     }
-    
+
     private void OnEnable()
     {
-        controls.Enable();
+        _playerInput.enabled = true;
     }
 
     private void OnDisable()
     {
-        controls.Disable();
+        _playerInput.enabled = false;
     }
-
 }
-

@@ -120,6 +120,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!212 &326256277 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7071180028235103932, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+  m_PrefabInstance: {fileID: 2816210005813430562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2085301209
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,6 +270,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 957427769202113192, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 957427769202113192, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 326256277}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionId
+      value: 45469e5d-fed1-4d91-81ff-c5f504bfb68f
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021473281838089200, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_ActionName
+      value: 'Player/Shoot[/Mouse/leftButton]'
+      objectReference: {fileID: 0}
     - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -304,6 +329,22 @@ PrefabInstance:
     - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071180028235103932, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071180028235103932, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071180028235103932, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 5213229242370633579, guid: bef1ba2c90c7d494dbbe10b7af77d0d3, type: 3}
+    - target: {fileID: 7071180028235103932, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       propertyPath: m_Name
