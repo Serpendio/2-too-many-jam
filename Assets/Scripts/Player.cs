@@ -83,6 +83,7 @@ public class Player : CreatureBase
         var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
         _rb.velocity = new Vector2(move.x * dashPower, move.y * dashPower);
         dashTrail.emitting = true;
+        AudioManager.Instance.PlaySFX("Air Attack"); // Play SFX, Currently Air Attack
 
         yield return new WaitForSeconds(dashTime);
         dashTrail.emitting = false;
