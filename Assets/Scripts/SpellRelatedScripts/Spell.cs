@@ -16,8 +16,11 @@ public class Spell {
     public Spell(float castSpeed, int manaUsage)
         : this(castSpeed, manaUsage, 0) {}
     public Spell(float castSpeed, int manaUsage, Element element) {
-        stats.CastSpeed = castSpeed;
-        stats.ManaUsage = manaUsage;
+        stats = new Stats()
+        {
+            CastSpeed = castSpeed,
+            ManaUsage = manaUsage
+        };
         this.element = element;
     }
 

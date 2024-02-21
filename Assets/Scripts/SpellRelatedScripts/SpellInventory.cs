@@ -14,9 +14,6 @@ public class SpellInventory : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col) {
         if (col.CompareTag("SpellPickup")) {
             spells.Add(spellRand());
-            foreach (Spell spell in spells) {
-                Debug.Log(spell.element);
-            }
         }
     }
 

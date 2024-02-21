@@ -22,6 +22,7 @@ public class Player : CreatureBase
     [Header("Spell")]
     [SerializeField] GameObject projectile;
     [Header("Spell Info")]
+    [SerializeField] private int maxMana;
     [SerializeField] private int mana;
     [SerializeField] private float castCooldown;
     [Header("Projectile Info")]

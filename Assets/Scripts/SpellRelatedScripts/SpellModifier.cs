@@ -8,6 +8,7 @@ public class SpellModifier
     string name;
     string desc;
     int level;
+    float positionChange;
     Stats stats;
     
 

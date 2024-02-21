@@ -8,6 +8,7 @@ public class SpellProjectile : MonoBehaviour
 {
     Spell assignedSpell;
     bool team;
+    Vector2 baseVelocity;
 
     // Start is called before the first frame update
     void Awake()
