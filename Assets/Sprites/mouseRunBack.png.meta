@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -97,6 +97,18 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -104,10 +116,10 @@ TextureImporter:
       name: mouseRunBack_0
       rect:
         serializedVersion: 2
-        x: 342
-        y: 105
-        width: 413
-        height: 441
+        x: 0
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,18 +137,18 @@ TextureImporter:
       name: mouseRunBack_1
       rect:
         serializedVersion: 2
-        x: 1390
-        y: 126
-        width: 413
-        height: 420
+        x: 1048
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 251f5a72b7831a5c0800000000000000
+      spriteID: 42dcaa34de4755947a4b3611d9f751c0
       internalID: -4206018475390013102
       vertices: []
       indices: 
@@ -145,7 +157,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 786de26e4d24ef64fbd4374c9e563207
     internalID: 0
     vertices: []
     indices: 

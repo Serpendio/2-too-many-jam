@@ -1,13 +1,52 @@
 fileFormatVersion: 2
-guid: c780d8ab26538104780a2afb884ce55b
+guid: 76ca874f4cb25554493ec99a771205f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2930290105329084940
-    second: mouseRunSide_0
+      213: 5315487205118970024
+    second: mouseRunBackAttack_0
   - first:
-      213: -8707634806980283682
-    second: mouseRunSide_1
+      213: -7559567760789219019
+    second: mouseRunBackAttack_1
+  - first:
+      213: -468685844444382182
+    second: mouseRunBackAttack_2
+  - first:
+      213: 4542941270130393528
+    second: mouseRunBackAttack_3
+  - first:
+      213: -8577802405007053953
+    second: mouseRunBackAttack_4
+  - first:
+      213: 356605437948841013
+    second: mouseRunBackAttack_5
+  - first:
+      213: -4682553843107834715
+    second: mouseRunBackAttack_6
+  - first:
+      213: 6679079395564034509
+    second: mouseRunBackAttack_7
+  - first:
+      213: -5530513503548135194
+    second: mouseRunBackAttack_8
+  - first:
+      213: 2476624243029228505
+    second: mouseRunBackAttack_9
+  - first:
+      213: -5530481434278245329
+    second: mouseRunBackAttack_10
+  - first:
+      213: -1446145723840547867
+    second: mouseRunBackAttack_11
+  - first:
+      213: -3794515556883479157
+    second: mouseRunBackAttack_12
+  - first:
+      213: 4070147193803410156
+    second: mouseRunBackAttack_13
+  - first:
+      213: 9133823579301080683
+    second: mouseRunBackAttack_14
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -86,7 +125,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -98,11 +137,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 4096
+    buildTarget: Standalone
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +152,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mouseRunSide_0
+      name: mouseRunBackAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a8004d437764c940800000000000000
+      internalID: 5315487205118970024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunBackAttack_1
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 539d9a28c25071790800000000000000
+      internalID: -7559567760789219019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunBackAttack_2
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +208,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f5940faca48557d0800000000000000
-      internalID: -2930290105329084940
+      spriteID: a1c73aa25b4ee79f0800000000000000
+      internalID: -468685844444382182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunSide_1
+      name: mouseRunBackAttack_3
       rect:
         serializedVersion: 2
         x: 1048
@@ -148,8 +229,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed2fc103744482780800000000000000
-      internalID: -8707634806980283682
+      spriteID: 8b185910405cb0f30800000000000000
+      internalID: 4542941270130393528
       vertices: []
       indices: 
       edges: []
@@ -157,7 +238,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bc7ae4affb5b5f44c8245fc1cb79b31b
+    spriteID: 65bfec83463479c4ba00e98cbe233606
     internalID: 0
     vertices: []
     indices: 
@@ -165,8 +246,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mouseRunSide_0: -2930290105329084940
-      mouseRunSide_1: -8707634806980283682
+      mouseRunBackAttack_0: 5315487205118970024
+      mouseRunBackAttack_1: -7559567760789219019
+      mouseRunBackAttack_2: -468685844444382182
+      mouseRunBackAttack_3: 4542941270130393528
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,13 +1,28 @@
 fileFormatVersion: 2
-guid: c780d8ab26538104780a2afb884ce55b
+guid: 5feeb62aaa9061648870ecff07ab193c
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2930290105329084940
-    second: mouseRunSide_0
+      213: -2643217350317286520
+    second: mouseRunSideAttack_0
   - first:
-      213: -8707634806980283682
-    second: mouseRunSide_1
+      213: 7292860305071139738
+    second: mouseRunSideAttack_1
+  - first:
+      213: 8022185756646083862
+    second: mouseRunSideAttack_2
+  - first:
+      213: -7185450850781576714
+    second: mouseRunSideAttack_3
+  - first:
+      213: -7058405956926529369
+    second: mouseRunSideAttack_4
+  - first:
+      213: -1802662284988298261
+    second: mouseRunSideAttack_5
+  - first:
+      213: 114521525352958828
+    second: mouseRunSideAttack_6
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -86,7 +101,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -98,11 +113,11 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 4096
+    buildTarget: Standalone
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -113,7 +128,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mouseRunSide_0
+      name: mouseRunSideAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88b503203d7615bd0800000000000000
+      internalID: -2643217350317286520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunSideAttack_1
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9bef48eec1753560800000000000000
+      internalID: 7292860305071139738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunSideAttack_2
       rect:
         serializedVersion: 2
         x: 0
@@ -127,14 +184,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f5940faca48557d0800000000000000
-      internalID: -2930290105329084940
+      spriteID: 61d861b3177845f60800000000000000
+      internalID: 8022185756646083862
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mouseRunSide_1
+      name: mouseRunSideAttack_3
       rect:
         serializedVersion: 2
         x: 1048
@@ -148,8 +205,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ed2fc103744482780800000000000000
-      internalID: -8707634806980283682
+      spriteID: 6f1c2287586284c90800000000000000
+      internalID: -7185450850781576714
       vertices: []
       indices: 
       edges: []
@@ -157,7 +214,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: bc7ae4affb5b5f44c8245fc1cb79b31b
+    spriteID: 03da289aced36554ea16dde84b341f78
     internalID: 0
     vertices: []
     indices: 
@@ -165,8 +222,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mouseRunSide_0: -2930290105329084940
-      mouseRunSide_1: -8707634806980283682
+      mouseRunSideAttack_0: -2643217350317286520
+      mouseRunSideAttack_1: 7292860305071139738
+      mouseRunSideAttack_2: 8022185756646083862
+      mouseRunSideAttack_3: -7185450850781576714
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

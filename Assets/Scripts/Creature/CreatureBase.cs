@@ -23,7 +23,7 @@ public class CreatureBase : MonoBehaviour
     {
         if (moveDir.sqrMagnitude != 0)
         {
-            spriteRenderer.flipX = moveDir.x < 0;
+            spriteRenderer.flipX = moveDir.x > 0;
         }
 
         anim.SetFloat("xMove", moveDir.x);
