@@ -6,19 +6,20 @@ using WorldGen;
 
 public class ResizeCamera : MonoBehaviour
 {
-    [SerializeField] GameObject player;
+    [SerializeField] Transform player;
     bool followPlayerY = false;
     bool followPlayerX = false;
 
-    Vector3 levelBoundsWorldSpace;
     Bounds bounds;
-    Vector3 sizeBounds;
     float screenAspect;
+    Vector2 cameraExtents;
 
     private void Awake()
     {
 
         transform.position = new Vector3(0,0,-10);
+        cameraExtents = new Vector2(GetComponent<Camera>().orthographicSize * screenAspect, GetComponent<Camera>().orthographicSize);
+        float orthoSize = GetComponent<Camera>().orthographicSize;
 
         Room.OnEnteredRoom.AddListener((room) => {
 
@@ -28,10 +29,16 @@ public class ResizeCamera : MonoBehaviour
             transform.position = tilemap.transform.TransformPoint(tilemap.localBounds.center) + Vector3.forward * -10;
 
             bounds = tilemap.localBounds;
-            sizeBounds = bounds.size;
 
             screenAspect = Screen.width / Screen.height;
-            float levelAspect = sizeBounds.x / sizeBounds.y;
+            float levelAspect = bounds.size.x / bounds.size.y;
+
+            if (screenAspect > levelAspect) {
+                orthoSize = bounds.size.y / 2 * levelAspect / screenAspect;
+            }
+            else {
+                orthoSize = bounds.size.y / 2;
+            }
 
             //extreme aspect ratio case - camera should follow player
             followPlayerY = levelAspect < 0.5;
@@ -39,9 +46,9 @@ public class ResizeCamera : MonoBehaviour
 
             if (!followPlayerX && !followPlayerY) {
                 if(screenAspect > levelAspect) {
-                    GetComponent<Camera>().orthographicSize = sizeBounds.y / 2 * levelAspect / screenAspect;
+                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
                 } else {
-                    GetComponent<Camera>().orthographicSize = sizeBounds.y / 2;
+                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2;
                 }
             }
 
@@ -52,21 +59,16 @@ public class ResizeCamera : MonoBehaviour
     {
         Vector2 min = bounds.center - bounds.size / 2;
         Vector2 max = bounds.center + bounds.size / 2;
-        Vector2 cameraExtents = new Vector2(GetComponent<Camera>().orthographicSize * screenAspect, GetComponent<Camera>().orthographicSize);
+
         if (followPlayerX) {
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
-
-            //Clamp
+            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
             float clampedX = Mathf.Clamp(transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
-
             transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
         }
+
         else if (followPlayerY) {
-            transform.position = new Vector3(transform.position.x, player.transform.position.y, transform.position.z);
-
-            //Clamp
+            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
             float clampedY = Mathf.Clamp(transform.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
-
             transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
         }
     }
