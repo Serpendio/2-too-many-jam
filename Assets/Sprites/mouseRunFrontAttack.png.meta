@@ -1,0 +1,350 @@
+fileFormatVersion: 2
+guid: 0d65b58110577814d98969ae405521e6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8164427703229271119
+    second: mouseRunFrontAttack_0
+  - first:
+      213: -7179424417032316089
+    second: mouseRunFrontAttack_1
+  - first:
+      213: -4395788004542706487
+    second: mouseRunFrontAttack_2
+  - first:
+      213: -4718789247385272397
+    second: mouseRunFrontAttack_3
+  - first:
+      213: -3821473706626679765
+    second: mouseRunFrontAttack_4
+  - first:
+      213: 8138286177864857153
+    second: mouseRunFrontAttack_5
+  - first:
+      213: -1774537735625038576
+    second: mouseRunFrontAttack_6
+  - first:
+      213: 1135065329950344197
+    second: mouseRunFrontAttack_7
+  - first:
+      213: 4289978154508146574
+    second: mouseRunFrontAttack_8
+  - first:
+      213: -616962785219657548
+    second: mouseRunFrontAttack_9
+  - first:
+      213: -678338473865662323
+    second: mouseRunFrontAttack_10
+  - first:
+      213: 1674204853064355052
+    second: mouseRunFrontAttack_11
+  - first:
+      213: 860638376003408913
+    second: mouseRunFrontAttack_12
+  - first:
+      213: -2153170791333813668
+    second: mouseRunFrontAttack_13
+  - first:
+      213: 5502228654836515843
+    second: mouseRunFrontAttack_14
+  - first:
+      213: -5889315555688298184
+    second: mouseRunFrontAttack_15
+  - first:
+      213: 7795809743171049172
+    second: mouseRunFrontAttack_16
+  - first:
+      213: 7528350299453928709
+    second: mouseRunFrontAttack_17
+  - first:
+      213: -8190439608239020515
+    second: mouseRunFrontAttack_18
+  - first:
+      213: -1301724622024818733
+    second: mouseRunFrontAttack_19
+  - first:
+      213: 5183189803280328066
+    second: mouseRunFrontAttack_20
+  - first:
+      213: 7941048976203063940
+    second: mouseRunFrontAttack_21
+  - first:
+      213: -1548796756453404539
+    second: mouseRunFrontAttack_22
+  - first:
+      213: 5688821491528700718
+    second: mouseRunFrontAttack_23
+  - first:
+      213: -6045587904713033929
+    second: mouseRunFrontAttack_24
+  - first:
+      213: -6392873828461334342
+    second: mouseRunFrontAttack_25
+  - first:
+      213: -5949880690330553924
+    second: mouseRunFrontAttack_26
+  - first:
+      213: 7503782495900487841
+    second: mouseRunFrontAttack_27
+  - first:
+      213: -2159448965325508143
+    second: mouseRunFrontAttack_28
+  - first:
+      213: -7423425709345265998
+    second: mouseRunFrontAttack_29
+  - first:
+      213: 3775469027662059229
+    second: mouseRunFrontAttack_30
+  - first:
+      213: -3443709465897714356
+    second: mouseRunFrontAttack_31
+  - first:
+      213: 4115961129748557617
+    second: mouseRunFrontAttack_32
+  - first:
+      213: 2902005157056941397
+    second: mouseRunFrontAttack_33
+  - first:
+      213: 4271794838833773710
+    second: mouseRunFrontAttack_34
+  - first:
+      213: 144039951166788649
+    second: mouseRunFrontAttack_35
+  - first:
+      213: 2383011567823609249
+    second: mouseRunFrontAttack_36
+  - first:
+      213: -5015930988299042242
+    second: mouseRunFrontAttack_37
+  - first:
+      213: -5783571120359404039
+    second: mouseRunFrontAttack_38
+  - first:
+      213: -2239101741311809077
+    second: mouseRunFrontAttack_39
+  - first:
+      213: -4271077490739716603
+    second: mouseRunFrontAttack_40
+  - first:
+      213: -7668145773849440674
+    second: mouseRunFrontAttack_41
+  - first:
+      213: -7205693317357427065
+    second: mouseRunFrontAttack_42
+  - first:
+      213: -2243379455883888011
+    second: mouseRunFrontAttack_43
+  - first:
+      213: 5595645491671634550
+    second: mouseRunFrontAttack_44
+  - first:
+      213: 4599130353861580372
+    second: mouseRunFrontAttack_45
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 720
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: mouseRunFrontAttack_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b339aac24022be80800000000000000
+      internalID: -8164427703229271119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFrontAttack_1
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 720
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74bd50be78f8d5c90800000000000000
+      internalID: -7179424417032316089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFrontAttack_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9cc0f4989160ff2c0800000000000000
+      internalID: -4395788004542706487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mouseRunFrontAttack_3
+      rect:
+        serializedVersion: 2
+        x: 1048
+        y: 0
+        width: 1048
+        height: 720
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bffaa34e2e738eb0800000000000000
+      internalID: -4718789247385272397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: cb3a0f66f60e1944f84d574913acdb25
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      mouseRunFrontAttack_0: -8164427703229271119
+      mouseRunFrontAttack_1: -7179424417032316089
+      mouseRunFrontAttack_2: -4395788004542706487
+      mouseRunFrontAttack_3: -4718789247385272397
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
