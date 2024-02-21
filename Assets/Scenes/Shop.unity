@@ -120,7 +120,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+--- !u!1 &2085301209
+========
 --- !u!1 &29749726
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,10 +132,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  - component: {fileID: 2085301212}
+  - component: {fileID: 2085301211}
+  - component: {fileID: 2085301210}
+  - component: {fileID: 2085301213}
+========
   - component: {fileID: 29749729}
   - component: {fileID: 29749728}
   - component: {fileID: 29749727}
   - component: {fileID: 29749730}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -139,25 +150,43 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+--- !u!81 &2085301210
+========
 --- !u!81 &29749727
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 AudioListener:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  m_GameObject: {fileID: 2085301209}
+  m_Enabled: 1
+--- !u!20 &2085301211
+========
   m_GameObject: {fileID: 29749726}
   m_Enabled: 1
 --- !u!20 &29749728
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 Camera:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  m_GameObject: {fileID: 2085301209}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+========
   m_GameObject: {fileID: 29749726}
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
   m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -182,7 +211,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  orthographic size: 5
+========
   orthographic size: 6.6167083
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -198,28 +231,47 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+--- !u!4 &2085301212
+========
 --- !u!4 &29749729
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  m_GameObject: {fileID: 2085301209}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+========
   m_GameObject: {fileID: 29749726}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: -0.5, z: -10}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+--- !u!114 &2085301213
+========
 --- !u!114 &29749730
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  m_GameObject: {fileID: 2085301209}
+========
   m_GameObject: {fileID: 29749726}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
@@ -257,6 +309,9 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+--- !u!1001 &2816210005813430562
+========
 --- !u!1 &229668960
 GameObject:
   m_ObjectHideFlags: 0
@@ -353,11 +408,59 @@ Transform:
   m_PrefabInstance: {fileID: 1802414539}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1802414539
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395509319039831861, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      propertyPath: m_Name
+      value: Player
+========
     m_TransformParent: {fileID: 680474529}
     m_Modifications:
     - target: {fileID: 3320721582561337829, guid: 757d658fbaa12554d9589fdca053306f, type: 3}
@@ -403,16 +506,26 @@ PrefabInstance:
     - target: {fileID: 4200219125484989977, guid: 757d658fbaa12554d9589fdca053306f, type: 3}
       propertyPath: m_Name
       value: Shop
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  m_SourcePrefab: {fileID: 100100000, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+========
   m_SourcePrefab: {fileID: 100100000, guid: 757d658fbaa12554d9589fdca053306f, type: 3}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity
+  - {fileID: 2085301212}
+  - {fileID: 2816210005813430562}
+========
   - {fileID: 29749729}
   - {fileID: 229668962}
   - {fileID: 680474529}
+>>>>>>>> Spell-pickups:Assets/Scenes/Shop.unity
