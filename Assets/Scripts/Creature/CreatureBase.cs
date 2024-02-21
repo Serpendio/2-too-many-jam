@@ -12,7 +12,6 @@ public class CreatureBase : MonoBehaviour
     private float health, cooldown;
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
-    [SerializeField] protected bool isFacingRight;
 
     protected virtual void Awake()
     {
@@ -22,7 +21,18 @@ public class CreatureBase : MonoBehaviour
 
     protected void UpdateDir(Vector2 moveDir)
     {
-        spriteRenderer.flipX = !isFacingRight;
+        if (moveDir.sqrMagnitude != 0)
+        {
+            spriteRenderer.flipX = moveDir.x < 0;
+        }
+
+        anim.SetFloat("xMove", moveDir.x);
+        anim.SetFloat("yMove", moveDir.y);
+    }
+
+    protected virtual void Attack()
+    {
+        anim.SetTrigger("Attack");
     }
 
     public void Damage(float damage)
