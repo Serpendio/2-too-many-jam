@@ -1,12 +1,14 @@
+using TMPro;
 using UnityEngine;
 
 namespace UI
 {
     public class ShowMoney : MonoBehaviour
     {
-        private void Update()
-        {
-         // todo will use currency manager from shop branch
-        }
+        private TextMeshProUGUI _text;
+
+        private void Awake() => _text = GetComponent<TextMeshProUGUI>();
+        
+        private void Update() => _text.text = CurrencyManager.Instance.currencyAmount.ToString();
     }
 }
