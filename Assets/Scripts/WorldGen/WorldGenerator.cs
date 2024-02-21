@@ -37,6 +37,7 @@ namespace WorldGen
 
             _currentRoom = FindObjectsByType<Room>(FindObjectsSortMode.None).First();
             WorldRooms.Add(_currentRoom);
+            Room.OnEnteredRoom.Invoke(_currentRoom);
         }
 
         private Room GenerateNewRoom(Door comingFrom)
@@ -93,6 +94,8 @@ namespace WorldGen
                     Direction.West => Vector3.right,
                     _ => Vector3.zero
                 } * 1.5f;
+
+                Room.OnEnteredRoom.Invoke(_currentRoom);
 
                 _fadeToBlack.gameObject.AddTween(fromBlackTween);
             };
