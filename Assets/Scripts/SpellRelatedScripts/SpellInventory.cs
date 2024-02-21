@@ -1,17 +1,14 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpellInventory : MonoBehaviour
 {
-    public List<Spell> spells = new(10) {new Spell(5, 10)};
-    public Spell currentSpell;
+    List<Spell> spells = new(10) {new Spell(5, 10)};
+    int currentSpell;
 
     void Awake() {
-        currentSpell = spells[0];
+        currentSpell = 0;
     }
 
     void OnTriggerEnter2D(Collider2D col) {
