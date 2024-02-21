@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpellInventory : MonoBehaviour
@@ -11,6 +12,15 @@ public class SpellInventory : MonoBehaviour
 
     void Awake() {
         currentSpell = spells[0];
+    }
+
+    void OnTriggerEnter2D(Collider2D col) {
+        if (col.CompareTag("SpellPickup")) {
+            spells.Add(spellRand());
+            foreach (Spell spell in spells) {
+                Debug.Log(spell.element);
+            }
+        }
     }
 
     Spell spellRand() {
