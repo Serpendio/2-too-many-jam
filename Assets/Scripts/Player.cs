@@ -38,6 +38,7 @@ public class Player : CreatureBase
         }
 
         var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
+        UpdateDir(move);
         _rb.velocity = new Vector2(move.x * speed, move.y * speed);
     }
 
