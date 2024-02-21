@@ -53,7 +53,7 @@ namespace WorldGen
             return roomObj;
         }
 
-        private void GoThroughDoor(Door door, PlayerTemp player)
+        private void GoThroughDoor(Door door, Player player)
         {
             Time.timeScale = 0;
 

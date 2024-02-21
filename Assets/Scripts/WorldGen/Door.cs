@@ -16,7 +16,7 @@ namespace WorldGen
     {
         public Direction direction = Direction.North;
 
-        public static readonly UnityEvent<Door, PlayerTemp> OnPlayerEnterDoor = new();
+        public static readonly UnityEvent<Door, Player> OnPlayerEnterDoor = new();
         public static Direction GetOpposite(Direction dir) => (Direction)(((int)dir + 2) % 4);
 
         [HideInInspector] public Room room;
@@ -44,8 +44,7 @@ namespace WorldGen
         {
             if (other.CompareTag("Player"))
             {
-                // if (Time.timeScale == 0f) return;
-                OnPlayerEnterDoor.Invoke(this, other.GetComponent<PlayerTemp>());
+                OnPlayerEnterDoor.Invoke(this, other.GetComponent<Player>());
             }
         }
     }

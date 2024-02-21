@@ -23,7 +23,9 @@ public class Player : CreatureBase
     protected override void Awake()
     {
         base.Awake();
-
+        
+        anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
         dashTrail = GetComponent<TrailRenderer>();
