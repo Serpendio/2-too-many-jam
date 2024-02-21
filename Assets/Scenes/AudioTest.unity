@@ -175,7 +175,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1254607645}
   m_SourcePrefab: {fileID: 100100000, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
 --- !u!1 &1020415297
 GameObject:
@@ -186,8 +189,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1020415299}
-  - component: {fileID: 1020415298}
-  - component: {fileID: 1020415301}
   - component: {fileID: 1020415300}
   m_Layer: 0
   m_Name: Audio Source
@@ -196,7 +197,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1020415298
+--- !u!4 &1020415299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020415297}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1206078952}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1020415300
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -207,7 +223,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -292,33 +308,94 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1020415299
+--- !u!1 &1206078951
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206078952}
+  - component: {fileID: 1206078953}
+  m_Layer: 0
+  m_Name: Audio Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206078952
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020415297}
+  m_GameObject: {fileID: 1206078951}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1020415299}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &1020415300
+--- !u!114 &1206078953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206078951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce65784c6465d741a1907ece78e9507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSounds:
+  - name: MainTheme
+    clip: {fileID: 8300000, guid: c06ee89e225389d439ab2d5796141a9c, type: 3}
+  - name: Ambience
+    clip: {fileID: 8300000, guid: ccab50752c8ca4a4aa11c96a1ad0b5f4, type: 3}
+  sfxSounds:
+  - name: Walking
+    clip: {fileID: 8300000, guid: 4dfb08644ad636043b868c0ae5136bf4, type: 3}
+  - name: Player Hurt
+    clip: {fileID: 8300000, guid: ff228c2d92cd0654ba3ac1c724c5074a, type: 3}
+  - name: Coin Pickup
+    clip: {fileID: 8300000, guid: a7ad7647ca063ba4197c25fc4c912b07, type: 3}
+  - name: Fire Attack
+    clip: {fileID: 8300000, guid: dd54572fda80e7649858ffa99bb7711c, type: 3}
+  - name: Air Attack
+    clip: {fileID: 8300000, guid: 4f7a625637886304db219e4f0c5948c8, type: 3}
+  - name: Water Attack
+    clip: {fileID: 8300000, guid: 5a5999a7c6e32cc44b416e5f047de6f9, type: 3}
+  - name: Earth Attack
+    clip: {fileID: 8300000, guid: a7ad7647ca063ba4197c25fc4c912b07, type: 3}
+  - name: Spark Attack
+    clip: {fileID: 8300000, guid: f66dcd8d8f524e842abf4f8fb1c56e4c, type: 3}
+  - name: Chest Open
+    clip: {fileID: 8300000, guid: 2e979dfd37e219e4a805c5cae398e812, type: 3}
+  musicSource: {fileID: 1020415300}
+  sfxSource: {fileID: 1020415300}
+--- !u!1 &1254607635 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+  m_PrefabInstance: {fileID: 554800143}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1254607645
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020415297}
+  m_GameObject: {fileID: 1254607635}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c06ee89e225389d439ab2d5796141a9c, type: 3}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 4dfb08644ad636043b868c0ae5136bf4, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -403,18 +480,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1020415301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1020415297}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ce65784c6465d741a1907ece78e9507, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1577431927
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,4 +623,4 @@ SceneRoots:
   m_Roots:
   - {fileID: 1577431930}
   - {fileID: 554800143}
-  - {fileID: 1020415299}
+  - {fileID: 1206078952}
