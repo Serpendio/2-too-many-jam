@@ -152,6 +152,24 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &935251584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 935251577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ee914d04e67f414ba47f849c61fffac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 5872660715789521179, guid: 4ab846aa2a04104488dca7649c58a5a6, type: 3}
+  mana: 0
+  castCooldown: 0
+  projectileSpeed: 100
+  destroyTime: 5
+  controls: {fileID: 0}
 --- !u!1 &2085301209
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +418,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
       insertIndex: 1
       addedObject: {fileID: 935251583}
+    - targetCorrespondingSourceObject: {fileID: 8512392723604706054, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 935251584}
   m_SourcePrefab: {fileID: 100100000, guid: be187bead88e57945929bd2f9d5936f1, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

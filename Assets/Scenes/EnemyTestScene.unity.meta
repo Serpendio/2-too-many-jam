@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/PlayerTestScene.unity.meta
+guid: 06df68cab680ed34992b733c06e91f53
+========
 guid: 88c58a9f308cef54fb31cd73c431e7bd
+>>>>>>>> Spell-pickups:Assets/Scenes/EnemyTestScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
