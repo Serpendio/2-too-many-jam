@@ -69,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 720
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -90,6 +90,18 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,10 +131,10 @@ TextureImporter:
       name: mouseRunSideAttack_0
       rect:
         serializedVersion: 2
-        x: 140
-        y: 820
-        width: 851
-        height: 449
+        x: 0
+        y: 720
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +152,10 @@ TextureImporter:
       name: mouseRunSideAttack_1
       rect:
         serializedVersion: 2
-        x: 1097
-        y: 935
-        width: 123
-        height: 207
+        x: 1048
+        y: 720
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +173,10 @@ TextureImporter:
       name: mouseRunSideAttack_2
       rect:
         serializedVersion: 2
-        x: 1188
-        y: 820
-        width: 851
-        height: 449
+        x: 0
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -182,10 +194,10 @@ TextureImporter:
       name: mouseRunSideAttack_3
       rect:
         serializedVersion: 2
-        x: 31
-        y: 174
-        width: 247
-        height: 294
+        x: 1048
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -199,73 +211,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: mouseRunSideAttack_4
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 100
-        width: 851
-        height: 449
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7a0a4e0ed218b0e90800000000000000
-      internalID: -7058405956926529369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunSideAttack_5
-      rect:
-        serializedVersion: 2
-        x: 1079
-        y: 174
-        width: 247
-        height: 294
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: beb4745e338abf6e0800000000000000
-      internalID: -1802662284988298261
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunSideAttack_6
-      rect:
-        serializedVersion: 2
-        x: 1188
-        y: 87
-        width: 851
-        height: 462
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c6b8cc578bcd69100800000000000000
-      internalID: 114521525352958828
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 03da289aced36554ea16dde84b341f78
     internalID: 0
     vertices: []
     indices: 
@@ -277,9 +226,6 @@ TextureImporter:
       mouseRunSideAttack_1: 7292860305071139738
       mouseRunSideAttack_2: 8022185756646083862
       mouseRunSideAttack_3: -7185450850781576714
-      mouseRunSideAttack_4: -7058405956926529369
-      mouseRunSideAttack_5: -1802662284988298261
-      mouseRunSideAttack_6: 114521525352958828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace WorldGen
 {
@@ -8,6 +9,8 @@ namespace WorldGen
         public List<Door> doors;
 
         public Vector2Int MapCoord;
+
+        public static readonly UnityEvent<Room> OnEnteredRoom = new();
 
         private void Awake()
         {

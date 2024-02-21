@@ -93,7 +93,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 720
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -114,6 +114,18 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -143,10 +155,10 @@ TextureImporter:
       name: mouseRunBackAttack_0
       rect:
         serializedVersion: 2
-        x: 1415
-        y: 1283
-        width: 47
-        height: 56
+        x: 0
+        y: 720
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,10 +176,10 @@ TextureImporter:
       name: mouseRunBackAttack_1
       rect:
         serializedVersion: 2
-        x: 1463
-        y: 1299
-        width: 45
-        height: 50
+        x: 1048
+        y: 720
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,10 +197,10 @@ TextureImporter:
       name: mouseRunBackAttack_2
       rect:
         serializedVersion: 2
-        x: 1518
-        y: 1316
-        width: 48
-        height: 49
+        x: 0
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +218,10 @@ TextureImporter:
       name: mouseRunBackAttack_3
       rect:
         serializedVersion: 2
-        x: 1567
-        y: 1326
-        width: 41
-        height: 54
+        x: 1048
+        y: 0
+        width: 1048
+        height: 720
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,241 +235,10 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_4
-      rect:
-        serializedVersion: 2
-        x: 1613
-        y: 1303
-        width: 169
-        height: 58
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f7b2018e82685f880800000000000000
-      internalID: -8577802405007053953
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_5
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 825
-        width: 413
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53cc9e5a1cae2f400800000000000000
-      internalID: 356605437948841013
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_6
-      rect:
-        serializedVersion: 2
-        x: 1333
-        y: 1201
-        width: 54
-        height: 70
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5a4dae3c61a340fb0800000000000000
-      internalID: -4682553843107834715
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_7
-      rect:
-        serializedVersion: 2
-        x: 1381
-        y: 1265
-        width: 43
-        height: 54
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dc9993fa25bd0bc50800000000000000
-      internalID: 6679079395564034509
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_8
-      rect:
-        serializedVersion: 2
-        x: 1390
-        y: 825
-        width: 413
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e8238b354baf33b0800000000000000
-      internalID: -5530513503548135194
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_9
-      rect:
-        serializedVersion: 2
-        x: 269
-        y: 449
-        width: 317
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9dbb0e790acbe5220800000000000000
-      internalID: 2476624243029228505
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_10
-      rect:
-        serializedVersion: 2
-        x: 590
-        y: 564
-        width: 183
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f2cc3f0ff68cf33b0800000000000000
-      internalID: -5530481434278245329
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_11
-      rect:
-        serializedVersion: 2
-        x: 1317
-        y: 449
-        width: 317
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5e3b80d40224eebe0800000000000000
-      internalID: -1446145723840547867
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_12
-      rect:
-        serializedVersion: 2
-        x: 1638
-        y: 564
-        width: 183
-        height: 83
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b854449843c275bc0800000000000000
-      internalID: -3794515556883479157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_13
-      rect:
-        serializedVersion: 2
-        x: 342
-        y: 105
-        width: 413
-        height: 441
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cea8436ee411c7830800000000000000
-      internalID: 4070147193803410156
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mouseRunBackAttack_14
-      rect:
-        serializedVersion: 2
-        x: 1390
-        y: 126
-        width: 413
-        height: 420
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b6ee35df62cd1ce70800000000000000
-      internalID: 9133823579301080683
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 65bfec83463479c4ba00e98cbe233606
     internalID: 0
     vertices: []
     indices: 
@@ -467,19 +248,8 @@ TextureImporter:
     nameFileIdTable:
       mouseRunBackAttack_0: 5315487205118970024
       mouseRunBackAttack_1: -7559567760789219019
-      mouseRunBackAttack_10: -5530481434278245329
-      mouseRunBackAttack_11: -1446145723840547867
-      mouseRunBackAttack_12: -3794515556883479157
-      mouseRunBackAttack_13: 4070147193803410156
-      mouseRunBackAttack_14: 9133823579301080683
       mouseRunBackAttack_2: -468685844444382182
       mouseRunBackAttack_3: 4542941270130393528
-      mouseRunBackAttack_4: -8577802405007053953
-      mouseRunBackAttack_5: 356605437948841013
-      mouseRunBackAttack_6: -4682553843107834715
-      mouseRunBackAttack_7: 6679079395564034509
-      mouseRunBackAttack_8: -5530513503548135194
-      mouseRunBackAttack_9: 2476624243029228505
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

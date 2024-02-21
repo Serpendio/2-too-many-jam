@@ -22,15 +22,14 @@ namespace WorldGen
             
             Door.OnPlayerEnterDoor.AddListener((door, player) =>
             {
-                if (door.GetLinkedDoor() != null)
-                {
+                if (door.GetLinkedDoor() != null) {
                     // go to already-generated room
                     GoThroughDoor(door, player);
                 }
-                else
-                {
+                else {
                     // make new room
                     var newRoom = GenerateNewRoom(door);
+                    newRoom.gameObject.SetActive(false);
                     WorldRooms.Add(newRoom);
                     GoThroughDoor(door, player);
                 }
@@ -38,6 +37,7 @@ namespace WorldGen
 
             _currentRoom = FindObjectsByType<Room>(FindObjectsSortMode.None).First();
             WorldRooms.Add(_currentRoom);
+            Room.OnEnteredRoom.Invoke(_currentRoom);
         }
 
         private Room GenerateNewRoom(Door comingFrom)
@@ -54,7 +54,7 @@ namespace WorldGen
             return roomObj;
         }
 
-        private void GoThroughDoor(Door door, PlayerTemp player)
+        private void GoThroughDoor(Door door, Player player)
         {
             Time.timeScale = 0;
 
@@ -94,6 +94,8 @@ namespace WorldGen
                     Direction.West => Vector3.right,
                     _ => Vector3.zero
                 } * 1.5f;
+
+                Room.OnEnteredRoom.Invoke(_currentRoom);
 
                 _fadeToBlack.gameObject.AddTween(fromBlackTween);
             };
