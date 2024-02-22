@@ -50,8 +50,8 @@ public class ResizeCamera : MonoBehaviour
             }
 
             //in case of extreme aspect ratio or very large room - camera should follow player
-            followPlayerY = levelAspect < 0.5 || bounds.size.y > 20;
-            followPlayerX = levelAspect > 2 || bounds.size.x > 20;
+            followPlayerY = levelAspect < 0.5 || bounds.size.y > 25;
+            followPlayerX = levelAspect > 2 || bounds.size.x > 25;
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
@@ -74,7 +74,6 @@ public class ResizeCamera : MonoBehaviour
         Vector2 max = bounds.center + bounds.extents;
 
         if (followPlayerX) {
-            Debug.Log("sdfsdkjfj");
             transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
             float clampedX = Mathf.Clamp(transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
             transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
