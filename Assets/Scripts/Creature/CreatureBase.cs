@@ -21,7 +21,7 @@ namespace Creature
 
         protected Animator Anim;
         protected SpriteRenderer SpriteRenderer;
-        protected Rigidbody2D Rb;
+        public Rigidbody2D Rb;
 
         [SerializeField] protected float maxHealth;
         [SerializeField] protected float speed;
