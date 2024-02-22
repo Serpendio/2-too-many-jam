@@ -51,9 +51,10 @@ namespace WorldGen
 
             roomObj.MapCoord = comingFrom.GetLinkedMapCoord();
 
-            // temp
-            roomObj.GetComponent<Renderer>().material.color =
-                new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            float randHue = Random.Range(0f, 1f);
+            foreach (Renderer renderer in roomObj.GetComponentsInChildren<Renderer>()) {
+                renderer.material.color = Color.HSVToRGB(randHue, 1f, 1f);
+            }
 
             return roomObj;
         }
