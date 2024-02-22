@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +7,7 @@ namespace WorldGen
 {
     public class Room : MonoBehaviour
     {
-        public List<Door> doors;
+        [HideInInspector] public List<Door> doors;
 
         public Vector2Int MapCoord;
 
@@ -14,6 +15,7 @@ namespace WorldGen
 
         private void Awake()
         {
+            doors = GetComponentsInChildren<Door>().ToList();
             foreach (var door in doors)
             {
                 door.room = this;
