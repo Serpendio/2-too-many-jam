@@ -1,4 +1,5 @@
 using Spells;
+using Spells.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,7 +56,7 @@ namespace Creature
                 ManaUsage = 10,
                 ProjectileSpeed = 20,
                 Range = 10,
-            }, Element.None, Team.Friendly, new SpellModifier[] { ModifierMaster.Instance.GetModifier(ModifierTier.Tier1) });
+            }, Element.None, Team.Friendly, new SpellModifier[] { SpellMaster.Instance.GetModifier(ModifierTier.Tier1) });
 
             Inventory.MoveSpellToEquipped(0, initSpell);
         }
@@ -80,7 +81,7 @@ namespace Creature
         {
             var activeSpell = Inventory.GetEquippedSpell(_activeSpellSlot);
 
-            if (context.performed && activeSpell.CooldownOver)
+            if (context.performed && activeSpell != null && activeSpell.CooldownOver)
             {
                 // Get direction from player to mouse
                 var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
