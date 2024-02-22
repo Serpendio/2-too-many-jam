@@ -1,60 +1,75 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public class CreatureBase : MonoBehaviour
+namespace Creature
 {
-    [SerializeField] protected float maxHealth;
-    [SerializeField] protected float speed;
-    [SerializeField] private float health;
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Animator anim;
-    public bool team;
-
-    protected virtual void Awake()
+    public enum Team
     {
-        health = maxHealth;
+        Friendly,
+        Hostile
     }
 
-    protected void UpdateDir(Vector2 lookDir, bool isMoving)
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class CreatureBase : MonoBehaviour
     {
-        anim.SetFloat("multiplier", Convert.ToInt32(isMoving));
+        private static readonly int XMove = Animator.StringToHash("xMove");
+        private static readonly int YMove = Animator.StringToHash("yMove");
+        private static readonly int Attack = Animator.StringToHash("Attack");
+        private static readonly int Multiplier = Animator.StringToHash("multiplier");
 
-        if (lookDir.sqrMagnitude == 0)
-        {
-            return;
-        }
+        protected Animator Anim;
+        protected SpriteRenderer SpriteRenderer;
+        protected Rigidbody2D Rb;
 
-        if (lookDir.sqrMagnitude != 0)
-        {
-            spriteRenderer.flipX = lookDir.x < 0;
-        }
+        [SerializeField] protected float maxHealth;
+        [SerializeField] protected float speed;
+        [SerializeField] private float health;
 
-        anim.SetFloat("xMove", lookDir.x);
-        anim.SetFloat("yMove", lookDir.y);
-    }
+        public Team Team;
 
-    protected virtual void Attack()
-    {
-        anim.SetTrigger("Attack");
-    }
-
-    public void Damage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            Die();
-        }
-        else if (health > maxHealth) // to allow for healing
+        protected virtual void Awake()
         {
             health = maxHealth;
-        }
-    }
 
-    protected virtual void Die()
-    {
-        Destroy(gameObject);
+            Anim = GetComponent<Animator>();
+            SpriteRenderer = GetComponent<SpriteRenderer>();
+            Rb = GetComponent<Rigidbody2D>();
+        }
+
+        protected void UpdateMoveDir(Vector2 lookDir, bool isMoving)
+        {
+            Anim.SetFloat(Multiplier, Convert.ToInt32(isMoving));
+
+            if (lookDir.sqrMagnitude == 0)
+            {
+                return;
+            }
+
+            if (lookDir.sqrMagnitude != 0)
+            {
+                SpriteRenderer.flipX = lookDir.x < 0;
+            }
+
+            Anim.SetFloat(XMove, lookDir.x);
+            Anim.SetFloat(YMove, lookDir.y);
+        }
+
+        // protected virtual void Attack()
+        // {
+        //     Anim.SetTrigger(Attack1);
+        // }
+
+        public virtual void TakeDamage(float damage)
+        {
+            health = Mathf.Clamp(health - damage, 0, maxHealth);
+            if (health == 0) Die();
+        }
+
+        protected virtual void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }
