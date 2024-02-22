@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Creature;
 using Tweens;
 using UnityEngine;
 
