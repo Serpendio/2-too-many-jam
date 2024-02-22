@@ -73,7 +73,7 @@ namespace Creature
                 Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, speed);
             }
 
-            UpdateMoveDir(move);
+            UpdateMoveDir(move, move.magnitude > 0);
         }
 
         public void Cast(InputAction.CallbackContext context)

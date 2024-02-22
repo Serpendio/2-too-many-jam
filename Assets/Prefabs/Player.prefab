@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 4395509319039831861}
   - component: {fileID: 7071180028235103932}
   - component: {fileID: 3218765729806331496}
-  - component: {fileID: 4414781798320784218}
   - component: {fileID: 7672381947014803902}
   - component: {fileID: 957427769202113192}
   - component: {fileID: 4021473281838089200}
   - component: {fileID: 2073527244497033930}
+  - component: {fileID: 4414781798320784218}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -155,16 +155,16 @@ MonoBehaviour:
   maxHealth: 0
   speed: 5
   health: 0
+  Team: 0
   spriteRenderer: {fileID: 7071180028235103932}
   anim: {fileID: 3218765729806331496}
   team: 0
-  Team: 0
   dashPower: 30
   dashTrailDuration: 0
   dashCooldown: 1
   _activeSpellSlot: 0
-  maxMana: 0
   mana: 0
+  maxMana: 0
   Inventory:
     _equippedSpells:
     - BaseStats:
