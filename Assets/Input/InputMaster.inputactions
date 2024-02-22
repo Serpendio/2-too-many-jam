@@ -24,7 +24,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Shoot",
+                    "name": "Cast",
                     "type": "Button",
                     "id": "45469e5d-fed1-4d91-81ff-c5f504bfb68f",
                     "expectedControlType": "Button",
@@ -217,7 +217,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
-                    "action": "Shoot",
+                    "action": "Cast",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
