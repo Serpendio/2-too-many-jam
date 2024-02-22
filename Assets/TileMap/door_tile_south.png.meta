@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a094d0f0f8c5e8948912a9a291b399ee
+guid: 31f7328a5b307094f8526a0f1a3e2ae9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 711494819932708202
-    second: wall_tile_corner_0
+      213: -4083005521541016070
+    second: door_tile_south_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1240
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -94,23 +94,11 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_tile_corner_0
+      name: door_tile_south_0
       rect:
         serializedVersion: 2
         x: 0
@@ -124,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a6d9e91e4ccbfd900800000000000000
-      internalID: 711494819932708202
+      spriteID: af5d6906c104657c0800000000000000
+      internalID: -4083005521541016070
       vertices: []
       indices: 
       edges: []
@@ -141,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_tile_corner_0: 711494819932708202
+      door_tile_south_0: -4083005521541016070
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

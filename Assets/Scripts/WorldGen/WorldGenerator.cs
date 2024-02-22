@@ -12,14 +12,25 @@ namespace WorldGen
         [SerializeField] private CanvasGroup _fadeToBlack;
 
         [SerializeField] private List<Room> _roomPrefabs;
-
+        
         public List<Room> WorldRooms = new();
         private Room _currentRoom;
+        
+        [SerializeField][Range(0, 1)] private float hueVariety;
+        private float defaultRendererHue;
+
+
 
         private void Awake()
         {
             Instance = this;
-            
+
+            //To be destroyed at end of awake() - only needed for dummy parameters
+            float defaultRendererSaturation;
+            float defaultRendererValue;
+
+            Color.RGBToHSV(GetComponentInChildren<Renderer>().material.color, out defaultRendererHue, out defaultRendererSaturation, out defaultRendererValue);
+
             Door.OnPlayerEnterDoor.AddListener((door, player) =>
             {
                 if (door.GetLinkedDoor() != null) {
@@ -36,11 +47,12 @@ namespace WorldGen
             });
 
         }
-        private void Start() {
+
+        private void Start()
+        {
             _currentRoom = FindObjectsByType<Room>(FindObjectsSortMode.None).First();
             WorldRooms.Add(_currentRoom);
             Room.OnEnteredRoom.Invoke(_currentRoom);
-           
         }
 
         private Room GenerateNewRoom(Door comingFrom)
@@ -50,9 +62,10 @@ namespace WorldGen
 
             roomObj.MapCoord = comingFrom.GetLinkedMapCoord();
 
-            // temp
-            roomObj.GetComponent<Renderer>().material.color =
-                new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            float randHueOffset = Random.Range(0, hueVariety);
+            foreach (Renderer renderer in roomObj.GetComponentsInChildren<Renderer>()) {
+                renderer.material.color = Color.HSVToRGB(defaultRendererHue + randHueOffset, 1f, 1f);
+            }
 
             return roomObj;
         }
