@@ -1,4 +1,7 @@
 using Creature;
+using Spells.Modifiers;
+using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spells
@@ -21,6 +24,12 @@ namespace Spells
 
         private void Start()
         {
+            /*for (int i = 0; i < Spell.Modifiers.Length; i++)
+            {
+
+                Spell.Modifiers[i] = Activator.CreateInstance(typeof(Spell.Modifiers[i])) as SpellModifier;
+            }*/
+
             _rb.AddForce(Spell.ComputedStats.ProjectileSpeed * CastDirection, ForceMode2D.Impulse);
 
             var main = _particleSystem.main;
