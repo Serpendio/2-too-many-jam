@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -19,12 +20,13 @@ public class EnemyBase : CreatureBase
     {
         base.Awake();
         cooldown = 0;
+        agent.stoppingDistance = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
         agent.SetDestination(target.position);
-        agent.stoppingDistance = 1;
+        UpdateDir(target.position - transform.position, agent.velocity.sqrMagnitude > 0);
     }
 }
