@@ -37,6 +37,14 @@ namespace Spells
             };
         }
 
+        private void Update()
+        {
+            foreach (var modifier in Spell.Modifiers)
+            {
+                modifier.Update(this);
+            }
+        }
+
         private void OnCollisionEnter2D(Collision2D col)
         {
             if (col.collider.CompareTag("Creature") && col.collider.TryGetComponent(out CreatureBase creature))

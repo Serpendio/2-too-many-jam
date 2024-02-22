@@ -55,7 +55,7 @@ namespace Creature
                 ManaUsage = 10,
                 ProjectileSpeed = 20,
                 Range = 10,
-            }, Element.None, Team.Friendly);
+            }, Element.None, Team.Friendly, new SpellModifier[] { ModifierMaster.Instance.GetModifier(ModifierTier.Tier1) });
 
             Inventory.MoveSpellToEquipped(0, initSpell);
         }

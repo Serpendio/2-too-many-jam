@@ -1,3 +1,4 @@
+using Creature;
 using System;
 
 namespace Spells
@@ -12,13 +13,14 @@ namespace Spells
     [Serializable]
     public abstract class SpellModifier
     {
-        public string Name;
-        public string Description;
-        public ModifierTier Tier;
+        public abstract string Name { get; }
+        public abstract string Description { get; }
+        public abstract ModifierTier Tier { get; }
 
-        public virtual SpellStats ModifyStats(SpellStats currentStats) {
-            // ...
-            return currentStats;
-        }
+        public abstract SpellStats ModifyStats(SpellStats currentStats);
+
+        public abstract void Update(SpellProjectile projectile);
+
+        public abstract void OnCollision(CreatureBase creature);
     }
 }

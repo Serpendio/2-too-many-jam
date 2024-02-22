@@ -38,18 +38,20 @@ namespace Spells
         public SpellStats ComputedStats =>
             Modifiers.Aggregate(BaseStats, (spellStats, modifier) => modifier.ModifyStats(spellStats));
 
-        public readonly List<SpellModifier> Modifiers = new();
+        public readonly SpellModifier[] Modifiers;
         public Element Element;
         
         public float LastCastTime;
         
         public bool CooldownOver => Time.time - LastCastTime > ComputedStats.CastCooldown;
+
         
-        public Spell(SpellStats baseStats, Element element, Team team)
+        public Spell(SpellStats baseStats, Element element, Team team, SpellModifier[] spellModifiers)
         {
             BaseStats = baseStats;
             Element = element;
             Team = team;
+            Modifiers = spellModifiers;
         }
     }
 }
