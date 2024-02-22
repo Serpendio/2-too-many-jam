@@ -24,11 +24,7 @@ namespace Spells
 
         private void Start()
         {
-            /*for (int i = 0; i < Spell.Modifiers.Length; i++)
-            {
-
-                Spell.Modifiers[i] = Activator.CreateInstance(typeof(Spell.Modifiers[i])) as SpellModifier;
-            }*/
+            Spell = new Spell(Spell);
 
             _rb.AddForce(Spell.ComputedStats.ProjectileSpeed * CastDirection, ForceMode2D.Impulse);
 

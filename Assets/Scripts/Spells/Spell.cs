@@ -52,7 +52,17 @@ namespace Spells
             BaseStats = baseStats;
             Element = element;
             Team = team;
-            Modifiers = spellModifiers;
+            // copy all items from the array to our array
+            Modifiers = new SpellModifier[spellModifiers.Length];
+            for (int i = 0; i < Modifiers.Length; i++)
+            {
+                Modifiers[i] = Activator.CreateInstance(spellModifiers[i].GetType()) as SpellModifier;
+            }
+        }
+
+        public Spell(Spell otherSpell) : this(otherSpell.BaseStats, otherSpell.Element, otherSpell.Team, otherSpell.Modifiers)
+        {
+
         }
     }
 }

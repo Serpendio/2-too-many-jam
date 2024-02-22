@@ -10,18 +10,14 @@ namespace Spells
     {
         // doesn't need to be singleton until we can access from inspector, but is prepared for it
         public static SpellMaster Instance;
-        [SerializeField] Type type;
 
-        List<Type> modifierTypes = new List<Type>();
+        static Type[] modifierTypes = new[] { typeof(SineModifier) };
 
         private void Awake()
         {
             if (Instance == null)
             {
                 Instance = this;
-
-                // Add the types of the child classes to the list
-                modifierTypes.Add(typeof(SineModifier));
             }
             else
             {
@@ -30,17 +26,11 @@ namespace Spells
             }
         }
 
-        private void Start()
-        {
-            // Add the types of the child classes to the list
-            modifierTypes.Add(typeof(SineModifier));
-        }
-
         public SpellModifier GetModifier(ModifierTier tier) // could be infinite
         {
             while (true)
             {
-                int index = UnityEngine.Random.Range(0, modifierTypes.Count);
+                int index = UnityEngine.Random.Range(0, modifierTypes.Length);
                 // ugh, but I can't find a way around it without static abstract fields existing
                 SpellModifier modifier = Activator.CreateInstance(modifierTypes[index]) as SpellModifier;
                 if (modifier.Tier == tier)
