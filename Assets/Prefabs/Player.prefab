@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: -8164427703229271119, guid: 0d65b58110577814d98969ae405521e6, type: 3}
+  m_Sprite: {fileID: 6405962258669883630, guid: 80a4f89ce73099940a384504ef0cb0a3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,7 +101,7 @@ Animator:
   m_GameObject: {fileID: 8512392723604706054}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b44797f0ea5c69f47bb98b91040438b9, type: 2}
+  m_Controller: {fileID: 22100000, guid: 6e546274bc58d3045a5c61cc7918cbc7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,12 +155,16 @@ MonoBehaviour:
   maxHealth: 0
   speed: 5
   health: 0
+  spriteRenderer: {fileID: 7071180028235103932}
+  anim: {fileID: 3218765729806331496}
+  team: 0
   canDash: 1
   isDashing: 0
   dashPower: 20
   dashTime: 0.1
   dashCooldown: 1
   projectile: {fileID: 5872660715789521179, guid: 4ab846aa2a04104488dca7649c58a5a6, type: 3}
+  maxMana: 0
   mana: 0
   castCooldown: 0
   projectileSpeed: 200
@@ -403,7 +407,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4555556, y: 1}
+    oldSize: {x: 0.65, y: 1.0097222}
     newSize: {x: 4.260069, y: 4.93}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

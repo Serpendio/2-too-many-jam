@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,8 @@ public class CreatureBase : MonoBehaviour
     [SerializeField] protected float maxHealth;
     [SerializeField] protected float speed;
     [SerializeField] private float health;
-    protected Animator anim;
-    protected SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator anim;
     public bool team;
 
     protected virtual void Awake()
@@ -16,15 +17,22 @@ public class CreatureBase : MonoBehaviour
         health = maxHealth;
     }
 
-    protected void UpdateDir(Vector2 moveDir)
+    protected void UpdateDir(Vector2 lookDir, bool isMoving)
     {
-        if (moveDir.sqrMagnitude != 0)
+        anim.SetFloat("multiplier", Convert.ToInt32(isMoving));
+
+        if (lookDir.sqrMagnitude == 0)
         {
-            spriteRenderer.flipX = moveDir.x > 0;
+            return;
         }
 
-        anim.SetFloat("xMove", moveDir.x);
-        anim.SetFloat("yMove", moveDir.y);
+        if (lookDir.sqrMagnitude != 0)
+        {
+            spriteRenderer.flipX = lookDir.x < 0;
+        }
+
+        anim.SetFloat("xMove", lookDir.x);
+        anim.SetFloat("yMove", lookDir.y);
     }
 
     protected virtual void Attack()

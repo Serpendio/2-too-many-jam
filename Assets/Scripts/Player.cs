@@ -34,8 +34,6 @@ public class Player : CreatureBase
     {
         base.Awake();
         
-        anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
         _rb = GetComponent<Rigidbody2D>();
         _playerInput = GetComponent<PlayerInput>();
         dashTrail = GetComponent<TrailRenderer>();
@@ -63,7 +61,7 @@ public class Player : CreatureBase
         }
 
         var move = _playerInput.actions["Movement"].ReadValue<Vector2>();
-        UpdateDir(move);
+        UpdateDir(move, move.sqrMagnitude > 0);
         _rb.velocity = new Vector2(move.x * speed, move.y * speed);
     }
 
