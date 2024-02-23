@@ -18,20 +18,11 @@ namespace WorldGen
         private Room _currentRoom;
         
         [SerializeField][Range(0, 1)] private float hueVariety;
-        private float defaultRendererHue;
-
-
 
         private void Awake()
         {
             Instance = this;
-
-            //To be destroyed at end of awake() - only needed for dummy parameters
-            float defaultRendererSaturation;
-            float defaultRendererValue;
-
-            Color.RGBToHSV(GetComponentInChildren<Renderer>().material.color, out defaultRendererHue, out defaultRendererSaturation, out defaultRendererValue);
-
+            
             Door.OnPlayerEnterDoor.AddListener((door, player) =>
             {
                 if (door.GetLinkedDoor() != null) {
@@ -63,10 +54,16 @@ namespace WorldGen
 
             roomObj.MapCoord = comingFrom.GetLinkedMapCoord();
 
-            float randHueOffset = Random.Range(0, hueVariety);
-            foreach (Renderer renderer in roomObj.GetComponentsInChildren<Renderer>()) {
-                renderer.material.color = Color.HSVToRGB(defaultRendererHue + randHueOffset, 1f, 1f);
-            }
+            // todo: Randomise hue, removed until we have a better way to handle this
+            // by default unity just multiplies the whole sprite with the new colour 
+            // which looks kinda ugly sometimes and messes with the s+v :/
+            // maybe some shader nonsense?
+            
+            // float randHueOffset = Random.Range(0, hueVariety);
+            // foreach (Renderer renderer in roomObj.GetComponentsInChildren<Renderer>()) {
+            //     Color.RGBToHSV(renderer.material.color, out var h, out _, out _);
+            //     renderer.material.color = Color.HSVToRGB(h + randHueOffset, 0.5f, 1f);
+            // }
 
             return roomObj;
         }

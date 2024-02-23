@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: RoomTile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 21300000, guid: 8a32202e5027ee14caa64cbf9477510e, type: 3}
+  m_DefaultSprite: {fileID: 21300000, guid: 1ab9e4e85f7995141adae1ff1172dcbe, type: 3}
   m_DefaultGameObject: {fileID: 0}
-  m_DefaultColliderType: 2
+  m_DefaultColliderType: 0
   m_TilingRules:
   - m_Id: 0
     m_Sprites:
@@ -86,7 +86,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 9
     m_Sprites:
-    - {fileID: 21300000, guid: b9019c667a75d93448bd89e6f3ccff25, type: 3}
+    - {fileID: 21300000, guid: 277c61977069b1244a205c2085579143, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -104,7 +104,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 10
     m_Sprites:
-    - {fileID: 21300000, guid: e856823bba2bf684dbaf82623f2b5aaa, type: 3}
+    - {fileID: 21300000, guid: 0d99aa7845ed55f44a182992b0d32008, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 12
     m_Sprites:
-    - {fileID: 21300000, guid: 77a6c7b44f802f446bf4f90c3fc5753c, type: 3}
+    - {fileID: 21300000, guid: d456f46d1b2699842a07a35f0156f0a3, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -140,7 +140,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 11
     m_Sprites:
-    - {fileID: 21300000, guid: 6d8503d821b58eb4487384f02a079293, type: 3}
+    - {fileID: 21300000, guid: cc288019b1a680d42bf42f3540af2b3a, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
@@ -226,7 +226,7 @@ MonoBehaviour:
     m_RuleTransform: 0
   - m_Id: 8
     m_Sprites:
-    - {fileID: 21300000, guid: 8a32202e5027ee14caa64cbf9477510e, type: 3}
+    - {fileID: 21300000, guid: 1ab9e4e85f7995141adae1ff1172dcbe, type: 3}
     m_GameObject: {fileID: 0}
     m_MinAnimationSpeed: 1
     m_MaxAnimationSpeed: 1
