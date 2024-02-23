@@ -15,6 +15,7 @@ public class ResizeCamera : MonoBehaviour
     bool firstRoom = true; //bool-lock to get startingOrthoSize
     float startingOrthoSize; //default ortho
 
+    Camera camera;
     [SerializeField] float lerpSpeed;
 
     private void Awake()
@@ -64,6 +65,9 @@ public class ResizeCamera : MonoBehaviour
             }
             else {
                 camera.orthographicSize = startingOrthoSize;
+
+                //Move camera to player to avoid lerping from room center to player upon entering room
+                camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
