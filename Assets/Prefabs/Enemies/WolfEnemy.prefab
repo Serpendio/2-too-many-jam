@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 9021229641086641310, guid: 080537209620cb045844b80c3e76e289, type: 3}
+    - target: {fileID: 7848099009551039341, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8317292360838696019, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Name
       value: WolfEnemy

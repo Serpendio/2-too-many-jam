@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Creature;
 using NavMeshPlus.Components;
 using UnityEngine;
 using UnityEngine.Events;
@@ -20,6 +21,8 @@ namespace WorldGen
         public Vector2Int MapCoord;
 
         public static readonly UnityEvent<Room> OnEnteredRoom = new();
+
+        private List<EnemyBase> _enemies = new();
         
         private void Awake()
         {
@@ -27,9 +30,28 @@ namespace WorldGen
             foreach (var door in doors)
             {
                 door.room = this;
+                door.gameObject.SetActive(false);
             }
 
             Tilemap = GetComponent<Tilemap>();
+        }
+        
+        public void RegisterEnemy(EnemyBase enemy)
+        {
+            _enemies.Add(enemy);
+            enemy.OnDeath.AddListener(() => UnregisterEnemy(enemy));
+        }
+        
+        public void UnregisterEnemy(EnemyBase enemy)
+        {
+            _enemies.Remove(enemy);
+            if (_enemies.Count == 0)
+            {
+                foreach (var door in doors)
+                {
+                    door.gameObject.SetActive(true);
+                }
+            }
         }
     }
 }

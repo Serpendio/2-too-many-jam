@@ -22,6 +22,8 @@ namespace Spells
         public int BouncesRemaining;
         public int PiercesRemaining;
 
+        public float TravelDistance;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -54,10 +56,16 @@ namespace Spells
             main.startColor = colours[Random.Range(0, colours.Length)];
         }
 
+        private void Update()
+        {
+            TravelDistance += _rb.velocity.magnitude * Time.deltaTime;
+            
+            if (TravelDistance >= Spell.ComputedStats.Range) Dissipate();
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("triggered");
-            if (other.CompareTag("Creature") && other.TryGetComponent(out CreatureBase creature))
+            if (other.TryGetComponent(out CreatureBase creature))
             {
                 if (creature.Team == Spell.Team) return;
                 creature.TakeDamage(Spell.ComputedStats.DamageOnHit);
@@ -75,7 +83,6 @@ namespace Spells
 
         private void OnCollisionEnter2D(Collision2D col)
         {
-            Debug.Log("collidededed");
             if (col.collider.CompareTag("Room"))
             {
                 if (BouncesRemaining > 0)

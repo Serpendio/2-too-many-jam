@@ -59,7 +59,7 @@ namespace Spells
         public SpellStats ComputedStats =>
             Modifiers.Aggregate(BaseStats, (spellStats, modifier) => modifier.ModifyStats(spellStats));
 
-        public readonly List<SpellModifier> Modifiers = new();
+        public List<SpellModifier> Modifiers = new();
         public Element Element;
 
         public float LastCastTime;

@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using System.Linq;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Tilemaps;
@@ -133,41 +135,46 @@ namespace WorldGen
                 {
                     // Generate enemies on random tiles in the room, not too close to player
                     var bounds = _currentRoom.Tilemap.cellBounds;
-            
+
+                    var spawnablePositions = new List<Vector3>();
+                    // iterate through bounds, if tile is not null and collider is none add to vector3 list
+                    for (var x = bounds.xMin; x < bounds.xMax; x++)
+                    {
+                        for (var y = bounds.yMin; y < bounds.yMax; y++)
+                        {
+                            var pos = new Vector3Int(x, y, 0);
+                            if (_currentRoom.Tilemap.GetTile(pos) == null) continue;
+                            if (_currentRoom.Tilemap.GetColliderType(pos) != Tile.ColliderType.None) continue;
+                            if (Vector3.Distance(pos, _player.transform.position) < 5) continue;
+
+                            spawnablePositions.Add(_currentRoom.Tilemap.GetCellCenterWorld(pos));
+                        }
+                    }
+
                     // some arbitrary amount based on room size
-                    var enemiesToSpawn = _currentRoom.Tilemap.GetTilesBlock(bounds).Length / 30;
+                    var enemiesToSpawn = 2 + (spawnablePositions.Count / 30);
 
                     for (var i = 0; i < enemiesToSpawn; i++)
                     {
                         var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
+
                         var enemy = Instantiate(creaturePrefab, _currentRoom.transform);
+                        var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
 
-                        // while random position is not on a walkable tile, keep trying
-                        while (true)
-                        {
-                            var randomPos = new Vector3Int(
-                                Random.Range(bounds.xMin, bounds.xMax),
-                                Random.Range(bounds.yMin, bounds.yMax),
-                                0);
+                        enemy.transform.position = randomPos;
+                        enemy.target = _player;
 
-                            // if tile exists and roomtile state is floor
-                            if (_currentRoom.Tilemap.GetTile(randomPos) == null) continue;
-                            if (_currentRoom.Tilemap.GetColliderType(randomPos) != Tile.ColliderType.None) continue;
-
-                            if (Vector3.Distance(randomPos, _player.transform.position) < 5) continue;
-
-                            enemy.transform.position = _currentRoom.Tilemap.GetCellCenterWorld(randomPos);
-                            enemy.target = _player.transform;
-                            break;
-                        }
+                        _currentRoom.RegisterEnemy(enemy);
                     }
                     
                     _currentRoom.Entered = true;
                 }
-                
+
                 Room.OnEnteredRoom.Invoke(_currentRoom);
 
                 _fadeToBlack.gameObject.AddTween(fromBlackTween);
+
+                EditorApplication.isPaused = true;
             };
 
             _fadeToBlack.gameObject.AddTween(toBlackTween);

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6900923577851068007}
   - component: {fileID: 1877506905957707850}
   m_Layer: 0
-  m_Name: Spell Projectile
+  m_Name: SpellProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1021,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 250
       minScalar: 10
       maxCurve:
         serializedVersion: 2

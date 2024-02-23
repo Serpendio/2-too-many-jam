@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Creature;
 using UnityEngine;
 using WorldGen;
 
@@ -9,8 +7,8 @@ namespace Spells
 {
     public class SpellProjectileOverseer : MonoBehaviour
     {
-        private Player _player;
-
+        public static SpellProjectile SpellProjectilePrefab;
+        
         public Spell Spell;
 
         public Vector2 CastDirection;
@@ -18,7 +16,7 @@ namespace Spells
 
         private void CreateProjectile(Vector2 castDirection)
         {
-            var projectile = Instantiate(_player.SpellProjectilePrefab, transform.position, Quaternion.identity);
+            var projectile = Instantiate(SpellProjectilePrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
             Projectiles.Add(projectile);
 
             projectile.Overseer = this;
@@ -30,8 +28,7 @@ namespace Spells
 
         private void Awake()
         {
-            _player = GetComponentInParent<Player>();
-            
+            if(SpellProjectilePrefab == null) SpellProjectilePrefab = Resources.Load<SpellProjectile>("Prefabs/SpellProjectile");
             Room.OnEnteredRoom.AddListener(_ => Destroy(this));
         }
 

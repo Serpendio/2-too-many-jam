@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -8164427703229271119, guid: 0d65b58110577814d98969ae405521e6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -171,7 +171,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -197,17 +197,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27762db4441f39d4a83c91903960fb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls: []
   Rb: {fileID: 0}
-  maxHealth: 0
-  speed: 2
   health: 0
+  maxHealth: 15
+  moveSpeed: 2
   Team: 1
   Agent: {fileID: 158024836645491187}
   target: {fileID: 0}
-  enemyData: {fileID: 0}
-  attackCooldown: 0
-  attackRange: 0
-  attackDamage: 0
+  EnemyType: 1
+  attackCooldown: 1
+  attackRange: 1
+  attackDamage: 3
+  Spell:
+    <Name>k__BackingField: Spit
+    <Icon>k__BackingField: {fileID: 0}
+    BaseStats:
+      DamageOnHit: 3
+      CastCooldown: 2
+      ManaUsage: 0
+      ProjectileSpeed: 5
+      Range: 10
+    Team: 1
+    Modifiers: []
+    Element: 0
+    LastCastTime: 0
 --- !u!195 &158024836645491187
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -217,8 +233,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 8317292360838696019}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.6
-  m_Speed: 5
+  m_Radius: 0.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

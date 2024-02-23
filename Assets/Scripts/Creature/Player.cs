@@ -34,7 +34,6 @@ namespace Creature
         public Inventory Inventory = new();
         
         public SpellProjectile SpellProjectilePrefab;
-        public List<SpellProjectileOverseer> Overseers = new();
         
         // Awake is called even before Start() is called.
         protected override void Awake()
@@ -60,7 +59,7 @@ namespace Creature
                 ManaUsage = 10,
                 ProjectileSpeed = 20,
                 Range = 10,
-            }, Element.None, Team.Friendly);
+            }, Element.None, Team);
             
             initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Multishot"));
             initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Bounce"));
@@ -76,10 +75,10 @@ namespace Creature
             const int acceleration = 50;
 
             var move = _moveAction.ReadValue<Vector2>();
-            if (Rb.velocity.magnitude < speed)
+            if (Rb.velocity.magnitude < moveSpeed)
             {
-                Rb.AddForce(move * (speed * acceleration), ForceMode2D.Force);
-                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, speed);
+                Rb.AddForce(move * (moveSpeed * acceleration), ForceMode2D.Force);
+                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, moveSpeed);
             }
 
             UpdateMoveDir(move, move.magnitude > 0);
@@ -91,6 +90,8 @@ namespace Creature
 
             if (context.performed && activeSpell is { CooldownOver: true })
             {
+                TriggerAttackAnim();
+                
                 // Get direction from player to mouse
                 var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 mousePos.z = transform.position.z;
@@ -99,7 +100,6 @@ namespace Creature
                 var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
                 overseer.Spell = activeSpell;
                 overseer.CastDirection = dir;
-                Overseers.Add(overseer);
 
                 activeSpell.LastCastTime = Time.time;
             }
