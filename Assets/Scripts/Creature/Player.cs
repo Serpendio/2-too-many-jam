@@ -98,9 +98,8 @@ namespace Creature
 
         public void Dash(InputAction.CallbackContext context)
         {
-            if (context.performed && canDash && Rb.velocity.magnitude > 0.01f)
+            if (context.performed && canDash && Rb.velocity.magnitude > 0.01f) //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
             {
-                Debug.Log(Rb.velocity.magnitude);
                 Dash();
             }
         }
