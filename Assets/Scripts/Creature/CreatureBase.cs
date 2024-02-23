@@ -3,6 +3,7 @@ using System;
 using Tweens;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
+using WorldGen;
 
 namespace Creature
 {
@@ -41,6 +42,7 @@ namespace Creature
             Anim = GetComponent<Animator>();
             SpriteRenderer = GetComponent<SpriteRenderer>();
             Rb = GetComponent<Rigidbody2D>();
+
         }
 
         protected void UpdateMoveDir(Vector2 lookDir, bool isMoving)

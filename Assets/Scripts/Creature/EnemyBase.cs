@@ -49,6 +49,8 @@ namespace Creature
         protected void Start()
         {
             Agent.enabled = true;
+
+            if (Random.value > 0.4f) EnemyType = EnemyType.Melee;
         }
 
         private void Attack()

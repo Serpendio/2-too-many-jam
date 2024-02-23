@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.Linq;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.AI;
 using UnityEngine.Tilemaps;
 
 namespace WorldGen
@@ -28,7 +25,7 @@ namespace WorldGen
         [SerializeField] [Range(0, 1)] private float hueVariety;
 
         [SerializeField] private Player _player;
-
+        
         private void Awake()
         {
             Instance = this;
@@ -158,7 +155,7 @@ namespace WorldGen
                     {
                         var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
 
-                        var enemy = Instantiate(creaturePrefab, _currentRoom.transform);
+                        var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
                         var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
 
                         enemy.transform.position = randomPos;
@@ -173,8 +170,6 @@ namespace WorldGen
                 Room.OnEnteredRoom.Invoke(_currentRoom);
 
                 _fadeToBlack.gameObject.AddTween(fromBlackTween);
-
-                EditorApplication.isPaused = true;
             };
 
             _fadeToBlack.gameObject.AddTween(toBlackTween);

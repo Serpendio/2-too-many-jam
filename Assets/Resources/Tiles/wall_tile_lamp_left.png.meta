@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a6ef72397402b204c88080345d92d3dd
+guid: becc840a0db8abf4c87ac91bae9e1f7f
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6365388379182432392
-    second: wall_tile_inner_corner_bottom_right_0
+      213: 2260318405771966207
+    second: wall_tile_lamp_left_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -98,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wall_tile_inner_corner_bottom_right_0
+      name: wall_tile_lamp_left_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1240
-        height: 1240
+        x: 494
+        y: 300
+        width: 701
+        height: 629
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 87f7e619ef899a7a0800000000000000
-      internalID: -6365388379182432392
+      spriteID: ff6b0574d934e5f10800000000000000
+      internalID: 2260318405771966207
       vertices: []
       indices: 
       edges: []
@@ -129,7 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      wall_tile_inner_corner_bottom_right_0: -6365388379182432392
+      wall_tile_lamp_left_0: 2260318405771966207
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

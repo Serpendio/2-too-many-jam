@@ -171,7 +171,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -233,7 +233,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8317292360838696019}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.8
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
