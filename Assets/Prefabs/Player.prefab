@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4021473281838089200}
   - component: {fileID: 2073527244497033930}
   - component: {fileID: 4414781798320784218}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -138,7 +138,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &957427769202113192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5806f11287c78244acd9b500ca0cbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Rb: {fileID: 0}
   maxHealth: 0
   speed: 5
   health: 0
@@ -197,6 +198,7 @@ MonoBehaviour:
       Element: 0
       LastCastTime: 0
   SpellProjectilePrefab: {fileID: 1723877666106937744, guid: 4ab846aa2a04104488dca7649c58a5a6, type: 3}
+  Overseers: []
 --- !u!114 &4021473281838089200
 MonoBehaviour:
   m_ObjectHideFlags: 0
