@@ -68,6 +68,7 @@ public class ResizeCamera : MonoBehaviour
 
                 //Move camera to player to without interpolation avoid lerping from room center to player upon entering room
                 UpdateCameraPosition(false);
+                //camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
