@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
 using UnityEngine;
+
 namespace Spells
 {
     namespace Modifiers
@@ -18,7 +19,16 @@ namespace Spells
             Additive,
             Multiplicative
         }
-    
+
+        // todo
+        // public enum MovementPattern
+        // {
+        //     None,
+        //     SineWave,
+        //     Sawtooth,
+        // }
+
+        // todo maybe remove
         // [Serializable]
         // public class RangedFloat
         // {
@@ -36,7 +46,7 @@ namespace Spells
         public class SpellModifier : ScriptableObject, IInventoryItem
         {
             public static List<SpellModifier> AllModifiers => Resources.LoadAll<SpellModifier>("Modifiers").ToList();
-            
+
             [field: SerializeField] public string Name { get; set; }
             [field: SerializeField] public string Description { get; set; }
             [field: SerializeField] public Sprite Icon { get; set; }
@@ -47,7 +57,7 @@ namespace Spells
 
             [InfoBox("Additive adds to stats, multiplicative multiplies the stats together")] [ShowIf("Stats")] [Space]
             public StatModifierMethod ModifierMethod;
-            
+
             [InfoBox("Stats applied to the spell, can be negative")] [ShowIf("Stats")]
             public SpellStats StatsModifiers;
 
@@ -60,9 +70,9 @@ namespace Spells
 
             [InfoBox("Number of enemies to pass through before dissipating")] [ShowIf("Piercing")]
             public int PierceTimes;
-            
+
             public bool Bouncing;
-            
+
             [InfoBox("Number of bounces before dissipating")] [ShowIf("Bouncing")]
             public int BounceTimes;
 
@@ -74,10 +84,16 @@ namespace Spells
             [ShowIf("ExtraProjectiles")] [InfoBox("Angle in degrees between projectile trajectories")]
             public float ExtraProjectilesSpreadDegrees;
 
+            // todo
+            // public bool AlterMovementPattern;
+            //
+            // [InfoBox("Movement pattern to apply to the projectile")] [ShowIf("AlterMovementPattern")]
+            // public MovementPattern MovementPattern;
+
             public SpellStats ModifyStats(SpellStats currentStats)
             {
                 if (!Stats) return currentStats;
-                
+
                 if (ModifierMethod == StatModifierMethod.Additive)
                 {
                     return currentStats + StatsModifiers;

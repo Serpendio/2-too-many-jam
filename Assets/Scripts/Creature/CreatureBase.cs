@@ -21,7 +21,7 @@ namespace Creature
 
         protected Animator Anim;
         protected SpriteRenderer SpriteRenderer;
-        public Rigidbody2D Rb;
+        [HideInInspector] public Rigidbody2D Rb;
 
         [SerializeField] protected float maxHealth;
         [SerializeField] protected float speed;
@@ -56,10 +56,10 @@ namespace Creature
             Anim.SetFloat(YMove, lookDir.y);
         }
 
-        // protected virtual void Attack()
-        // {
-        //     Anim.SetTrigger(Attack1);
-        // }
+        protected virtual void TriggerAttack()
+        {
+            Anim.SetTrigger(Attack);
+        }
 
         public virtual void TakeDamage(float damage)
         {

@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 5454074549544343293}
   - component: {fileID: 7662138457023535370}
   - component: {fileID: 2626327600802606849}
-  m_Layer: 0
+  - component: {fileID: 2120572171488667110}
+  - component: {fileID: 7579167820492510082}
+  m_Layer: 11
   m_Name: BasicRoom
   m_TagString: Room
   m_Icon: {fileID: 0}
@@ -2700,6 +2702,40 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   MapCoord: {x: 0, y: 0}
+  Tilemap: {fileID: 0}
+  Entered: 0
+--- !u!114 &2120572171488667110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200219125484989977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &7579167820492510082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200219125484989977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709c8d6349be44c68dff3d220992400c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TileModifiers:
+  - tile: {fileID: 11400000, guid: 0977da093dfed1d4caf601899a71f4b6, type: 2}
+    overrideArea: 0
+    area: 0
 --- !u!1001 &1048592503163745990
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2711,6 +2747,10 @@ PrefabInstance:
     - target: {fileID: 4986964174147593558, guid: 9eb950711639fd94cb0c81f77577f5eb, type: 3}
       propertyPath: m_Name
       value: DoorSouth
+      objectReference: {fileID: 0}
+    - target: {fileID: 4986964174147593558, guid: 9eb950711639fd94cb0c81f77577f5eb, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8967740634693933625, guid: 9eb950711639fd94cb0c81f77577f5eb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2774,6 +2814,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorWest
       objectReference: {fileID: 0}
+    - target: {fileID: 1909586791832926341, guid: 1115b63e4d8e91f4bb69e323c5c33adc, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4696914884668919056, guid: 1115b63e4d8e91f4bb69e323c5c33adc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5
@@ -2836,6 +2880,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorNorth
       objectReference: {fileID: 0}
+    - target: {fileID: 310692472232791297, guid: 7e4098eee6af7914da34e9fa989f55d7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1997026074284736180, guid: 7e4098eee6af7914da34e9fa989f55d7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 9.5
@@ -2897,6 +2945,10 @@ PrefabInstance:
     - target: {fileID: 7699394524365007477, guid: a08a025dc785818459a1ae63fd5991ec, type: 3}
       propertyPath: m_Name
       value: DoorEast
+      objectReference: {fileID: 0}
+    - target: {fileID: 7699394524365007477, guid: a08a025dc785818459a1ae63fd5991ec, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7760637157447976076, guid: a08a025dc785818459a1ae63fd5991ec, type: 3}
       propertyPath: m_LocalPosition.x

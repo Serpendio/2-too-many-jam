@@ -11,9 +11,9 @@ public class ResizeCamera : MonoBehaviour
     Bounds bounds;
     float screenAspect;
     Vector2 cameraExtents;
-
-    bool firstRoom = true; //bool-lock to get startingOrthoSize
-    float startingOrthoSize; //default ortho
+    
+    //bool firstRoom = true; //bool-lock to get startingOrthoSize // removed as first room is dynamic now
+    float startingOrthoSize = 6.5f; //default ortho
 
     Camera cam;
     [SerializeField] float lerpSpeed;
@@ -24,10 +24,7 @@ public class ResizeCamera : MonoBehaviour
         transform.position = new Vector3(0, 0, -10);
 
         Room.OnEnteredRoom.AddListener((room) => {
-
-            
             cameraExtents = new Vector2(cam.orthographicSize * cam.aspect, cam.orthographicSize);
-            float orthoSize = cam.orthographicSize;
 
             Tilemap tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
@@ -39,17 +36,17 @@ public class ResizeCamera : MonoBehaviour
             screenAspect = Screen.width / Screen.height;
             float levelAspect = bounds.size.x / bounds.size.y;
 
-
-            if (screenAspect > levelAspect) {
-                orthoSize = bounds.size.y / 2 * levelAspect / screenAspect;
-            }
-            else {
-                orthoSize = bounds.size.y / 2;
-            }
-            if (firstRoom) {
-                startingOrthoSize = orthoSize;
-                firstRoom = false;
-            }
+            // float orthoSize = cam.orthographicSize;
+            // if (screenAspect > levelAspect) {
+            //     orthoSize = bounds.size.y / 2 * levelAspect / screenAspect;
+            // }
+            // else {
+            //     orthoSize = bounds.size.y / 2;
+            // }
+            // if (firstRoom) {
+            //     startingOrthoSize = orthoSize;
+            //     firstRoom = false;
+            // }
 
             //in case of extreme aspect ratio or very large room - camera should follow player
             followPlayerY = levelAspect < 0.5 || bounds.size.y > 20;
@@ -76,9 +73,7 @@ public class ResizeCamera : MonoBehaviour
     private void Update() {
         UpdateCameraPosition(true);
     }
-
-
-
+    
     private void UpdateCameraPosition(bool interpolate) {
         Vector2 min = bounds.center - bounds.extents;
         Vector2 max = bounds.center + bounds.extents;
@@ -95,6 +90,5 @@ public class ResizeCamera : MonoBehaviour
             if (followPlayerX) { transform.position = new Vector3(clampedX, transform.position.y, transform.position.z); }
             if (followPlayerY) { transform.position = new Vector3(transform.position.x, clampedY, transform.position.z); }
         }
-
     }
 }

@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using Creature;
+using Spells.Modifiers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +12,7 @@ namespace Spells
     public class SpellProjectile : MonoBehaviour
     {
         public SpellProjectileOverseer Overseer;
-        
+
         private Rigidbody2D _rb;
         private ParticleSystem _particleSystem;
 
@@ -45,23 +47,23 @@ namespace Spells
             //     Element.Earth => Color.green,
             //     _ => Color.white
             // };
-            
+
             // main.startColor = new Color(Random.Range(0.75f, 1f), Random.Range(0.75f, 1f), Random.Range(0.75f, 1f));
 
-            var colours = new[] { Color.cyan, new Color(237/255f, 178/255f, 229/255f), Color.white };
+            var colours = new[] { Color.cyan, new Color(237 / 255f, 178 / 255f, 229 / 255f), Color.white };
             main.startColor = colours[Random.Range(0, colours.Length)];
         }
 
-        private void OnCollisionEnter2D(Collision2D col)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (col.collider.CompareTag("Creature") && col.collider.TryGetComponent(out CreatureBase creature))
+            Debug.Log("triggered");
+            if (other.CompareTag("Creature") && other.TryGetComponent(out CreatureBase creature))
             {
                 if (creature.Team == Spell.Team) return;
                 creature.TakeDamage(Spell.ComputedStats.DamageOnHit);
 
                 if (PiercesRemaining > 0)
                 { 
-                    // note for future jowsey : Physics.IgnoreCollision for one frame here, worked in Freeroam
                     PiercesRemaining--;
                 }
                 else
@@ -69,7 +71,12 @@ namespace Spells
                     Dissipate();
                 }
             }
-            else if (col.collider.CompareTag("Room"))
+        }
+
+        private void OnCollisionEnter2D(Collision2D col)
+        {
+            Debug.Log("collidededed");
+            if (col.collider.CompareTag("Room"))
             {
                 if (BouncesRemaining > 0)
                 {
