@@ -66,9 +66,8 @@ public class ResizeCamera : MonoBehaviour
             else {
                 camera.orthographicSize = startingOrthoSize;
 
-                //Move camera to player to without interpolation avoid lerping from room center to player upon entering room
+                //Move camera to player without interpolation avoid lerping from room center to player upon entering room
                 UpdateCameraPosition(false);
-                //camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
