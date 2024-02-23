@@ -52,11 +52,17 @@ public class ResizeCamera : MonoBehaviour
             }
 
             //in case of extreme aspect ratio or very large room - camera should follow player
-            followPlayerY = levelAspect < 0.5 || bounds.size.y > 25;
-            followPlayerX = levelAspect > 2 || bounds.size.x > 25;
+            Debug.Log(levelAspect);
+            Debug.Log(bounds.size.x);
+            Debug.Log(bounds.size.y);
+            Debug.Log(screenAspect);
+            Debug.Log("");
+            followPlayerY = levelAspect < 0.5 || bounds.size.y > 20;
+            followPlayerX = levelAspect > 2 || bounds.size.x > 20;
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
+                    Debug.Log("AAAA");
                     camera.orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
                 }
                 else {
@@ -66,9 +72,8 @@ public class ResizeCamera : MonoBehaviour
             else {
                 camera.orthographicSize = startingOrthoSize;
 
-                //Move camera to player to without interpolation avoid lerping from room center to player upon entering room
+                //Move camera to player without interpolation avoid lerping from room center to player upon entering room
                 UpdateCameraPosition(false);
-                //camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
