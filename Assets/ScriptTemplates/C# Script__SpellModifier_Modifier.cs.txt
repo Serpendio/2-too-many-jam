@@ -1,18 +1,16 @@
 using Creature;
 using UnityEngine;
 
+    #ROOTNAMESPACEBEGIN#
 namespace Spells
 {
     namespace Modifiers
     {
-        public class SineModifier : SpellModifier
+        public class #SCRIPTNAME# : SpellModifier
         {
-            float t = Mathf.PI / 2f;
-            const float magnitude = .5f;
+            public override string Name => "#SCRIPTNAME#";
 
-            public override string Name => "Sine Wave";
-
-            public override string Description => "Causes the projectile to move in a sine wave pattern.";
+            public override string Description => "#SCRIPTNAME#.";
 
             public override ModifierTier Tier => ModifierTier.Tier1;
 
@@ -30,12 +28,9 @@ namespace Spells
 
             public override void Update(SpellProjectile projectile)
             {
-                var change = Mathf.Sin(t);
-                t += Time.deltaTime;
-                change = Mathf.Sin(t) - change;
-                projectile.transform.position += (Vector3)(magnitude * change * Vector2.Perpendicular(projectile.GetComponent<Rigidbody2D>().velocity));
                 return;
             }
         }
     }
 }
+#ROOTNAMESPACEEND#

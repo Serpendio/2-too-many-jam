@@ -18,6 +18,7 @@ namespace Spells
             public abstract string Name { get; }
             public abstract string Description { get; }
             public abstract ModifierTier Tier { get; }
+            public abstract Element Element { get; }
 
             public abstract SpellStats ModifyStats(SpellStats currentStats);
 

@@ -26,14 +26,14 @@ namespace Spells
             }
         }
 
-        public SpellModifier GetModifier(ModifierTier tier) // could be infinite
+        public SpellModifier GetModifier(ModifierTier tier, Element element) // could be infinite
         {
             while (true)
             {
                 int index = UnityEngine.Random.Range(0, modifierTypes.Length);
                 // ugh, but I can't find a way around it without static abstract fields existing
                 SpellModifier modifier = Activator.CreateInstance(modifierTypes[index]) as SpellModifier;
-                if (modifier.Tier == tier)
+                if (modifier.Tier == tier && modifier.Element == element)
                 {
                     return modifier;
                 }

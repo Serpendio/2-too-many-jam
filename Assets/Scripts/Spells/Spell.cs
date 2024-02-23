@@ -9,7 +9,7 @@ namespace Spells
 {
     public enum Element
     {
-        None,
+        Neutral,
         Fire,
         Water,
         Lightning,

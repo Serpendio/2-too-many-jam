@@ -32,7 +32,7 @@ namespace Spells
 
             main.startColor = Spell.Element switch
             {
-                Element.None => Color.white,
+                Element.Neutral => Color.white,
                 Element.Fire => Color.red,
                 Element.Water => Color.blue,
                 Element.Air => Color.cyan,
