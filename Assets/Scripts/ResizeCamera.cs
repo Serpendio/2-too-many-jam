@@ -66,29 +66,35 @@ public class ResizeCamera : MonoBehaviour
             else {
                 camera.orthographicSize = startingOrthoSize;
 
-                //Move camera to player to avoid lerping from room center to player upon entering room
-                camera.transform.position = player.position + Vector3.forward * -10;
+                //Move camera to player to without interpolation avoid lerping from room center to player upon entering room
+                UpdateCameraPosition(false);
+                //camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
     }
 
-    private void Update()
-    {
+    private void Update() {
+        UpdateCameraPosition(true);
+    }
+
+
+
+    private void UpdateCameraPosition(bool interpolate) {
         Vector2 min = bounds.center - bounds.extents;
         Vector2 max = bounds.center + bounds.extents;
 
-        float interpolation = lerpSpeed * Time.deltaTime;
+        float clampedX = Mathf.Clamp(player.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
+        float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
 
-        if (followPlayerX) {
-            //transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-            float clampedX = Mathf.Clamp(player.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
-            transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, transform.position.y, transform.position.z), interpolation);
+        if (interpolate) {
+            float interpolation = lerpSpeed * Time.deltaTime;
+            if (followPlayerX) { transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, transform.position.y, transform.position.z), interpolation); }
+            if (followPlayerY) { transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, clampedY, transform.position.z), interpolation); }
         }
-        if (followPlayerY) {
-            //transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
-            float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
-            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, clampedY, transform.position.z), interpolation);
+        else {
+            if (followPlayerX) { transform.position = new Vector3(clampedX, transform.position.y, transform.position.z); }
+            if (followPlayerY) { transform.position = new Vector3(transform.position.x, clampedY, transform.position.z); }
         }
 
     }
