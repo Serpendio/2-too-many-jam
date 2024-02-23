@@ -15,19 +15,19 @@ public class ResizeCamera : MonoBehaviour
     bool firstRoom = true; //bool-lock to get startingOrthoSize
     float startingOrthoSize; //default ortho
 
-    Camera camera;
+    Camera cam;
     [SerializeField] float lerpSpeed;
 
     private void Awake()
     {
-        camera = GetComponent<Camera>();
+        cam = GetComponent<Camera>();
         transform.position = new Vector3(0, 0, -10);
 
         Room.OnEnteredRoom.AddListener((room) => {
 
             
-            cameraExtents = new Vector2(camera.orthographicSize * camera.aspect, camera.orthographicSize);
-            float orthoSize = camera.orthographicSize;
+            cameraExtents = new Vector2(cam.orthographicSize * cam.aspect, cam.orthographicSize);
+            float orthoSize = cam.orthographicSize;
 
             Tilemap tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
@@ -57,14 +57,14 @@ public class ResizeCamera : MonoBehaviour
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
-                    camera.orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
+                    cam.orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
                 }
                 else {
-                    camera.orthographicSize = bounds.size.y / 2;
+                    cam.orthographicSize = bounds.size.y / 2;
                 }
             }
             else {
-                camera.orthographicSize = startingOrthoSize;
+                cam.orthographicSize = startingOrthoSize;
 
                 //Move camera to player without interpolation avoid lerping from room center to player upon entering room
                 UpdateCameraPosition(false);
