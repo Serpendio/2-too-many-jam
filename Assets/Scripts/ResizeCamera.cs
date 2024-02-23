@@ -15,15 +15,18 @@ public class ResizeCamera : MonoBehaviour
     bool firstRoom = true; //bool-lock to get startingOrthoSize
     float startingOrthoSize; //default ortho
 
+    [SerializeField] float lerpSpeed;
+
     private void Awake()
     {
+        camera = GetComponent<Camera>();
         transform.position = new Vector3(0, 0, -10);
 
         Room.OnEnteredRoom.AddListener((room) => {
 
             
-            cameraExtents = new Vector2(GetComponent<Camera>().orthographicSize * GetComponent<Camera>().aspect, GetComponent<Camera>().orthographicSize);
-            float orthoSize = GetComponent<Camera>().orthographicSize;
+            cameraExtents = new Vector2(camera.orthographicSize * camera.aspect, camera.orthographicSize);
+            float orthoSize = camera.orthographicSize;
 
             Tilemap tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
@@ -53,14 +56,14 @@ public class ResizeCamera : MonoBehaviour
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
-                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
+                    camera.orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
                 }
                 else {
-                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2;
+                    camera.orthographicSize = bounds.size.y / 2;
                 }
             }
             else {
-                GetComponent<Camera>().orthographicSize = startingOrthoSize;
+                camera.orthographicSize = startingOrthoSize;
             }
 
         });
@@ -71,15 +74,17 @@ public class ResizeCamera : MonoBehaviour
         Vector2 min = bounds.center - bounds.extents;
         Vector2 max = bounds.center + bounds.extents;
 
+        float interpolation = lerpSpeed * Time.deltaTime;
+
         if (followPlayerX) {
-            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-            float clampedX = Mathf.Clamp(transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
-            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+            //transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+            float clampedX = Mathf.Clamp(player.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, transform.position.y, transform.position.z), interpolation);
         }
         if (followPlayerY) {
-            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
             float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
-            transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, clampedY, transform.position.z), interpolation);
         }
 
     }
