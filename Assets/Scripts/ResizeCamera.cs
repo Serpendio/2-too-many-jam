@@ -52,8 +52,8 @@ public class ResizeCamera : MonoBehaviour
             }
 
             //in case of extreme aspect ratio or very large room - camera should follow player
-            followPlayerY = levelAspect < 0.5 || bounds.size.y > 25;
-            followPlayerX = levelAspect > 2 || bounds.size.x > 25;
+            followPlayerY = levelAspect < 0.5 || bounds.size.y > 20;
+            followPlayerX = levelAspect > 2 || bounds.size.x > 20;
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
@@ -68,7 +68,6 @@ public class ResizeCamera : MonoBehaviour
 
                 //Move camera to player to without interpolation avoid lerping from room center to player upon entering room
                 UpdateCameraPosition(false);
-                //camera.transform.position = player.position + Vector3.forward * -10;
             }
 
         });
