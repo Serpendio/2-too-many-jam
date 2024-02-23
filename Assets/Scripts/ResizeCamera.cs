@@ -15,15 +15,19 @@ public class ResizeCamera : MonoBehaviour
     bool firstRoom = true; //bool-lock to get startingOrthoSize
     float startingOrthoSize; //default ortho
 
+    Camera camera;
+    [SerializeField] float lerpSpeed;
+
     private void Awake()
     {
+        camera = GetComponent<Camera>();
         transform.position = new Vector3(0, 0, -10);
 
         Room.OnEnteredRoom.AddListener((room) => {
 
             
-            cameraExtents = new Vector2(GetComponent<Camera>().orthographicSize * GetComponent<Camera>().aspect, GetComponent<Camera>().orthographicSize);
-            float orthoSize = GetComponent<Camera>().orthographicSize;
+            cameraExtents = new Vector2(camera.orthographicSize * camera.aspect, camera.orthographicSize);
+            float orthoSize = camera.orthographicSize;
 
             Tilemap tilemap = room.GetComponent<Tilemap>();
             tilemap.CompressBounds();
@@ -48,38 +52,54 @@ public class ResizeCamera : MonoBehaviour
             }
 
             //in case of extreme aspect ratio or very large room - camera should follow player
-            followPlayerY = levelAspect < 0.5 || bounds.size.y > 25;
-            followPlayerX = levelAspect > 2 || bounds.size.x > 25;
+            Debug.Log(levelAspect);
+            Debug.Log(bounds.size.x);
+            Debug.Log(bounds.size.y);
+            Debug.Log(screenAspect);
+            Debug.Log("");
+            followPlayerY = levelAspect < 0.5 || bounds.size.y > 20;
+            followPlayerX = levelAspect > 2 || bounds.size.x > 20;
 
             if (!followPlayerX && !followPlayerY) {
                 if (screenAspect > levelAspect) {
-                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
+                    Debug.Log("AAAA");
+                    camera.orthographicSize = bounds.size.y / 2 * levelAspect / screenAspect;
                 }
                 else {
-                    GetComponent<Camera>().orthographicSize = bounds.size.y / 2;
+                    camera.orthographicSize = bounds.size.y / 2;
                 }
             }
             else {
-                GetComponent<Camera>().orthographicSize = startingOrthoSize;
+                camera.orthographicSize = startingOrthoSize;
+
+                //Move camera to player without interpolation avoid lerping from room center to player upon entering room
+                UpdateCameraPosition(false);
             }
 
         });
     }
 
-    private void Update()
-    {
+    private void Update() {
+        UpdateCameraPosition(true);
+    }
+
+
+
+    private void UpdateCameraPosition(bool interpolate) {
         Vector2 min = bounds.center - bounds.extents;
         Vector2 max = bounds.center + bounds.extents;
 
-        if (followPlayerX) {
-            transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-            float clampedX = Mathf.Clamp(transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
-            transform.position = new Vector3(clampedX, transform.position.y, transform.position.z);
+        float clampedX = Mathf.Clamp(player.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
+        float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
+
+        if (interpolate) {
+            float interpolation = lerpSpeed * Time.deltaTime;
+            if (followPlayerX) { transform.position = Vector3.Lerp(transform.position, new Vector3(clampedX, transform.position.y, transform.position.z), interpolation); }
+            if (followPlayerY) { transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, clampedY, transform.position.z), interpolation); }
         }
-        if (followPlayerY) {
-            transform.position = new Vector3(transform.position.x, player.position.y, transform.position.z);
-            float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
-            transform.position = new Vector3(transform.position.x, clampedY, transform.position.z);
+        else {
+            if (followPlayerX) { transform.position = new Vector3(clampedX, transform.position.y, transform.position.z); }
+            if (followPlayerY) { transform.position = new Vector3(transform.position.x, clampedY, transform.position.z); }
         }
 
     }

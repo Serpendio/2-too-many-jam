@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Creature;
+using TMPro;
 using Tweens;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace WorldGen
 {
@@ -13,11 +15,13 @@ namespace WorldGen
         [SerializeField] private CanvasGroup _fadeToBlack;
 
         [SerializeField] private List<Room> _roomPrefabs;
+        [SerializeField] private int nextRoom;
         
         public List<Room> WorldRooms = new();
         private Room _currentRoom;
         
         [SerializeField][Range(0, 1)] private float hueVariety;
+
 
         private void Awake()
         {
@@ -40,6 +44,8 @@ namespace WorldGen
 
         }
 
+
+
         private void Start()
         {
             _currentRoom = FindObjectsByType<Room>(FindObjectsSortMode.None).First();
@@ -49,7 +55,14 @@ namespace WorldGen
 
         private Room GenerateNewRoom(Door comingFrom)
         {
-            var room = _roomPrefabs[Random.Range(0, _roomPrefabs.Count)];
+            Room room;
+            if (nextRoom > _roomPrefabs.Count - 1)
+            {
+                room = _roomPrefabs[Random.Range(0, _roomPrefabs.Count)];
+            }
+            else {
+                room = _roomPrefabs[nextRoom];
+            }
             var roomObj = Instantiate(room, transform);
 
             roomObj.MapCoord = comingFrom.GetLinkedMapCoord();
