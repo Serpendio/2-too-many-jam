@@ -38,4 +38,4 @@ MonoBehaviour:
   ChainTimes: 0
   ChainRadius: 0
   Homing: 1
-  DeltaHomingAngle: 10000
+  DeltaHomingAngle: 180

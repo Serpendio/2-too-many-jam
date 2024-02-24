@@ -65,8 +65,20 @@ namespace Spells
             {
                 var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).FirstOrDefault();
                 if (newCreature != null)
-                { 
-                    _rb.velocity = Quaternion.Euler(0, 0, Mathf.Min(Mathf.Rad2Deg * Mathf.Atan2((newCreature.transform.position - transform.position).y, (newCreature.transform.position - transform.position).x), HomingAngle) * Time.deltaTime) * _rb.velocity;
+                {
+                    float angle = Vector2.SignedAngle(_rb.velocity, newCreature.transform.position - transform.position);
+
+                    if (angle > 0)
+                    {
+                        angle = MathF.Min(angle, HomingAngle * Time.deltaTime);
+                    } 
+                    else if (angle < 0)
+                    {
+                        angle = MathF.Max(angle, -HomingAngle * Time.deltaTime);
+                    }
+
+                    _rb.velocity = Quaternion.Euler(0, 0, angle) * _rb.velocity;
+                    Debug.Log(angle);
                 }
             }
             if (TravelDistance >= Spell.ComputedStats.Range) Dissipate();
