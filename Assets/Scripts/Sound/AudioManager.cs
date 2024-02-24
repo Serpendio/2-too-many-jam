@@ -8,7 +8,8 @@ public class AudioManager : MonoBehaviour
 
     // Accesses Sound Script
     public Sound[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public AudioSource musicSource, sfxSource, ambienceSource;
+
     private void Awake()
     {
         if (Instance == null)
@@ -23,28 +24,44 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        PlayMusic("MainTheme");
+        PlayMusic("MainTheme", "Ambience");
     }
 
-    public void PlayMusic(string name)
+    public void PlayMusic(string name, string ambient)
     {
-        Sound s = Array.Find(musicSounds, x => x.name == name);
-        
-        // Check if Sound file can be found
-        if (s == null)
+        // Need a different audio soure for any clips that loop, such as music and ambience.
+
+        // Find song with matching name in Sounds file
+        Sound song = Array.Find(musicSounds, x => x.name == name);
+        Sound ambience = Array.Find(musicSounds, x => x.name == ambient);
+
+        // Check if song is found
+        if (song == null)
         {
         }
         else
         {
-            musicSource.clip = s.clip;
+            musicSource.clip = song.clip;
             musicSource.Play();
+            musicSource.loop = true;
+        }
+        if (ambience == null)
+        {
+        }
+        else
+        {
+            ambienceSource.clip = ambience.clip;
+            ambienceSource.Play();
+            ambienceSource.loop = true;
         }
     }
 
     public void PlaySFX(string name)
     {
+        // Find song with matching name in Sounds file
         Sound s = Array.Find(sfxSounds, x=> x.name == name);
 
+        // Check if song is found
         if (s == null)
         {
         }
