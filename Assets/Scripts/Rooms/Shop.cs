@@ -14,7 +14,7 @@ namespace Rooms
         public GameObject[] itemIconPrefabs;
         private Vector3[] itemLocations;
 
-        void Start()
+        private void Awake()
         {
             itemLocations = new[] { new Vector3(4.5f, 8.5f, 0f), new Vector3(9.5f, 8.5f, 0f), new Vector3(14.5f, 8.5f, 0f) };
 
@@ -36,33 +36,42 @@ namespace Rooms
                 {
                     //Spell
                     case 0:
-                        Spell spell = GenerateRandomSpell();
+                        int spellCost;
+                        Spell spell = GenerateRandomSpell(out spellCost);
+                        itemIcon = Instantiate(itemIconPrefabs[0]);
+                        itemIcon.GetComponent<Item>().item = spell;
                         break;
 
                     //Modifier
                     case 1:
                         SpellModifier modifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
+                        itemIcon = Instantiate(itemIconPrefabs[1]);
+                        itemIcon.GetComponent<Item>().item = modifier;
                         break;
-
+                    
+                    //----Possibly pointless cases, keeping them here for maintainability----//
                     //Shard(s)
                     case 2:
+                        itemIcon = Instantiate(itemIconPrefabs[2]);
                         break;
 
                     //Health refill
                     case 3:
+                        itemIcon = Instantiate(itemIconPrefabs[3]);
                         break;
 
                     //Total health increase
                     case 4:
+                        itemIcon = Instantiate(itemIconPrefabs[4]);
                         break;
 
                 }
-                itemIcon = Instantiate(itemIconPrefabs[randType]);
+                itemIcon.GetComponent<Item>().itemID = randType;
                 itemIcon.transform.parent = this.transform;
                 itemIcon.transform.position = itemLocations[i];
             }
         }
-        private Spell GenerateRandomSpell()
+        private Spell GenerateRandomSpell(out int cost)
         {
 
             Element randElement = (Element)Random.Range(0, 6);
@@ -87,7 +96,7 @@ namespace Rooms
                 } while (!spell.Modifiers.Contains(randModifier));
                 spell.AddModifier(randModifier);
             }
-
+            cost = 0; //TEMP
             return spell;
         }
     }

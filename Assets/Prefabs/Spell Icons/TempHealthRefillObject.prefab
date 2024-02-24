@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4831002146514589081}
   - component: {fileID: 745871636929438621}
+  - component: {fileID: 2821958834674195308}
   m_Layer: 0
-  m_Name: TempFireObject
+  m_Name: TempHealthRefillObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2821958834674195308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030038960651372045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3f72c592310dd40a631d79131128fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0

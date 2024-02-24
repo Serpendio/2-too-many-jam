@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6677313374175043785}
   - component: {fileID: 8764557490343288772}
+  - component: {fileID: -5058346596524743272}
   m_Layer: 0
-  m_Name: TempWaterObject
+  m_Name: TempShardObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-5058346596524743272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7950774174790467919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e3f72c592310dd40a631d79131128fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemID: 0
