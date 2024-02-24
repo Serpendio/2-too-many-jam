@@ -28,6 +28,7 @@ namespace Spells
             projectile.ChainSqrRadius = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainRadius);
             projectile.ChainSqrRadius *= projectile.ChainSqrRadius;
             projectile.HomingAngle = Spell.Modifiers.Where(m => m.Homing).Sum(m => m.DeltaHomingAngle);
+            projectile.GiantSize = Spell.Modifiers.Where(m => m.Giant).Sum(m => m.ExtraSize);
         }
 
         private void Awake()
