@@ -68,7 +68,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             // Play Sound effect once
-            sfxSource.PlayOneShot(s.clip);
+            sfxSource.PlayOneShot(s.clip);    
         }
     }
 }

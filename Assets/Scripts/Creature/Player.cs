@@ -79,7 +79,17 @@ namespace Creature
             if (Rb.velocity.magnitude < moveSpeed)
             {
                 Rb.AddForce(move * (moveSpeed * acceleration), ForceMode2D.Force);
-                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, moveSpeed);
+                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, moveSpeed);        
+            }
+
+            // Walking Sound Effect
+            if (AudioManager.Instance.sfxSource.isPlaying == false && Rb.velocity.sqrMagnitude > 0)
+            {
+                AudioManager.Instance.PlaySFX("Walking");
+            }
+            else if (AudioManager.Instance.sfxSource.isPlaying == true && Rb.velocity.sqrMagnitude <= 1)
+            {
+                AudioManager.Instance.sfxSource.Stop(); // Stops all SFX - Not ideal
             }
 
             UpdateMoveDir(move, move.magnitude > 0);
