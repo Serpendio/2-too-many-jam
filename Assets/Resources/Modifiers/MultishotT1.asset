@@ -38,3 +38,5 @@ MonoBehaviour:
   Chain: 0
   ChainTimes: 0
   ChainRadius: 0
+  Homing: 0
+  DeltaHomingAngle: 0
