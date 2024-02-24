@@ -32,7 +32,7 @@ namespace Spells
         public float AliveTime;
 
         public float TravelDistance;
-        public float TimeLived;
+        public float StartLive;
 
 
         private void Awake()
@@ -43,7 +43,7 @@ namespace Spells
 
         private void Start()
         {
-            AliveTime = Time.time;
+            StartLive = Time.time;
 
             dissipated = false;
 
@@ -75,7 +75,7 @@ namespace Spells
 
         private void Update()
         {
-            if (AliveTime > 0 && Time.time - AliveTime >= AliveTime)
+            if (AliveTime > 0 && Time.time - StartLive >= AliveTime)
             {   
                 Dissipate();
                 return;
@@ -167,6 +167,7 @@ namespace Spells
                 }, Element.Fire, Spell.Team);
                 Explosion.AliveTime = AliveTime;
                 Explosion.PiercesRemaining = 999;
+                Explosion.GetComponent<BoxCollider2D>().enabled = false;
 
                 Explosion.CastDirection = new Vector3 (0, 0, 0);
                 Explosion.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
@@ -179,7 +180,10 @@ namespace Spells
 
         private void OnDestroy()
         {
-            Overseer.RemoveProjectile(this);
+            if (Overseer != null) 
+            {
+                Overseer.RemoveProjectile(this);
+            }
         }
     }
 }
