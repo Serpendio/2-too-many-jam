@@ -49,6 +49,7 @@ namespace Spells
             public bool ExplodeOnHit;
             [InfoBox("Radius in units of explosion"), ShowIf(nameof(ExplodeOnHit))]
             public float ExplosionRadius;
+            [ShowIf(nameof(ExplodeOnHit))]
             public float TimeToLive;
 
             public bool Piercing;
@@ -78,6 +79,10 @@ namespace Spells
             public bool Giant;
             [InfoBox("Changes size of the spell"), ShowIf(nameof(Giant))]
             public float ExtraSize;
+
+            public bool BurstFire;
+            [InfoBox("How many shots will be fired"), ShowIf(nameof(BurstFire))]
+            public int HowManyShots;
 
 
             // todo
