@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Net;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
@@ -25,7 +26,7 @@ namespace Rooms
         [SerializeField] [Range(0, 1)] private float hueVariety;
 
         [SerializeField] private Player _player;
-        
+
         private void Awake()
         {
             Instance = this;
@@ -130,41 +131,44 @@ namespace Rooms
 
                 if (!_currentRoom.Entered)
                 {
-                    // Generate enemies on random tiles in the room, not too close to player
-                    var bounds = _currentRoom.Tilemap.cellBounds;
-
-                    var spawnablePositions = new List<Vector3>();
-                    // iterate through bounds, if tile is not null and collider is none add to vector3 list
-                    for (var x = bounds.xMin; x < bounds.xMax; x++)
+                    _currentRoom.Entered = true;
+                 
+                    if (_currentRoom.SpawnEnemiesOnEnter)
                     {
-                        for (var y = bounds.yMin; y < bounds.yMax; y++)
-                        {
-                            var pos = new Vector3Int(x, y, 0);
-                            if (_currentRoom.Tilemap.GetTile(pos) == null) continue;
-                            if (_currentRoom.Tilemap.GetColliderType(pos) != Tile.ColliderType.None) continue;
-                            if (Vector3.Distance(pos, _player.transform.position) < 5) continue;
+                        // Generate enemies on random tiles in the room, not too close to player
+                        var bounds = _currentRoom.Tilemap.cellBounds;
 
-                            spawnablePositions.Add(_currentRoom.Tilemap.GetCellCenterWorld(pos));
+                        var spawnablePositions = new List<Vector3>();
+                        // iterate through bounds, if tile is not null and collider is none add to vector3 list
+                        for (var x = bounds.xMin; x < bounds.xMax; x++)
+                        {
+                            for (var y = bounds.yMin; y < bounds.yMax; y++)
+                            {
+                                var pos = new Vector3Int(x, y, 0);
+                                if (_currentRoom.Tilemap.GetTile(pos) == null) continue;
+                                if (_currentRoom.Tilemap.GetColliderType(pos) != Tile.ColliderType.None) continue;
+                                if (Vector3.Distance(pos, _player.transform.position) < 5) continue;
+
+                                spawnablePositions.Add(_currentRoom.Tilemap.GetCellCenterWorld(pos));
+                            }
+                        }
+
+                        // some arbitrary amount based on room size
+                        var enemiesToSpawn = 2 + (spawnablePositions.Count / 30);
+
+                        for (var i = 0; i < enemiesToSpawn; i++)
+                        {
+                            var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
+
+                            var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
+                            var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
+
+                            enemy.transform.position = randomPos;
+                            enemy.target = _player;
+
+                            _currentRoom.RegisterEnemy(enemy);
                         }
                     }
-
-                    // some arbitrary amount based on room size
-                    var enemiesToSpawn = 2 + (spawnablePositions.Count / 30);
-
-                    for (var i = 0; i < enemiesToSpawn; i++)
-                    {
-                        var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
-
-                        var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
-                        var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
-
-                        enemy.transform.position = randomPos;
-                        enemy.target = _player;
-
-                        _currentRoom.RegisterEnemy(enemy);
-                    }
-                    
-                    _currentRoom.Entered = true;
                 }
 
                 Room.OnEnteredRoom.Invoke(_currentRoom);

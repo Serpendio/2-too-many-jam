@@ -202,8 +202,8 @@ MonoBehaviour:
       m_Calls: []
   Rb: {fileID: 0}
   health: 0
-  maxHealth: 0
-  moveSpeed: 0
+  maxHealth: 50
+  moveSpeed: 5
   Team: 0
   dashPower: 30
   dashTrailDuration: 0
@@ -249,7 +249,6 @@ MonoBehaviour:
       Modifiers: []
       Element: 0
       LastCastTime: 0
-  SpellProjectilePrefab: {fileID: 1723877666106937744, guid: 4ab846aa2a04104488dca7649c58a5a6, type: 3}
 --- !u!114 &4021473281838089200
 MonoBehaviour:
   m_ObjectHideFlags: 0

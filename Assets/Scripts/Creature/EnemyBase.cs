@@ -58,7 +58,7 @@ namespace Creature
         {
             Agent.enabled = true;
 
-            if (Random.value > 0.4f) EnemyType = EnemyType.Melee;
+            // if (Random.value > 0.4f) EnemyType = EnemyType.Melee;
         }
 
         private void Attack()
@@ -89,6 +89,17 @@ namespace Creature
             }
         }
 
+        protected override void Die()
+        {
+            base.Die();
+
+            if (Random.value < Locator.GameplaySettingsManager.CoinDropChance)
+            {
+                var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
+                coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
+            }
+        }
+        
         // Update is called once per frame
         void Update()
         {
@@ -128,15 +139,6 @@ namespace Creature
                     Attack();
                     Spell.LastCastTime = Time.time;
                 }
-            }
-        }
-
-        private void OnDestroy()
-        {
-            if (Random.value < Locator.GameplaySettingsManager.CoinDropChance)
-            {
-                var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
-                coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
             }
         }
     }

@@ -3222,9 +3222,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  MapCoord: {x: 0, y: 0}
   Tilemap: {fileID: 0}
   Entered: 0
+  MapCoord: {x: 0, y: 0}
+  SkullsContainer: {fileID: 0}
+  EnemiesContainer: {fileID: 0}
+  SpawnEnemiesOnEnter: 0
 --- !u!114 &2569736128918626450
 MonoBehaviour:
   m_ObjectHideFlags: 0

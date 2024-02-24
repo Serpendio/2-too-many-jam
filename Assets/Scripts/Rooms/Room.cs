@@ -30,6 +30,8 @@ namespace Rooms
         [HideInInspector] public Transform SkullsContainer;
         [HideInInspector] public Transform EnemiesContainer;
 
+        public bool SpawnEnemiesOnEnter = true;
+
         private Tile _lampTopTile;
         private Tile _lampLeftTile;
         private Tile _lampRightTile;
@@ -41,7 +43,8 @@ namespace Rooms
             foreach (var door in doors)
             {
                 door.room = this;
-                door.gameObject.SetActive(false);
+
+                if (SpawnEnemiesOnEnter) door.gameObject.SetActive(false);
             }
 
             Tilemap = GetComponent<Tilemap>();
@@ -67,10 +70,10 @@ namespace Rooms
                 {
                     var pos = new Vector3Int(x, y, 1);
                     if (Random.value < 0.9f || createdLamps.Any(l => Vector3.Distance(l, pos) < 4)) continue;
-                    
+
                     var baseTile = Tilemap.GetTile(new Vector3Int(x, y, 0));
                     if (baseTile == null) continue;
-                    
+
                     var sides = new TileBase[4];
                     sides[0] = Tilemap.GetTile(new Vector3Int(x, y + 1, 0));
                     sides[1] = Tilemap.GetTile(new Vector3Int(x - 1, y, 0));
@@ -82,7 +85,7 @@ namespace Rooms
                     if (sides[0] == null && sides[2] == null) continue;
                     if (sides[3] == null && sides[1] == null) continue;
                     if (sides[3] == null && sides[2] == null) continue;
-                    
+
                     if (sides[0] == null)
                     {
                         Tilemap.SetTile(pos, _lampTopTile);
