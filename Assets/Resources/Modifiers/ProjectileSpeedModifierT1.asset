@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f33cb3969470546926072b51585848, type: 3}
-  m_Name: MultishotT1
+  m_Name: ProjectileSpeedModifierT1
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: Multishot
-  <Description>k__BackingField: Fire 2 extra projectiles; projectiles deal 40% damage
-    each
-  <Icon>k__BackingField: {fileID: 21300000, guid: 69728c8020244be4cab9635aa8c07577, type: 3}
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 0}
   Tier: 0
   Stats: 1
   ModifierMethod: 1
   StatsModifiers:
-    DamageOnHit: 0.4
+    DamageOnHit: 1
     CastCooldown: 1
     ManaUsage: 1
-    ProjectileSpeed: 1
+    ProjectileSpeed: 1.2
     Range: 1
     Spread: 1
   ExplodeOnHit: 0
@@ -32,11 +31,11 @@ MonoBehaviour:
   PierceTimes: 0
   Bouncing: 0
   BounceTimes: 0
-  ExtraProjectiles: 1
-  ExtraProjectilesAmount: 2
-  ExtraProjectilesSpreadDegrees: 20
+  ExtraProjectiles: 0
+  ExtraProjectilesAmount: 0
+  ExtraProjectilesSpreadDegrees: 0
   Chain: 0
-  ChainTimes: 0
+  ChainTimes: 15
   ChainRadius: 0
   Homing: 0
   DeltaHomingAngle: 0

@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Rooms;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spells
@@ -28,6 +27,7 @@ namespace Spells
             projectile.ChainTimesRemaining = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainTimes);
             projectile.ChainSqrRadius = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainRadius);
             projectile.ChainSqrRadius *= projectile.ChainSqrRadius;
+            projectile.HomingAngle = Spell.Modifiers.Where(m => m.Homing).Sum(m => m.DeltaHomingAngle);
         }
 
         private void Awake()
