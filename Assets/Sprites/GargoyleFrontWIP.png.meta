@@ -1,0 +1,1149 @@
+fileFormatVersion: 2
+guid: 82f0c7613f73fe84facbf0cfd65f87c9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8108784921590595272
+    second: GargoyleFrontWIP_0
+  - first:
+      213: 4361651052426578852
+    second: GargoyleFrontWIP_1
+  - first:
+      213: 438146271543766013
+    second: GargoyleFrontWIP_2
+  - first:
+      213: -3525823343413219558
+    second: GargoyleFrontWIP_3
+  - first:
+      213: 679761030305155356
+    second: GargoyleFrontWIP_4
+  - first:
+      213: 6245821480974623761
+    second: GargoyleFrontWIP_5
+  - first:
+      213: -6276640636100165547
+    second: GargoyleFrontWIP_6
+  - first:
+      213: -3452872555694455006
+    second: GargoyleFrontWIP_7
+  - first:
+      213: -3983488355434686786
+    second: GargoyleFrontWIP_8
+  - first:
+      213: -3780037180322605048
+    second: GargoyleFrontWIP_9
+  - first:
+      213: -207477978986269168
+    second: GargoyleFrontWIP_10
+  - first:
+      213: -3684081606323488011
+    second: GargoyleFrontWIP_11
+  - first:
+      213: -4082489819161395531
+    second: GargoyleFrontWIP_12
+  - first:
+      213: -6794371788740254339
+    second: GargoyleFrontWIP_13
+  - first:
+      213: -574304180705817295
+    second: GargoyleFrontWIP_14
+  - first:
+      213: 5008869415800860287
+    second: GargoyleFrontWIP_15
+  - first:
+      213: -6950051811017232753
+    second: GargoyleFrontWIP_16
+  - first:
+      213: 1849178629967430422
+    second: GargoyleFrontWIP_17
+  - first:
+      213: 1625260892451295749
+    second: GargoyleFrontWIP_18
+  - first:
+      213: 3451540500251487106
+    second: GargoyleFrontWIP_19
+  - first:
+      213: -8265415998811064227
+    second: GargoyleFrontWIP_20
+  - first:
+      213: 2472473493425184534
+    second: GargoyleFrontWIP_21
+  - first:
+      213: -5546176513161989464
+    second: GargoyleFrontWIP_22
+  - first:
+      213: 2521004208260986427
+    second: GargoyleFrontWIP_23
+  - first:
+      213: -6966473049191870229
+    second: GargoyleFrontWIP_24
+  - first:
+      213: 951611300248268605
+    second: GargoyleFrontWIP_25
+  - first:
+      213: -8020192236772030574
+    second: GargoyleFrontWIP_26
+  - first:
+      213: 5842381886823211947
+    second: GargoyleFrontWIP_27
+  - first:
+      213: 1013728080722838556
+    second: GargoyleFrontWIP_28
+  - first:
+      213: -1087483637733652551
+    second: GargoyleFrontWIP_29
+  - first:
+      213: 5402149587776461709
+    second: GargoyleFrontWIP_30
+  - first:
+      213: -1171962535975495242
+    second: GargoyleFrontWIP_31
+  - first:
+      213: 2181607237019799235
+    second: GargoyleFrontWIP_32
+  - first:
+      213: 3695238474409346312
+    second: GargoyleFrontWIP_33
+  - first:
+      213: -6128181094598619273
+    second: GargoyleFrontWIP_34
+  - first:
+      213: 8457365231701565125
+    second: GargoyleFrontWIP_35
+  - first:
+      213: -2171852435573000794
+    second: GargoyleFrontWIP_36
+  - first:
+      213: -8979065593808290435
+    second: GargoyleFrontWIP_37
+  - first:
+      213: -5197295474508281240
+    second: GargoyleFrontWIP_38
+  - first:
+      213: 3699244612801306066
+    second: GargoyleFrontWIP_39
+  - first:
+      213: 1541811630348864659
+    second: GargoyleFrontWIP_40
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_0
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 371
+        width: 2659
+        height: 2054
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ce737b8ce0388070800000000000000
+      internalID: 8108784921590595272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_1
+      rect:
+        serializedVersion: 2
+        x: 3872
+        y: 371
+        width: 2887
+        height: 1877
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4ab481ee582b78c30800000000000000
+      internalID: 4361651052426578852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_2
+      rect:
+        serializedVersion: 2
+        x: 4026
+        y: 2246
+        width: 198
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb270b66bb941600800000000000000
+      internalID: 438146271543766013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_3
+      rect:
+        serializedVersion: 2
+        x: 4524
+        y: 2210
+        width: 178
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1f231b8952c11fc0800000000000000
+      internalID: -3525823343413219558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_4
+      rect:
+        serializedVersion: 2
+        x: 5572
+        y: 2247
+        width: 96
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c190e773e0ffe6900800000000000000
+      internalID: 679761030305155356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_5
+      rect:
+        serializedVersion: 2
+        x: 5668
+        y: 2246
+        width: 178
+        height: 174
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1142fff8b8d9da650800000000000000
+      internalID: 6245821480974623761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_6
+      rect:
+        serializedVersion: 2
+        x: 5717
+        y: 2264
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 550c776b894e4e8a0800000000000000
+      internalID: -6276640636100165547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_7
+      rect:
+        serializedVersion: 2
+        x: 5939
+        y: 2246
+        width: 137
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 227032764bee410d0800000000000000
+      internalID: -3452872555694455006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_8
+      rect:
+        serializedVersion: 2
+        x: 5974
+        y: 2291
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb61967327ec7b8c0800000000000000
+      internalID: -3983488355434686786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_9
+      rect:
+        serializedVersion: 2
+        x: 6028
+        y: 2243
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8081a15463c9a8bc0800000000000000
+      internalID: -3780037180322605048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_10
+      rect:
+        serializedVersion: 2
+        x: 6188
+        y: 2228
+        width: 95
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 016becb90e3ee1df0800000000000000
+      internalID: -207477978986269168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_11
+      rect:
+        serializedVersion: 2
+        x: 4338
+        y: 2234
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fab9835c438fdcc0800000000000000
+      internalID: -3684081606323488011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_12
+      rect:
+        serializedVersion: 2
+        x: 5958
+        y: 2233
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5be7cb1b3251857c0800000000000000
+      internalID: -4082489819161395531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_13
+      rect:
+        serializedVersion: 2
+        x: 4116
+        y: 2216
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d75a3343bda85b1a0800000000000000
+      internalID: -6794371788740254339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_14
+      rect:
+        serializedVersion: 2
+        x: 4326
+        y: 2217
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d0204f369a708f0800000000000000
+      internalID: -574304180705817295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_15
+      rect:
+        serializedVersion: 2
+        x: 5635
+        y: 2217
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7ee02f0234138540800000000000000
+      internalID: 5008869415800860287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_16
+      rect:
+        serializedVersion: 2
+        x: 5946
+        y: 2216
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f8ee1c963b47c8f90800000000000000
+      internalID: -6950051811017232753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_17
+      rect:
+        serializedVersion: 2
+        x: 6242
+        y: 2211
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 613c375aa2a99a910800000000000000
+      internalID: 1849178629967430422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_18
+      rect:
+        serializedVersion: 2
+        x: 6359
+        y: 2212
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 502d4e1bb261e8610800000000000000
+      internalID: 1625260892451295749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_19
+      rect:
+        serializedVersion: 2
+        x: 4221
+        y: 2200
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28b2d554cc556ef20800000000000000
+      internalID: 3451540500251487106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_20
+      rect:
+        serializedVersion: 2
+        x: 4523
+        y: 2200
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d58390ee0f75b4d80800000000000000
+      internalID: -8265415998811064227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_21
+      rect:
+        serializedVersion: 2
+        x: 5565
+        y: 2207
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61f5d24ea8dff4220800000000000000
+      internalID: 2472473493425184534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_22
+      rect:
+        serializedVersion: 2
+        x: 4104
+        y: 2199
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a27d5f98d50803b0800000000000000
+      internalID: -5546176513161989464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_23
+      rect:
+        serializedVersion: 2
+        x: 4511
+        y: 2183
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3639a678f76cf220800000000000000
+      internalID: 2521004208260986427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_24
+      rect:
+        serializedVersion: 2
+        x: 5553
+        y: 2190
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: be01695fbad125f90800000000000000
+      internalID: -6966473049191870229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_25
+      rect:
+        serializedVersion: 2
+        x: 5900
+        y: 2163
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3fab8b8f6dc43d00800000000000000
+      internalID: 951611300248268605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_26
+      rect:
+        serializedVersion: 2
+        x: 4465
+        y: 2130
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2978bd847ad82b090800000000000000
+      internalID: -8020192236772030574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_27
+      rect:
+        serializedVersion: 2
+        x: 5507
+        y: 2137
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba3264e2f5f441150800000000000000
+      internalID: 5842381886823211947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_28
+      rect:
+        serializedVersion: 2
+        x: 6070
+        y: 2129
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14c256815c711e00800000000000000
+      internalID: 1013728080722838556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_29
+      rect:
+        serializedVersion: 2
+        x: 6030
+        y: 2129
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b706d9a46b78e0f0800000000000000
+      internalID: -1087483637733652551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_30
+      rect:
+        serializedVersion: 2
+        x: 4825
+        y: 2114
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8b50f2ad6a48fa40800000000000000
+      internalID: 5402149587776461709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_31
+      rect:
+        serializedVersion: 2
+        x: 6058
+        y: 2112
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b95d19684a5cbfe0800000000000000
+      internalID: -1171962535975495242
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_32
+      rect:
+        serializedVersion: 2
+        x: 5637
+        y: 2103
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ce8cf13930a64e10800000000000000
+      internalID: 2181607237019799235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_33
+      rect:
+        serializedVersion: 2
+        x: 5884
+        y: 2105
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 805868370df184330800000000000000
+      internalID: 3695238474409346312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_34
+      rect:
+        serializedVersion: 2
+        x: 5873
+        y: 2088
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77f4f2153c354faa0800000000000000
+      internalID: -6128181094598619273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_35
+      rect:
+        serializedVersion: 2
+        x: 5491
+        y: 2079
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ce9f438ed89e5570800000000000000
+      internalID: 8457365231701565125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_36
+      rect:
+        serializedVersion: 2
+        x: 5479
+        y: 2062
+        width: 8
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a5ba1187b70cd1e0800000000000000
+      internalID: -2171852435573000794
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_37
+      rect:
+        serializedVersion: 2
+        x: 6412
+        y: 2059
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7dff126a63f36380800000000000000
+      internalID: -8979065593808290435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_38
+      rect:
+        serializedVersion: 2
+        x: 4274
+        y: 2047
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86a40396d4f7fd7b0800000000000000
+      internalID: -5197295474508281240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_39
+      rect:
+        serializedVersion: 2
+        x: 5789
+        y: 2052
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2dd9c4b306b565330800000000000000
+      internalID: 3699244612801306066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: GargoyleFrontWIP_40
+      rect:
+        serializedVersion: 2
+        x: 4952
+        y: 2018
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39c8289428d956510800000000000000
+      internalID: 1541811630348864659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      GargoyleFrontWIP_0: 8108784921590595272
+      GargoyleFrontWIP_1: 4361651052426578852
+      GargoyleFrontWIP_10: -207477978986269168
+      GargoyleFrontWIP_11: -3684081606323488011
+      GargoyleFrontWIP_12: -4082489819161395531
+      GargoyleFrontWIP_13: -6794371788740254339
+      GargoyleFrontWIP_14: -574304180705817295
+      GargoyleFrontWIP_15: 5008869415800860287
+      GargoyleFrontWIP_16: -6950051811017232753
+      GargoyleFrontWIP_17: 1849178629967430422
+      GargoyleFrontWIP_18: 1625260892451295749
+      GargoyleFrontWIP_19: 3451540500251487106
+      GargoyleFrontWIP_2: 438146271543766013
+      GargoyleFrontWIP_20: -8265415998811064227
+      GargoyleFrontWIP_21: 2472473493425184534
+      GargoyleFrontWIP_22: -5546176513161989464
+      GargoyleFrontWIP_23: 2521004208260986427
+      GargoyleFrontWIP_24: -6966473049191870229
+      GargoyleFrontWIP_25: 951611300248268605
+      GargoyleFrontWIP_26: -8020192236772030574
+      GargoyleFrontWIP_27: 5842381886823211947
+      GargoyleFrontWIP_28: 1013728080722838556
+      GargoyleFrontWIP_29: -1087483637733652551
+      GargoyleFrontWIP_3: -3525823343413219558
+      GargoyleFrontWIP_30: 5402149587776461709
+      GargoyleFrontWIP_31: -1171962535975495242
+      GargoyleFrontWIP_32: 2181607237019799235
+      GargoyleFrontWIP_33: 3695238474409346312
+      GargoyleFrontWIP_34: -6128181094598619273
+      GargoyleFrontWIP_35: 8457365231701565125
+      GargoyleFrontWIP_36: -2171852435573000794
+      GargoyleFrontWIP_37: -8979065593808290435
+      GargoyleFrontWIP_38: -5197295474508281240
+      GargoyleFrontWIP_39: 3699244612801306066
+      GargoyleFrontWIP_4: 679761030305155356
+      GargoyleFrontWIP_40: 1541811630348864659
+      GargoyleFrontWIP_5: 6245821480974623761
+      GargoyleFrontWIP_6: -6276640636100165547
+      GargoyleFrontWIP_7: -3452872555694455006
+      GargoyleFrontWIP_8: -3983488355434686786
+      GargoyleFrontWIP_9: -3780037180322605048
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
