@@ -25,6 +25,7 @@ namespace Spells
         public int ChainTimesRemaining;
         public float ChainSqrRadius;
         public float HomingAngle;
+        public float GiantSize;
 
         public float TravelDistance;
 
@@ -53,6 +54,11 @@ namespace Spells
                 Element.Earth => Color.green,
                 _ => Color.white
             };
+
+            if (GiantSize > 0)
+            {
+                _rb.transform.localScale += new Vector3(GiantSize,GiantSize,0);
+            }
 
             //main.startColor = new Color(Random.Range(0.75f, 1f), Random.Range(0.75f, 1f), Random.Range(0.75f, 1f));
         }

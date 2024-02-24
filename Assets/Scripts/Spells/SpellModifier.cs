@@ -74,6 +74,10 @@ namespace Spells
             [InfoBox("Change in homing angle per second"), ShowIf(nameof(Homing))]
             public float DeltaHomingAngle;
 
+            public bool Giant;
+            [InfoBox("Changes size of the spell"), ShowIf(nameof(Giant))]
+            public float ExtraSize;
+
             // todo
             // public bool AlterMovementPattern;
             //
