@@ -25,6 +25,7 @@ namespace Spells
         public float ManaUsage;
         public float ProjectileSpeed;
         public float Range;
+        public float Spread;
 
         public static SpellStats operator +(SpellStats a, SpellStats b) =>
             new()
@@ -33,7 +34,8 @@ namespace Spells
                 CastCooldown = a.CastCooldown + b.CastCooldown,
                 ManaUsage = a.ManaUsage + b.ManaUsage,
                 ProjectileSpeed = a.ProjectileSpeed + b.ProjectileSpeed,
-                Range = a.Range + b.Range
+                Range = a.Range + b.Range,
+                Spread = a.Spread + b.Spread
             };
 
         public static SpellStats operator *(SpellStats a, SpellStats b) =>
@@ -43,7 +45,8 @@ namespace Spells
                 CastCooldown = a.CastCooldown * b.CastCooldown,
                 ManaUsage = a.ManaUsage * b.ManaUsage,
                 ProjectileSpeed = a.ProjectileSpeed * b.ProjectileSpeed,
-                Range = a.Range * b.Range
+                Range = a.Range * b.Range,
+                Spread = a.Spread * b.Spread
             };
     }
 

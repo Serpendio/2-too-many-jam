@@ -53,7 +53,7 @@ namespace Creature
             
             lastDashTime = -dashCooldown;
 
-            var initSpell = new Spell(new SpellStats
+            /*var initSpell = new Spell(new SpellStats
             {
                 DamageOnHit = 10,
                 CastCooldown = 1,
@@ -62,11 +62,11 @@ namespace Creature
                 Range = 10,
             }, Element.None, Team);
             
-            initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Multishot"));
-            initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Bounce"));
-            initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Pierce"));
+            //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Multishot"));
+            //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Bounce"));
+            initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Chain"));
 
-            Inventory.MoveSpellToEquipped(0, initSpell);
+            Inventory.MoveSpellToEquipped(0, initSpell);*/
         }
 
         // https://files.catbox.moe/835ck8.png
