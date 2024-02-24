@@ -1,10 +1,25 @@
 fileFormatVersion: 2
-guid: e9a9926755b8efe4cac9bec405cffcab
+guid: c3e965f503639124ca8486720dabad79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5864088745717412368
-    second: impWalk_0
+      213: 3504182523174438566
+    second: Wolf_attack_sprites_0
+  - first:
+      213: 5378920857722239109
+    second: Wolf_attack_sprites_1
+  - first:
+      213: -5384516833449496368
+    second: Wolf_attack_sprites_2
+  - first:
+      213: 6194249042857091816
+    second: Wolf_attack_sprites_3
+  - first:
+      213: -5004724755264729012
+    second: Wolf_attack_sprites_4
+  - first:
+      213: -7975076946310674487
+    second: Wolf_attack_sprites_5
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -51,7 +66,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 1080
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +125,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: impWalk_1
+      name: Wolf_attack_sprites_0
       rect:
         serializedVersion: 2
-        x: 168
-        y: 577
-        width: 911
-        height: 1107
+        x: 0
+        y: 385
+        width: 1435
+        height: 1336
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cec57bdd943ef854e84fca8b973f0438
-      internalID: -1733004086
+      spriteID: 6a6c1f9507b51a030800000000000000
+      internalID: 3504182523174438566
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impWalk_2
+      name: Wolf_attack_sprites_2
       rect:
         serializedVersion: 2
-        x: 1275
-        y: 545
-        width: 921
-        height: 1149
+        x: 1458
+        y: 362
+        width: 1045
+        height: 1217
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 18e074a8d51b3bb4abe2aefde7674221
-      internalID: -127937828
+      spriteID: 0d0b127e77a5645b0800000000000000
+      internalID: -5384516833449496368
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: impWalk_3
+      name: Wolf_attack_sprites_4
       rect:
         serializedVersion: 2
-        x: 2555
-        y: 493
-        width: 854
-        height: 1197
+        x: 2810
+        y: 373
+        width: 987
+        height: 1249
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 575e69e490af6ed49a0a28b8bea18d7f
-      internalID: -1425577322
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: impWalk_4
-      rect:
-        serializedVersion: 2
-        x: 1841
-        y: 537
-        width: 32
-        height: 7
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a68170af6aa65242b3262f57c1ada89
-      internalID: -427913408
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: impWalk_5
-      rect:
-        serializedVersion: 2
-        x: 1874
-        y: 542
-        width: 6
-        height: 4
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 30641646a11a4ee4eaed61ae05097667
-      internalID: -1296759397
+      spriteID: c4097dbe955ab8ab0800000000000000
+      internalID: -5004724755264729012
       vertices: []
       indices: 
       edges: []
@@ -217,7 +190,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 3117d4c7f8c3ef9489abd3c866934a69
+    spriteID: f1e14bb70aa08ce4aae7519e47499d50
     internalID: 0
     vertices: []
     indices: 
@@ -225,12 +198,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      impWalk_0: 1738553983
-      impWalk_1: -1733004086
-      impWalk_2: -127937828
-      impWalk_3: -1425577322
-      impWalk_4: -427913408
-      impWalk_5: -1296759397
+      Wolf_attack_sprites_0: 3504182523174438566
+      Wolf_attack_sprites_1: 5378920857722239109
+      Wolf_attack_sprites_2: -5384516833449496368
+      Wolf_attack_sprites_3: 6194249042857091816
+      Wolf_attack_sprites_4: -5004724755264729012
+      Wolf_attack_sprites_5: -7975076946310674487
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
