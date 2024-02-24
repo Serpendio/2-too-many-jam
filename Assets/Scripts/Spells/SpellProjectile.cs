@@ -14,6 +14,8 @@ namespace Spells
     {
         public SpellProjectileOverseer Overseer;
 
+        private bool dissipated;
+
         private Rigidbody2D _rb;
         private ParticleSystem _particleSystem;
 
@@ -26,8 +28,12 @@ namespace Spells
         public float ChainSqrRadius;
         public float HomingAngle;
         public float GiantSize;
+        public float ExplodeRad;
+        public float AliveTime;
 
         public float TravelDistance;
+        public float TimeLived;
+
 
         private void Awake()
         {
@@ -37,6 +43,10 @@ namespace Spells
 
         private void Start()
         {
+            AliveTime = Time.time;
+
+            dissipated = false;
+
             if (Spell.Team == Team.Friendly) gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
             else gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
 
@@ -65,6 +75,12 @@ namespace Spells
 
         private void Update()
         {
+            if (AliveTime > 0 && Time.time - AliveTime >= AliveTime)
+            {   
+                Dissipate();
+                return;
+            }
+
             TravelDistance += _rb.velocity.magnitude * Time.deltaTime;
 
             if (HomingAngle > 0)
@@ -136,6 +152,26 @@ namespace Spells
 
         public void Dissipate()
         {
+            if (ExplodeRad > 0 && !dissipated)
+            {
+                dissipated = true;
+
+                var Explosion = Instantiate(SpellProjectileOverseer.SpellProjectilePrefab, transform.position, transform.rotation);
+                Explosion.Spell = new Spell(new SpellStats
+                {
+                    DamageOnHit = 1000,
+                    CastCooldown = 0,
+                    ManaUsage = 0,
+                    ProjectileSpeed = 0,
+                    Range = 1,
+                }, Element.Fire, Spell.Team);
+                Explosion.AliveTime = AliveTime;
+                Explosion.PiercesRemaining = 999;
+
+                Explosion.CastDirection = new Vector3 (0, 0, 0);
+                Explosion.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
+
+            }
             _rb.simulated = false;
             _particleSystem.Stop();
             Destroy(gameObject, _particleSystem.main.startLifetime.constantMax);
