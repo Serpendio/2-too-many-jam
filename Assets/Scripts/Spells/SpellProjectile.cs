@@ -24,6 +24,7 @@ namespace Spells
         public int PiercesRemaining;
         public int ChainTimesRemaining;
         public float ChainSqrRadius;
+        public float HomingAngle;
 
         public float TravelDistance;
 
@@ -38,7 +39,6 @@ namespace Spells
             if (Spell.Team == Team.Friendly) gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
             else gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
 
-            //_rb.AddForce(Spell.ComputedStats.ProjectileSpeed * CastDirection, ForceMode2D.Impulse);
             _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
 
             var main = _particleSystem.main;
@@ -55,15 +55,20 @@ namespace Spells
             };
 
             //main.startColor = new Color(Random.Range(0.75f, 1f), Random.Range(0.75f, 1f), Random.Range(0.75f, 1f));
-
-            //var colours = new[] { Color.cyan, new Color(237 / 255f, 178 / 255f, 229 / 255f), Color.white };
-            //main.startColor = colours[Random.Range(0, colours.Length)];
         }
 
         private void Update()
         {
             TravelDistance += _rb.velocity.magnitude * Time.deltaTime;
-            
+
+            if (HomingAngle > 0)
+            {
+                var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).FirstOrDefault();
+                if (newCreature != null)
+                { 
+                    _rb.velocity = Quaternion.Euler(0, 0, Mathf.Min(Mathf.Rad2Deg * Mathf.Atan2((newCreature.transform.position - transform.position).y, (newCreature.transform.position - transform.position).x), HomingAngle) * Time.deltaTime) * _rb.velocity;
+                }
+            }
             if (TravelDistance >= Spell.ComputedStats.Range) Dissipate();
         }
 

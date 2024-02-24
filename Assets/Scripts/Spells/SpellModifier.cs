@@ -70,6 +70,10 @@ namespace Spells
             [InfoBox("Maximum radius for a possible chain"), ShowIf(nameof(Chain))]
             public float ChainRadius;
 
+            public bool Homing;
+            [InfoBox("Change in homing angle per second"), ShowIf(nameof(Homing))]
+            public float DeltaHomingAngle;
+
             // todo
             // public bool AlterMovementPattern;
             //
