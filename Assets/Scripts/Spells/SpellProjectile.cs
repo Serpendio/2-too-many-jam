@@ -100,7 +100,6 @@ namespace Spells
                     }
 
                     _rb.velocity = Quaternion.Euler(0, 0, angle) * _rb.velocity;
-                    Debug.Log(angle);
                 }
             }
             if (TravelDistance >= Spell.ComputedStats.Range) Dissipate();
