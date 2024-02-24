@@ -1,3 +1,4 @@
+using Core;
 using TMPro;
 using UnityEngine;
 
@@ -10,6 +11,6 @@ namespace UI
 
         private void Awake() => _text = GetComponent<TextMeshProUGUI>();
 
-        private void Update() => _text.text = CurrencyManager.Instance.currencyAmount.ToString();
+        private void Update() => _text.text = Locator.CurrencyManager.GoldAmount.ToString();
     }
 }

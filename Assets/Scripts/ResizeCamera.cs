@@ -1,10 +1,10 @@
+using Core;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using WorldGen;
+using Rooms;
 
 public class ResizeCamera : MonoBehaviour
 {
-    [SerializeField] Transform player;
     bool followPlayerY = false;
     bool followPlayerX = false;
 
@@ -78,8 +78,8 @@ public class ResizeCamera : MonoBehaviour
         Vector2 min = bounds.center - bounds.extents;
         Vector2 max = bounds.center + bounds.extents;
 
-        float clampedX = Mathf.Clamp(player.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
-        float clampedY = Mathf.Clamp(player.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
+        float clampedX = Mathf.Clamp(Locator.Player.transform.position.x, min.x + cameraExtents.x, max.x - cameraExtents.x);
+        float clampedY = Mathf.Clamp(Locator.Player.transform.position.y, min.y + cameraExtents.y, max.y - cameraExtents.y);
 
         if (interpolate) {
             float interpolation = lerpSpeed * Time.deltaTime;

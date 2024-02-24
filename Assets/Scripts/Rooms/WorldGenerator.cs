@@ -5,7 +5,7 @@ using Tweens;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace WorldGen
+namespace Rooms
 {
     public class WorldGenerator : MonoBehaviour
     {

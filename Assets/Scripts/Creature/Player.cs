@@ -1,5 +1,4 @@
-using System.Collections.Generic;
-using System.Linq;
+using Core;
 using Spells;
 using Spells.Modifiers;
 using UnityEngine;
@@ -33,12 +32,12 @@ namespace Creature
 
         public Inventory Inventory = new();
         
-        public SpellProjectile SpellProjectilePrefab;
-        
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
             base.Awake();
+            
+            Locator.ProvidePlayer(this);
 
             _playerInput = GetComponent<PlayerInput>();
             _moveAction = _playerInput.actions["Movement"];
@@ -51,6 +50,8 @@ namespace Creature
             _castAction.performed += Cast;
 
             mana = maxMana;
+            
+            lastDashTime = -dashCooldown;
 
             var initSpell = new Spell(new SpellStats
             {

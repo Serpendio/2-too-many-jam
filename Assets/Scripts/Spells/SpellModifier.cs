@@ -29,20 +29,6 @@ namespace Spells
         //     Sawtooth,
         // }
 
-        // todo maybe remove
-        // [Serializable]
-        // public class RangedFloat
-        // {
-        //     public bool Range;
-        //
-        //     [HideIf("Range")] public float Value;
-        //
-        //     [ShowIf("Range")] public float MinValue;
-        //     [ShowIf("Range")] public float MaxValue;
-        //
-        //     public float GetValue() => Range ? UnityEngine.Random.Range(MinValue, MaxValue) : Value;
-        // }
-
         [CreateAssetMenu(fileName = "SpellModifier", menuName = "Spells/Modifiers/SpellModifier", order = 0)]
         public class SpellModifier : ScriptableObject, IInventoryItem
         {

@@ -3,7 +3,6 @@ using System;
 using Tweens;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
-using WorldGen;
 
 namespace Creature
 {

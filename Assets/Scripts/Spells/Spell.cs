@@ -71,6 +71,8 @@ namespace Spells
             BaseStats = baseStats;
             Element = element;
             Team = team;
+            
+            LastCastTime = -ComputedStats.CastCooldown;
         }
         
         public void AddModifier(SpellModifier modifier)

@@ -1,9 +1,13 @@
+using System;
+using Core;
+using Currency;
 using NaughtyAttributes;
 using Spells;
 using Tweens;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 namespace Creature
 {
@@ -39,11 +43,15 @@ namespace Creature
 
         private float LastAttackTime;
 
+        private static CoinDrop _coinDropPrefab;
+
         // Start is called before the first frame update
         protected override void Awake()
         {
             base.Awake();
             Agent.enabled = false;
+            
+            if (_coinDropPrefab == null) _coinDropPrefab = Resources.Load<CoinDrop>("Prefabs/CoinDrop");
         }
 
         protected void Start()
@@ -120,6 +128,15 @@ namespace Creature
                     Attack();
                     Spell.LastCastTime = Time.time;
                 }
+            }
+        }
+
+        private void OnDestroy()
+        {
+            if (Random.value < Locator.GameplaySettingsManager.CoinDropChance)
+            {
+                var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
+                coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
             }
         }
     }

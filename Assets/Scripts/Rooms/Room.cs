@@ -3,13 +3,11 @@ using System.Linq;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Serialization;
 using UnityEngine.Tilemaps;
 
-namespace WorldGen
+namespace Rooms
 {
     [RequireComponent(typeof(NavMeshModifier))]
     [RequireComponent(typeof(NavMeshModifierTilemap))]

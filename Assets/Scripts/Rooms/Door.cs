@@ -3,7 +3,7 @@ using Creature;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace WorldGen
+namespace Rooms
 {
     public enum Direction
     {
