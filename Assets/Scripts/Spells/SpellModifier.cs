@@ -40,36 +40,35 @@ namespace Spells
 
             public ModifierTier Tier;
 
-            [Space] public bool Stats;
-
-            [InfoBox("Additive adds to stats, multiplicative multiplies the stats together")] [ShowIf("Stats")] [Space]
+            [Space, HorizontalLine, Space] public bool Stats;
+            [InfoBox("Additive adds to stats, multiplicative multiplies the stats together"), ShowIf(nameof(Stats))]
             public StatModifierMethod ModifierMethod;
-
-            [InfoBox("Stats applied to the spell, can be negative")] [ShowIf("Stats")]
+            [InfoBox("Stats applied to the spell, can be negative"), ShowIf(nameof(Stats))]
             public SpellStats StatsModifiers;
 
             public bool ExplodeOnHit;
-
-            [InfoBox("Radius in units of explosion")] [ShowIf("ExplodeOnHit")]
+            [InfoBox("Radius in units of explosion"), ShowIf(nameof(ExplodeOnHit))]
             public float ExplosionRadius;
 
             public bool Piercing;
-
-            [InfoBox("Number of enemies to pass through before dissipating")] [ShowIf("Piercing")]
+            [InfoBox("Number of enemies to pass through before dissipating"), ShowIf(nameof(Piercing))]
             public int PierceTimes;
 
             public bool Bouncing;
-
-            [InfoBox("Number of bounces before dissipating")] [ShowIf("Bouncing")]
+            [InfoBox("Number of bounces before dissipating"), ShowIf(nameof(Bouncing))]
             public int BounceTimes;
 
             public bool ExtraProjectiles;
-
-            [InfoBox("Number of extra projectiles to spawn")] [ShowIf("ExtraProjectiles")]
+            [InfoBox("Number of extra projectiles to spawn"), ShowIf(nameof(ExtraProjectiles))]
             public int ExtraProjectilesAmount;
-
-            [ShowIf("ExtraProjectiles")] [InfoBox("Angle in degrees between projectile trajectories")]
+            [InfoBox("Angle in degrees between projectile trajectories"), ShowIf("ExtraProjectiles")]
             public float ExtraProjectilesSpreadDegrees;
+
+            public bool Chain;
+            [InfoBox("Number of chains between enemies before dissipating"), ShowIf(nameof(Chain))]
+            public int ChainTimes;
+            [InfoBox("Maximum radius for a possible chain"), ShowIf(nameof(Chain))]
+            public float ChainRadius;
 
             // todo
             // public bool AlterMovementPattern;

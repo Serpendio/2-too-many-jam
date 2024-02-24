@@ -25,6 +25,7 @@ MonoBehaviour:
     ManaUsage: 1
     ProjectileSpeed: 1
     Range: 1
+    Spread: 1
   ExplodeOnHit: 0
   ExplosionRadius: 0
   Piercing: 0
@@ -34,3 +35,6 @@ MonoBehaviour:
   ExtraProjectiles: 1
   ExtraProjectilesAmount: 2
   ExtraProjectilesSpreadDegrees: 20
+  Chain: 0
+  ChainTimes: 0
+  ChainRadius: 0
