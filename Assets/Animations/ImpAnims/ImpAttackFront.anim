@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: birdForwardWalk
+  m_Name: ImpAttackFront
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -8231375921863411067, guid: c3173ef9ca9298e468fddaac1450ca28, type: 3}
+      value: {fileID: 3909747974760579431, guid: 8bc91d3b3e45d8c42af727d945122ed7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -8231375921863411067, guid: c3173ef9ca9298e468fddaac1450ca28, type: 3}
+    - {fileID: 3909747974760579431, guid: 8bc91d3b3e45d8c42af727d945122ed7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
