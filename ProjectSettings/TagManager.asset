@@ -6,6 +6,7 @@ TagManager:
   tags:
   - SpellPickup
   - Creature
+  - Room
   layers:
   - Default
   - TransparentFX
@@ -14,11 +15,11 @@ TagManager:
   - Water
   - UI
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Enemy
+  - PlayerProjectile
+  - EnemyProjectile
+  - Wall
   - 
   - 
   - 

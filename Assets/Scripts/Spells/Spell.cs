@@ -18,13 +18,33 @@ namespace Spells
     }
 
     [Serializable]
-    public class SpellStats
+    public struct SpellStats
     {
         public float DamageOnHit;
         public float CastCooldown;
         public float ManaUsage;
         public float ProjectileSpeed;
         public float Range;
+
+        public static SpellStats operator +(SpellStats a, SpellStats b) =>
+            new()
+            {
+                DamageOnHit = a.DamageOnHit + b.DamageOnHit,
+                CastCooldown = a.CastCooldown + b.CastCooldown,
+                ManaUsage = a.ManaUsage + b.ManaUsage,
+                ProjectileSpeed = a.ProjectileSpeed + b.ProjectileSpeed,
+                Range = a.Range + b.Range
+            };
+
+        public static SpellStats operator *(SpellStats a, SpellStats b) =>
+            new()
+            {
+                DamageOnHit = a.DamageOnHit * b.DamageOnHit,
+                CastCooldown = a.CastCooldown * b.CastCooldown,
+                ManaUsage = a.ManaUsage * b.ManaUsage,
+                ProjectileSpeed = a.ProjectileSpeed * b.ProjectileSpeed,
+                Range = a.Range * b.Range
+            };
     }
 
     [Serializable]
@@ -32,27 +52,37 @@ namespace Spells
     {
         [field: SerializeField] public string Name { get; set; } // todo ComputedName based on modifiers?
         [field: SerializeField] public Sprite Icon { get; set; }
-        
+
         public SpellStats BaseStats;
         public Team Team;
 
         public SpellStats ComputedStats =>
             Modifiers.Aggregate(BaseStats, (spellStats, modifier) => modifier.ModifyStats(spellStats));
 
-        public readonly SpellModifier[] Modifiers;
+        public List<SpellModifier> Modifiers = new();
         public Element Element;
-        
+
         public float LastCastTime;
-        
+
         public bool CooldownOver => Time.time - LastCastTime > ComputedStats.CastCooldown;
 
-        
-        public Spell(SpellStats baseStats, Element element, Team team, SpellModifier[] spellModifiers)
+        public Spell(SpellStats baseStats, Element element, Team team)
         {
             BaseStats = baseStats;
             Element = element;
             Team = team;
-            Modifiers = spellModifiers;
+            
+            LastCastTime = -ComputedStats.CastCooldown;
+        }
+        
+        public void AddModifier(SpellModifier modifier)
+        {
+            Modifiers.Add(modifier);
+        }
+        
+        public void RemoveModifier(SpellModifier modifier)
+        {
+            Modifiers.Remove(modifier);
         }
     }
 }

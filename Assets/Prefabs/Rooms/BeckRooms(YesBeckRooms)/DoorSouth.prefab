@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5591222605002348546}
   - component: {fileID: 3986943341739061758}
   - component: {fileID: 4680650983539742838}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: DoorSouth
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.4, y: 12.4}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

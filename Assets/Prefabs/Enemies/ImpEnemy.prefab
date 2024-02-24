@@ -52,10 +52,22 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 766d578dc65daba47b105a58119582eb, type: 2}
+    - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.954
+      objectReference: {fileID: 0}
+    - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.236
+      objectReference: {fileID: 0}
     - target: {fileID: 7848099009551039341, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -820012052, guid: e9a9926755b8efe4cac9bec405cffcab, type: 3}
+    - target: {fileID: 7848099009551039341, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8317292360838696019, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Name
       value: ImpEnemy

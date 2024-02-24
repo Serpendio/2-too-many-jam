@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 5454074549544343293}
   - component: {fileID: 7662138457023535370}
   - component: {fileID: 2626327600802606849}
-  m_Layer: 0
+  - component: {fileID: 2120572171488667110}
+  - component: {fileID: 7579167820492510082}
+  m_Layer: 11
   m_Name: Empty Room 1
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -226,3 +228,34 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   MapCoord: {x: 0, y: 0}
+  Tilemap: {fileID: 0}
+  Entered: 0
+--- !u!114 &2120572171488667110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200219125484989977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!114 &7579167820492510082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200219125484989977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 709c8d6349be44c68dff3d220992400c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TileModifiers: []
