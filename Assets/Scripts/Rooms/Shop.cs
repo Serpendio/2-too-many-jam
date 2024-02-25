@@ -1,4 +1,3 @@
-using Core;
 using Creature;
 using Spells;
 using Spells.Modifiers;
@@ -91,13 +90,13 @@ namespace Rooms
             int randNumModifiers = Random.Range(0, 3);
             for (int i = 0; i < randNumModifiers; i++)
             {
-                //Generate random modifiers until unique one is generated
-                SpellModifier randModifier;
-                do
-                {
-                    randModifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
-                } while (!spell.Modifiers.Contains(randModifier));
-                spell.AddModifier(randModifier);
+                //Add unique modifier
+                var uniqueModifiers = SpellModifier.AllModifiers
+                    .Where(m => !spell.Modifiers.Contains(m))
+                    .ToList();
+                
+                var randomModifier = uniqueModifiers[Random.Range(0, uniqueModifiers.Count)];
+                spell.AddModifier(randomModifier);
             }
             cost = 0; //TEMP
             return spell;
