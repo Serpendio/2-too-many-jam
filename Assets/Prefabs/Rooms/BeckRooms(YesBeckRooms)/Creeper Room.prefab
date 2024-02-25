@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2120572171488667110}
   - component: {fileID: 7579167820492510082}
   m_Layer: 11
-  m_Name: becca room 3
+  m_Name: Creeper Room
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

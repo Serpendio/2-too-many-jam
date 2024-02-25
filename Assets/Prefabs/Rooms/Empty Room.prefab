@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2120572171488667110}
   - component: {fileID: 7579167820492510082}
   m_Layer: 11
-  m_Name: Empty Room 1
+  m_Name: Empty Room
   m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,25 +80,25 @@ Tilemap:
   m_TileMatrixArray:
   - m_RefCount: 0
     m_Data:
-      e00: 0
+      e00: 7.630726e+23
       e01: 0
-      e02: 2.439459e-19
-      e03: 2.439459e-19
-      e10: 0
+      e02: -1.3224334e-38
+      e03: -1.3224334e-38
+      e10: 4.5907e-41
       e11: 0
-      e12: 4.79e-43
-      e13: 4.79e-43
-      e20: -1314398
-      e21: 9.71627e-40
-      e22: -2.3933628e-28
-      e23: 9.71627e-40
-      e30: 4.5911e-41
-      e31: 4.82e-43
-      e32: 4.79e-43
-      e33: 4.82e-43
+      e12: 9.54e-43
+      e13: 9.54e-43
+      e20: 2.0537475e+24
+      e21: 1.6296471e+29
+      e22: 1.6759028e-28
+      e23: 1.6296471e+29
+      e30: 4.5907e-41
+      e31: 9.58e-43
+      e32: 9.56e-43
+      e33: 9.58e-43
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 1.06667e-40, g: 1.06667e-40, b: 1.06667e-40, a: 1.06667e-40}
+    m_Data: {r: 6.8582e-41, g: 6.8582e-41, b: 6.8582e-41, a: 6.8582e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -227,9 +227,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  MapCoord: {x: 0, y: 0}
   Tilemap: {fileID: 0}
   Entered: 0
+  MapCoord: {x: 0, y: 0}
+  SkullsContainer: {fileID: 0}
+  EnemiesContainer: {fileID: 0}
+  SpawnEnemiesOnEnter: 1
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -242,8 +245,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
+  m_OverrideArea: 1
+  m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!114 &7579167820492510082
@@ -258,4 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 709c8d6349be44c68dff3d220992400c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TileModifiers: []
+  m_TileModifiers:
+  - tile: {fileID: 11400000, guid: 0977da093dfed1d4caf601899a71f4b6, type: 2}
+    overrideArea: 0
+    area: 0
