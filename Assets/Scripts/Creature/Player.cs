@@ -2,7 +2,9 @@ using Core;
 using Spells;
 using Spells.Modifiers;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Creature
 {
@@ -17,12 +19,12 @@ namespace Creature
 
         [Header("Dashing")] [SerializeField] private float dashPower;
 
-        [SerializeField] private float dashTrailDuration;
-        [SerializeField] private float dashCooldown;
-        // private TrailRenderer _dashTrail;
+        [FormerlySerializedAs("dashCooldown")] public float DashCooldown;
 
-        private float lastDashTime;
-        private bool canDash => Time.time - lastDashTime > dashCooldown;
+        public float LastDashTime;
+        public bool CanDash => Time.time - LastDashTime > DashCooldown;
+
+        public UnityEvent OnDash = new();
 
         [Header("Spell-casting")] [SerializeField]
         private int _activeSpellSlot;
@@ -31,12 +33,12 @@ namespace Creature
         [SerializeField] public int maxMana;
 
         public Inventory Inventory = new();
-        
+
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
             base.Awake();
-            
+
             Locator.ProvidePlayer(this);
 
             _playerInput = GetComponent<PlayerInput>();
@@ -44,14 +46,12 @@ namespace Creature
             _dashAction = _playerInput.actions["Dash"];
             _castAction = _playerInput.actions["Cast"];
 
-            // _dashTrail = GetComponent<TrailRenderer>();
-
             _dashAction.performed += Dash;
             _castAction.performed += Cast;
 
             mana = maxMana;
-            
-            lastDashTime = -dashCooldown;
+
+            LastDashTime = -DashCooldown;
 
             /*var initSpell = new Spell(new SpellStats
             {
@@ -61,7 +61,7 @@ namespace Creature
                 ProjectileSpeed = 20,
                 Range = 10,
             }, Element.None, Team);
-            
+
             //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Multishot"));
             //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Bounce"));
             initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Chain"));
@@ -102,7 +102,7 @@ namespace Creature
             if (context.performed && activeSpell is { CooldownOver: true })
             {
                 TriggerAttackAnim();
-                
+
                 // Get direction from player to mouse
                 var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                 mousePos.z = transform.position.z;
@@ -118,7 +118,9 @@ namespace Creature
 
         public void Dash(InputAction.CallbackContext context)
         {
-            if (context.performed && canDash && Rb.velocity.magnitude > 0.01f) //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
+            if (context.performed && CanDash &&
+                Rb.velocity.magnitude >
+                0.01f) //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
             {
                 Dash();
             }
@@ -126,7 +128,8 @@ namespace Creature
 
         private void Dash()
         {
-            lastDashTime = Time.time;
+            LastDashTime = Time.time;
+            OnDash.Invoke();
 
             var move = _moveAction.ReadValue<Vector2>();
             Rb.AddForce(dashPower * move.normalized, ForceMode2D.Impulse);

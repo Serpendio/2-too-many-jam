@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4395509319039831861}
   - component: {fileID: 7071180028235103932}
   - component: {fileID: 3218765729806331496}
+  - component: {fileID: 6756587454539503572}
   - component: {fileID: 4414781798320784218}
   - component: {fileID: 7672381947014803902}
   - component: {fileID: 957427769202113192}
@@ -112,6 +113,42 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &6756587454539503572
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8512392723604706054}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.5
 --- !u!61 &4414781798320784218
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +156,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8512392723604706054}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -206,8 +243,11 @@ MonoBehaviour:
   moveSpeed: 5
   Team: 0
   dashPower: 30
-  dashTrailDuration: 0
-  dashCooldown: 1
+  DashCooldown: 1
+  LastDashTime: 0
+  OnDash:
+    m_PersistentCalls:
+      m_Calls: []
   _activeSpellSlot: 0
   mana: 0
   maxMana: 0
