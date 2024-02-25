@@ -22,16 +22,20 @@ namespace Spells
         {
             isCreateProjRunning = true;
             int BurstShots = Spell.Modifiers.Where(m => m.BurstFire).Sum(m => m.HowManyShots);
+            Vector2 currCastDirection = castDirection;
 
             if (BurstShots == 0) {
                 BurstShots = 1;
             }
 
+
             for (int i = 0; i< BurstShots; i++) {           
                 // Get direction from player to mouse
-                var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                mousePos.z = transform.position.z;
-                var currCastDirection = castDirection * (mousePos - transform.position).normalized;
+                if (transform.CompareTag("Player")) {
+                    var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                    currCastDirection = castDirection * (mousePos - transform.position).normalized;
+                    mousePos.z = transform.position.z;
+                }
 
                 var projectile = Instantiate(SpellProjectilePrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
                 Projectiles.Add(projectile);
@@ -51,6 +55,9 @@ namespace Spells
                 projectile.OrbitRadius = Spell.Modifiers.Where(m => m.Orbital).Sum(m => m.ShotRadius);
                 projectile.TornadoPower = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullPower);
                 projectile.TornadoRadius = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullRadius);
+
+                float barrierSize = Spell.Modifiers.Where(m => m.Barrier).Sum(m => m.SizeOfBarrier);
+
 
                 if (i != BurstShots - 1) {
                     yield return new WaitForSeconds(.08f);
@@ -74,7 +81,7 @@ namespace Spells
             float projectilesSpreadDegrees = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
             if (projectilesAmount == 1)
             {
-                var spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * new Vector2(1,1);
+                var spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
 
                 StartCoroutine(CreateProjectile(spreadDir));
             }

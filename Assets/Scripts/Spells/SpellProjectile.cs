@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading;
 using Core;
 using Creature;
 using Spells.Modifiers;
@@ -107,7 +108,7 @@ namespace Spells
             if (TornadoPower > 0) {
                 var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).Where(c => (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
                 foreach (var creature in creaturesToPull) {
-                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position, TornadoPower * Time.deltaTime);                    
+                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position, TornadoPower * Time.deltaTime);
                 }
             }
 
@@ -135,6 +136,11 @@ namespace Spells
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.TryGetComponent<SpellProjectile>(out SpellProjectile proj)) {
+                Debug.Log("Testing");
+                if (proj.Spell.Team == Spell.Team) return;
+                proj.Dissipate();
+            }
             if (other.TryGetComponent(out CreatureBase creature))
             {
                 if (creature.Team == Spell.Team) return; // not needed, layers auto don't collide
