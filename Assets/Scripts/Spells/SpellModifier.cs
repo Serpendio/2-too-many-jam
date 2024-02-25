@@ -88,6 +88,13 @@ namespace Spells
             [InfoBox("Radius of the orbiting shot"), ShowIf(nameof(Orbital))]
             public float ShotRadius;
 
+            public bool Tornado;
+            [InfoBox("Pulling power of the tornado"), ShowIf(nameof(Tornado))]
+            public float PullPower;
+            [InfoBox("radius of pull"), ShowIf(nameof(Tornado))]
+            public float PullRadius;
+
+
 
             // todo
             // public bool AlterMovementPattern;

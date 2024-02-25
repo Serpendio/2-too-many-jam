@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f33cb3969470546926072b51585848, type: 3}
+  m_Name: TornadoT1
+  m_EditorClassIdentifier: 
+  <Name>k__BackingField: 
+  <Description>k__BackingField: 
+  <Icon>k__BackingField: {fileID: 0}
+  Tier: 0
+  Stats: 0
+  ModifierMethod: 0
+  StatsModifiers:
+    DamageOnHit: 0
+    CastCooldown: 0
+    ManaUsage: 0
+    ProjectileSpeed: 0
+    Range: 0
+    Spread: 0
+  ExplodeOnHit: 0
+  ExplosionRadius: 0
+  TimeToLive: 0
+  Piercing: 0
+  PierceTimes: 0
+  Bouncing: 0
+  BounceTimes: 0
+  ExtraProjectiles: 0
+  ExtraProjectilesAmount: 0
+  ExtraProjectilesSpreadDegrees: 0
+  Chain: 0
+  ChainTimes: 0
+  ChainRadius: 0
+  Homing: 0
+  DeltaHomingAngle: 0
+  Giant: 0
+  ExtraSize: 0
+  BurstFire: 0
+  HowManyShots: 0
+  Orbital: 0
+  ShotRadius: 0
+  Tornado: 0
+  PullPower: 0
+  PullRadius: 0

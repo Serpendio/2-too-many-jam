@@ -3,6 +3,7 @@ using System.Linq;
 using Core;
 using Creature;
 using Spells.Modifiers;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -32,6 +33,8 @@ namespace Spells
         public float ExplodeRad;
         public float AliveTime;
         public float OrbitRadius;
+        public float TornadoPower;
+        public float TornadoRadius;
 
         public float TravelDistance;
         public float StartLive;
@@ -54,7 +57,7 @@ namespace Spells
             else gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
 
             if (OrbitRadius > 0) {
-                _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed,0,0);
+                _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed, 0, 0);
                 transform.position += (Vector3.down * OrbitRadius) + (Vector3.down * 0.5f);
                 PrevPlayerPos = Overseer.transform.position;
             } else {
@@ -100,6 +103,13 @@ namespace Spells
             }
 
             TravelDistance += _rb.velocity.magnitude * Time.deltaTime;
+
+            if (TornadoPower > 0) {
+                var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).Where(c => (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
+                foreach (var creature in creaturesToPull) {
+                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position, TornadoPower * Time.deltaTime);                    
+                }
+            }
 
             if (HomingAngle > 0)
             {
