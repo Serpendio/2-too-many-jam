@@ -3,6 +3,7 @@ using System.Linq;
 using Core;
 using Creature;
 using Spells.Modifiers;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,10 +31,12 @@ namespace Spells
         public float GiantSize;
         public float ExplodeRad;
         public float AliveTime;
+        public float OrbitRadius;
 
         public float TravelDistance;
         public float StartLive;
 
+        public Vector3 PrevPlayerPos;
 
         private void Awake()
         {
@@ -50,7 +53,13 @@ namespace Spells
             if (Spell.Team == Team.Friendly) gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
             else gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
 
-            _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
+            if (OrbitRadius > 0) {
+                _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed,0,0);
+                transform.position += (Vector3.down * OrbitRadius) + (Vector3.down * 0.5f);
+                PrevPlayerPos = Overseer.transform.position;
+            } else {
+                _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
+            }
 
             var main = _particleSystem.main;
 
@@ -71,6 +80,15 @@ namespace Spells
             }
 
             //main.startColor = new Color(Random.Range(0.75f, 1f), Random.Range(0.75f, 1f), Random.Range(0.75f, 1f));
+        }
+
+        private void FixedUpdate() {
+            if (OrbitRadius > 0) {
+                // TODO - Slight offset when moving around, no clue why
+                _rb.velocity = Quaternion.Euler(0,0, Mathf.Rad2Deg * Time.deltaTime * Spell.ComputedStats.ProjectileSpeed / OrbitRadius) * _rb.velocity;
+                transform.position += Overseer.transform.position - PrevPlayerPos;
+                PrevPlayerPos = Overseer.transform.position;
+            }
         }
 
         private void Update()

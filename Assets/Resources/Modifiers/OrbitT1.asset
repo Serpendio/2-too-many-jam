@@ -10,26 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7f33cb3969470546926072b51585848, type: 3}
-  m_Name: BurstFireT1
+  m_Name: OrbitT1
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: BurstFire
+  <Name>k__BackingField: Orbit
   <Description>k__BackingField: 
   <Icon>k__BackingField: {fileID: 0}
   Tier: 0
-  Stats: 0
+  Stats: 1
   ModifierMethod: 0
   StatsModifiers:
     DamageOnHit: 0
     CastCooldown: 0
     ManaUsage: 0
     ProjectileSpeed: 0
-    Range: 0
+    Range: 9999
     Spread: 0
   ExplodeOnHit: 0
   ExplosionRadius: 0
   TimeToLive: 0
-  Piercing: 0
-  PierceTimes: 0
+  Piercing: 1
+  PierceTimes: 70
   Bouncing: 0
   BounceTimes: 0
   ExtraProjectiles: 0
@@ -42,7 +42,7 @@ MonoBehaviour:
   DeltaHomingAngle: 0
   Giant: 0
   ExtraSize: 0
-  BurstFire: 1
-  HowManyShots: 25
-  Orbital: 0
-  ShotRadius: 0
+  BurstFire: 0
+  HowManyShots: 0
+  Orbital: 1
+  ShotRadius: 3
