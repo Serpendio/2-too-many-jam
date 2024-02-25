@@ -85,6 +85,15 @@ namespace Creature
             if (health == 0) Die();
         }
 
+        public virtual void RefillHealth() {
+            health = maxHealth;
+        }
+
+        public virtual void IncreaseMaxHealth(int val) {
+            maxHealth += val;
+            health = maxHealth;
+        }
+
         protected virtual void Die()
         {
             OnDeath.Invoke();
