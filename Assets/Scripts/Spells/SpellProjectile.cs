@@ -36,6 +36,7 @@ namespace Spells
         public float OrbitRadius;
         public float TornadoPower;
         public float TornadoRadius;
+        public float BarrierSize;
 
         public float TravelDistance;
         public float StartLive;
@@ -54,8 +55,9 @@ namespace Spells
 
             dissipated = false;
 
-            if (Spell.Team == Team.Friendly) gameObject.layer = LayerMask.NameToLayer("PlayerProjectile");
-            else gameObject.layer = LayerMask.NameToLayer("EnemyProjectile");
+            if (BarrierSize > 0) {
+                transform.localScale += new Vector3 (0, BarrierSize, 0);
+            }
 
             if (OrbitRadius > 0) {
                 _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed, 0, 0);
@@ -136,8 +138,7 @@ namespace Spells
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent<SpellProjectile>(out SpellProjectile proj)) {
-                Debug.Log("Testing");
+            if (other.TryGetComponent(out SpellProjectile proj) && BarrierSize > 0) {
                 if (proj.Spell.Team == Spell.Team) return;
                 proj.Dissipate();
             }

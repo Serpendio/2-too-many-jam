@@ -55,9 +55,7 @@ namespace Spells
                 projectile.OrbitRadius = Spell.Modifiers.Where(m => m.Orbital).Sum(m => m.ShotRadius);
                 projectile.TornadoPower = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullPower);
                 projectile.TornadoRadius = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullRadius);
-
-                float barrierSize = Spell.Modifiers.Where(m => m.Barrier).Sum(m => m.SizeOfBarrier);
-
+                projectile.BarrierSize = Spell.Modifiers.Where(m => m.Barrier).Sum(m => m.SizeOfBarrier);
 
                 if (i != BurstShots - 1) {
                     yield return new WaitForSeconds(.08f);
