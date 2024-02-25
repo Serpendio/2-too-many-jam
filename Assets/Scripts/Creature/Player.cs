@@ -24,7 +24,7 @@ namespace Creature
         public float LastDashTime;
         public bool CanDash => Time.time - LastDashTime > DashCooldown;
 
-        [HideInInspector] public UnityEvent OnDash = new();
+        public UnityEvent OnDash = new();
 
         [Header("Spell-casting")] [SerializeField]
         private int _activeSpellSlot;
@@ -50,6 +50,8 @@ namespace Creature
 
             _dashAction.performed += Dash;
             _castAction.performed += Cast;
+
+            mana = maxMana;
 
             LastDashTime = -DashCooldown;
 
