@@ -94,6 +94,10 @@ namespace Spells
             [InfoBox("radius of pull"), ShowIf(nameof(Tornado))]
             public float PullRadius;
 
+            public bool Barrier;
+            [InfoBox("Width of the barrier"), ShowIf(nameof(Orbital))]
+            public float SizeOfBarrier;
+
 
 
             // todo
