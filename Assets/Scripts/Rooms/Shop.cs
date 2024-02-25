@@ -40,13 +40,16 @@ namespace Rooms
                         Spell spell = GenerateRandomSpell(out spellCost);
                         itemIcon = Instantiate(itemIconPrefabs[0]);
                         itemIcon.GetComponent<Item>().item = spell;
+                        itemIcon.GetComponent<Item>().cost = spellCost;
                         break;
 
                     //Modifier
                     case 1:
+                        int modifierCost = 0;
                         SpellModifier modifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
                         itemIcon = Instantiate(itemIconPrefabs[1]);
                         itemIcon.GetComponent<Item>().item = modifier;
+                        itemIcon.GetComponent<Item>().cost = modifierCost;
                         break;
                     
                     //----Possibly pointless cases, keeping them here for maintainability----//

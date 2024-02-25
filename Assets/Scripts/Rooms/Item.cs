@@ -1,4 +1,5 @@
 using Core;
+using Spells;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,18 +14,13 @@ public class Item : MonoBehaviour
     //3: Health refill
     //4: Max health increase
 
-    [HideInInspector] public dynamic item;
+    [HideInInspector] public IInventoryItem item;
     [HideInInspector] public int cost;
-    private CurrencyManager currencyManager;
-
-    private void Start() {
-        Locator.ProvideCurrencyManager(currencyManager);
-    }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player" && currencyManager.GoldAmount >= cost)
+        if (collision.gameObject.tag == "Player" && Locator.CurrencyManager.GoldAmount >= cost)
         {
-            currencyManager.AddGold(-cost);
+            Locator.CurrencyManager.AddGold(-cost);
             Creature.Player player = collision.gameObject.GetComponent<Creature.Player>();
             switch (itemID)
             {
@@ -40,17 +36,18 @@ public class Item : MonoBehaviour
 
                 case 2:
                     //Shard(s)
-
+                    //To be added
                     break;
 
                 case 3:
                     //Health refill
-
+                    player.RefillHealth();
                     break;
 
                 case 4:
                     //Max health increase
-
+                    int healthIncrease = Random.Range(5, 20);
+                    player.IncreaseMaxHealth(healthIncrease);
                     break;
             }
             Destroy(this.gameObject);
