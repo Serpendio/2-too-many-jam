@@ -84,6 +84,10 @@ namespace Spells
             [InfoBox("How many shots will be fired"), ShowIf(nameof(BurstFire))]
             public int HowManyShots;
 
+            public bool Orbital;
+            [InfoBox("Radius of the orbiting shot"), ShowIf(nameof(Orbital))]
+            public float ShotRadius;
+
 
             // todo
             // public bool AlterMovementPattern;

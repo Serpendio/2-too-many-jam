@@ -48,6 +48,7 @@ namespace Spells
                 projectile.GiantSize = Spell.Modifiers.Where(m => m.Giant).Sum(m => m.ExtraSize);
                 projectile.ExplodeRad = Spell.Modifiers.Where(m => m.ExplodeOnHit).Sum(m => m.ExplosionRadius);
                 projectile.AliveTime = Spell.Modifiers.Where(m => m.ExplodeOnHit).Sum(m => m.TimeToLive);
+                projectile.OrbitRadius = Spell.Modifiers.Where(m => m.Orbital).Sum(m => m.ShotRadius);
 
                 if (i != BurstShots - 1) {
                     yield return new WaitForSeconds(.08f);
