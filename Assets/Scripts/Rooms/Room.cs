@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
@@ -115,6 +116,7 @@ namespace Rooms
 
         public void RegisterEnemy(EnemyBase enemy)
         {
+            Locator.CreatureManager.AddCreature(enemy);
             _enemies.Add(enemy);
             enemy.OnDeath.AddListener(() =>
             {
@@ -135,6 +137,7 @@ namespace Rooms
 
         public void UnregisterEnemy(EnemyBase enemy)
         {
+            Locator.CreatureManager.creatures.Remove(enemy);
             _enemies.Remove(enemy);
             if (_enemies.Count == 0)
             {
