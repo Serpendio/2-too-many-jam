@@ -216,11 +216,26 @@ MonoBehaviour:
     - <Name>k__BackingField: 
       <Icon>k__BackingField: {fileID: 0}
       BaseStats:
+        DamageOnHit: 10
+        CastCooldown: 1
+        ManaUsage: 10
+        ProjectileSpeed: 20
+        Range: 10
+        Spread: 0
+      Team: 0
+      Modifiers:
+      - {fileID: 11400000, guid: ff7127269faba684c8351a71bfb20d6c, type: 2}
+      Element: 1
+      LastCastTime: 0
+    - <Name>k__BackingField: 
+      <Icon>k__BackingField: {fileID: 0}
+      BaseStats:
         DamageOnHit: 0
         CastCooldown: 0
         ManaUsage: 0
         ProjectileSpeed: 0
         Range: 0
+        Spread: 0
       Team: 0
       Modifiers: []
       Element: 0
@@ -233,18 +248,7 @@ MonoBehaviour:
         ManaUsage: 0
         ProjectileSpeed: 0
         Range: 0
-      Team: 0
-      Modifiers: []
-      Element: 0
-      LastCastTime: 0
-    - <Name>k__BackingField: 
-      <Icon>k__BackingField: {fileID: 0}
-      BaseStats:
-        DamageOnHit: 0
-        CastCooldown: 0
-        ManaUsage: 0
-        ProjectileSpeed: 0
-        Range: 0
+        Spread: 0
       Team: 0
       Modifiers: []
       Element: 0

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Rooms;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spells
@@ -24,6 +25,9 @@ namespace Spells
             projectile.CastDirection = castDirection;
             projectile.BouncesRemaining = Spell.Modifiers.Where(m => m.Bouncing).Sum(m => m.BounceTimes);
             projectile.PiercesRemaining = Spell.Modifiers.Where(m => m.Piercing).Sum(m => m.PierceTimes);
+            projectile.ChainTimesRemaining = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainTimes);
+            projectile.ChainSqrRadius = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainRadius);
+            projectile.ChainSqrRadius *= projectile.ChainSqrRadius;
         }
 
         private void Awake()
@@ -34,23 +38,35 @@ namespace Spells
 
         private void Start()
         {
-            CreateProjectile(CastDirection);
+            //CreateProjectile(CastDirection);
 
-            foreach (var modifier in Spell.Modifiers.Where(modifier => modifier.ExtraProjectiles))
+            int projectilesAmount = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesAmount) + 1;
+            float projectilesSpreadDegrees = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
+            if (projectilesAmount == 1)
             {
-                for (var i = 0; i < modifier.ExtraProjectilesAmount; i++)
+                var spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
+
+                CreateProjectile(spreadDir);
+            }
+            else
+            {
+                for (var i = 0; i < projectilesAmount; i++)
                 {
                     // given a center projectile P, rings are pairs of similarly-distanced projectiles on either side,
                     // i.e: 3\ 2\ 1\ |P /1 /2 /3
-                    var ring = (i / 2) + 1;
-                    var spread = modifier.ExtraProjectilesSpreadDegrees;
+                    var angleDiff = projectilesSpreadDegrees / (projectilesAmount - 1);
+                    var offset = projectilesSpreadDegrees / 2;
+                    var spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
 
-                    var angleDiff = i % 2 == 0 ? -spread * ring : spread * ring;
-                    var spreadDir = Quaternion.Euler(0, 0, angleDiff) * CastDirection;
-                    
                     CreateProjectile(spreadDir);
                 }
             }
+        }
+
+        public void RemoveProjectile(SpellProjectile projectile)
+        {
+            Projectiles.Remove(projectile);
+            if (Projectiles.Count == 0) Destroy(this);
         }
 
         private void OnDestroy()

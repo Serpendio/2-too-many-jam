@@ -9,7 +9,8 @@ namespace Creature
     public enum Team
     {
         Friendly,
-        Hostile
+        Hostile,
+        DamagesAll
     }
 
     [RequireComponent(typeof(Animator))]
