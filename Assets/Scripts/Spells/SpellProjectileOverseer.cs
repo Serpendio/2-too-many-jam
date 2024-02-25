@@ -81,7 +81,12 @@ namespace Spells
             float projectilesSpreadDegrees = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
             if (projectilesAmount == 1)
             {
-                var spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
+                Vector2 spreadDir;
+                if (transform.CompareTag("Player")) {
+                    spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * new Vector2(1,1);
+                } else {
+                    spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
+                }
 
                 StartCoroutine(CreateProjectile(spreadDir));
             }
@@ -93,7 +98,12 @@ namespace Spells
                     // i.e: 3\ 2\ 1\ |P /1 /2 /3
                     var angleDiff = projectilesSpreadDegrees / (projectilesAmount - 1);
                     var offset = projectilesSpreadDegrees / 2;
-                    var spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * new Vector2(1,1);
+                    Vector2 spreadDir;
+                    if (transform.CompareTag("Player")) {
+                        spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * new Vector2(1,1);
+                    } else {
+                        spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
+                    }
 
                     StartCoroutine(CreateProjectile(spreadDir));
                 }
