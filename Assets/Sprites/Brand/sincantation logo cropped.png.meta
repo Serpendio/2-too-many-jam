@@ -1,0 +1,424 @@
+fileFormatVersion: 2
+guid: 2cac0488979189443b5b85d2ba300a70
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4579128055079771803
+    second: sincantation logo cropped_0
+  - first:
+      213: -538062953408656827
+    second: sincantation logo cropped_1
+  - first:
+      213: 1803178490815130000
+    second: sincantation logo cropped_2
+  - first:
+      213: -6566316613780550264
+    second: sincantation logo cropped_3
+  - first:
+      213: 3037314383922322047
+    second: sincantation logo cropped_4
+  - first:
+      213: 8698785253030540602
+    second: sincantation logo cropped_5
+  - first:
+      213: -5294949727052782935
+    second: sincantation logo cropped_6
+  - first:
+      213: -781491481192488775
+    second: sincantation logo cropped_7
+  - first:
+      213: -2466120468097722831
+    second: sincantation logo cropped_8
+  - first:
+      213: -487847899635422665
+    second: sincantation logo cropped_9
+  - first:
+      213: -8992653728944956037
+    second: sincantation logo cropped_10
+  - first:
+      213: 7038242505925978090
+    second: sincantation logo cropped_11
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: sincantation logo cropped_0
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 95
+        width: 256
+        height: 306
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9e1e0074b45c8f30800000000000000
+      internalID: 4579128055079771803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_1
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 359
+        width: 40
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54a874b389a6888f0800000000000000
+      internalID: -538062953408656827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_2
+      rect:
+        serializedVersion: 2
+        x: 1007
+        y: 150
+        width: 130
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 09929a3a84d260910800000000000000
+      internalID: 1803178490815130000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_3
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 130
+        width: 126
+        height: 235
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 88d4dd064d1cfd4a0800000000000000
+      internalID: -6566316613780550264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_4
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 169
+        width: 111
+        height: 227
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7adfdcf655b62a20800000000000000
+      internalID: 3037314383922322047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_5
+      rect:
+        serializedVersion: 2
+        x: 1312
+        y: 115
+        width: 102
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35ba48791b48b870800000000000000
+      internalID: 8698785253030540602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_6
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 120
+        width: 168
+        height: 246
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a2a77fe64f8486b0800000000000000
+      internalID: -5294949727052782935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_7
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 95
+        width: 163
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9b0278c63a59725f0800000000000000
+      internalID: -781491481192488775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_8
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 128
+        width: 147
+        height: 207
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13617b5108496cdd0800000000000000
+      internalID: -2466120468097722831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_9
+      rect:
+        serializedVersion: 2
+        x: 762
+        y: 317
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a6fc58be0da39f0800000000000000
+      internalID: -487847899635422665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_10
+      rect:
+        serializedVersion: 2
+        x: 858
+        y: 133
+        width: 182
+        height: 221
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7dd422241da33380800000000000000
+      internalID: -8992653728944956037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sincantation logo cropped_11
+      rect:
+        serializedVersion: 2
+        x: 1371
+        y: 162
+        width: 115
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae7e5c8d44cdca160800000000000000
+      internalID: 7038242505925978090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      sincantation logo cropped_0: 4579128055079771803
+      sincantation logo cropped_1: -538062953408656827
+      sincantation logo cropped_10: -8992653728944956037
+      sincantation logo cropped_11: 7038242505925978090
+      sincantation logo cropped_2: 1803178490815130000
+      sincantation logo cropped_3: -6566316613780550264
+      sincantation logo cropped_4: 3037314383922322047
+      sincantation logo cropped_5: 8698785253030540602
+      sincantation logo cropped_6: -5294949727052782935
+      sincantation logo cropped_7: -781491481192488775
+      sincantation logo cropped_8: -2466120468097722831
+      sincantation logo cropped_9: -487847899635422665
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

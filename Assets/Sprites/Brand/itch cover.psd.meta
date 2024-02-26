@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c20b1a7eb8c82594591c20a0750f29ca
+guid: c8e9c0c59cdc1fc4a9a7a3d03b6bbe88
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3698307681884207744
-    second: mockups_0
+      213: -112384499661439825
+    second: itch cover_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mockups_0
+      name: itch cover_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 1920
-        height: 1080
+        width: 630
+        height: 500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 08a7ec00e37035330800000000000000
-      internalID: 3698307681884207744
+      spriteID: fac7b6b94eab07ef0800000000000000
+      internalID: -112384499661439825
       vertices: []
       indices: 
       edges: []
@@ -140,7 +140,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      itch cover_0: -112384499661439825
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
