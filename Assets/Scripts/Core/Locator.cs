@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class Locator : MonoBehaviour
+    public class Locator
     {
         public static Player Player { get; private set; }
         public static CurrencyManager CurrencyManager { get; private set; }
@@ -21,10 +21,5 @@ namespace Core
 
         public static void ProvideCreatureManager(CreatureManager creatureManager) =>
             CreatureManager = creatureManager;
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(gameObject);
-        }
     }
 }
