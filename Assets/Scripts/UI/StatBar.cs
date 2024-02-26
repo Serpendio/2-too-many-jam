@@ -20,7 +20,7 @@ namespace UI
                 easeType = EaseType.CubicOut,
                 onUpdate = (_, val) => _bar.fillAmount = val
             });
-            _text.text = $"{value}";
+            _text.text = $"{value:N0}";
         }
     }
 }
