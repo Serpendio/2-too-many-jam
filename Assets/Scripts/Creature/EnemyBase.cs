@@ -130,6 +130,7 @@ namespace Creature
                 LayerMask.GetMask("Wall")
             );
 
+            UpdateMoveDir(Agent.velocity, Agent.velocity.sqrMagnitude > 0);
 
             switch (EnemyType)
             {
