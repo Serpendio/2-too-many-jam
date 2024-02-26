@@ -238,8 +238,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Rb: {fileID: 0}
-  health: 0
-  maxHealth: 50
+  <health>k__BackingField: 0
+  <maxHealth>k__BackingField: 50
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 5
   Team: 0
   dashPower: 30
@@ -249,8 +252,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _activeSpellSlot: 0
-  mana: 0
-  maxMana: 0
+  <mana>k__BackingField: 0
+  <maxMana>k__BackingField: 0
+  OnManaChanged:
+    m_PersistentCalls:
+      m_Calls: []
   Inventory:
     _equippedSpells:
     - <Name>k__BackingField: 
