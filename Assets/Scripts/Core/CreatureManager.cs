@@ -7,7 +7,7 @@ namespace Core
     public class CreatureManager : MonoBehaviour
     {
 
-        public List<Creature.CreatureBase> creatures;
+        public List<Creature.CreatureBase> creatures = new();
 
         private void Awake()
         {
@@ -15,5 +15,6 @@ namespace Core
         }
 
         public void AddCreature(Creature.CreatureBase creature) => creatures.Add(creature);
+        public void RemoveCreature(Creature.CreatureBase creature) => creatures.Remove(creature);
     }
 }

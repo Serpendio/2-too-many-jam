@@ -117,8 +117,10 @@ namespace Creature
             // if animation currently playing is Attack, don't move
             if (Anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
             {
-                Agent.velocity = Vector3.zero;
+                Agent.destination = transform.position;
             }
+            else
+                Agent.destination = target.transform.position;
 
             var distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
 
@@ -158,7 +160,7 @@ namespace Creature
             }
         }
 
-        void OnCollisionEnter2D(Collision2D collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (EnemyType == EnemyType.Melee && collision.gameObject.CompareTag("Room"))
             {

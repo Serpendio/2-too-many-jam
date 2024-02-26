@@ -74,7 +74,7 @@ namespace Rooms
             var createdLamps = new List<Vector3Int>();
 
             int spawnedChests = 0;
-            int maximumPossibleChests = 200;
+            int maximumPossibleChests = 2;
 
             for (var x = tilemapBounds.xMin; x < tilemapBounds.xMax; x++)
             {
@@ -84,7 +84,7 @@ namespace Rooms
                     bool spawnLamp = Random.value > 0.9f && !createdLamps.Any(l => Vector3.Distance(l, pos) < 4);
 
 
-                    bool spawnChest = Random.value > 0f && spawnedChests < maximumPossibleChests;
+                    bool spawnChest = Random.value > .9f && spawnedChests < maximumPossibleChests;
                     
                     if (!spawnLamp && !spawnChest) continue;
 
