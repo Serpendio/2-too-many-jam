@@ -192,8 +192,11 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Rb: {fileID: 0}
-  health: 0
-  maxHealth: 8
+  <health>k__BackingField: 0
+  <maxHealth>k__BackingField: 8
+  OnHealthChanged:
+    m_PersistentCalls:
+      m_Calls: []
   moveSpeed: 4
   Team: 1
   Agent: {fileID: 158024836645491187}

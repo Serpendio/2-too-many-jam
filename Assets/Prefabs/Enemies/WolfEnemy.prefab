@@ -92,6 +92,10 @@ PrefabInstance:
       propertyPath: attackCooldown
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: <maxHealth>k__BackingField
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 0.76944447
