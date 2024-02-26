@@ -30,6 +30,7 @@ namespace Rooms
 
         [HideInInspector] public Transform SkullsContainer;
         [HideInInspector] public Transform EnemiesContainer;
+        [HideInInspector] public Transform ChestsContainer;
 
         public bool SpawnEnemiesOnEnter = true;
 
@@ -58,6 +59,9 @@ namespace Rooms
 
             EnemiesContainer = new GameObject("Enemies").transform;
             EnemiesContainer.parent = transform;
+            
+            ChestsContainer = new GameObject("Chests").transform;
+            ChestsContainer.parent = transform;
 
 
             lampTiles = new Tile[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
@@ -114,6 +118,7 @@ namespace Rooms
                             bool freeSpot = Core.Locator.CreatureManager.creatures.Where(c => c is Chest && c.transform.position == new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i]).Count() == 0 && doors.Where(d => posOffsets.ToList().ConvertAll(o => o += new Vector3(x + 0.5f, y + 0.5f, 0) + posOffsets[i]).Contains(d.transform.position)).Count() == 0;
                             if (spawnChest && freeSpot) {
                                 GameObject chest = Instantiate(chestPrefab, new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i], Quaternion.Euler(0, 0, rotationOffsets[i]));
+                                chest.transform.parent = ChestsContainer;
                                 Core.Locator.CreatureManager.creatures.Add(chest.GetComponent<Chest>());
                                 spawnedChests += 1;
                             }

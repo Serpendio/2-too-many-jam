@@ -36,7 +36,7 @@ namespace Creature
         [SerializeField] protected float moveSpeed;
 
         public Team Team;
-
+        
         protected virtual void Awake()
         {
 
@@ -123,6 +123,12 @@ namespace Creature
         {
             OnDeath.Invoke();
             Destroy(gameObject);
+        }
+
+        [ContextMenu("Force Kill")]
+        private void ForceKill()
+        {
+            SetHealth(0);
         }
     }
 }
