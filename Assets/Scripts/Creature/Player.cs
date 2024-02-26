@@ -1,6 +1,6 @@
+using System;
 using Core;
 using Spells;
-using Spells.Modifiers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -24,13 +24,15 @@ namespace Creature
         public float LastDashTime;
         public bool CanDash => Time.time - LastDashTime > DashCooldown;
 
-        public UnityEvent OnDash = new();
+        [HideInInspector] public UnityEvent OnDash = new();
 
         [Header("Spell-casting")] [SerializeField]
         private int _activeSpellSlot;
 
-        [SerializeField] public int mana;
-        [SerializeField] public int maxMana;
+        [field: SerializeField] public float mana { get; private set; }
+        [field: SerializeField] public float maxMana { get; private set; }
+
+        [HideInInspector] public UnityEvent<float, float> OnManaChanged = new();
 
         public Inventory Inventory = new();
 
@@ -49,8 +51,6 @@ namespace Creature
             _dashAction.performed += Dash;
             _castAction.performed += Cast;
 
-            mana = maxMana;
-
             LastDashTime = -DashCooldown;
 
             /*var initSpell = new Spell(new SpellStats
@@ -68,8 +68,32 @@ namespace Creature
 
             Inventory.MoveSpellToEquipped(0, initSpell);*/
         }
-
-        // https://files.catbox.moe/835ck8.png
+        
+        protected override void Start()
+        {
+            base.Start();
+            SetMana(maxMana);
+        }
+        
+        public void SetMana(float value)
+        {
+            mana = Mathf.Clamp(value, 0, maxMana);
+            OnManaChanged.Invoke(mana, maxMana);
+        }
+        
+        public void SetMaxMana(float value, bool refill = false)
+        {
+            var diff = value - maxMana;
+            maxMana = value;
+            if (refill)
+            {
+                SetMana(mana + diff);
+            }
+            else
+            {
+                OnManaChanged.Invoke(mana, maxMana);
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -118,9 +142,8 @@ namespace Creature
 
         public void Dash(InputAction.CallbackContext context)
         {
-            if (context.performed && CanDash &&
-                Rb.velocity.magnitude >
-                0.01f) //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
+            //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
+            if (context.performed && CanDash && Rb.velocity.magnitude > 0.01f)
             {
                 Dash();
             }

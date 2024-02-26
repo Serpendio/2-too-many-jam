@@ -28,8 +28,11 @@ namespace Creature
         protected SpriteRenderer spriteRenderer;
         [HideInInspector] public Rigidbody2D Rb;
 
-        [SerializeField] private float health;
-        [SerializeField] protected float maxHealth;
+        [field: SerializeField] public float health { get; private set; }
+        [field: SerializeField] public float maxHealth { get; private set; }
+
+        [HideInInspector] public UnityEvent<float, float> OnHealthChanged = new();
+
         [SerializeField] protected float moveSpeed;
 
         public Team Team;
@@ -44,7 +47,31 @@ namespace Creature
             Anim = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             Rb = GetComponent<Rigidbody2D>();
+        }
 
+        protected virtual void Start()
+        {
+            SetHealth(maxHealth);
+        }
+
+        public void SetHealth(float value)
+        {
+            health = Mathf.Clamp(value, 0, maxHealth);
+            OnHealthChanged.Invoke(health, maxHealth);
+        }
+
+        public void SetMaxHealth(float value, bool refill = false)
+        {
+            var diff = value - maxHealth;
+            maxHealth = value;
+            if (refill)
+            {
+                SetHealth(health + diff);
+            }
+            else
+            {
+                OnHealthChanged.Invoke(health, maxHealth);
+            }
         }
 
         protected void UpdateMoveDir(Vector2 lookDir, bool isMoving)
@@ -72,7 +99,7 @@ namespace Creature
 
         public virtual void TakeDamage(float damage)
         {
-            health = Mathf.Clamp(health - damage, 0, maxHealth);
+            SetHealth(Mathf.Clamp(health - damage, 0, maxHealth));
 
             // tween flash sprite colour as red
             gameObject.AddTween(new SpriteRendererColorTween
@@ -87,13 +114,9 @@ namespace Creature
             if (health == 0) Die();
         }
 
-        public virtual void RefillHealth() {
-            health = maxHealth;
-        }
-
-        public virtual void IncreaseMaxHealth(int val) {
-            maxHealth += val;
-            health = maxHealth;
+        public virtual void RefillHealth()
+        {
+            SetHealth(maxHealth);
         }
 
         protected virtual void Die()
