@@ -45,6 +45,8 @@ namespace Creature
 
         private static CoinDrop _coinDropPrefab;
 
+        [SerializeField] private float targetingRange;
+
         // Start is called before the first frame update
         protected override void Awake()
         {
@@ -93,7 +95,7 @@ namespace Creature
         {
             base.Die();
 
-            if (Random.value < Locator.GameplaySettingsManager.CoinDropChance)
+            if (Random.value <= Locator.GameplaySettingsManager.CoinDropChance)
             {
                 var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
                 coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
@@ -109,14 +111,15 @@ namespace Creature
                 Agent.velocity = Vector3.zero;
             }
 
-            Agent.SetDestination(target.transform.position);
-            UpdateMoveDir(target.transform.position - transform.position, Agent.velocity.sqrMagnitude > 0);
-
             var distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
+
+            Agent.SetDestination(target.transform.position);
+            if (Agent.remainingDistance > targetingRange) { Agent.velocity = Vector3.zero; }
+            UpdateMoveDir(target.transform.position - transform.position, Agent.velocity.sqrMagnitude > 0);
 
             if (EnemyType == EnemyType.Melee)
             {
-                if (distanceToTarget < attackRange && Time.time - LastAttackTime > attackCooldown)
+                if (distanceToTarget <= attackRange && Time.time - LastAttackTime > attackCooldown)
                 {
                     Attack();
                     LastAttackTime = Time.time;
