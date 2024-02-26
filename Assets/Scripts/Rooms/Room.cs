@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
@@ -32,10 +33,12 @@ namespace Rooms
 
         public bool SpawnEnemiesOnEnter = true;
 
-        private Tile _lampTopTile;
-        private Tile _lampLeftTile;
-        private Tile _lampRightTile;
-        private Tile _lampBottomTile;
+        private Tile[] lampTiles;
+
+        private Vector3[] posOffsets;
+        private int[] rotationOffsets;
+
+        [SerializeField] public GameObject chestPrefab;
 
         private void Awake()
         {
@@ -56,20 +59,34 @@ namespace Rooms
             EnemiesContainer = new GameObject("Enemies").transform;
             EnemiesContainer.parent = transform;
 
-            _lampTopTile = Resources.Load<Tile>("Tiles/wall_tile_lamp_top");
-            _lampLeftTile = Resources.Load<Tile>("Tiles/wall_tile_lamp_left");
-            _lampRightTile = Resources.Load<Tile>("Tiles/wall_tile_lamp_right");
-            _lampBottomTile = Resources.Load<Tile>("Tiles/wall_tile_lamp_bottom");
+
+            lampTiles = new Tile[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
+                                    Resources.Load<Tile>("Tiles/wall_tile_lamp_left"),
+                                    Resources.Load<Tile>("Tiles/wall_tile_lamp_right"),
+                                    Resources.Load<Tile>("Tiles/wall_tile_lamp_bottom")};
+
+            posOffsets = new Vector3[] {Vector3.down, Vector3.right, Vector3.left, Vector3.up};
+            rotationOffsets = new int[] {0, 90, 270, 180};
+
 
             // Iterate through tiles, if tile is wall, random chance to add lamp tile on higher level
             var tilemapBounds = Tilemap.cellBounds;
             var createdLamps = new List<Vector3Int>();
+
+            int spawnedChests = 0;
+            int maximumPossibleChests = 200;
+
             for (var x = tilemapBounds.xMin; x < tilemapBounds.xMax; x++)
             {
                 for (var y = tilemapBounds.yMin; y < tilemapBounds.yMax; y++)
                 {
                     var pos = new Vector3Int(x, y, 1);
-                    if (Random.value < 0.9f || createdLamps.Any(l => Vector3.Distance(l, pos) < 4)) continue;
+                    bool spawnLamp = Random.value > 0.9f && !createdLamps.Any(l => Vector3.Distance(l, pos) < 4);
+
+
+                    bool spawnChest = Random.value > 0f && spawnedChests < maximumPossibleChests;
+                    
+                    if (!spawnLamp && !spawnChest) continue;
 
                     var baseTile = Tilemap.GetTile(new Vector3Int(x, y, 0));
                     if (baseTile == null) continue;
@@ -80,34 +97,27 @@ namespace Rooms
                     sides[2] = Tilemap.GetTile(new Vector3Int(x + 1, y, 0));
                     sides[3] = Tilemap.GetTile(new Vector3Int(x, y - 1, 0));
 
-                    // prevent corners          
+                    // prevent corners
                     if (sides[0] == null && sides[1] == null) continue;
                     if (sides[0] == null && sides[2] == null) continue;
                     if (sides[3] == null && sides[1] == null) continue;
                     if (sides[3] == null && sides[2] == null) continue;
 
-                    if (sides[0] == null)
-                    {
-                        Tilemap.SetTile(pos, _lampTopTile);
-                        createdLamps.Add(pos);
-                    }
-
-                    if (sides[3] == null)
-                    {
-                        Tilemap.SetTile(pos, _lampBottomTile);
-                        createdLamps.Add(pos);
-                    }
-
-                    if (sides[1] == null)
-                    {
-                        Tilemap.SetTile(pos, _lampLeftTile);
-                        createdLamps.Add(pos);
-                    }
-
-                    if (sides[2] == null)
-                    {
-                        Tilemap.SetTile(pos, _lampRightTile);
-                        createdLamps.Add(pos);
+                    //Loop through all sides
+                    for (int i=0; i<4; i++) {
+                        if (sides[i] == null) {
+                            if (spawnLamp) {
+                                Tilemap.SetTile(pos, lampTiles[i]);
+                                createdLamps.Add(pos);
+                            }
+                            //Check that there isn't already a chest or door at potential spot - it makes sense i swear! :-]
+                            bool freeSpot = Core.Locator.CreatureManager.creatures.Where(c => c is Chest && c.transform.position == new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i]).Count() == 0 && doors.Where(d => posOffsets.ToList().ConvertAll(o => o += new Vector3(x + 0.5f, y + 0.5f, 0) + posOffsets[i]).Contains(d.transform.position)).Count() == 0;
+                            if (spawnChest && freeSpot) {
+                                GameObject chest = Instantiate(chestPrefab, new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i], Quaternion.Euler(0, 0, rotationOffsets[i]));
+                                Core.Locator.CreatureManager.creatures.Add(chest.GetComponent<Chest>());
+                                spawnedChests += 1;
+                            }
+                        }
                     }
                 }
             }

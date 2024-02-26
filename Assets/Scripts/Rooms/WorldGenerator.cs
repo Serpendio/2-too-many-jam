@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 using Creature;
 using NavMeshPlus.Components;
@@ -116,7 +117,10 @@ namespace Rooms
             {
                 _currentRoom.gameObject.SetActive(false);
                 _currentRoom = linkedDoor.room;
-                _currentRoom.gameObject.SetActive(true);
+                _currentRoom.gameObject.SetActive(true); 
+                for (int i=0; i<Core.Locator.CreatureManager.creatures.Count; i++) {
+                    
+                }
 
                 _player.transform.position = linkedDoor.transform.position + linkedDoor.direction switch
                 {

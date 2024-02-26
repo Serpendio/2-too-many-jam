@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 418d445639ae9694999f8c35c4c13c69
+guid: 0414fa7cb07afd942838d8591a2c71bc
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8182572036255612799
-    second: chestclosedWIP_0
-  - first:
-      213: -6728240376439842791
-    second: chestclosedWIP_1
+      213: -7020885042076746291
+    second: chestOpenEmpty_0
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -40,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 2
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -78,7 +75,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,13 +98,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: chestclosedWIP_0
+      name: chestOpenEmpty_0
       rect:
         serializedVersion: 2
-        x: 123
-        y: 25
+        x: 112
+        y: 49
         width: 1004
-        height: 787
+        height: 1138
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,29 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f7f7f02f9e55e8170800000000000000
-      internalID: 8182572036255612799
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: chestclosedWIP_1
-      rect:
-        serializedVersion: 2
-        x: 1133
-        y: 336
-        width: 20
-        height: 107
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 918dcde760d70a2a0800000000000000
-      internalID: -6728240376439842791
+      spriteID: dcd7922a04ec09e90800000000000000
+      internalID: -7020885042076746291
       vertices: []
       indices: 
       edges: []
@@ -153,8 +129,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      chestclosedWIP_0: 8182572036255612799
-      chestclosedWIP_1: -6728240376439842791
+      chestOpenEmpty_0: -7020885042076746291
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

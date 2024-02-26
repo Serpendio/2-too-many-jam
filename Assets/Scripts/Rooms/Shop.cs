@@ -42,8 +42,20 @@ namespace Rooms
                         itemIcon.GetComponent<Item>().cost = spellCost;
                         break;
 
-                    //Modifier
+                    
+                    //----Possibly pointless cases, keeping them here for maintainability----//
+                    //Health refill
                     case 1:
+                        itemIcon = Instantiate(itemIconPrefabs[3]);
+                        break;
+
+                    //Total health increase
+                    case 2:
+                        itemIcon = Instantiate(itemIconPrefabs[4]);
+                        break;
+
+                    //Modifier
+                    case 3:
                         int modifierCost = 0;
                         SpellModifier modifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
                         itemIcon = Instantiate(itemIconPrefabs[1]);
@@ -51,20 +63,9 @@ namespace Rooms
                         itemIcon.GetComponent<Item>().cost = modifierCost;
                         break;
                     
-                    //----Possibly pointless cases, keeping them here for maintainability----//
                     //Shard(s)
-                    case 2:
-                        itemIcon = Instantiate(itemIconPrefabs[2]);
-                        break;
-
-                    //Health refill
-                    case 3:
-                        itemIcon = Instantiate(itemIconPrefabs[3]);
-                        break;
-
-                    //Total health increase
                     case 4:
-                        itemIcon = Instantiate(itemIconPrefabs[4]);
+                        itemIcon = Instantiate(itemIconPrefabs[2]);
                         break;
 
                 }

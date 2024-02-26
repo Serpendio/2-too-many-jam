@@ -26,7 +26,7 @@ namespace Creature
         [HideInInspector] public UnityEvent OnDeath = new();
 
         protected Animator Anim;
-        protected SpriteRenderer SpriteRenderer;
+        protected SpriteRenderer spriteRenderer;
         [HideInInspector] public Rigidbody2D Rb;
 
         [SerializeField] private float health;
@@ -37,10 +37,13 @@ namespace Creature
 
         protected virtual void Awake()
         {
+
+            Core.Locator.CreatureManager.AddCreature(this);
+
             health = maxHealth;
 
             Anim = GetComponent<Animator>();
-            SpriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
             Rb = GetComponent<Rigidbody2D>();
 
         }
@@ -56,7 +59,7 @@ namespace Creature
 
             if (lookDir.sqrMagnitude != 0)
             {
-                SpriteRenderer.flipX = lookDir.x < 0;
+                spriteRenderer.flipX = lookDir.x < 0;
             }
 
             Anim.SetFloat(XMove, lookDir.x);
