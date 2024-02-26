@@ -56,7 +56,7 @@ namespace Spells
             dissipated = false;
 
             if (BarrierSize > 0) {
-                transform.localScale += new Vector3 (0, BarrierSize, 0);
+                transform.localScale += (Vector3) (Vector2.Perpendicular(CastDirection) * BarrierSize);
             }
 
             if (OrbitRadius > 0) {

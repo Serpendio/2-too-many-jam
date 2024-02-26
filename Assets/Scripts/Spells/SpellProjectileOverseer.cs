@@ -22,28 +22,24 @@ namespace Spells
         private IEnumerator CreateProjectile(Vector2 castDirection)
         {
             isCreateProjRunning = true;
-            int BurstShots = Spell.Modifiers.Where(m => m.BurstFire).Sum(m => m.HowManyShots);
-            Vector2 currCastDirection = castDirection;
-
-            if (BurstShots == 0) {
-                BurstShots = 1;
-            }
-
+            int BurstShots = Spell.Modifiers.Where(m => m.BurstFire).Sum(m => m.HowManyShots) + 1;
+            var lastMouseOffset = CastDirection;
 
             for (int i = 0; i< BurstShots; i++) {           
                 // Get direction from player to mouse
                 if (transform.CompareTag("Player")) {
                     var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-                    currCastDirection = castDirection * (mousePos - transform.position).normalized;
-                    mousePos.z = transform.position.z;
+                    float newOffset = Vector2.SignedAngle(lastMouseOffset, mousePos - transform.position);
+                    castDirection = Quaternion.Euler(0, 0, newOffset) * castDirection;
+                    lastMouseOffset = mousePos - transform.position;
                 }
 
-                var projectile = Instantiate(SpellProjectilePrefab, transform.position + (Vector3.up * 0.5f), Quaternion.identity);
+                var projectile = Instantiate(SpellProjectilePrefab, transform.position + (Vector3.up * 0.25f), Quaternion.identity);
                 Projectiles.Add(projectile);
                 
                 projectile.Overseer = this;
                 projectile.Spell = Spell;
-                projectile.CastDirection = currCastDirection;
+                projectile.CastDirection = castDirection;
                 projectile.BouncesRemaining = Spell.Modifiers.Where(m => m.Bouncing).Sum(m => m.BounceTimes);
                 projectile.PiercesRemaining = Spell.Modifiers.Where(m => m.Piercing).Sum(m => m.PierceTimes);
                 projectile.ChainTimesRemaining = Spell.Modifiers.Where(m => m.Chain).Sum(m => m.ChainTimes);
@@ -58,9 +54,7 @@ namespace Spells
                 projectile.TornadoRadius = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullRadius);
                 projectile.BarrierSize = Spell.Modifiers.Where(m => m.Barrier).Sum(m => m.SizeOfBarrier);
 
-                if (i != BurstShots - 1) {
-                    yield return new WaitForSeconds(.08f);
-                }
+                yield return new WaitForSeconds(.08f);
             }
 
             isCreateProjRunning = false;
@@ -80,12 +74,12 @@ namespace Spells
             float projectilesSpreadDegrees = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
             if (projectilesAmount == 1)
             {
-                Vector2 spreadDir;
-                if (transform.CompareTag("Player")) {
+                Vector2 spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
+                /*if (transform.CompareTag("Player")) {
                     spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * new Vector2(1,1);
                 } else {
                     spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
-                }
+                }*/
 
                 StartCoroutine(CreateProjectile(spreadDir));
             }
@@ -97,12 +91,12 @@ namespace Spells
                     // i.e: 3\ 2\ 1\ |P /1 /2 /3
                     var angleDiff = projectilesSpreadDegrees / (projectilesAmount - 1);
                     var offset = projectilesSpreadDegrees / 2;
-                    Vector2 spreadDir;
-                    if (transform.CompareTag("Player")) {
+                    Vector2 spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
+                    /*if (transform.CompareTag("Player")) {
                         spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * new Vector2(1,1);
                     } else {
                         spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
-                    }
+                    }*/
 
                     StartCoroutine(CreateProjectile(spreadDir));
                 }
