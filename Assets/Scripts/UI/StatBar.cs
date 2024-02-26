@@ -21,7 +21,7 @@ namespace UI
                 easeType = EaseType.CubicOut,
             });
             
-            _text.text = $"{value:N0}";
+            _text.text = $"{Mathf.CeilToInt(value)}";
         }
     }
 }

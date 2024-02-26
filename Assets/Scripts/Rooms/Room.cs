@@ -26,7 +26,8 @@ namespace Rooms
 
         private List<EnemyBase> _enemies = new();
 
-        private GameObject _deathSkullPrefab;
+        private static GameObject _deathSkullPrefab;
+        private static GameObject _chestPrefab;
 
         [HideInInspector] public Transform SkullsContainer;
         [HideInInspector] public Transform EnemiesContainer;
@@ -39,7 +40,6 @@ namespace Rooms
         private Vector3[] posOffsets;
         private int[] rotationOffsets;
 
-        [SerializeField] public GameObject chestPrefab;
 
         private void Awake()
         {
@@ -52,7 +52,9 @@ namespace Rooms
             }
 
             Tilemap = GetComponent<Tilemap>();
-            _deathSkullPrefab = Resources.Load<GameObject>("Prefabs/GroundSkull");
+            
+            if (_deathSkullPrefab == null) _deathSkullPrefab = Resources.Load<GameObject>("Prefabs/GroundSkull");
+            if (_chestPrefab == null) _chestPrefab = Resources.Load<GameObject>("Prefabs/Chest");
 
             SkullsContainer = new GameObject("Skulls").transform;
             SkullsContainer.parent = transform;
@@ -62,7 +64,6 @@ namespace Rooms
             
             ChestsContainer = new GameObject("Chests").transform;
             ChestsContainer.parent = transform;
-
 
             lampTiles = new Tile[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
                                     Resources.Load<Tile>("Tiles/wall_tile_lamp_left"),
@@ -117,7 +118,7 @@ namespace Rooms
                             //Check that there isn't already a chest or door at potential spot - it makes sense i swear! :-]
                             bool freeSpot = Core.Locator.CreatureManager.creatures.Where(c => c is Chest && c.transform.position == new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i]).Count() == 0 && doors.Where(d => posOffsets.ToList().ConvertAll(o => o += new Vector3(x + 0.5f, y + 0.5f, 0) + posOffsets[i]).Contains(d.transform.position)).Count() == 0;
                             if (spawnChest && freeSpot) {
-                                GameObject chest = Instantiate(chestPrefab, new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i], Quaternion.Euler(0, 0, rotationOffsets[i]));
+                                GameObject chest = Instantiate(_chestPrefab, new Vector3(x + 0.5f, y + 0.5f, 0f) + posOffsets[i], Quaternion.Euler(0, 0, rotationOffsets[i]));
                                 chest.transform.parent = ChestsContainer;
                                 Core.Locator.CreatureManager.creatures.Add(chest.GetComponent<Chest>());
                                 spawnedChests += 1;

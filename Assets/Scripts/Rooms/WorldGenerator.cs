@@ -1,6 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;

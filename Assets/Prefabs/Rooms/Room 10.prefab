@@ -3908,6 +3908,8 @@ TilemapRenderer:
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -4000,7 +4002,9 @@ MonoBehaviour:
   MapCoord: {x: 0, y: 0}
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
+  ChestsContainer: {fileID: 0}
   SpawnEnemiesOnEnter: 1
+  chestPrefab: {fileID: 0}
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0

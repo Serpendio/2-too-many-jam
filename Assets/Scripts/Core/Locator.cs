@@ -1,11 +1,9 @@
-﻿using System.Linq;
-using Creature;
-using UnityEngine;
+﻿using Creature;
 using UnityEngine.Events;
 
 namespace Core
 {
-    public class Locator
+    public static class Locator
     {
         public static Player Player { get; private set; }
         public static CurrencyManager CurrencyManager { get; private set; }

@@ -1,10 +1,8 @@
-using System;
 using Core;
 using Currency;
 using NaughtyAttributes;
 using Spells;
 using Tweens;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -108,7 +106,6 @@ namespace Creature
 
             var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
             coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
-
         }
 
         // Update is called once per frame

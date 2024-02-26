@@ -11,12 +11,16 @@ namespace UI
         [SerializeField] private Image _barImage;
         private CanvasGroup _canvasGroup;
 
+        private CanvasScaler _cs;
+
         private float _hiddenAlpha = 0f;
 
         private void Awake()
         {
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = _hiddenAlpha;
+
+            _cs = GetComponentInParent<CanvasScaler>();
         }
 
         private void Start()
@@ -27,8 +31,9 @@ namespace UI
         private void Update()
         {
             // Show underneath player
-            transform.position = Camera.main.WorldToScreenPoint(Locator.Player.transform.position)
-                                 - new Vector3(0, 35, 0);
+            var screenPoint = Camera.main.WorldToScreenPoint(Locator.Player.transform.position - (Vector3.up * 0.6f));
+            
+            transform.position = screenPoint / _cs.scaleFactor;
         }
 
         private void UpdateDashMeter()
