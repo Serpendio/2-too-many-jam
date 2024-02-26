@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &3008043042327766165
+--- !u!1001 &6263212967644304987
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,23 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 158024836645491187, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Height
-      value: 1.3
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 158024836645491187, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Radius
-      value: 0.35
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 158024836645491187, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_BaseOffset
-      value: 0.65
+      value: 0.48
       objectReference: {fileID: 0}
     - target: {fileID: 1589320858767350267, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Size.x
-      value: 0.7
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1589320858767350267, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Size.y
-      value: 1.3
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589320858767350267, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.07
+      objectReference: {fileID: 0}
+    - target: {fileID: 1589320858767350267, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_Direction
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2147314920079263864, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -71,46 +79,42 @@ PrefabInstance:
     - target: {fileID: 2380551732436294689, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: c083cf734b4f43b40bc09e70fff740e9, type: 2}
+      objectReference: {fileID: 22100000, guid: a2d49a30e463bb846b76c0123187721e, type: 2}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: maxHealth
-      value: 23
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: moveSpeed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: attackRange
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: attackDamage
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: attackCooldown
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 0.76944447
+      value: 1.7540001
       objectReference: {fileID: 0}
     - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 1.3416667
+      value: 1.2401329
       objectReference: {fileID: 0}
     - target: {fileID: 7848099009551039341, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 9021229641086641310, guid: 080537209620cb045844b80c3e76e289, type: 3}
-    - target: {fileID: 7848099009551039341, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
-      propertyPath: m_SortingOrder
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8108784921590595272, guid: 82f0c7613f73fe84facbf0cfd65f87c9, type: 3}
     - target: {fileID: 8317292360838696019, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_Name
-      value: WolfEnemy
+      value: GargoyleEnemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

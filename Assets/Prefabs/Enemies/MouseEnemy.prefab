@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2147314920079263864}
   - component: {fileID: 7848099009551039341}
   - component: {fileID: 2380551732436294689}
-  - component: {fileID: 6678396936225670940}
+  - component: {fileID: 1589320858767350267}
   - component: {fileID: 931631680836140533}
   - component: {fileID: 2412630101394709530}
   - component: {fileID: 158024836645491187}
@@ -112,8 +112,8 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &6678396936225670940
-BoxCollider2D:
+--- !u!70 &1589320858767350267
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -147,17 +147,8 @@ BoxCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.4555556, y: 1}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.8, y: 0.8}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.5, y: 0.5}
+  m_Direction: 0
 --- !u!50 &931631680836140533
 Rigidbody2D:
   serializedVersion: 4
@@ -202,12 +193,12 @@ MonoBehaviour:
       m_Calls: []
   Rb: {fileID: 0}
   health: 0
-  maxHealth: 15
-  moveSpeed: 2
+  maxHealth: 8
+  moveSpeed: 4
   Team: 1
   Agent: {fileID: 158024836645491187}
   target: {fileID: 0}
-  EnemyType: 1
+  EnemyType: 0
   attackCooldown: 1
   attackRange: 1
   attackDamage: 3
@@ -235,7 +226,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8317292360838696019}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.8
+  m_Radius: 0.25
   m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
@@ -244,8 +235,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1
-  m_BaseOffset: 0.5
+  m_Height: 0.5
+  m_BaseOffset: 0.25
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1721165864771726038

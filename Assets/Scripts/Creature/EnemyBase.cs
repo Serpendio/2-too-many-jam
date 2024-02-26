@@ -4,6 +4,7 @@ using Currency;
 using NaughtyAttributes;
 using Spells;
 using Tweens;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -44,6 +45,7 @@ namespace Creature
         private float LastAttackTime;
 
         private static CoinDrop _coinDropPrefab;
+        private bool _isAttacking = false;
 
         [SerializeField] private float targetingRange;
 
@@ -52,7 +54,8 @@ namespace Creature
         {
             base.Awake();
             Agent.enabled = false;
-            
+            LastAttackTime = -attackCooldown;
+
             if (_coinDropPrefab == null) _coinDropPrefab = Resources.Load<CoinDrop>("Prefabs/CoinDrop");
         }
 
@@ -66,28 +69,34 @@ namespace Creature
         private void Attack()
         {
             TriggerAttackAnim();
+            _isAttacking = true;
 
-            if (EnemyType == EnemyType.Melee)
+            switch (EnemyType)
             {
-                gameObject.AddTween(new LocalPositionTween
-                {
-                    from = transform.position,
-                    to = transform.position + (target.transform.position - transform.position).normalized * 0.25f,
-                    duration = 0.05f,
-                    easeType = EaseType.ExpoInOut,
-                    usePingPong = true
-                });
+                case EnemyType.Melee:
+                    var endPoint = target.transform.position +
+                                   (target.transform.position - transform.position).normalized * attackRange;
+                    gameObject.AddTween(new LocalPositionTween
+                    {
+                        from = transform.position,
+                        to = endPoint,
+                        duration = (endPoint - transform.position).magnitude / 6,
+                        easeType = EaseType.CubicInOut,
+                        usePingPong = false,
+                        onEnd = _ =>
+                        {
+                            _isAttacking = false;
+                        }
+                    });
+                    break;
+                case EnemyType.Spell:
+                    // Get direction from player to mouse
+                    var dir = (target.transform.position - transform.position).normalized;
 
-                target.TakeDamage(attackDamage);
-            }
-            else if (EnemyType == EnemyType.Spell)
-            {
-                // Get direction from player to mouse
-                var dir = (target.transform.position - transform.position).normalized;
-
-                var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
-                overseer.Spell = Spell;
-                overseer.CastDirection = dir;
+                    var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
+                    overseer.Spell = Spell;
+                    overseer.CastDirection = dir;
+                    break;
             }
         }
 
@@ -95,15 +104,15 @@ namespace Creature
         {
             base.Die();
 
-            if (Random.value <= Locator.GameplaySettingsManager.CoinDropChance)
-            {
-                var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
-                coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
-            }
+            if (Random.value > Locator.GameplaySettingsManager.CoinDropChance) return;
+
+            var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
+            coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
+
         }
-        
+
         // Update is called once per frame
-        void Update()
+        private void Update()
         {
             // if animation currently playing is Attack, don't move
             if (Anim.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
@@ -113,36 +122,59 @@ namespace Creature
 
             var distanceToTarget = Vector3.Distance(target.transform.position, transform.position);
 
-            Agent.SetDestination(target.transform.position);
-            if (Agent.remainingDistance > targetingRange) { Agent.velocity = Vector3.zero; }
-            UpdateMoveDir(target.transform.position - transform.position, Agent.velocity.sqrMagnitude > 0);
+            var hasLineOfSight = !Physics2D.Linecast(
+                transform.position,
+                target.transform.position,
+                LayerMask.GetMask("Wall")
+            );
 
-            if (EnemyType == EnemyType.Melee)
+
+            switch (EnemyType)
             {
-                if (distanceToTarget <= attackRange && Time.time - LastAttackTime > attackCooldown)
-                {
-                    Attack();
-                    LastAttackTime = Time.time;
-                }
+                case EnemyType.Melee:
+                    Agent.stoppingDistance = hasLineOfSight
+                        ? attackRange
+                        : 0;
+
+                    if (hasLineOfSight && distanceToTarget < attackRange && Time.time - LastAttackTime > attackCooldown)
+                    {
+                        Attack();
+                        LastAttackTime = Time.time;
+                    }
+
+                    break;
+                case EnemyType.Spell:
+                    Agent.stoppingDistance = hasLineOfSight
+                        ? Spell.ComputedStats.Range
+                        : 0;
+
+                    if (hasLineOfSight && distanceToTarget < Spell.ComputedStats.Range && Spell.CooldownOver)
+                    {
+                        Attack();
+                        Spell.LastCastTime = Time.time;
+                    }
+
+                    break;
             }
-            else if (EnemyType == EnemyType.Spell)
+        }
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (EnemyType == EnemyType.Melee && collision.gameObject.CompareTag("Room"))
             {
-                var hasLineOfSight = !Physics2D.Linecast(
-                    transform.position,
-                    target.transform.position,
-                    LayerMask.GetMask("Wall")
-                );
-
-                Agent.stoppingDistance = hasLineOfSight
-                    ? Spell.ComputedStats.Range
-                    : 0;
-
-                if (hasLineOfSight && distanceToTarget < Spell.ComputedStats.Range && Spell.CooldownOver)
-                {
-                    Attack();
-                    Spell.LastCastTime = Time.time;
-                }
+                gameObject.CancelTweens();
             }
+
+            if (collision.gameObject.TryGetComponent(out CreatureBase creature) && creature.Team != Team)
+            {
+                creature.TakeDamage(attackDamage);
+            }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, EnemyType == EnemyType.Melee ? attackRange : Spell.ComputedStats.Range);
         }
     }
 }
