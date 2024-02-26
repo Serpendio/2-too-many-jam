@@ -59,7 +59,7 @@ namespace Creature
             if (_coinDropPrefab == null) _coinDropPrefab = Resources.Load<CoinDrop>("Prefabs/CoinDrop");
         }
 
-        protected void Start()
+        protected override void Start()
         {
             Agent.enabled = true;
 

@@ -47,7 +47,7 @@ public class Item : MonoBehaviour
                 case 4:
                     //Max health increase
                     int healthIncrease = Random.Range(5, 20);
-                    player.IncreaseMaxHealth(healthIncrease);
+                    player.SetMaxHealth(player.maxHealth + healthIncrease, true);
                     break;
             }
             Destroy(this.gameObject);
