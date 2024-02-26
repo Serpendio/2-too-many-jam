@@ -1,7 +1,4 @@
 using Creature;
-using Spells.Modifiers;
-using System;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Spells
@@ -13,6 +10,7 @@ namespace Spells
         private Rigidbody2D _rb;
         private ParticleSystem _particleSystem;
 
+        public CreatureBase Caster;
         public Spell Spell;
         public Vector2 CastDirection;
 

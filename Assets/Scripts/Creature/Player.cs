@@ -91,6 +91,7 @@ namespace Creature
                 var spellProjectile = Instantiate(SpellProjectilePrefab, Rb.position, Quaternion.identity);
                 spellProjectile.Spell = activeSpell;
                 spellProjectile.CastDirection = dir;
+                spellProjectile.Caster = this;
 
                 activeSpell.LastCastTime = Time.time;
             }
