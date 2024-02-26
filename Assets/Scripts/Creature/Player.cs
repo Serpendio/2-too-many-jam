@@ -4,6 +4,7 @@ using Spells;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Creature
@@ -147,6 +148,11 @@ namespace Creature
             {
                 Dash();
             }
+        }
+        protected override void Die()
+        {
+            // could animate then delay for a few seconds
+            SceneManager.LoadScene("EndScene");
         }
 
         private void Dash()
