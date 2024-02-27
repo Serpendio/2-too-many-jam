@@ -1,14 +1,17 @@
+using System.Collections.Generic;
 using Currency;
 using Core;
 using UnityEngine;
-
 
 namespace Creature
 {
     public class Chest : CreatureBase
     {
-        [SerializeField] private Sprite openChestSprite;
+        [SerializeField] private Sprite openSprite;
+        [SerializeField] private Sprite emptySprite;
         private static CoinDrop _coinDropPrefab;
+
+        private List<CoinDrop> _coinDrops = new();
 
         protected override void Awake()
         {
@@ -19,10 +22,11 @@ namespace Creature
 
         public override void TakeDamage(float damage)
         {
+            spriteRenderer.sprite = openSprite;
+            
             var totalValue = Locator.GameplaySettingsManager.ChestDropValue.GetValue();
+            
             var droppedValue = 0f;
-
-            spriteRenderer.sprite = openChestSprite;
             while (droppedValue < totalValue)
             {
                 var offset = transform.up * Random.Range(-0.25f, -0.75f) + transform.right * Random.Range(-0.5f, 0.5f);
@@ -31,6 +35,16 @@ namespace Creature
                 var coinDrop = Instantiate(_coinDropPrefab, transform.position + offset, Quaternion.identity);
                 coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
 
+                coinDrop.OnPickup.AddListener(() =>
+                {
+                    _coinDrops.Remove(coinDrop);
+                    if (_coinDrops.Count == 0)
+                    {
+                        spriteRenderer.sprite = emptySprite;
+                    }
+                });
+                
+                _coinDrops.Add(coinDrop);
                 droppedValue += coinDrop.coinValue;
             }
             

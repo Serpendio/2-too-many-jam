@@ -1,5 +1,6 @@
 ﻿using Core;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Currency
 {
@@ -11,6 +12,8 @@ namespace Currency
         [SerializeField] private float _magnetDistance = 3;
         [SerializeField] private float _pickupDistance = 1;
 
+        public UnityEvent OnPickup = new();
+
         private void Update()
         {
             var distanceFromPlayer = Vector3.Distance(transform.position, Locator.Player.transform.position);
@@ -18,6 +21,7 @@ namespace Currency
             if (distanceFromPlayer < _pickupDistance)
             {
                 Locator.CurrencyManager.AddGold(coinValue);
+                OnPickup.Invoke();
                 Destroy(gameObject);
             }
             else if (distanceFromPlayer < _magnetDistance)
