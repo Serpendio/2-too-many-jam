@@ -198,8 +198,8 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  moveSpeed: 5
   Team: 0
+  moveSpeed: 4.25
   dashPower: 30
   DashCooldown: 1
   LastDashTime: 0

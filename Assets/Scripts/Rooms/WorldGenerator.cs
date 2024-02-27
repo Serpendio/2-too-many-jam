@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
@@ -17,7 +18,7 @@ namespace Rooms
         [SerializeField] private List<Room> _roomPrefabs;
         [SerializeField] private int nextRoom;
 
-        [SerializeField] private List<EnemyBase> _creatureSpawnPool;
+        [SerializeField] private WeightedSpawnPool _weightedSpawnPool = new();
 
         public List<Room> WorldRooms = new();
         private Room _currentRoom;
@@ -157,7 +158,7 @@ namespace Rooms
 
                         for (var i = 0; i < enemiesToSpawn; i++)
                         {
-                            var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
+                            var creaturePrefab = _weightedSpawnPool.GetRandom();
 
                             var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
                             var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
