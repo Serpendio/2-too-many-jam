@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 64c2a9aed8d7d8c4aa48ab8a043b986d
+guid: 7f606b91192478f4c9d872994c6c865b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7331750272468559835
-    second: Main_screen_2_0
+      213: 1145220741083561907
+    second: keyboard_a_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 4096
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 2
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Main_screen_2_0
+      name: keyboard_a_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 3840
-        height: 2160
+        x: 7
+        y: 7
+        width: 50
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -127,8 +127,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: bd7ac5c070c9fb560800000000000000
-      internalID: 7331750272468559835
+      spriteID: 3bff1b54234a4ef00800000000000000
+      internalID: 1145220741083561907
       vertices: []
       indices: 
       edges: []
@@ -144,7 +144,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Main_screen_2_0: 7331750272468559835
+      keyboard_a_0: 1145220741083561907
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
