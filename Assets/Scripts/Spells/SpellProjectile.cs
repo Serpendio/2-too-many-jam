@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Creature;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Spells
     [RequireComponent(typeof(ParticleSystem))]
     public class SpellProjectile : MonoBehaviour
     {
+        private static IDictionary<Element, Sprite> _elementSprites = new Dictionary<Element, Sprite>();
+        
         public SpellProjectileOverseer Overseer;
 
         private bool dissipated;
@@ -42,6 +45,19 @@ namespace Spells
         {
             _rb = GetComponent<Rigidbody2D>();
             _particleSystem = GetComponent<ParticleSystem>();
+            
+            if (_elementSprites.Count == 0)
+            {
+                _elementSprites = new Dictionary<Element, Sprite>
+                {
+                    { Element.None, Resources.Load<Sprite>("Sprites/elementNeutral") },
+                    { Element.Fire, Resources.Load<Sprite>("Sprites/elementFIRE") },
+                    { Element.Water, Resources.Load<Sprite>("Sprites/elementWater") },
+                    { Element.Air, Resources.Load<Sprite>("Sprites/elementAIR") },
+                    { Element.Lightning, Resources.Load<Sprite>("Sprites/elementElectricty") },
+                    { Element.Earth, Resources.Load<Sprite>("Sprites/elementearth") }
+                };
+            }
         }
 
         private void Start()
@@ -62,18 +78,20 @@ namespace Spells
                 _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
             }
 
-            var main = _particleSystem.main;
+            // var main = _particleSystem.main;
 
-            main.startColor = Spell.Element switch
-            {
-                Element.None => Color.white,
-                Element.Fire => Color.red,
-                Element.Water => Color.blue,
-                Element.Air => Color.cyan,
-                Element.Lightning => Color.yellow,
-                Element.Earth => Color.green,
-                _ => Color.white
-            };
+            // main.startColor = Spell.Element switch
+            // {
+            //     Element.None => Color.white,
+            //     Element.Fire => Color.red,
+            //     Element.Water => Color.blue,
+            //     Element.Air => Color.cyan,
+            //     Element.Lightning => Color.yellow,
+            //     Element.Earth => Color.green,
+            //     _ => Color.white
+            // };
+            
+            _particleSystem.textureSheetAnimation.SetSprite(0, _elementSprites[Spell.Element]);
 
             if (GiantSize > 0)
             {
@@ -139,7 +157,7 @@ namespace Spells
             }
             if (other.TryGetComponent(out CreatureBase creature))
             {
-                if (creature.Team == Spell.Team) return; // not needed, layers auto don't collide
+                if (creature.Team == Spell.Team) return; // better safe than sorry
                 creature.TakeDamage(Spell.ComputedStats.DamageOnHit);
 
                 if (ChainTimesRemaining > 0)

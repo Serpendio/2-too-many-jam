@@ -33,8 +33,6 @@ namespace Creature
 
         [HideInInspector] public UnityEvent<float, float> OnHealthChanged = new();
 
-        [SerializeField] protected float moveSpeed;
-
         public Team Team;
         
         protected virtual void Awake()
@@ -100,6 +98,12 @@ namespace Creature
         {
             SetHealth(Mathf.Clamp(health - damage, 0, maxHealth));
 
+            if (health == 0)
+            {
+                Die();
+                return;
+            }
+            
             // tween flash sprite colour as red
             gameObject.AddTween(new SpriteRendererColorTween
             {
@@ -107,10 +111,9 @@ namespace Creature
                 to = new Color(1f, 0.2f, 0.2f, 0.6667f),
                 duration = 0.05f,
                 easeType = EaseType.CubicInOut,
-                usePingPong = true
+                usePingPong = true,
+                onEnd = _ => spriteRenderer.color = Color.white,
             });
-
-            if (health == 0) Die();
         }
 
         public virtual void RefillHealth()

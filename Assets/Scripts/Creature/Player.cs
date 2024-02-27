@@ -18,6 +18,8 @@ namespace Creature
         private InputAction _dashAction;
         private InputAction _castAction;
 
+        [SerializeField] protected float moveSpeed;
+
         [Header("Dashing")] [SerializeField] private float dashPower;
 
         [FormerlySerializedAs("dashCooldown")] public float DashCooldown;

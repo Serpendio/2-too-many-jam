@@ -33,7 +33,7 @@ namespace Spells
                     lastMouseOffset = mousePos - transform.position;
                 }
 
-                var projectile = Instantiate(SpellProjectilePrefab, transform.position + (Vector3.up * 0.25f), Quaternion.identity);
+                var projectile = Instantiate(SpellProjectilePrefab, transform.position, Quaternion.identity);
                 Projectiles.Add(projectile);
                 
                 projectile.Overseer = this;

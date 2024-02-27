@@ -55,6 +55,8 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -197,7 +199,6 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  moveSpeed: 4
   Team: 1
   Agent: {fileID: 158024836645491187}
   target: {fileID: 0}
@@ -230,7 +231,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.25
-  m_Speed: 4
+  m_Speed: 4.75
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

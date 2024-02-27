@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Core;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
@@ -17,7 +18,7 @@ namespace Rooms
         [SerializeField] private List<Room> _roomPrefabs;
         [SerializeField] private int nextRoom;
 
-        [SerializeField] private List<EnemyBase> _creatureSpawnPool;
+        [SerializeField] private WeightedSpawnPool _weightedSpawnPool = new();
 
         public List<Room> WorldRooms = new();
         private Room _currentRoom;
@@ -55,7 +56,7 @@ namespace Rooms
             _currentRoom = GenerateNewRoom();
             WorldRooms.Add(_currentRoom);
 
-            GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true);
+            GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true, true);
         }
 
         private Room GenerateNewRoom(Door comingFrom = null)
@@ -84,7 +85,7 @@ namespace Rooms
             return roomObj;
         }
 
-        private void GoThroughDoor(Door door, bool preLinkedDoor = false)
+        private void GoThroughDoor(Door door, bool preLinkedDoor = false, bool instant = false)
         {
             Time.timeScale = 0;
 
@@ -115,7 +116,7 @@ namespace Rooms
             {
                 _currentRoom.gameObject.SetActive(false);
                 _currentRoom = linkedDoor.room;
-                _currentRoom.gameObject.SetActive(true); 
+                _currentRoom.gameObject.SetActive(true);
 
                 _player.transform.position = linkedDoor.transform.position + linkedDoor.direction switch
                 {
@@ -131,7 +132,7 @@ namespace Rooms
                 if (!_currentRoom.Entered)
                 {
                     _currentRoom.Entered = true;
-                 
+
                     if (_currentRoom.SpawnEnemiesOnEnter)
                     {
                         // Generate enemies on random tiles in the room, not too close to player
@@ -157,7 +158,7 @@ namespace Rooms
 
                         for (var i = 0; i < enemiesToSpawn; i++)
                         {
-                            var creaturePrefab = _creatureSpawnPool[Random.Range(0, _creatureSpawnPool.Count)];
+                            var creaturePrefab = _weightedSpawnPool.GetRandom();
 
                             var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
                             var randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
@@ -172,10 +173,12 @@ namespace Rooms
 
                 Room.OnEnteredRoom.Invoke(_currentRoom);
 
-                _fadeToBlack.gameObject.AddTween(fromBlackTween);
+                if (instant) fromBlackTween.onEnd.Invoke(null);
+                else _fadeToBlack.gameObject.AddTween(fromBlackTween);
             };
 
-            _fadeToBlack.gameObject.AddTween(toBlackTween);
+            if (instant) toBlackTween.onEnd.Invoke(null);
+            else _fadeToBlack.gameObject.AddTween(toBlackTween);
         }
     }
 }
