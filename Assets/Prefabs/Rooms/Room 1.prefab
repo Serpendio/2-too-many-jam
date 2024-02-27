@@ -2938,8 +2938,8 @@ MonoBehaviour:
   MapCoord: {x: 0, y: 0}
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
+  ChestsContainer: {fileID: 0}
   SpawnEnemiesOnEnter: 1
-  chestPrefab: {fileID: 8317292360838696019, guid: a9205c5508950b5438cc67fa6f86cbe0, type: 3}
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0

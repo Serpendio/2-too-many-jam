@@ -36,10 +36,9 @@ namespace Creature
         [SerializeField] protected float moveSpeed;
 
         public Team Team;
-
+        
         protected virtual void Awake()
         {
-
             Core.Locator.CreatureManager.AddCreature(this);
 
             health = maxHealth;
@@ -123,6 +122,12 @@ namespace Creature
         {
             OnDeath.Invoke();
             Destroy(gameObject);
+        }
+
+        [ContextMenu("Force Kill")]
+        private void ForceKill()
+        {
+            SetHealth(0);
         }
     }
 }

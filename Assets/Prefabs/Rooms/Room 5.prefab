@@ -2154,7 +2154,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 9
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -7255,8 +7255,8 @@ Tilemap:
   - m_RefCount: 720
     m_Data: {fileID: 11400000, guid: 0977da093dfed1d4caf601899a71f4b6, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: 21300000, guid: a6ef72397402b204c88080345d92d3dd, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: 21300000, guid: 1ca0d74e15840e948b89a5cdc911020a, type: 3}
   - m_RefCount: 1
@@ -7273,8 +7273,8 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: cd5c7829ccabc9f48a2ba4f892dceb79, type: 3}
   - m_RefCount: 26
     m_Data: {fileID: 21300000, guid: d863c87b81d247a4eb49ed0ec6bd23e1, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 21300000, guid: a6ef72397402b204c88080345d92d3dd, type: 3}
   - m_RefCount: 2
     m_Data: {fileID: 21300000, guid: a936a744a97ecf64d9ea15ee8ae22c0d, type: 3}
   - m_RefCount: 92
@@ -7440,8 +7440,8 @@ MonoBehaviour:
   MapCoord: {x: 0, y: 0}
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
+  ChestsContainer: {fileID: 0}
   SpawnEnemiesOnEnter: 1
-  chestPrefab: {fileID: 8317292360838696019, guid: a9205c5508950b5438cc67fa6f86cbe0, type: 3}
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0

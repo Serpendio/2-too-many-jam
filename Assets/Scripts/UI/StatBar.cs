@@ -12,15 +12,16 @@ namespace UI
 
         public void SetFill(float value, float max)
         {
-            _bar.gameObject.AddTween(new FloatTween
+            _bar.gameObject.CancelTweens();
+            _bar.gameObject.AddTween(new ImageFillAmountTween
             {
                 from = _bar.fillAmount,
                 to = value / max,
                 duration = 0.25f,
                 easeType = EaseType.CubicOut,
-                onUpdate = (_, val) => _bar.fillAmount = val
             });
-            _text.text = $"{value}";
+            
+            _text.text = $"{Mathf.CeilToInt(value)}";
         }
     }
 }

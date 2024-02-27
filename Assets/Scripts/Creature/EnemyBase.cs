@@ -1,10 +1,8 @@
-using System;
 using Core;
 using Currency;
 using NaughtyAttributes;
 using Spells;
 using Tweens;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Serialization;
@@ -45,7 +43,7 @@ namespace Creature
         private float LastAttackTime;
 
         private static CoinDrop _coinDropPrefab;
-        private bool _isAttacking = false;
+        // private bool _isAttacking = false;
 
         [SerializeField] private float targetingRange;
 
@@ -69,7 +67,7 @@ namespace Creature
         private void Attack()
         {
             TriggerAttackAnim();
-            _isAttacking = true;
+            // _isAttacking = true;
 
             switch (EnemyType)
             {
@@ -83,10 +81,10 @@ namespace Creature
                         duration = (endPoint - transform.position).magnitude / 6,
                         easeType = EaseType.CubicInOut,
                         usePingPong = false,
-                        onEnd = _ =>
-                        {
-                            _isAttacking = false;
-                        }
+                        // onEnd = _ =>
+                        // {
+                        //     _isAttacking = false;
+                        // }
                     });
                     break;
                 case EnemyType.Spell:
@@ -108,7 +106,6 @@ namespace Creature
 
             var coinDrop = Instantiate(_coinDropPrefab, transform.position, Quaternion.identity);
             coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
-
         }
 
         // Update is called once per frame
@@ -170,7 +167,8 @@ namespace Creature
 
             if (collision.gameObject.TryGetComponent(out CreatureBase creature) && creature.Team != Team)
             {
-                creature.TakeDamage(attackDamage);
+                // Deal half of attack damage to player if colliding with it
+                creature.TakeDamage(attackDamage / 2f);
             }
         }
 

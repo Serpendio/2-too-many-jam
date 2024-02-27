@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 2626327600802606849}
   - component: {fileID: 2120572171488667110}
   - component: {fileID: 7579167820492510082}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Plus Room
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5382,8 +5382,8 @@ MonoBehaviour:
   MapCoord: {x: 0, y: 0}
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
+  ChestsContainer: {fileID: 0}
   SpawnEnemiesOnEnter: 1
-  chestPrefab: {fileID: 8317292360838696019, guid: a9205c5508950b5438cc67fa6f86cbe0, type: 3}
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5396,8 +5396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9809bf1345abc5648af68b3a82653f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_OverrideArea: 0
-  m_Area: 0
+  m_OverrideArea: 1
+  m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
 --- !u!114 &7579167820492510082

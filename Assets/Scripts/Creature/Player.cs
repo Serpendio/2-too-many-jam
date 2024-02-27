@@ -30,12 +30,19 @@ namespace Creature
         [Header("Spell-casting")] [SerializeField]
         private int _activeSpellSlot;
 
+        public float ManaRegenPerSecond = 15f;
+        public float ManaRegenStartDelay = 0.5f;
+        private float _lastManaReductionTime;
+        
         [field: SerializeField] public float mana { get; private set; }
         [field: SerializeField] public float maxMana { get; private set; }
 
         [HideInInspector] public UnityEvent<float, float> OnManaChanged = new();
 
+
         public Inventory Inventory = new();
+
+        public Spell ActiveSpell => Inventory.GetEquippedSpell(_activeSpellSlot);
 
         // Awake is called even before Start() is called.
         protected override void Awake()
@@ -69,19 +76,19 @@ namespace Creature
 
             Inventory.MoveSpellToEquipped(0, initSpell);*/
         }
-        
+
         protected override void Start()
         {
             base.Start();
             SetMana(maxMana);
         }
-        
+
         public void SetMana(float value)
         {
             mana = Mathf.Clamp(value, 0, maxMana);
             OnManaChanged.Invoke(mana, maxMana);
         }
-        
+
         public void SetMaxMana(float value, bool refill = false)
         {
             var diff = value - maxMana;
@@ -95,6 +102,14 @@ namespace Creature
                 OnManaChanged.Invoke(mana, maxMana);
             }
         }
+        
+        private void Update()
+        {
+            if (mana < maxMana && Time.time - _lastManaReductionTime > ManaRegenStartDelay)
+            {
+                SetMana(mana + ManaRegenPerSecond * Time.deltaTime);
+            }
+        }
 
         private void FixedUpdate()
         {
@@ -104,7 +119,7 @@ namespace Creature
             if (Rb.velocity.magnitude < moveSpeed)
             {
                 Rb.AddForce(move * (moveSpeed * acceleration), ForceMode2D.Force);
-                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, moveSpeed);        
+                Rb.velocity = Vector2.ClampMagnitude(Rb.velocity, moveSpeed);
             }
 
             // Walking Sound Effect
@@ -122,11 +137,12 @@ namespace Creature
 
         public void Cast(InputAction.CallbackContext context)
         {
-            var activeSpell = Inventory.GetEquippedSpell(_activeSpellSlot);
-
-            if (context.performed && activeSpell is { CooldownOver: true })
+            if (context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
+                
+                SetMana(mana - ActiveSpell.ComputedStats.ManaUsage);
+                _lastManaReductionTime = Time.time;
 
                 // Get direction from player to mouse
                 var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -134,10 +150,10 @@ namespace Creature
                 var dir = (mousePos - transform.position).normalized;
 
                 var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
-                overseer.Spell = activeSpell;
+                overseer.Spell = ActiveSpell;
                 overseer.CastDirection = dir;
 
-                activeSpell.LastCastTime = Time.time;
+                ActiveSpell.LastCastTime = Time.time;
             }
         }
 
@@ -149,6 +165,7 @@ namespace Creature
                 Dash();
             }
         }
+
         protected override void Die()
         {
             // could animate then delay for a few seconds
@@ -163,6 +180,12 @@ namespace Creature
             var move = _moveAction.ReadValue<Vector2>();
             Rb.AddForce(dashPower * move.normalized, ForceMode2D.Impulse);
             AudioManager.Instance.PlaySFX("Air Attack"); // Play SFX, Currently Air Attack
+        }
+
+        private void OnDisable()
+        {
+            _dashAction.performed -= Dash;
+            _castAction.performed -= Cast;
         }
     }
 }
