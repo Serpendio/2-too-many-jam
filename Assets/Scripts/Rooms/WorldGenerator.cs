@@ -56,7 +56,7 @@ namespace Rooms
             _currentRoom = GenerateNewRoom();
             WorldRooms.Add(_currentRoom);
 
-            GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true);
+            GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true, true);
         }
 
         private Room GenerateNewRoom(Door comingFrom = null)
@@ -85,7 +85,7 @@ namespace Rooms
             return roomObj;
         }
 
-        private void GoThroughDoor(Door door, bool preLinkedDoor = false)
+        private void GoThroughDoor(Door door, bool preLinkedDoor = false, bool instant = false)
         {
             Time.timeScale = 0;
 
@@ -116,7 +116,7 @@ namespace Rooms
             {
                 _currentRoom.gameObject.SetActive(false);
                 _currentRoom = linkedDoor.room;
-                _currentRoom.gameObject.SetActive(true); 
+                _currentRoom.gameObject.SetActive(true);
 
                 _player.transform.position = linkedDoor.transform.position + linkedDoor.direction switch
                 {
@@ -132,7 +132,7 @@ namespace Rooms
                 if (!_currentRoom.Entered)
                 {
                     _currentRoom.Entered = true;
-                 
+
                     if (_currentRoom.SpawnEnemiesOnEnter)
                     {
                         // Generate enemies on random tiles in the room, not too close to player
@@ -173,10 +173,12 @@ namespace Rooms
 
                 Room.OnEnteredRoom.Invoke(_currentRoom);
 
-                _fadeToBlack.gameObject.AddTween(fromBlackTween);
+                if (instant) fromBlackTween.onEnd.Invoke(null);
+                else _fadeToBlack.gameObject.AddTween(fromBlackTween);
             };
 
-            _fadeToBlack.gameObject.AddTween(toBlackTween);
+            if (instant) toBlackTween.onEnd.Invoke(null);
+            else _fadeToBlack.gameObject.AddTween(toBlackTween);
         }
     }
 }
