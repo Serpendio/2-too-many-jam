@@ -143,7 +143,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      make_spell_button_0: 9019497140993475636
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
