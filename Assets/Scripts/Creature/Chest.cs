@@ -34,9 +34,13 @@ namespace Creature
                 droppedValue += coinDrop.coinValue;
             }
             
+            Locator.CreatureManager.RemoveCreature(this);
             Destroy(this); // remove chest component so we dont drop coins again
 
             // would make it white, but that's difficult so maybe not (would need a custom shader, or just replace the sprite for a frame?)
+            
+            // ^ note for todo: you can apparently do this by setting the material to something like "GUI Text Material"
+            // for a few frames then setting it back
         }
     }
 }

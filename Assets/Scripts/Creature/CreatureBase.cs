@@ -39,7 +39,6 @@ namespace Creature
         
         protected virtual void Awake()
         {
-
             Core.Locator.CreatureManager.AddCreature(this);
 
             health = maxHealth;

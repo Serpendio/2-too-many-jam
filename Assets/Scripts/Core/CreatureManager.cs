@@ -5,7 +5,6 @@ namespace Core
 {
     public class CreatureManager : MonoBehaviour
     {
-
         public List<Creature.CreatureBase> creatures = new();
 
         private void Awake()

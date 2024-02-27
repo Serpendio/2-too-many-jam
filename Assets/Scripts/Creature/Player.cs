@@ -1,3 +1,4 @@
+using System;
 using Core;
 using Spells;
 using UnityEngine;
@@ -179,6 +180,12 @@ namespace Creature
             var move = _moveAction.ReadValue<Vector2>();
             Rb.AddForce(dashPower * move.normalized, ForceMode2D.Impulse);
             AudioManager.Instance.PlaySFX("Air Attack"); // Play SFX, Currently Air Attack
+        }
+
+        private void OnDisable()
+        {
+            _dashAction.performed -= Dash;
+            _castAction.performed -= Cast;
         }
     }
 }

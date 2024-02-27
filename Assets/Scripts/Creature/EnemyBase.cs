@@ -43,7 +43,7 @@ namespace Creature
         private float LastAttackTime;
 
         private static CoinDrop _coinDropPrefab;
-        private bool _isAttacking = false;
+        // private bool _isAttacking = false;
 
         [SerializeField] private float targetingRange;
 
@@ -67,7 +67,7 @@ namespace Creature
         private void Attack()
         {
             TriggerAttackAnim();
-            _isAttacking = true;
+            // _isAttacking = true;
 
             switch (EnemyType)
             {
@@ -81,10 +81,10 @@ namespace Creature
                         duration = (endPoint - transform.position).magnitude / 6,
                         easeType = EaseType.CubicInOut,
                         usePingPong = false,
-                        onEnd = _ =>
-                        {
-                            _isAttacking = false;
-                        }
+                        // onEnd = _ =>
+                        // {
+                        //     _isAttacking = false;
+                        // }
                     });
                     break;
                 case EnemyType.Spell:
