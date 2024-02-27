@@ -167,7 +167,8 @@ namespace Creature
 
             if (collision.gameObject.TryGetComponent(out CreatureBase creature) && creature.Team != Team)
             {
-                creature.TakeDamage(attackDamage);
+                // Deal half of attack damage to player if colliding with it
+                creature.TakeDamage(attackDamage / 2f);
             }
         }
 
