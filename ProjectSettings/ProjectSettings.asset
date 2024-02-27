@@ -140,8 +140,7 @@ PlayerSettings:
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
   bundleVersion: 0.3.0
-  preloadedAssets:
-  - {fileID: 11400000, guid: 81356cafba3ed8d4dbfd96f0e296e935, type: 2}
+  preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -776,7 +775,7 @@ PlayerSettings:
   ps4IncludedModules: []
   ps4attribVROutputEnabled: 0
   monoEnv: 
-  splashScreenBackgroundSourceLandscape: {fileID: -2850786956535134646, guid: 9b881676f0e81904fa8f30726bd74066, type: 3}
+  splashScreenBackgroundSourceLandscape: {fileID: 21300000, guid: 9b881676f0e81904fa8f30726bd74066, type: 3}
   splashScreenBackgroundSourcePortrait: {fileID: 0}
   blurSplashScreenBackground: 1
   spritePackerPolicy: 
