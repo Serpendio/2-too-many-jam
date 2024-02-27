@@ -143,19 +143,19 @@ TextureImporter:
       name: cauldrons_0
       rect:
         serializedVersion: 2
-        x: 800
-        y: 129
-        width: 1932
-        height: 2146
+        x: 0
+        y: 2480
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 5ba2d74cbe0498bf0800000000000000
-      internalID: -321654517022250315
+      spriteID: ef1d1c8cfbafd5247a1b7a9314797a0c
+      internalID: 1101316475
       vertices: []
       indices: 
       edges: []
@@ -164,19 +164,19 @@ TextureImporter:
       name: cauldrons_1
       rect:
         serializedVersion: 2
-        x: 4166
-        y: 120
-        width: 2219
-        height: 2155
+        x: 3508
+        y: 2480
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 863994f3e5df93190800000000000000
-      internalID: -7982070283306953880
+      spriteID: 8271a5ca1e6473a47977f58f84f1582e
+      internalID: 1855009938
       vertices: []
       indices: 
       edges: []
@@ -185,19 +185,19 @@ TextureImporter:
       name: cauldrons_2
       rect:
         serializedVersion: 2
-        x: 7395
-        y: 1332
-        width: 198
-        height: 190
+        x: 7016
+        y: 2480
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f783047eec2d750f0800000000000000
-      internalID: -1128201395548178305
+      spriteID: f06bc1276ee633445aab6b2833b96eb0
+      internalID: -607533497
       vertices: []
       indices: 
       edges: []
@@ -206,19 +206,19 @@ TextureImporter:
       name: cauldrons_3
       rect:
         serializedVersion: 2
-        x: 7496
-        y: 135
-        width: 2647
-        height: 2140
+        x: 10524
+        y: 2480
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 50bc3aa683265fc20800000000000000
-      internalID: 3239603501409749765
+      spriteID: b0c4002ee56ccec4ea28de105341cb3f
+      internalID: -871157470
       vertices: []
       indices: 
       edges: []
@@ -227,19 +227,19 @@ TextureImporter:
       name: cauldrons_4
       rect:
         serializedVersion: 2
-        x: 11241
-        y: 135
-        width: 2240
-        height: 2140
+        x: 0
+        y: 0
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0ce252197d6850140800000000000000
-      internalID: 4685299247760092864
+      spriteID: 848c937b27405a94f969af0999cf1b46
+      internalID: 1302745392
       vertices: []
       indices: 
       edges: []
@@ -248,19 +248,19 @@ TextureImporter:
       name: cauldrons_5
       rect:
         serializedVersion: 2
-        x: 14832
-        y: 135
-        width: 1958
-        height: 2140
+        x: 3508
+        y: 0
+        width: 3508
+        height: 2480
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 650710fc76dde7310800000000000000
-      internalID: 1404803571710521430
+      spriteID: fa30825384dc36b46993a829297d2dd7
+      internalID: -1627854857
       vertices: []
       indices: 
       edges: []
@@ -269,94 +269,10 @@ TextureImporter:
       name: cauldrons_6
       rect:
         serializedVersion: 2
-        x: 18340
-        y: 135
-        width: 1932
-        height: 2140
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e9de539c9a962d480800000000000000
-      internalID: -8875915737647682146
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cauldrons_7
-      rect:
-        serializedVersion: 2
-        x: 21848
-        y: 135
-        width: 1932
-        height: 2140
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 115f96ff51fbc4010800000000000000
-      internalID: 1174523704037209361
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cauldrons_8
-      rect:
-        serializedVersion: 2
-        x: 10047
-        y: 920
-        width: 302
-        height: 142
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b32dc1e24b3e94d0800000000000000
-      internalID: -3125995932906347599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cauldrons_9
-      rect:
-        serializedVersion: 2
-        x: 7360
-        y: 738
-        width: 229
-        height: 89
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c9d0a8e7065151120800000000000000
-      internalID: 2383835081946566044
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: cauldrons_10
-      rect:
-        serializedVersion: 2
-        x: 3354
-        y: 710
-        width: 987
-        height: 1770
+        x: 7016
+        y: 0
+        width: 3508
+        height: 2480
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -364,8 +280,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb12a601f0fe534498e04ce3a2c7ebd4
-      internalID: 1298899398
+      spriteID: 3459c9cf08416e34c880300311599964
+      internalID: -139044518
       vertices: []
       indices: 
       edges: []
@@ -381,7 +297,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      cauldrons_10: 1298899398
+      cauldrons_0: 1101316475
+      cauldrons_1: 1855009938
+      cauldrons_2: -607533497
+      cauldrons_3: -871157470
+      cauldrons_4: 1302745392
+      cauldrons_5: -1627854857
+      cauldrons_6: -139044518
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
