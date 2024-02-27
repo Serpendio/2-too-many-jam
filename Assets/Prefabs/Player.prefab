@@ -199,7 +199,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Team: 0
-  moveSpeed: 4.25
+  moveSpeed: 4
   dashPower: 30
   DashCooldown: 1
   LastDashTime: 0
