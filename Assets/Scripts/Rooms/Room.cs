@@ -133,6 +133,9 @@ namespace Rooms
             _enemies.Add(enemy);
             enemy.OnDeath.AddListener(() =>
             {
+                //Give player some XP based on enemy's type
+                Core.Locator.LevelManager.addXP(enemy.getXPDropAmount());
+
                 var skull = Instantiate(_deathSkullPrefab, enemy.transform.position, Quaternion.identity);
                 skull.transform.parent = SkullsContainer;
                 skull.AddTween(new SpriteRendererColorTween

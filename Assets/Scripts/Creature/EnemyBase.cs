@@ -46,6 +46,8 @@ namespace Creature
         // private bool _isAttacking = false;
 
         [SerializeField] private float targetingRange;
+        [SerializeField] private int xpDropAmount;
+
 
         // Start is called before the first frame update
         protected override void Awake()
@@ -170,6 +172,10 @@ namespace Creature
                 // Deal half of attack damage to player if colliding with it
                 creature.TakeDamage(attackDamage / 2f);
             }
+        }
+
+        public int getXPDropAmount() {
+            return xpDropAmount;
         }
 
         private void OnDrawGizmosSelected()
