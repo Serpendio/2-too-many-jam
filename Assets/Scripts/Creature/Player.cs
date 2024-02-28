@@ -83,9 +83,15 @@ namespace Creature
         {
             base.Start();
             SetMana(maxMana);
-        }
 
-        public void SetMana(float value)
+            Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
+            {
+                SetMaxHealth(maxHealth + Core.Locator.LevelManager.maxHealthIncreasePerLevelUp);
+
+            });
+    }
+
+    public void SetMana(float value)
         {
             mana = Mathf.Clamp(value, 0, maxMana);
             OnManaChanged.Invoke(mana, maxMana);
