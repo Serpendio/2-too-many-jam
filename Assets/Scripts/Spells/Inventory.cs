@@ -87,17 +87,13 @@ namespace Spells
         }
 #endif
 
-        private void Awake() {
-            _equippedSpells = new(hotbarSize) { null, null, null };
-        }
-
         private void Start() {
-            Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
+            Locator.LevelManager.PlayerLevelUp.AddListener(() =>
             {
                 //Update max hotbar size every maxLevel / maxHotbarSize levels to ensure even distribution between level ups
                 //(e.g. every 5 levels for max level = 30, max hotbar size = 6)
-                if (Core.Locator.LevelManager.getCurrentLevel() % (Core.Locator.LevelManager.getMaxLevel() / hotbarSize) == 0) {
-                    hotbarSize += 1;
+                if (Locator.LevelManager.getCurrentLevel() % (Locator.LevelManager.getMaxLevel() / 6) == 0) {
+                    IncreaseHotbarSize();
                 }
             });
         }
