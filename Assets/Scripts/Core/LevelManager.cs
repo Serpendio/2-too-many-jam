@@ -13,6 +13,8 @@ namespace Core
         private int currentXP; //Gets reset to 0 when levelling up
         private int xpToLevelUp;
 
+        private int maxLevel;
+
         private int maxHealthIncreasePerLevelUp;
         private int maxManaIncreasePerLevelUp;
 
@@ -25,6 +27,8 @@ namespace Core
             currentLevel = 1;
             currentXP = 0;
             xpToLevelUp = 20;
+
+            maxLevel = 30;
         }
 
         private void Start() {
@@ -60,6 +64,10 @@ namespace Core
 
         public int getMaxManaIncreasePerLevelUp() {
             return maxManaIncreasePerLevelUp;
+        }
+
+        public int getMaxLevel() {
+            return maxLevel;
         }
     }
 
