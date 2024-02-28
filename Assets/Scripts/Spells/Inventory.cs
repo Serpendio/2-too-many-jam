@@ -20,7 +20,7 @@ namespace Spells
         private void Start() {
             Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
             {
-                //Update max hotbar size every maxPossibleLevel / maxHotbarSize levels to ensure even distribution between level ups
+                //Update max hotbar size every maxLevel / maxHotbarSize levels to ensure even distribution between level ups
                 //(e.g. every 5 levels for max level = 30, max hotbar size = 6)
                 if (Core.Locator.LevelManager.getCurrentLevel() % (Core.Locator.LevelManager.getMaxLevel() / hotbarSize) == 0) {
                     hotbarSize += 1;

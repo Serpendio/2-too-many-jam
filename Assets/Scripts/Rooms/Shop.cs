@@ -13,6 +13,9 @@ namespace Rooms
         public GameObject[] itemIconPrefabs;
         private Vector3[] itemLocations;
 
+        private const int maxPossibleTier = 3; //Max tier that a spell can be. Sets an upper bound on currentMaxTier
+        private int currentMaxTier; //Max tier that a spell can currently spawn in the shop as - ranges based on level. Max value for this variable is maxPossibleTier
+
         private void Awake()
         {
             itemLocations = new[] { new Vector3(4.5f, 8.5f, 0f), new Vector3(9.5f, 8.5f, 0f), new Vector3(14.5f, 8.5f, 0f) };
@@ -74,6 +77,21 @@ namespace Rooms
                 itemIcon.transform.position = itemLocations[i];
             }
         }
+
+
+        private void Start() {
+            Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
+            {
+                //Update max tier every maxLevel / maxPossibleTier levels to ensure even distribution between level ups
+                //(e.g. every 10 levels for max level = 30, maxTier = 3)
+                if (Core.Locator.LevelManager.getCurrentLevel() % (Core.Locator.LevelManager.getMaxLevel() / maxPossibleTier) == 0) {
+                    currentMaxTier += 1;
+                }
+
+            });
+        }
+
+
         private Spell GenerateRandomSpell(out int cost)
         {
 
@@ -93,7 +111,7 @@ namespace Rooms
             {
                 //Add unique modifier
                 var uniqueModifiers = SpellModifier.AllModifiers
-                    .Where(m => !spell.Modifiers.Contains(m))
+                    .Where(m => !spell.Modifiers.Contains(m) && m.Tier <= (ModifierTier)currentMaxTier)
                     .ToList();
                 
                 var randomModifier = uniqueModifiers[Random.Range(0, uniqueModifiers.Count)];
