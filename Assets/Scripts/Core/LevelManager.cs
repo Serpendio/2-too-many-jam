@@ -31,21 +31,6 @@ namespace Core
             maxLevel = 30;
         }
 
-        private void Start() {
-            PlayerLevelUp.AddListener(() =>
-            {
-                currentLevel += 1;
-                currentXP = 0;
-                xpToLevelUp += currentLevel * 10;
-            });
-        }
-
-        private void Update() {
-            if (currentXP >= xpToLevelUp) {
-                PlayerLevelUp.Invoke();
-            }
-        }
-
         public int getCurrentLevel() {
             return currentLevel;
         }
@@ -56,6 +41,14 @@ namespace Core
 
         public void addXP(int val) {
             currentXP += val;
+            //While-loop in case player levels up more than once in same frame
+            while (currentXP > xpToLevelUp)
+            {
+                currentXP -= xpToLevelUp;
+                currentLevel += 1;
+                xpToLevelUp += currentLevel * 10;
+            }
+            PlayerLevelUp.Invoke();
         }
 
         public int getMaxHealthIncreasePerLevelUp() {
