@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using Tweens;
+using UI;
 using UnityEngine.Events;
 using System.Collections;
 using Unity.VisualScripting;
@@ -31,6 +32,8 @@ namespace Creature
         private static readonly int Attack = Animator.StringToHash("Attack");
         private static readonly int Multiplier = Animator.StringToHash("multiplier");
 
+        private static HealthChangeIndicator _healthChangeIndicatorPrefab;
+        
         [HideInInspector] public UnityEvent OnDeath = new();
 
         protected Animator Anim;
@@ -71,6 +74,8 @@ namespace Creature
             Anim = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             Rb = GetComponent<Rigidbody2D>();
+            
+            if (!_healthChangeIndicatorPrefab) _healthChangeIndicatorPrefab = Resources.Load<HealthChangeIndicator>("Prefabs/HealthChangeIndicator");
         }
 
         protected virtual void Start()
@@ -94,10 +99,18 @@ namespace Creature
             yield break;
         }
 
-        public void SetHealth(float value)
+        public void SetHealth(float value, bool showIndicator = false)
         {
+            var diff = value - health;
+            
             health = Mathf.Clamp(value, 0, maxHealth);
             OnHealthChanged.Invoke(health, maxHealth);
+            
+            if (showIndicator && diff != 0)
+            {
+                var indicator = Instantiate(_healthChangeIndicatorPrefab, transform.position, Quaternion.identity);
+                indicator.Change = diff;
+            }
         }
 
         public void SetMaxHealth(float value, bool refill = false)
@@ -139,8 +152,8 @@ namespace Creature
 
         public virtual void TakeDamage(float damage)
         {
-            SetHealth(Mathf.Clamp(health - damage, 0, maxHealth));
-
+            SetHealth(Mathf.Clamp(health - damage, 0, maxHealth), showIndicator: true);
+            
             if (health == 0)
             {
                 Die();

@@ -77,28 +77,13 @@ namespace Spells
             } else {
                 _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
             }
-
-            // var main = _particleSystem.main;
-
-            // main.startColor = Spell.Element switch
-            // {
-            //     Element.None => Color.white,
-            //     Element.Fire => Color.red,
-            //     Element.Water => Color.blue,
-            //     Element.Air => Color.cyan,
-            //     Element.Lightning => Color.yellow,
-            //     Element.Earth => Color.green,
-            //     _ => Color.white
-            // };
             
             _particleSystem.textureSheetAnimation.SetSprite(0, _elementSprites[Spell.Element]);
 
             if (GiantSize > 0)
             {
                 _rb.transform.localScale += new Vector3(GiantSize,GiantSize,0);
-            }
-
-            //main.startColor = new Color(Random.Range(0.75f, 1f), Random.Range(0.75f, 1f), Random.Range(0.75f, 1f));
+            } 
         }
 
         private void FixedUpdate() {
@@ -155,6 +140,7 @@ namespace Spells
                 if (proj.Spell.Team == Spell.Team) return;
                 proj.Dissipate();
             }
+            
             if (other.TryGetComponent(out CreatureBase creature))
             {
                 if (creature.Team == Spell.Team) return; // better safe than sorry
@@ -218,7 +204,6 @@ namespace Spells
 
                 Explosion.CastDirection = new Vector3 (0, 0, 0);
                 Explosion.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
-
             }
             _rb.simulated = false;
             _particleSystem.Stop();
