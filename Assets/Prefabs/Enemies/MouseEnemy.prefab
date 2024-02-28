@@ -221,6 +221,7 @@ MonoBehaviour:
     Element: 0
     LastCastTime: 0
   targetingRange: 20
+  xpDropAmount: 2
 --- !u!195 &158024836645491187
 NavMeshAgent:
   m_ObjectHideFlags: 0
