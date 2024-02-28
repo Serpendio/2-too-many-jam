@@ -42,23 +42,23 @@ namespace Core
             }
         }
 
-        int getCurrentLevel() {
+        public int getCurrentLevel() {
             return currentLevel;
         }
 
-        int getXPToLevelUp() {
+        public int getXPToLevelUp() {
             return xpToLevelUp;
         }
 
-        void addXP(int val) {
+        public void addXP(int val) {
             currentXP += val;
         }
 
-        int getMaxHealthIncreasePerLevelUp() {
+        public int getMaxHealthIncreasePerLevelUp() {
             return maxHealthIncreasePerLevelUp;
         }
 
-        int getMaxManaIncreasePerLevelUp() {
+        public int getMaxManaIncreasePerLevelUp() {
             return maxManaIncreasePerLevelUp;
         }
     }

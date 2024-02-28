@@ -86,8 +86,8 @@ namespace Creature
 
             Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
             {
-                SetMaxHealth(maxHealth + Core.Locator.LevelManager.maxHealthIncreasePerLevelUp);
-
+                SetMaxHealth(maxHealth + Core.Locator.LevelManager.getMaxHealthIncreasePerLevelUp());
+                SetMaxMana(maxMana + Core.Locator.LevelManager.getMaxManaIncreasePerLevelUp());
             });
     }
 
