@@ -41,8 +41,8 @@ namespace Rooms
                         int spellCost;
                         Spell spell = GenerateRandomSpell(out spellCost);
                         itemIcon = Instantiate(itemIconPrefabs[0]);
-                        itemIcon.GetComponent<Item>().item = spell;
-                        itemIcon.GetComponent<Item>().cost = spellCost;
+                        itemIcon.GetComponent<ShopItem>().item = spell;
+                        itemIcon.GetComponent<ShopItem>().cost = spellCost;
                         break;
 
                     
@@ -62,8 +62,8 @@ namespace Rooms
                         int modifierCost = 0;
                         SpellModifier modifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
                         itemIcon = Instantiate(itemIconPrefabs[1]);
-                        itemIcon.GetComponent<Item>().item = modifier;
-                        itemIcon.GetComponent<Item>().cost = modifierCost;
+                        itemIcon.GetComponent<ShopItem>().item = modifier;
+                        itemIcon.GetComponent<ShopItem>().cost = modifierCost;
                         break;
                     
                     //Shard(s)
@@ -72,7 +72,7 @@ namespace Rooms
                         break;
 
                 }
-                itemIcon.GetComponent<Item>().itemID = randType;
+                itemIcon.GetComponent<ShopItem>().itemID = randType;
                 itemIcon.transform.parent = this.transform;
                 itemIcon.transform.position = itemLocations[i];
             }

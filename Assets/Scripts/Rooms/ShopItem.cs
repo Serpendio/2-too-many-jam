@@ -2,7 +2,7 @@ using Core;
 using Spells;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class ShopItem : MonoBehaviour
 {
 
     [HideInInspector] public int itemID;
@@ -16,20 +16,19 @@ public class Item : MonoBehaviour
     [HideInInspector] public int cost;
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.tag == "Player" && Locator.CurrencyManager.GoldAmount >= cost)
+        if (collision.gameObject.tag == "Player" && Locator.Inventory.GoldAmount >= cost)
         {
-            Locator.CurrencyManager.AddGold(-cost);
-            Creature.Player player = collision.gameObject.GetComponent<Creature.Player>();
+            Locator.Inventory.AddGold(-cost);
             switch (itemID)
             {
                 case 0:
                     //Spell
-                    player.Inventory.AddToInventory(item);
+                    Locator.Inventory.AddToInventory(item);
                     break;
 
                 case 1:
                     //Modifier
-                    player.Inventory.AddToInventory(item);
+                    Locator.Inventory.AddToInventory(item);
                     break;
 
                 case 2:
@@ -39,16 +38,16 @@ public class Item : MonoBehaviour
 
                 case 3:
                     //Health refill
-                    player.RefillHealth();
+                    Locator.Player.RefillHealth();
                     break;
 
                 case 4:
                     //Max health increase
                     int healthIncrease = Random.Range(5, 20);
-                    player.SetMaxHealth(player.maxHealth + healthIncrease, true);
+                    Locator.Player.SetMaxHealth(Locator.Player.maxHealth + healthIncrease, true);
                     break;
             }
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

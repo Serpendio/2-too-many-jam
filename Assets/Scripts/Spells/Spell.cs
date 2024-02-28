@@ -54,6 +54,9 @@ namespace Spells
     public class Spell : IInventoryItem
     {
         [field: SerializeField] public string Name { get; set; } // todo ComputedName based on modifiers?
+
+        [field: SerializeField] public string Description { get; set; }
+
         [field: SerializeField] public Sprite Icon { get; set; }
 
         public SpellStats BaseStats;
