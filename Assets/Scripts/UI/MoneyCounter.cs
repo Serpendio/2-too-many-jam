@@ -9,8 +9,16 @@ namespace UI
     {
         private TextMeshProUGUI _text;
 
-        private void Awake() => _text = GetComponent<TextMeshProUGUI>();
+        private void Start()
+        { 
+            _text = GetComponent<TextMeshProUGUI>();
+            UpdateCounter(Locator.Inventory.GoldAmount);
+            Spells.Inventory.OnGoldChanged.AddListener(UpdateCounter);
+        }
 
-        private void Update() => _text.text = Locator.CurrencyManager.GoldAmount.ToString();
+        private void UpdateCounter(int val)
+        {
+            _text.text = val.ToString();
+        }
     }
 }

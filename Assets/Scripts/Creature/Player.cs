@@ -41,11 +41,6 @@ namespace Creature
 
         [HideInInspector] public UnityEvent<float, float> OnManaChanged = new();
 
-
-        public Inventory Inventory = new();
-
-        public Spell ActiveSpell => Inventory.GetEquippedSpell(_activeSpellSlot);
-
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
@@ -145,7 +140,9 @@ namespace Creature
 
         public void Cast(InputAction.CallbackContext context)
         {
-            if (context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
+            var activeSpell = Locator.Inventory.GetEquippedSpell(_activeSpellSlot);
+
+            if (activeSpell != null && context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
                 
