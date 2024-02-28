@@ -2,6 +2,10 @@ using UnityEngine;
 using System;
 using Tweens;
 using UnityEngine.Events;
+using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.Tilemaps;
+using System.Diagnostics;
 
 namespace Creature
 {
@@ -10,6 +14,11 @@ namespace Creature
         Friendly,
         Hostile,
         DamagesAll
+    }
+
+    [HideInInspector] public enum Debuff
+    {
+        Poison
     }
 
     [RequireComponent(typeof(Animator))]
@@ -34,6 +43,17 @@ namespace Creature
         [HideInInspector] public UnityEvent<float, float> OnHealthChanged = new();
 
         public Team Team;
+
+        //----TO ADD A NEW DEBUFF:----//
+        //*Add the name of the debuff to the Debuff enum
+        //*Create a new private IEnumerator method with up to 3 parameters to house the debuff logic in
+        //*Add the method to the debuffCoroutines array in Start()
+
+        public bool[] activeDebuffs;
+        //Helper-delegate, just used to pass more than parameter to the coroutines :]
+        //Default values provided in case coroutine need not take all 3 parameters
+        public delegate IEnumerator MultiParamCoroutine(float param1=0, float param2=0, float param3=0);
+        public MultiParamCoroutine[] debuffCoroutines;
         
         protected virtual void Awake()
         {
@@ -49,6 +69,22 @@ namespace Creature
         protected virtual void Start()
         {
             SetHealth(maxHealth);
+            activeDebuffs = new bool[Enum.GetNames(typeof(Debuff)).Length];
+            debuffCoroutines = new MultiParamCoroutine[] {Poison};
+        }
+
+        protected IEnumerator Poison(float damagePerHit, float secondsToRunFor, float secondsBetweenPoisonHits)
+        {
+            float totalTime = 0f;
+            //Run for specified number of seconds
+            while (totalTime < secondsToRunFor && activeDebuffs[(int)Debuff.Poison])
+            {
+                //Apply poison effect
+                health -= damagePerHit;
+                totalTime += secondsBetweenPoisonHits;
+                yield return new WaitForSeconds(secondsBetweenPoisonHits);
+            }
+            yield break;
         }
 
         public void SetHealth(float value)
@@ -115,6 +151,18 @@ namespace Creature
                 onEnd = _ => spriteRenderer.color = Color.white,
             });
         }
+
+        public virtual void ApplyDebuff(Debuff debuff, int seconds) {
+            activeDebuffs[(int)debuff] = true;
+            StartCoroutine(debuffCoroutines[(int)debuff](5, 3, 1));
+        }
+
+        //Prematurely end debuff
+        public virtual void RemoveDebuff(Debuff debuff) {
+            activeDebuffs[(int)debuff] = false;
+        }
+
+
 
         public virtual void RefillHealth()
         {
