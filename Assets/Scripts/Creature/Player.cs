@@ -142,11 +142,11 @@ namespace Creature
         {
             var activeSpell = Locator.Inventory.GetEquippedSpell(_activeSpellSlot);
 
-            if (activeSpell != null && context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
+            if (activeSpell != null && context.performed && activeSpell.CooldownOver && mana >= activeSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
                 
-                SetMana(mana - ActiveSpell.ComputedStats.ManaUsage);
+                SetMana(mana - activeSpell.ComputedStats.ManaUsage);
                 _lastManaReductionTime = Time.time;
 
                 // Get direction from player to mouse
@@ -155,10 +155,10 @@ namespace Creature
                 var dir = (mousePos - transform.position).normalized;
 
                 var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
-                overseer.Spell = ActiveSpell;
+                overseer.Spell = activeSpell;
                 overseer.CastDirection = dir;
 
-                ActiveSpell.LastCastTime = Time.time;
+                activeSpell.LastCastTime = Time.time;
             }
         }
 
