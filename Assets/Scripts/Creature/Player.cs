@@ -41,11 +41,6 @@ namespace Creature
 
         [HideInInspector] public UnityEvent<float, float> OnManaChanged = new();
 
-
-        public Inventory Inventory = new();
-
-        public Spell ActiveSpell => Inventory.GetEquippedSpell(_activeSpellSlot);
-
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
@@ -145,11 +140,13 @@ namespace Creature
 
         public void Cast(InputAction.CallbackContext context)
         {
-            if (context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
+            var activeSpell = Locator.Inventory.GetEquippedSpell(_activeSpellSlot);
+
+            if (activeSpell != null && context.performed && activeSpell.CooldownOver && mana >= activeSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
                 
-                SetMana(mana - ActiveSpell.ComputedStats.ManaUsage);
+                SetMana(mana - activeSpell.ComputedStats.ManaUsage);
                 _lastManaReductionTime = Time.time;
 
                 // Get direction from player to mouse
@@ -158,10 +155,10 @@ namespace Creature
                 var dir = (mousePos - transform.position).normalized;
 
                 var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
-                overseer.Spell = ActiveSpell;
+                overseer.Spell = activeSpell;
                 overseer.CastDirection = dir;
 
-                ActiveSpell.LastCastTime = Time.time;
+                activeSpell.LastCastTime = Time.time;
             }
         }
 
