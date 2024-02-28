@@ -1,5 +1,7 @@
 ﻿using Creature;
+using System;
 using UnityEngine.Events;
+using UnityEngine.UIElements.Experimental;
 
 namespace Core
 {
@@ -9,11 +11,13 @@ namespace Core
         public static CurrencyManager CurrencyManager { get; private set; }
         public static GameplaySettingsManager GameplaySettingsManager { get; private set; }
         public static CreatureManager CreatureManager { get; private set; }
+        public static LevelManager LevelManager { get; private set; }
 
         public static UnityEvent<Player> OnPlayerChanged = new();
         public static UnityEvent<CurrencyManager> OnCurrencyManagerChanged = new();
         public static UnityEvent<GameplaySettingsManager> OnGameplaySettingsManagerChanged = new();
         public static UnityEvent<CreatureManager> OnCreatureManagerChanged = new();
+        public static UnityEvent<LevelManager> OnLevelManagerChanged = new();
 
         public static void ProvidePlayer(Player player)
         {
@@ -37,6 +41,12 @@ namespace Core
         {
             CreatureManager = creatureManager;
             OnCreatureManagerChanged.Invoke(creatureManager);
+        }
+
+        internal static void ProvideLevelManager(LevelManager levelManager)
+        {
+            LevelManager = levelManager;
+            OnLevelManagerChanged.Invoke(levelManager);
         }
     }
 }
