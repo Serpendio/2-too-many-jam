@@ -7,10 +7,14 @@ namespace Spells
     [Serializable]
     public class Inventory
     {
-        public const int MaxEquippedSpells = 3;
+        public int MaxEquippedSpells = 3;
 
-        [SerializeField] private List<Spell> _equippedSpells = new(MaxEquippedSpells) { null, null, null };
+        [SerializeField] private List<Spell> _equippedSpells;
         private List<IInventoryItem> _items = new();
+
+        private void Awake() {
+            _equippedSpells = new(MaxEquippedSpells) { null, null, null };
+        }
 
         public void AddToInventory(IInventoryItem item)
         {
@@ -24,7 +28,7 @@ namespace Spells
 
         public void MoveSpellToEquipped(int slot, Spell spell)
         {
-            if (slot is < 0 or >= MaxEquippedSpells)
+            if (slot < 0 || slot >= MaxEquippedSpells)
                 throw new Exception($"Invalid spell slot, must be between 0 and {MaxEquippedSpells}.");
 
             if (_equippedSpells[slot] != null)
@@ -38,7 +42,7 @@ namespace Spells
 
         public void MoveSpellToInventory(int slot)
         {
-            if (slot is < 0 or >= MaxEquippedSpells)
+            if (slot < 0 || slot >= MaxEquippedSpells)
                 throw new Exception($"Invalid spell slot, must be between 0 and {MaxEquippedSpells}.");
 
             _items.Add(_equippedSpells[slot]);
@@ -47,7 +51,7 @@ namespace Spells
 
         public Spell GetEquippedSpell(int activeSpellSlot)
         {
-            if (activeSpellSlot is < 0 or >= MaxEquippedSpells)
+            if (activeSpellSlot < 0 || activeSpellSlot >= MaxEquippedSpells)
                 throw new Exception($"Invalid spell slot, must be between 0 and {MaxEquippedSpells}.");
             return _equippedSpells[activeSpellSlot];
         }
