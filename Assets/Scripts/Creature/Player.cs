@@ -89,6 +89,7 @@ namespace Creature
                 SetMaxHealth(maxHealth + Core.Locator.LevelManager.getMaxHealthIncreasePerLevelUp());
                 SetMaxMana(maxMana + Core.Locator.LevelManager.getMaxManaIncreasePerLevelUp());
             });
+            ApplyDebuff(Debuff.Poison, 5, 3, 1);
     }
 
     public void SetMana(float value)

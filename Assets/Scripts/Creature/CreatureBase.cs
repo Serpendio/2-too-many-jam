@@ -44,13 +44,20 @@ namespace Creature
 
         public Team Team;
 
+
         //----TO ADD A NEW DEBUFF:----//
         //*Add the name of the debuff to the Debuff enum
         //*Create a new private IEnumerator method with up to 3 parameters to house the debuff logic in
         //*Add the method to the debuffCoroutines array in Start()
 
+        //----TO CALL A DEBUFF----//
+        //*Call CreatureBase.ApplyDebuff(Debuff debuff, float param1, float param2, float param3)
+
+        //----TO CANCEL A DEBUFF PREMATURELY----//
+        //*Call RemoveDebuff(Debuff debuff)
+
         public bool[] activeDebuffs;
-        //Helper-delegate, just used to pass more than parameter to the coroutines :]
+        //Helper-delegate, just used to pass more than one parameter to the coroutines :]
         //Default values provided in case coroutine need not take all 3 parameters
         public delegate IEnumerator MultiParamCoroutine(float param1=0, float param2=0, float param3=0);
         public MultiParamCoroutine[] debuffCoroutines;
@@ -152,9 +159,9 @@ namespace Creature
             });
         }
 
-        public virtual void ApplyDebuff(Debuff debuff, int seconds) {
+        public virtual void ApplyDebuff(Debuff debuff, float param1, float param2, float param3) {
             activeDebuffs[(int)debuff] = true;
-            StartCoroutine(debuffCoroutines[(int)debuff](5, 3, 1));
+            StartCoroutine(debuffCoroutines[(int)debuff](param1, param2, param3));
         }
 
         //Prematurely end debuff
