@@ -195,22 +195,27 @@ namespace Spells
             {
                 dissipated = true;
 
-                var Explosion = Instantiate(SpellProjectileOverseer.SpellProjectilePrefab, transform.position,
-                    transform.rotation);
-                Explosion.Spell = new Spell(new SpellStats
+                var explosionProjectile = Instantiate(
+                    SpellProjectileOverseer.SpellProjectilePrefab,
+                    transform.position,
+                    transform.rotation
+                );
+
+                explosionProjectile.Spell = new Spell(new SpellStats
                 {
                     DamageOnHit = 50,
                     CastCooldown = 0,
                     ManaUsage = 0,
                     ProjectileSpeed = 0,
                     Range = 1,
-                }, Element.Fire, Spell.Team);
-                Explosion.AliveTime = AliveTime;
-                Explosion.PiercesRemaining = 999;
-                Explosion.GetComponent<BoxCollider2D>().enabled = false;
+                }, Spell.Element, Spell.Team);
+                
+                explosionProjectile.AliveTime = AliveTime;
+                explosionProjectile.PiercesRemaining = 999;
+                explosionProjectile.GetComponent<BoxCollider2D>().enabled = false;
 
-                Explosion.CastDirection = new Vector3(0, 0, 0);
-                Explosion.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
+                explosionProjectile.CastDirection = new Vector3(0, 0, 0);
+                explosionProjectile.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
             }
 
             _rb.simulated = false;

@@ -3,7 +3,6 @@ using System.Linq;
 using Inventory;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Spells
 {
@@ -11,7 +10,7 @@ namespace Spells
     {
         public enum ModifierTier
         {
-            Tier1, // temp names
+            Tier1,
             Tier2,
             Tier3
         }
@@ -21,14 +20,6 @@ namespace Spells
             Additive,
             Multiplicative
         }
-
-        // todo
-        // public enum MovementPattern
-        // {
-        //     None,
-        //     SineWave,
-        //     Sawtooth,
-        // }
 
         [CreateAssetMenu(fileName = "SpellModifier", menuName = "Spells/Modifiers/SpellModifier", order = 0)]
         public class SpellModifier : ScriptableObject, IInventoryItem
@@ -124,12 +115,6 @@ namespace Spells
 
             [InfoBox("Width of the barrier"), ShowIf(nameof(Barrier))]
             public float SizeOfBarrier;
-
-            // todo
-            // public bool AlterMovementPattern;
-            //
-            // [InfoBox("Movement pattern to apply to the projectile")] [ShowIf("AlterMovementPattern")]
-            // public MovementPattern MovementPattern;
 
             public SpellStats ModifyStats(SpellStats currentStats)
             {

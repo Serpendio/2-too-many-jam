@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ChainT1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Chain
-  <Description>k__BackingField: Bounce from one enemy to another upon hit
+  <Description>k__BackingField: Bounce from 1 enemy to another upon hit
   <Icon>k__BackingField: {fileID: 21300000, guid: 9a6fac484573f364d903682b0ff21651, type: 3}
   SetDescriptive: 1
   Verb: chained
@@ -41,7 +41,7 @@ MonoBehaviour:
   ExtraProjectilesSpreadDegrees: 0
   Chain: 1
   ChainTimes: 1
-  ChainRadius: 3
+  ChainRadius: 4
   Homing: 0
   DeltaHomingAngle: 0
   Giant: 0

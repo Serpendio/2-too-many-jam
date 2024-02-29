@@ -88,6 +88,8 @@ namespace UI
                 var rangeDiff = diff.Range > 0 ? $"+{diff.Range}" : diff.Range.ToString(CultureInfo.InvariantCulture);
                 _tooltipTrigger.Content += $"\nRange: {baseStats.Range} ({rangeDiff})";
 
+                _tooltipTrigger.Content += "\n\n-";
+                
                 foreach (var modifier in spell.Modifiers)
                 {
                     var modifierImage = new GameObject(modifier.Name, typeof(Image)).GetComponent<Image>();

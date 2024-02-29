@@ -10,7 +10,7 @@ namespace Spells
     public class SpellProjectileOverseer : MonoBehaviour
     {
         public static SpellProjectile SpellProjectilePrefab;
-        
+
         public Spell Spell;
 
         public Vector2 CastDirection;
@@ -24,9 +24,11 @@ namespace Spells
             int BurstShots = Spell.Modifiers.Where(m => m.BurstFire).Sum(m => m.HowManyShots) + 1;
             var lastMouseOffset = CastDirection;
 
-            for (int i = 0; i< BurstShots; i++) {           
+            for (int i = 0; i < BurstShots; i++)
+            {
                 // Get direction from player to mouse
-                if (transform.CompareTag("Player")) {
+                if (transform.CompareTag("Player"))
+                {
                     var mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
                     float newOffset = Vector2.SignedAngle(lastMouseOffset, mousePos - transform.position);
                     castDirection = Quaternion.Euler(0, 0, newOffset) * castDirection;
@@ -35,7 +37,7 @@ namespace Spells
 
                 var projectile = Instantiate(SpellProjectilePrefab, transform.position, Quaternion.identity);
                 Projectiles.Add(projectile);
-                
+
                 projectile.Overseer = this;
                 projectile.Spell = Spell;
                 projectile.CastDirection = castDirection;
@@ -61,41 +63,31 @@ namespace Spells
 
         private void Awake()
         {
-            if(SpellProjectilePrefab == null) SpellProjectilePrefab = Resources.Load<SpellProjectile>("Prefabs/SpellProjectile");
+            if (SpellProjectilePrefab == null)
+                SpellProjectilePrefab = Resources.Load<SpellProjectile>("Prefabs/SpellProjectile");
             Room.OnEnteredRoom.AddListener(_ => Destroy(this));
         }
 
         private void Start()
         {
-            //CreateProjectile(CastDirection);
+            int projectilesAmount = Spell.Modifiers
+                .Where(m => m.ExtraProjectiles)
+                .Sum(m => m.ExtraProjectilesAmount) + 1;
+            float projectilesSpreadDegrees = Spell.Modifiers
+                .Where(m => m.ExtraProjectiles)
+                .Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
 
-            int projectilesAmount = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesAmount) + 1;
-            float projectilesSpreadDegrees = Spell.Modifiers.Where(m => m.ExtraProjectiles).Sum(m => m.ExtraProjectilesSpreadDegrees) + Spell.ComputedStats.Spread;
             if (projectilesAmount == 1)
             {
-                Vector2 spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
-                /*if (transform.CompareTag("Player")) {
-                    spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * new Vector2(1,1);
-                } else {
-                    spreadDir = Quaternion.Euler(0, 0, Random.Range(-projectilesSpreadDegrees, projectilesSpreadDegrees)) * CastDirection;
-                }*/
-
-                StartCoroutine(CreateProjectile(spreadDir));
+                StartCoroutine(CreateProjectile(CastDirection));
             }
             else
             {
                 for (var i = 0; i < projectilesAmount; i++)
                 {
-                    // given a center projectile P, rings are pairs of similarly-distanced projectiles on either side,
-                    // i.e: 3\ 2\ 1\ |P /1 /2 /3
                     var angleDiff = projectilesSpreadDegrees / (projectilesAmount - 1);
                     var offset = projectilesSpreadDegrees / 2;
                     Vector2 spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
-                    /*if (transform.CompareTag("Player")) {
-                        spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * new Vector2(1,1);
-                    } else {
-                        spreadDir = Quaternion.Euler(0, 0, angleDiff * i - offset) * CastDirection;
-                    }*/
 
                     StartCoroutine(CreateProjectile(spreadDir));
                 }

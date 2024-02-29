@@ -20,15 +20,15 @@ MonoBehaviour:
   SetNoun: 1
   Noun: burst
   Tier: 0
-  Stats: 0
-  ModifierMethod: 0
+  Stats: 1
+  ModifierMethod: 1
   StatsModifiers:
-    DamageOnHit: 0
-    CastCooldown: 0
-    ManaUsage: 0
-    ProjectileSpeed: 0
-    Range: 0
-    Spread: 0
+    DamageOnHit: 0.4
+    CastCooldown: 1
+    ManaUsage: 1
+    ProjectileSpeed: 1
+    Range: 1
+    Spread: 1
   ExplodeOnHit: 0
   ExplosionRadius: 0
   TimeToLive: 0

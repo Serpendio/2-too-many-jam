@@ -84,8 +84,8 @@ namespace Spells
             { Element.Fire, new[] { "Flame", "Fire", "Heat", "Burning" } },
             { Element.Water, new[] { "Water", "Aqua", "Aquatics", "the Seas" } },
             { Element.Air, new[] { "Wind", "Air", "the Clouds" } },
-            { Element.Lightning, new[] { "Lightning", "Electric", "Sparks", "the Storm" } },
-            { Element.Earth, new[] { "Earth", "Grounding", "Unmoving" } }
+            { Element.Lightning, new[] { "Lightning", "Electricity", "Sparks", "the Storm" } },
+            { Element.Earth, new[] { "Earth", "Grounding", "Rock" } }
         };
         
         public static string[] GenericNouns = { "spell", "hex", "bolt", "missile", "curse", "shot", "charm", "chant" };

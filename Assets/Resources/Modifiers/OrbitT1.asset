@@ -21,19 +21,19 @@ MonoBehaviour:
   Noun: orbit
   Tier: 0
   Stats: 1
-  ModifierMethod: 0
+  ModifierMethod: 1
   StatsModifiers:
-    DamageOnHit: 0
-    CastCooldown: 0
-    ManaUsage: 0
-    ProjectileSpeed: 0
-    Range: 999
-    Spread: 0
+    DamageOnHit: 1
+    CastCooldown: 1.5
+    ManaUsage: 1
+    ProjectileSpeed: 1
+    Range: 2
+    Spread: 1
   ExplodeOnHit: 0
   ExplosionRadius: 0
   TimeToLive: 0
   Piercing: 1
-  PierceTimes: 70
+  PierceTimes: 3
   Bouncing: 0
   BounceTimes: 0
   ExtraProjectiles: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   BurstFire: 0
   HowManyShots: 0
   Orbital: 1
-  ShotRadius: 3
+  ShotRadius: 2.5
   Tornado: 0
   PullPower: 0
   PullRadius: 0
