@@ -8,14 +8,16 @@ using UnityEngine;
 public class StageManager : MonoBehaviour
 {
     private int stage;
-    private int maxStage;
+    private int levelsPerStage;
 
     private void Awake()
     {
         Locator.ProvideStageManager(this);
         stage = 1;
+        levelsPerStage = 10;
     }
 
-    public int GetStage() { return stage; }
+    public int getStage() { return stage; }
+    public int getLevelsPerStage() { return levelsPerStage; }
     public void NextStage() => stage += 1;
 }
