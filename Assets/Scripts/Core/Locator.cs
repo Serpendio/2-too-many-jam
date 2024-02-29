@@ -14,11 +14,13 @@ namespace Core
         public static GameplaySettingsManager GameplaySettingsManager { get; private set; }
         public static CreatureManager CreatureManager { get; private set; }
         public static LevelManager LevelManager { get; private set; }
+        public static StageManager StageManager { get; private set; }
 
         public static UnityEvent<Player> OnPlayerChanged = new();
         public static UnityEvent<GameplaySettingsManager> OnGameplaySettingsManagerChanged = new();
         public static UnityEvent<CreatureManager> OnCreatureManagerChanged = new();
         public static UnityEvent<LevelManager> OnLevelManagerChanged = new();
+        public static UnityEvent<StageManager> OnStageManagerChanged = new();
 
         public static void ProvidePlayer(Player player)
         {
@@ -47,6 +49,12 @@ namespace Core
         {
             LevelManager = levelManager;
             OnLevelManagerChanged.Invoke(levelManager);
+        }
+
+        public static void ProvideStageManager(StageManager stageManager)
+        {
+            StageManager = stageManager;
+            OnStageManagerChanged.Invoke(stageManager);
         }
     }
 }
