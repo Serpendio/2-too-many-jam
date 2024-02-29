@@ -24,6 +24,7 @@ namespace Inventory
         public void AddSpellShards(int val) {
             ShardAmount += val;
             OnSpellShardChanged.Invoke(ShardAmount);
+            Debug.Log(ShardAmount);
         }
     }
 
