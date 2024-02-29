@@ -33,20 +33,19 @@ namespace UI
 
         public UnityEvent<IInventoryItem> OnItemChanged = new();
 
-        private TooltipTrigger _tooltipTrigger;
-
-        private Outline _outline;
-
         private bool _dragInProgress;
 
+        private Outline _outline;
+        private TooltipTrigger _tooltipTrigger;
         private Canvas _parentCanvas;
 
         private void Awake()
         {
+            Debug.Log("Inventory Slot Awake");
             _outline = GetComponent<Outline>();
             _tooltipTrigger = GetComponent<TooltipTrigger>();
             _parentCanvas = GetComponentInParent<Canvas>();
-            
+
             SetItem(null);
         }
 
@@ -59,11 +58,11 @@ namespace UI
             _baseImage.enabled = item != null;
 
             foreach (Transform child in _modifierBase) Destroy(child.gameObject);
-            
+
             Item = item;
-            
-            OnItemChanged.Invoke(item);
-            
+
+            OnItemChanged.Invoke(Item);
+
             if (Item == null) return;
 
             _tooltipTrigger.Content = $"<size=120%><b>{Item.Name}</b></size>\n{Item.Description}\n\n";
@@ -138,7 +137,7 @@ namespace UI
                         item.GridIndex = otherSlot.transform.GetSiblingIndex();
                     else
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
-                    
+
                     otherSlot.SetItem(item);
                     SetItem(otherItem);
                     break;
@@ -149,7 +148,7 @@ namespace UI
                         item.GridIndex = otherSlot.transform.GetSiblingIndex();
                     else
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
-                    
+
                     otherSlot.SetItem(item);
                     SetItem(otherItem);
                     break;
@@ -167,7 +166,7 @@ namespace UI
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
                         (spell.IsOnHotbar, ((Spell)otherItem).IsOnHotbar) = (true, false);
                     }
-                    
+
                     otherSlot.SetItem(item);
                     SetItem(otherItem);
                     break;
@@ -193,14 +192,14 @@ namespace UI
                 case InventoryGroup.Items or InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Mix:
                 {
                     if (item is not Spell spell) return;
-                    
+
                     otherSlot.SetItem(item);
                     break;
                 }
                 case InventoryGroup.Mix when otherSlot.Group is InventoryGroup.Items or InventoryGroup.Hotbar:
                 {
                     if (otherItem is not Spell spell) return;
-                    
+
                     SetItem(otherItem);
                     break;
                 }
