@@ -199,6 +199,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Team: 0
+  activeDebuffs: 
   moveSpeed: 4
   dashPower: 30
   DashCooldown: 1
@@ -214,48 +215,6 @@ MonoBehaviour:
   OnManaChanged:
     m_PersistentCalls:
       m_Calls: []
-  Inventory:
-    _equippedSpells:
-    - <Name>k__BackingField: 
-      <Icon>k__BackingField: {fileID: 0}
-      BaseStats:
-        DamageOnHit: 10
-        CastCooldown: 1
-        ManaUsage: 10
-        ProjectileSpeed: 20
-        Range: 10
-        Spread: 0
-      Team: 0
-      Modifiers:
-      - {fileID: 11400000, guid: ff7127269faba684c8351a71bfb20d6c, type: 2}
-      Element: 1
-      LastCastTime: 0
-    - <Name>k__BackingField: 
-      <Icon>k__BackingField: {fileID: 0}
-      BaseStats:
-        DamageOnHit: 0
-        CastCooldown: 0
-        ManaUsage: 0
-        ProjectileSpeed: 0
-        Range: 0
-        Spread: 0
-      Team: 0
-      Modifiers: []
-      Element: 0
-      LastCastTime: 0
-    - <Name>k__BackingField: 
-      <Icon>k__BackingField: {fileID: 0}
-      BaseStats:
-        DamageOnHit: 0
-        CastCooldown: 0
-        ManaUsage: 0
-        ProjectileSpeed: 0
-        Range: 0
-        Spread: 0
-      Team: 0
-      Modifiers: []
-      Element: 0
-      LastCastTime: 0
 --- !u!114 &4021473281838089200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 239d69be51174534f9c61b6b51d86bd1, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -293,6 +252,42 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 45469e5d-fed1-4d91-81ff-c5f504bfb68f
     m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UI.InventoryUI, Assembly-CSharp
+        m_MethodName: ToggleVisibility
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+    m_ActionId: df00d49d-2cd3-4ef9-be45-e919eb21e767
+    m_ActionName: 'Player/OpenInventory[/Keyboard/tab]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2b19dfa6-90b5-4cf7-9792-fe206299d719
+    m_ActionName: 'UI/Click[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UI.InventoryUI, Assembly-CSharp
+        m_MethodName: ToggleVisibility
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 1f19a251-951c-46f5-bdad-1dfbb51f276b
+    m_ActionName: 'UI/CloseInventory[/Keyboard/tab]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

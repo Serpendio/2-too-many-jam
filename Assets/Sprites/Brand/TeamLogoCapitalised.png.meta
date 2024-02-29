@@ -1,16 +1,28 @@
 fileFormatVersion: 2
-guid: fbf0cf51d05fbd64ea56de2ad0f856c6
+guid: 66dae3f990a26884489416ba2d557024
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2870403398188596383
-    second: multishot_0
+      213: 8432405897927275470
+    second: TeamLogoCapitalised_0
   - first:
-      213: -9056530036995554697
-    second: multishot_1
+      213: 3022207855133593784
+    second: TeamLogoCapitalised_1
   - first:
-      213: -3576133115494587889
-    second: multishot_2
+      213: 5025358684606800117
+    second: TeamLogoCapitalised_2
+  - first:
+      213: -7174173538069965572
+    second: TeamLogoCapitalised_3
+  - first:
+      213: -1593397861942631438
+    second: TeamLogoCapitalised_4
+  - first:
+      213: -4752532634791214118
+    second: TeamLogoCapitalised_5
+  - first:
+      213: -3585206538226716061
+    second: TeamLogoCapitalised_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -90,7 +102,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -103,7 +115,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -119,13 +131,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: multishot_0
+      name: TeamLogoCapitalised_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 32
-        width: 165
-        height: 439
+        x: 0
+        y: 0
+        width: 614
+        height: 656
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -133,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f9cfa1fbea8b5d720800000000000000
-      internalID: 2870403398188596383
+      spriteID: ec33dd3cc7ce50570800000000000000
+      internalID: 8432405897927275470
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: multishot_1
+      name: TeamLogoCapitalised_1
       rect:
         serializedVersion: 2
-        x: 85
-        y: 18
-        width: 381
-        height: 452
+        x: 616
+        y: 197
+        width: 261
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 77289373aedb05280800000000000000
-      internalID: -9056530036995554697
+      spriteID: 8b012aa280a01f920800000000000000
+      internalID: 3022207855133593784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: multishot_2
+      name: TeamLogoCapitalised_2
       rect:
         serializedVersion: 2
-        x: 135
-        y: 283
-        width: 354
-        height: 200
+        x: 892
+        y: 197
+        width: 261
+        height: 265
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,8 +187,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f022f6de0e50f5ec0800000000000000
-      internalID: -3576133115494587889
+      spriteID: 5f0a9e02919adb540800000000000000
+      internalID: 5025358684606800117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamLogoCapitalised_3
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 0
+        width: 206
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf415527d27307c90800000000000000
+      internalID: -7174173538069965572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamLogoCapitalised_4
+      rect:
+        serializedVersion: 2
+        x: 701
+        y: 0
+        width: 187
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f3ea05361d13e9e0800000000000000
+      internalID: -1593397861942631438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamLogoCapitalised_5
+      rect:
+        serializedVersion: 2
+        x: 891
+        y: 0
+        width: 162
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad381d7afbc9b0eb0800000000000000
+      internalID: -4752532634791214118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TeamLogoCapitalised_6
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 0
+        width: 183
+        height: 190
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 362b69216a9ce3ec0800000000000000
+      internalID: -3585206538226716061
       vertices: []
       indices: 
       edges: []
@@ -192,9 +288,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      multishot_0: 2870403398188596383
-      multishot_1: -9056530036995554697
-      multishot_2: -3576133115494587889
+      TeamLogoCapitalised_0: 8432405897927275470
+      TeamLogoCapitalised_1: 3022207855133593784
+      TeamLogoCapitalised_2: 5025358684606800117
+      TeamLogoCapitalised_3: -7174173538069965572
+      TeamLogoCapitalised_4: -1593397861942631438
+      TeamLogoCapitalised_5: -4752532634791214118
+      TeamLogoCapitalised_6: -3585206538226716061
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

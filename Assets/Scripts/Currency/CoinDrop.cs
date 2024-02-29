@@ -20,7 +20,7 @@ namespace Currency
             
             if (distanceFromPlayer < _pickupDistance)
             {
-                Locator.Inventory.AddGold(coinValue);
+                Locator.Inventory.Currency.AddGold(coinValue);
                 OnPickup.Invoke();
                 Destroy(gameObject);
             }

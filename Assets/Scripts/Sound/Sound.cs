@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-[System.Serializable]
+[Serializable]
 public class Sound
 {
     // Class stores sound names and audio clips to be used in AudioManager

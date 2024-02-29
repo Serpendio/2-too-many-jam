@@ -1,65 +1,176 @@
+using Core;
+using Inventory;
 using Spells;
 using Spells.Modifiers;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+namespace UI
 {
-    [SerializeField] private Image _modifierImg;
-    [SerializeField] private Image _baseImg;
-    [SerializeField] private Image overlay;
-
-    public int RelatedSlot;
-    public bool IsGreyedOut;
-
-    public UnityEvent<int> OnHoverBegin = new();
-    public UnityEvent OnHoverEnd = new();
-
-    public void SetFade(bool shouldGrey)
+    public enum InventoryGroup
     {
-        IsGreyedOut = shouldGrey;
-        overlay.color = new Color(0, 0, 0, shouldGrey ? 0.5f : 0);
+        None,
+        Items,
+        Hotbar,
+        Mix
     }
 
-    public void SetItem(IInventoryItem item, bool greyedOut = false)
+    [RequireComponent(typeof(Outline))]
+    public class InventorySlot : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
     {
-        if (item is null)
+        public IInventoryItem Item { get; private set; }
+
+        public InventoryGroup Group = InventoryGroup.None;
+
+        [SerializeField] private Transform _imagesContainer;
+        [SerializeField] private CanvasGroup _canvasGroup;
+
+        [SerializeField] private Image _baseImage;
+        [SerializeField] private Transform _modifierBase;
+
+        private Outline _outline;
+
+        private bool _dragInProgress;
+
+        private void Awake()
         {
-            _baseImg.gameObject.SetActive(false);
-            return;
+            _outline = GetComponent<Outline>();
+            SetItem(null);
         }
 
-        _baseImg.gameObject.SetActive(true);
-        _baseImg.sprite = item.Icon;
-
-        if (item is Spell spell)
+        public void SetItem(IInventoryItem item)
         {
-            foreach (Transform child in _baseImg.transform)
+            _outline.effectColor = Color.clear;
+
+            _baseImage.sprite = item?.Icon;
+            _baseImage.enabled = item != null;
+
+            foreach (Transform child in _modifierBase) Destroy(child.gameObject);
+
+            Item = item;
+            if (Item == null) return;
+
+            if (Item is Spell spell)
             {
-                Destroy(child.gameObject);
+                foreach (var modifier in spell.Modifiers)
+                {
+                    var modifierImage = new GameObject(modifier.Name, typeof(Image)).GetComponent<Image>();
+                    modifierImage.transform.SetParent(_modifierBase);
+                    modifierImage.sprite = modifier.Icon;
+
+                    var rect = modifierImage.GetComponent<RectTransform>();
+                    rect.sizeDelta = new Vector2(24, 24);
+                    rect.localScale = Vector3.one;
+                }
+
+                if ((Group != InventoryGroup.Hotbar && spell.IsOnHotbar) || (Group == InventoryGroup.Hotbar && spell == Locator.Player.ActiveSpell))
+                {
+                    _outline.effectColor = new Color(0.9f, 0.5f, 0.2f);
+                }
             }
-
-            foreach (var modifier in spell.Modifiers)
+            else if (Item is SpellModifier modifier)
             {
-                if (modifier == null) continue;
+                foreach (Transform child in _modifierBase) Destroy(child.gameObject);
 
-                Instantiate(_modifierImg, _baseImg.transform).sprite = modifier.Icon;
+                _baseImage.sprite = modifier.Icon;
             }
         }
-    }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        OnHoverBegin.Invoke(RelatedSlot);
-    }
+        public void Swap(InventorySlot otherSlot)
+        {
+            var item = Item;
+            var otherItem = otherSlot.Item;
 
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        OnHoverEnd.Invoke();
+            switch (Group)
+            {
+                case InventoryGroup.Items when otherSlot.Group == InventoryGroup.Items:
+                {
+                    if (otherItem == null)
+                        item.GridIndex = otherSlot.transform.GetSiblingIndex();
+                    else
+                        (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                    break;
+                }
+                case InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Hotbar:
+                {
+                    if (otherItem == null)
+                        item.GridIndex = otherSlot.transform.GetSiblingIndex();
+                    else
+                        (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                    break;
+                }
+                case InventoryGroup.Items when otherSlot.Group == InventoryGroup.Hotbar:
+                {
+                    if (item is not Spell spell) return;
+                    if (otherItem == null)
+                    {
+                        item.GridIndex = otherSlot.transform.GetSiblingIndex();
+                        spell.IsOnHotbar = true;
+                    }
+                    else
+                    {
+                        (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                        (spell.IsOnHotbar, ((Spell)otherItem).IsOnHotbar) = (true, false);
+                    }
+
+                    break;
+                }
+                case InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Items:
+                {
+                    if (otherItem == null)
+                    {
+                        item.GridIndex = otherSlot.transform.GetSiblingIndex();
+                        ((Spell)item).IsOnHotbar = false;
+                    }
+                    else
+                    {
+                        if (otherItem is not Spell otherSpell) return;
+                        (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                        (otherSpell.IsOnHotbar, ((Spell)item).IsOnHotbar) = (true, false);
+                    }
+
+                    break;
+                }
+            }
+
+            otherSlot.SetItem(item);
+            SetItem(otherItem);
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if (Item == null) return;
+            _dragInProgress = true;
+
+            // _imagesContainer.transform.parent = null;
+
+            _canvasGroup.alpha = 0.5f;
+            _canvasGroup.blocksRaycasts = false;
+            _imagesContainer.position = eventData.position;
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            if (!_dragInProgress) return;
+            _imagesContainer.position = eventData.position;
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            if (!_dragInProgress) return;
+            _dragInProgress = false;
+
+            // _imagesContainer.transform.parent = transform;
+            _imagesContainer.position = transform.position;
+
+            if (eventData.pointerCurrentRaycast.gameObject.TryGetComponent<InventorySlot>(out var other))
+            {
+                Swap(other);
+            }
+
+            _canvasGroup.alpha = 1;
+            _canvasGroup.blocksRaycasts = true;
+        }
     }
 }

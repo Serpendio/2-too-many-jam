@@ -11,8 +11,6 @@ namespace Spells
     [RequireComponent(typeof(ParticleSystem))]
     public class SpellProjectile : MonoBehaviour
     {
-        private static IDictionary<Element, Sprite> _elementSprites = new Dictionary<Element, Sprite>();
-        
         public SpellProjectileOverseer Overseer;
 
         private bool dissipated;
@@ -45,19 +43,6 @@ namespace Spells
         {
             _rb = GetComponent<Rigidbody2D>();
             _particleSystem = GetComponent<ParticleSystem>();
-            
-            if (_elementSprites.Count == 0)
-            {
-                _elementSprites = new Dictionary<Element, Sprite>
-                {
-                    { Element.None, Resources.Load<Sprite>("Sprites/elementNeutral") },
-                    { Element.Fire, Resources.Load<Sprite>("Sprites/elementFIRE") },
-                    { Element.Water, Resources.Load<Sprite>("Sprites/elementWater") },
-                    { Element.Air, Resources.Load<Sprite>("Sprites/elementAIR") },
-                    { Element.Lightning, Resources.Load<Sprite>("Sprites/elementElectricty") },
-                    { Element.Earth, Resources.Load<Sprite>("Sprites/elementearth") }
-                };
-            }
         }
 
         private void Start()
@@ -66,30 +51,37 @@ namespace Spells
 
             dissipated = false;
 
-            if (BarrierSize > 0) {
-                transform.localScale += (Vector3) (Vector2.Perpendicular(CastDirection) * BarrierSize);
+            if (BarrierSize > 0)
+            {
+                transform.localScale += (Vector3)(Vector2.Perpendicular(CastDirection) * BarrierSize);
             }
 
-            if (OrbitRadius > 0) {
+            if (OrbitRadius > 0)
+            {
                 _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed, 0, 0);
                 transform.position += (Vector3.down * OrbitRadius) + (Vector3.down * 0.5f);
                 PrevPlayerPos = Overseer.transform.position;
-            } else {
+            }
+            else
+            {
                 _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
             }
-            
-            _particleSystem.textureSheetAnimation.SetSprite(0, _elementSprites[Spell.Element]);
+
+            _particleSystem.textureSheetAnimation.SetSprite(0, Spell.ElementSprites[Spell.Element]);
 
             if (GiantSize > 0)
             {
-                _rb.transform.localScale += new Vector3(GiantSize,GiantSize,0);
-            } 
+                _rb.transform.localScale += new Vector3(GiantSize, GiantSize, 0);
+            }
         }
 
-        private void FixedUpdate() {
-            if (OrbitRadius > 0) {
+        private void FixedUpdate()
+        {
+            if (OrbitRadius > 0)
+            {
                 // TODO - Slight offset when moving around, no clue why
-                _rb.velocity = Quaternion.Euler(0,0, Mathf.Rad2Deg * Time.deltaTime * Spell.ComputedStats.ProjectileSpeed / OrbitRadius) * _rb.velocity;
+                _rb.velocity = Quaternion.Euler(0, 0,
+                    Mathf.Rad2Deg * Time.deltaTime * Spell.ComputedStats.ProjectileSpeed / OrbitRadius) * _rb.velocity;
                 transform.position += Overseer.transform.position - PrevPlayerPos;
                 PrevPlayerPos = Overseer.transform.position;
             }
@@ -98,31 +90,39 @@ namespace Spells
         private void Update()
         {
             if (AliveTime > 0 && Time.time - StartLive >= AliveTime)
-            {   
+            {
                 Dissipate();
                 return;
             }
 
             TravelDistance += _rb.velocity.magnitude * Time.deltaTime;
 
-            if (TornadoPower > 0) {
-                var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).Where(c => (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
-                foreach (var creature in creaturesToPull) {
-                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position, TornadoPower * Time.deltaTime);
+            if (TornadoPower > 0)
+            {
+                var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
+                    .Where(c => c.Team != Spell.Team).Where(c =>
+                        (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
+                foreach (var creature in creaturesToPull)
+                {
+                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position,
+                        TornadoPower * Time.deltaTime);
                 }
             }
 
             if (HomingAngle > 0)
             {
-                var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team).OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).FirstOrDefault();
+                var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
+                    .Where(c => c.Team != Spell.Team)
+                    .OrderBy(c => (c.transform.position - transform.position).sqrMagnitude).FirstOrDefault();
                 if (newCreature != null)
                 {
-                    float angle = Vector2.SignedAngle(_rb.velocity, newCreature.transform.position - transform.position);
+                    float angle =
+                        Vector2.SignedAngle(_rb.velocity, newCreature.transform.position - transform.position);
 
                     if (angle > 0)
                     {
                         angle = MathF.Min(angle, HomingAngle * Time.deltaTime);
-                    } 
+                    }
                     else if (angle < 0)
                     {
                         angle = MathF.Max(angle, -HomingAngle * Time.deltaTime);
@@ -131,16 +131,18 @@ namespace Spells
                     _rb.velocity = Quaternion.Euler(0, 0, angle) * _rb.velocity;
                 }
             }
+
             if (TravelDistance >= Spell.ComputedStats.Range) Dissipate();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.TryGetComponent(out SpellProjectile proj) && BarrierSize > 0) {
+            if (other.TryGetComponent(out SpellProjectile proj) && BarrierSize > 0)
+            {
                 if (proj.Spell.Team == Spell.Team) return;
                 proj.Dissipate();
             }
-            
+
             if (other.TryGetComponent(out CreatureBase creature))
             {
                 if (creature.Team == Spell.Team) return; // better safe than sorry
@@ -149,16 +151,20 @@ namespace Spells
                 if (ChainTimesRemaining > 0)
                 {
                     ChainTimesRemaining--;
-                    var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None).Where(c => c.Team != Spell.Team && c != creature).Where(c => (c.transform.position - transform.position).sqrMagnitude < ChainSqrRadius).OrderBy(c => Random.value).FirstOrDefault();
+                    var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
+                        .Where(c => c.Team != Spell.Team && c != creature)
+                        .Where(c => (c.transform.position - transform.position).sqrMagnitude < ChainSqrRadius)
+                        .OrderBy(c => Random.value).FirstOrDefault();
 
                     if (newCreature != null)
                     {
-                        _rb.velocity = 2 * Spell.ComputedStats.ProjectileSpeed * (newCreature.transform.position - transform.position).normalized;
+                        _rb.velocity = 2 * Spell.ComputedStats.ProjectileSpeed *
+                                       (newCreature.transform.position - transform.position).normalized;
                         TravelDistance -= (newCreature.transform.position - transform.position).magnitude;
                     }
                 }
                 else if (PiercesRemaining > 0)
-                { 
+                {
                     PiercesRemaining--;
                 }
                 else
@@ -189,7 +195,8 @@ namespace Spells
             {
                 dissipated = true;
 
-                var Explosion = Instantiate(SpellProjectileOverseer.SpellProjectilePrefab, transform.position, transform.rotation);
+                var Explosion = Instantiate(SpellProjectileOverseer.SpellProjectilePrefab, transform.position,
+                    transform.rotation);
                 Explosion.Spell = new Spell(new SpellStats
                 {
                     DamageOnHit = 1000,
@@ -202,9 +209,10 @@ namespace Spells
                 Explosion.PiercesRemaining = 999;
                 Explosion.GetComponent<BoxCollider2D>().enabled = false;
 
-                Explosion.CastDirection = new Vector3 (0, 0, 0);
+                Explosion.CastDirection = new Vector3(0, 0, 0);
                 Explosion.transform.localScale += new Vector3(ExplodeRad, ExplodeRad, 0);
             }
+
             _rb.simulated = false;
             _particleSystem.Stop();
             Destroy(gameObject, _particleSystem.main.startLifetime.constantMax);
@@ -212,7 +220,7 @@ namespace Spells
 
         private void OnDestroy()
         {
-            if (Overseer != null) 
+            if (Overseer != null)
             {
                 Overseer.RemoveProjectile(this);
             }

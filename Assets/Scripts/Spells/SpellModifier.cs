@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Inventory;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ namespace Spells
             [field: SerializeField] public string Name { get; set; }
             [field: SerializeField] public string Description { get; set; }
             [field: SerializeField] public Sprite Icon { get; set; }
+
+            [field: SerializeField] public int GridIndex { get; set; } = -1;
 
             public ModifierTier Tier;
 
@@ -96,9 +99,7 @@ namespace Spells
             public bool Barrier;
             [InfoBox("Width of the barrier"), ShowIf(nameof(Barrier))]
             public float SizeOfBarrier;
-
-
-
+            
             // todo
             // public bool AlterMovementPattern;
             //
@@ -113,10 +114,8 @@ namespace Spells
                 {
                     return currentStats + StatsModifiers;
                 }
-                else
-                {
-                    return currentStats * StatsModifiers;
-                }
+
+                return currentStats * StatsModifiers;
             }
         }
     }

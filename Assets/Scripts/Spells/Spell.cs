@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Creature;
+using Inventory;
 using Spells.Modifiers;
 using UnityEngine;
 
@@ -53,12 +54,26 @@ namespace Spells
     [Serializable]
     public class Spell : IInventoryItem
     {
+        public static IDictionary<Element, Sprite> ElementSprites = new Dictionary<Element, Sprite>
+        {
+            { Element.None, Resources.Load<Sprite>("Sprites/elementNeutral") },
+            { Element.Fire, Resources.Load<Sprite>("Sprites/elementFIRE") },
+            { Element.Water, Resources.Load<Sprite>("Sprites/elementWater") },
+            { Element.Air, Resources.Load<Sprite>("Sprites/elementAIR") },
+            { Element.Lightning, Resources.Load<Sprite>("Sprites/elementElectricty") },
+            { Element.Earth, Resources.Load<Sprite>("Sprites/elementearth") }
+        };
+        
         [field: SerializeField] public string Name { get; set; } // todo ComputedName based on modifiers?
 
         [field: SerializeField] public string Description { get; set; }
 
-        [field: SerializeField] public Sprite Icon { get; set; }
+        public Sprite Icon => ElementSprites[Element];
 
+        [field: SerializeField] public int GridIndex { get; set; } = -1;
+
+        public bool IsOnHotbar;
+        
         public SpellStats BaseStats;
         public Team Team;
 
@@ -79,6 +94,9 @@ namespace Spells
             Team = team;
             
             LastCastTime = -ComputedStats.CastCooldown;
+            
+            Name = $"{Element} Spell";
+            Description = $"A {Element} spell";
         }
         
         public void AddModifier(SpellModifier modifier)

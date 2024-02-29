@@ -12,8 +12,8 @@ namespace UI
         private void Start()
         { 
             _text = GetComponent<TextMeshProUGUI>();
-            UpdateCounter(Locator.Inventory.GoldAmount);
-            Spells.Inventory.OnGoldChanged.AddListener(UpdateCounter);
+            UpdateCounter(Locator.Inventory.Currency.GoldAmount);
+            Locator.Inventory.Currency.OnGoldChanged.AddListener(UpdateCounter);
         }
 
         private void UpdateCounter(int val)
