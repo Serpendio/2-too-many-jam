@@ -4,9 +4,6 @@ using Tweens;
 using UI;
 using UnityEngine.Events;
 using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor.Tilemaps;
-using System.Diagnostics;
 
 namespace Creature
 {

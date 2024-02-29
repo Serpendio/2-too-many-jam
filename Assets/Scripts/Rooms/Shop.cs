@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using Core;
 using Creature;
 using Spells;
 using Spells.Modifiers;
