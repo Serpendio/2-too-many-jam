@@ -48,7 +48,7 @@ namespace Spells
             public bool SetNoun;
 
             [ShowIf(nameof(SetNoun))] public string Noun;
-
+            
             public ModifierTier Tier;
 
             [Space, HorizontalLine, Space] public bool Stats;

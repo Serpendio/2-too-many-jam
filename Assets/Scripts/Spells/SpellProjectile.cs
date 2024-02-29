@@ -199,7 +199,7 @@ namespace Spells
                     transform.rotation);
                 Explosion.Spell = new Spell(new SpellStats
                 {
-                    DamageOnHit = 1000,
+                    DamageOnHit = 50,
                     CastCooldown = 0,
                     ManaUsage = 0,
                     ProjectileSpeed = 0,

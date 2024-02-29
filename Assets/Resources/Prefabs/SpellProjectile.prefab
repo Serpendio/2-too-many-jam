@@ -244,8 +244,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Overseer: {fileID: 0}
   Spell:
-    <Name>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <GridIndex>k__BackingField: 0
+    IsOnHotbar: 0
     BaseStats:
       DamageOnHit: 0
       CastCooldown: 0
@@ -348,7 +348,7 @@ ParticleSystem:
       m_RotationOrder: 4
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
-  scalingMode: 1
+  scalingMode: 2
   randomSeed: 0
   InitialModule:
     serializedVersion: 3
@@ -1110,7 +1110,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 100
+      scalar: 200
       minScalar: 10
       maxCurve:
         serializedVersion: 2
