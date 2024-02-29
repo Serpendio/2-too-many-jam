@@ -29,6 +29,9 @@ namespace Core
             xpToLevelUp = 20;
 
             maxLevel = 30;
+
+            maxHealthIncreasePerLevelUp = 5;
+            maxManaIncreasePerLevelUp = 5;
         }
 
         public int getCurrentLevel() {
