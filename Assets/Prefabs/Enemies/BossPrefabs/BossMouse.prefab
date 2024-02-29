@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 158024836645491187}
   - component: {fileID: 1721165864771726038}
   m_Layer: 8
-  m_Name: MouseEnemy
+  m_Name: BossMouse
   m_TagString: Creature
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -195,7 +195,7 @@ MonoBehaviour:
       m_Calls: []
   Rb: {fileID: 0}
   <health>k__BackingField: 0
-  <maxHealth>k__BackingField: 8
+  <maxHealth>k__BackingField: 240
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []

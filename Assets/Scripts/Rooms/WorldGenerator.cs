@@ -15,8 +15,9 @@ namespace Rooms
         [SerializeField] private CanvasGroup _fadeToBlack;
         [SerializeField] private NavMeshSurface _navMeshSurface;
 
-        [SerializeField] private List<Room> _roomPrefabs;
         [SerializeField] private int nextRoom;
+        [SerializeField] private List<Room> _roomPrefabs;
+        [SerializeField] private Room bossRoomPrefab;
 
         [SerializeField] private WeightedSpawnPool _weightedSpawnPool = new();
 
@@ -61,9 +62,17 @@ namespace Rooms
 
         private Room GenerateNewRoom(Door comingFrom = null)
         {
-            var room = nextRoom > _roomPrefabs.Count - 1
-                ? _roomPrefabs[Random.Range(0, _roomPrefabs.Count)]
-                : _roomPrefabs[nextRoom];
+            Room room;
+            //TEMP:
+            //Check if user should enter boss room : currentLevel == levelsPerStage * currentStage (e.g.: 20 == 10 * 2)
+            if (Core.Locator.LevelManager.getCurrentLevel() == (Core.Locator.StageManager.getLevelsPerStage() * Core.Locator.StageManager.getStage())) {
+                room = bossRoomPrefab;
+            }
+            else {
+                room = nextRoom > _roomPrefabs.Count - 1
+                    ? _roomPrefabs[Random.Range(0, _roomPrefabs.Count)]
+                    : _roomPrefabs[nextRoom];
+            }
 
             var roomObj = Instantiate(room, transform);
 
@@ -136,22 +145,7 @@ namespace Rooms
                     if (_currentRoom.SpawnEnemiesOnEnter)
                     {
                         // Generate enemies on random tiles in the room, not too close to player
-                        var bounds = _currentRoom.Tilemap.cellBounds;
-
-                        var spawnablePositions = new List<Vector3>();
-                        // iterate through bounds, if tile is not null and collider is none add to vector3 list
-                        for (var x = bounds.xMin; x < bounds.xMax; x++)
-                        {
-                            for (var y = bounds.yMin; y < bounds.yMax; y++)
-                            {
-                                var pos = new Vector3Int(x, y, 0);
-                                if (_currentRoom.Tilemap.GetTile(pos) == null) continue;
-                                if (_currentRoom.Tilemap.GetColliderType(pos) != Tile.ColliderType.None) continue;
-                                if (Vector3.Distance(pos, _player.transform.position) < 5) continue;
-
-                                spawnablePositions.Add(_currentRoom.Tilemap.GetCellCenterWorld(pos));
-                            }
-                        }
+                        var spawnablePositions = _currentRoom.GenerateSpawnablePositions();
 
                         // Get number of enemies to spawn based on some arbitrary amount according to room size and player level
                         // If player level is maxLevel/2, levelEnemyWeighting = 1
@@ -182,5 +176,6 @@ namespace Rooms
             if (instant) toBlackTween.onEnd.Invoke(null);
             else _fadeToBlack.gameObject.AddTween(toBlackTween);
         }
+
     }
 }

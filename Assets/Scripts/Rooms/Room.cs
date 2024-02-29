@@ -7,6 +7,7 @@ using Tweens;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Tilemaps;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace Rooms
 {
@@ -47,7 +48,7 @@ namespace Rooms
             {
                 door.room = this;
 
-                if (SpawnEnemiesOnEnter) door.gameObject.SetActive(false);
+                if (SpawnEnemiesOnEnter || GetComponent<BossRoom>() != null) door.gameObject.SetActive(false);
             }
 
             Tilemap = GetComponent<Tilemap>();
@@ -162,6 +163,29 @@ namespace Rooms
                     door.gameObject.SetActive(true);
                 }
             }
+        }
+
+
+        public List<Vector3> GenerateSpawnablePositions()
+        {
+            var bounds = Tilemap.cellBounds;
+
+            var spawnablePositions = new List<Vector3>();
+            // iterate through bounds, if tile is not null and collider is none add to vector3 list
+            for (var x = bounds.xMin; x < bounds.xMax; x++)
+            {
+                for (var y = bounds.yMin; y < bounds.yMax; y++)
+                {
+                    var pos = new Vector3Int(x, y, 0);
+                    if (Tilemap.GetTile(pos) == null) continue;
+                    if (Tilemap.GetColliderType(pos) != Tile.ColliderType.None) continue;
+                    if (Vector3.Distance(pos, Core.Locator.Player.transform.position) < 5) continue;
+
+                    spawnablePositions.Add(Tilemap.GetCellCenterWorld(pos));
+                }
+            }
+
+            return spawnablePositions;
         }
     }
 }
