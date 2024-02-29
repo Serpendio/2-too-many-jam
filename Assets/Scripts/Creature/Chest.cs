@@ -33,6 +33,7 @@ namespace Creature
                 Debug.DrawRay(transform.position, offset, Color.red, 60f);
 
                 var coinDrop = Instantiate(_coinDropPrefab, transform.position + offset, Quaternion.identity);
+                coinDrop.transform.parent = transform;
                 coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
 
                 coinDrop.OnPickup.AddListener(() =>
