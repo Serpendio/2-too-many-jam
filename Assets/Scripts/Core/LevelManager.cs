@@ -47,7 +47,7 @@ namespace Core
             {
                 currentXP -= xpToLevelUp;
                 currentLevel += 1;
-                xpToLevelUp += currentLevel * 10;
+                xpToLevelUp = currentLevel * 10;
                 levelledUp = true;
             }
             if (levelledUp) { PlayerLevelUp.Invoke(currentLevel); }
