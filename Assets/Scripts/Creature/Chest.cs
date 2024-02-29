@@ -20,7 +20,7 @@ namespace Creature
             if (_coinDropPrefab == null) _coinDropPrefab = Resources.Load<CoinDrop>("Prefabs/CoinDrop");
         }
 
-        public override void TakeDamage(float damage)
+        public override void TakeDamage(float damage, Color? colourOverride = null)
         {
             spriteRenderer.sprite = openSprite;
             
