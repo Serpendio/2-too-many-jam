@@ -139,8 +139,9 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 0.3.1
-  preloadedAssets: []
+  bundleVersion: 0.4.0
+  preloadedAssets:
+  - {fileID: 11400000, guid: 81356cafba3ed8d4dbfd96f0e296e935, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -811,7 +812,7 @@ PlayerSettings:
   webGLWebAssemblyBigInt: 0
   webGLCloseOnQuit: 0
   scriptingDefineSymbols:
-    Standalone: 
+    Standalone: BUILD_TYPE_MAIN;BUILD_PLATFORM_PC;BUILD_ARCH_WINDOWSX64;BUILD_BACKEND_MONO
     WebGL: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
