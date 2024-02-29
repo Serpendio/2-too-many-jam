@@ -112,6 +112,10 @@ PrefabInstance:
       propertyPath: <maxHealth>k__BackingField
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3021544017417578665, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
       value: 1.7540001

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Inventory;
+using Creature;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -115,6 +116,17 @@ namespace Spells
 
             [InfoBox("Width of the barrier"), ShowIf(nameof(Barrier))]
             public float SizeOfBarrier;
+            
+            public bool HasStatus;
+            [InfoBox("StatusData"), ShowIf(nameof(HasStatus))]
+            public StatusStruct Status;
+
+
+            // todo
+            // public bool AlterMovementPattern;
+            //
+            // [InfoBox("Movement pattern to apply to the projectile")] [ShowIf("AlterMovementPattern")]
+            // public MovementPattern MovementPattern;
 
             public SpellStats ModifyStats(SpellStats currentStats)
             {

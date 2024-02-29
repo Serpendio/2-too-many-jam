@@ -32,6 +32,7 @@ namespace Spells
         public float TornadoPower;
         public float TornadoRadius;
         public float BarrierSize;
+        public StatusStruct[] statuses;
 
         public float TravelDistance;
         public float StartLive;
@@ -146,6 +147,11 @@ namespace Spells
             {
                 if (creature.Team == Spell.Team) return; // better safe than sorry
                 creature.TakeDamage(Spell.ComputedStats.DamageOnHit);
+                foreach (var status in statuses)
+                {
+                    if (Random.value < status.chance)
+                        creature.ApplyStatus(status.effect, status.duration, status.param2, status.param3);
+                }
 
                 if (ChainTimesRemaining > 0)
                 {

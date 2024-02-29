@@ -54,6 +54,7 @@ namespace Spells
                 projectile.TornadoPower = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullPower);
                 projectile.TornadoRadius = Spell.Modifiers.Where(m => m.Tornado).Sum(m => m.PullRadius);
                 projectile.BarrierSize = Spell.Modifiers.Where(m => m.Barrier).Sum(m => m.SizeOfBarrier);
+                projectile.statuses = Spell.Modifiers.Where(m => m.HasStatus).Select(m => m.Status).ToArray(); // ToDo: Allow status effects to stack
 
                 yield return new WaitForSeconds(.08f);
             }

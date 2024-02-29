@@ -128,6 +128,10 @@ PrefabInstance:
       propertyPath: Spell.BaseStats.ProjectileSpeed
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3021544017417578665, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 6678396936225670940, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: m_SpriteTilingProperty.newSize.x
       value: 0.70076925

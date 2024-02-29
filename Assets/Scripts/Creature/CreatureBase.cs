@@ -5,6 +5,7 @@ using UI;
 using UnityEngine.Events;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 
 namespace Creature
 {
@@ -35,9 +36,10 @@ namespace Creature
     }
 
     [Serializable]
-    public struct StatusStruct
+    public class StatusStruct
     {
         public StatusEffects effect;
+        [Range(0f, 1f)] public float chance;
         public float duration;
         public float param2;
         public float param3;
@@ -64,6 +66,7 @@ namespace Creature
         private static IDictionary<StatusEffects, Sprite> _statusSprites = new Dictionary<StatusEffects, Sprite>();
         private static HealthChangeIndicator _healthChangeIndicatorPrefab;
         
+        [SerializeField] private Transform _statusParent;
         [HideInInspector] public UnityEvent OnDeath = new();
 
         protected Animator Anim;
@@ -259,12 +262,17 @@ namespace Creature
                 RemoveStatus(effect);
             }
             activeStatuses[(int)effect] = true;
+
+            Instantiate(new GameObject(effect.ToString()), _statusParent).AddComponent<SpriteRenderer>().sprite = _statusSprites[effect];
+
             StartCoroutine(statusCoroutines[(int)effect](duration, param2, param3));
         }
 
         //Prematurely end statusEffects
         public virtual void RemoveStatus(StatusEffects effect) {
             activeStatuses[(int)effect] = false;
+            Instantiate(new GameObject(effect.ToString()), _statusParent).AddComponent<SpriteRenderer>().sprite = _statusSprites[effect];
+            Destroy(_statusParent.Find(effect.ToString()).gameObject);
             StopCoroutine(statusCoroutines[(int)effect](0, 0, 0));
         }
 

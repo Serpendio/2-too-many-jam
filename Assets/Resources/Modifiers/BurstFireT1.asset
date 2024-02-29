@@ -55,3 +55,10 @@ MonoBehaviour:
   PullRadius: 0
   Barrier: 0
   SizeOfBarrier: 0
+  HasStatus: 0
+  Status:
+    effect: 0
+    chance: 0
+    duration: 0
+    param2: 0
+    param3: 0
