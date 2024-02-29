@@ -10,14 +10,17 @@ namespace Creature
         [SerializeField] private Sprite openSprite;
         [SerializeField] private Sprite emptySprite;
         private static CoinDrop _coinDropPrefab;
+        private static ShardDrop _shardDropPrefab;
 
         private List<CoinDrop> _coinDrops = new();
+        private List<ShardDrop> _shardDrops = new();
 
         protected override void Awake()
         {
             base.Awake();
 
             if (_coinDropPrefab == null) _coinDropPrefab = Resources.Load<CoinDrop>("Prefabs/CoinDrop");
+            if (_shardDropPrefab == null) _shardDropPrefab = Resources.Load<ShardDrop>("Prefabs/Shard");
         }
 
         public override void TakeDamage(float damage)
@@ -35,7 +38,9 @@ namespace Creature
                 var coinDrop = Instantiate(_coinDropPrefab, transform.position + offset, Quaternion.identity);
                 coinDrop.transform.parent = transform;
                 coinDrop.coinValue = Mathf.RoundToInt(Locator.GameplaySettingsManager.CoinDropValue.GetValue());
-
+                _coinDrops.Add(coinDrop);
+                droppedValue += coinDrop.coinValue;
+                
                 coinDrop.OnPickup.AddListener(() =>
                 {
                     _coinDrops.Remove(coinDrop);
@@ -44,9 +49,26 @@ namespace Creature
                         spriteRenderer.sprite = emptySprite;
                     }
                 });
-                
-                _coinDrops.Add(coinDrop);
-                droppedValue += coinDrop.coinValue;
+
+                if (Random.value > 0.8f)
+                {
+                    var shardDrop = Instantiate(_shardDropPrefab, transform.position + offset, Quaternion.identity);
+                    shardDrop.transform.parent = transform;
+                    shardDrop.shardValue = Random.Range(1, 4);
+                    _shardDrops.Add(shardDrop);
+                    droppedValue += shardDrop.shardValue;
+                    shardDrop.OnPickupShard.AddListener(() =>
+                    {
+                        _shardDrops.Remove(shardDrop);
+                        if (_shardDrops.Count == 0)
+                        {
+                            spriteRenderer.sprite = emptySprite;
+                        }
+                    });
+                }
+
+
+
             }
             
             Locator.CreatureManager.RemoveCreature(this);
