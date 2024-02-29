@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: OrbitT1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Orbit
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Description>k__BackingField: Projectiles orbit around the caster
+  <Icon>k__BackingField: {fileID: 21300000, guid: 388781c26d69028408dce574b5995bb9, type: 3}
+  SetDescriptive: 1
+  Verb: orbiting
+  SetNoun: 1
+  Noun: orbit
   Tier: 0
   Stats: 1
   ModifierMethod: 0
@@ -23,7 +27,7 @@ MonoBehaviour:
     CastCooldown: 0
     ManaUsage: 0
     ProjectileSpeed: 0
-    Range: 9999
+    Range: 999
     Spread: 0
   ExplodeOnHit: 0
   ExplosionRadius: 0
@@ -46,3 +50,8 @@ MonoBehaviour:
   HowManyShots: 0
   Orbital: 1
   ShotRadius: 3
+  Tornado: 0
+  PullPower: 0
+  PullRadius: 0
+  Barrier: 0
+  SizeOfBarrier: 0

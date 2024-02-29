@@ -1,4 +1,5 @@
 ﻿using Creature;
+using UI;
 using UnityEngine.Events;
 
 namespace Core
@@ -11,6 +12,7 @@ namespace Core
         public static CreatureManager CreatureManager { get; private set; }
         public static LevelManager LevelManager { get; private set; }
         public static StageManager StageManager { get; private set; }
+        public static TooltipManager TooltipManager { get; private set; }
 
         public static UnityEvent<Player> OnPlayerChanged = new();
         public static UnityEvent<Inventory.Inventory> OnInventoryChanged = new();
@@ -18,6 +20,7 @@ namespace Core
         public static UnityEvent<CreatureManager> OnCreatureManagerChanged = new();
         public static UnityEvent<LevelManager> OnLevelManagerChanged = new();
         public static UnityEvent<StageManager> OnStageManagerChanged = new();
+        public static UnityEvent<TooltipManager> OnTooltipManagerChanged = new();
 
         public static void ProvidePlayer(Player player)
         {
@@ -53,6 +56,12 @@ namespace Core
         {
             StageManager = stageManager;
             OnStageManagerChanged.Invoke(stageManager);
+        }
+        
+        public static void ProvideTooltipManager(TooltipManager tooltipManager)
+        {
+            TooltipManager = tooltipManager;
+            OnTooltipManagerChanged.Invoke(tooltipManager);
         }
     }
 }

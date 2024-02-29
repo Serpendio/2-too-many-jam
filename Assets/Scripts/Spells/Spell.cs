@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using Creature;
 using Inventory;
+using Mono.Cecil.Cil;
 using Spells.Modifiers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spells
 {
@@ -38,6 +41,17 @@ namespace Spells
                 Range = a.Range + b.Range,
                 Spread = a.Spread + b.Spread
             };
+        
+        public static SpellStats operator -(SpellStats a, SpellStats b) =>
+            new()
+            {
+                DamageOnHit = a.DamageOnHit - b.DamageOnHit,
+                CastCooldown = a.CastCooldown - b.CastCooldown,
+                ManaUsage = a.ManaUsage - b.ManaUsage,
+                ProjectileSpeed = a.ProjectileSpeed - b.ProjectileSpeed,
+                Range = a.Range - b.Range,
+                Spread = a.Spread - b.Spread
+            };
 
         public static SpellStats operator *(SpellStats a, SpellStats b) =>
             new()
@@ -64,16 +78,28 @@ namespace Spells
             { Element.Earth, Resources.Load<Sprite>("Sprites/elementearth") }
         };
         
-        [field: SerializeField] public string Name { get; set; } // todo ComputedName based on modifiers?
+        public static IDictionary<Element, string[]> ElementTerms = new Dictionary<Element, string[]>
+        {
+            { Element.None, new[] { "Neutrality", "Apathy", "Unfeeling" } },
+            { Element.Fire, new[] { "Flame", "Fire", "Heat", "Burning" } },
+            { Element.Water, new[] { "Water", "Aqua", "Aquatics", "the Seas" } },
+            { Element.Air, new[] { "Wind", "Air", "the Clouds" } },
+            { Element.Lightning, new[] { "Lightning", "Electric", "Sparks", "the Storm" } },
+            { Element.Earth, new[] { "Earth", "Grounding", "Unmoving" } }
+        };
+        
+        public static string[] GenericNouns = { "spell", "hex", "bolt", "missile", "curse", "shot", "charm", "chant" };
 
-        [field: SerializeField] public string Description { get; set; }
+        public string Name { get; private set; }
+
+        public string Description { get; private set; }
 
         public Sprite Icon => ElementSprites[Element];
 
         [field: SerializeField] public int GridIndex { get; set; } = -1;
 
         public bool IsOnHotbar;
-        
+
         public SpellStats BaseStats;
         public Team Team;
 
@@ -87,26 +113,52 @@ namespace Spells
 
         public bool CooldownOver => Time.time - LastCastTime > ComputedStats.CastCooldown;
 
-        public Spell(SpellStats baseStats, Element element, Team team)
+        public Spell(SpellStats baseStats, Element element, Team team, List<SpellModifier> modifiers = null)
         {
             BaseStats = baseStats;
             Element = element;
             Team = team;
-            
+            Modifiers = modifiers ?? new List<SpellModifier>();
+
             LastCastTime = -ComputedStats.CastCooldown;
             
-            Name = $"{Element} Spell";
-            Description = $"A {Element} spell";
+            Name = GetComputedName();
+            Description = "A spell attuned to " + Element;
         }
-        
+
         public void AddModifier(SpellModifier modifier)
         {
             Modifiers.Add(modifier);
         }
-        
+
         public void RemoveModifier(SpellModifier modifier)
         {
             Modifiers.Remove(modifier);
+        }
+
+        private string GetComputedName()
+        {
+            var name = "";
+            
+            var verbModifier = Modifiers
+                .Where(m => m.SetDescriptive)
+                .OrderBy(_ => Random.value)
+                .FirstOrDefault();
+            
+            var nounModifier = Modifiers
+                .Where(m => m.SetNoun && m != verbModifier)
+                .OrderBy(_ => Random.value)
+                .FirstOrDefault();
+            
+            var ti = new CultureInfo("en-US", false).TextInfo;
+            
+            if (verbModifier != null) name += $"{ti.ToTitleCase(verbModifier.Verb)} ";
+            if (nounModifier != null) name += ti.ToTitleCase(nounModifier.Noun);
+            else name += ti.ToTitleCase(GenericNouns[Random.Range(0, GenericNouns.Length)]);
+
+            name += " of " + ti.ToTitleCase(ElementTerms[Element][Random.Range(0, ElementTerms[Element].Length)]);
+            
+            return name;
         }
     }
 }

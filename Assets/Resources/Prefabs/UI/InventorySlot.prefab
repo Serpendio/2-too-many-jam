@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 543583403351967521}
   - component: {fileID: 531500562462245066}
   - component: {fileID: 6215758466415353390}
+  - component: {fileID: 8673722421504473332}
   m_Layer: 5
   m_Name: InventorySlot
   m_TagString: Untagged
@@ -139,7 +140,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
+  m_TargetGraphic: {fileID: 543583403351967521}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -158,6 +159,20 @@ MonoBehaviour:
   m_EffectColor: {r: 1, g: 1, b: 1, a: 0}
   m_EffectDistance: {x: 2, y: -2}
   m_UseGraphicAlpha: 1
+--- !u!114 &8673722421504473332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790895019238863090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca7006aafc04ae6907536f3771ca04a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Content: This is a spell. WIP
+  Delay: 1
 --- !u!1 &2458871847349027301
 GameObject:
   m_ObjectHideFlags: 0

@@ -39,7 +39,8 @@ namespace Inventory
         public int MaxEquippedSpells;
 
 #if UNITY_EDITOR
-        [SerializeField] private List<Spell> _initialDebugSpells = new();
+        // unity doesnt run constructors for inspector variables because fuck me i guess so no more of this
+        // [SerializeField] private List<Spell> _initialDebugSpells = new();
 #endif
 
         private void Awake()
@@ -48,7 +49,7 @@ namespace Inventory
             MaxInventorySlots = Locator.GameplaySettingsManager.InitialMaxInventorySlots;
 
 #if UNITY_EDITOR
-            foreach (var spell in _initialDebugSpells) AddToHotbar(spell);
+            // foreach (var spell in _initialDebugSpells) AddToHotbar(spell);
 #endif
 
             Locator.ProvideInventory(this);

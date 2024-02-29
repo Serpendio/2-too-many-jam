@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f33cb3969470546926072b51585848, type: 3}
   m_Name: HomingT1
   m_EditorClassIdentifier: 
-  <Name>k__BackingField: 
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Name>k__BackingField: Homing
+  <Description>k__BackingField: Seek the nearest enemy
+  <Icon>k__BackingField: {fileID: 21300000, guid: c4d2dac073ab2bd44af698d5b18fc0a7, type: 3}
+  SetDescriptive: 1
+  Verb: homing
+  SetNoun: 0
+  Noun: 
   Tier: 0
   Stats: 0
   ModifierMethod: 0
@@ -27,6 +31,7 @@ MonoBehaviour:
     Spread: 0
   ExplodeOnHit: 0
   ExplosionRadius: 0
+  TimeToLive: 0
   Piercing: 1
   PierceTimes: 1
   Bouncing: 0
@@ -39,3 +44,14 @@ MonoBehaviour:
   ChainRadius: 0
   Homing: 1
   DeltaHomingAngle: 180
+  Giant: 0
+  ExtraSize: 0
+  BurstFire: 0
+  HowManyShots: 0
+  Orbital: 0
+  ShotRadius: 0
+  Tornado: 0
+  PullPower: 0
+  PullRadius: 0
+  Barrier: 0
+  SizeOfBarrier: 0

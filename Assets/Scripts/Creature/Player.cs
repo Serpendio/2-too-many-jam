@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core;
 using Spells;
 using Spells.Modifiers;
@@ -102,6 +103,13 @@ namespace Creature
 
             for (var i = 0; i < 3; i++)
             {
+                var modifiers = new List<SpellModifier>();
+                while (Random.value > 0.4f)
+                {
+                    var randomModifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
+                    modifiers.Add(randomModifier);
+                }
+                
                 var randSpell = new Spell(new SpellStats
                 {
                     DamageOnHit = 5,
@@ -110,13 +118,7 @@ namespace Creature
                     CastCooldown = 1,
                     ProjectileSpeed = 10,
                     Spread = 0
-                }, (Element)Random.Range(1, 6), Team.Friendly);
-
-                while (Random.value > 0.4f)
-                {
-                    var randomModifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
-                    randSpell.AddModifier(randomModifier);
-                }
+                }, (Element)Random.Range(1, 6), Team.Friendly, modifiers);
 
                 Locator.Inventory.AddToHotbar(randSpell);
             }
