@@ -144,7 +144,7 @@ namespace Creature
             yield break;
         }
 
-        protected IEnumerator Burning(float duration, float damagePerSecond)
+        protected IEnumerator Burning(float duration, float damagePerSecond, float p3)
         {
             //Run for specified number of seconds
             while (duration > 0 && activeStatuses[(int)StatusEffects.Burning])
@@ -158,7 +158,7 @@ namespace Creature
             yield break;
         }
 
-        protected IEnumerator Frozen(float duration)
+        protected IEnumerator Frozen(float duration, float p2, float p3)
         {
             //Run for specified number of seconds
             while (duration > 0 && activeStatuses[(int)StatusEffects.Frozen])
@@ -170,7 +170,7 @@ namespace Creature
             yield break;
         }
 
-        protected IEnumerator Stunned(float duration)
+        protected IEnumerator Stunned(float duration, float p2, float p3)
         {
             //Run for specified number of seconds
             while (duration > 0 && activeStatuses[(int)StatusEffects.Stunned])

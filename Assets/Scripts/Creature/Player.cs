@@ -129,6 +129,18 @@ namespace Creature
 
                 Locator.Inventory.AddToHotbar(randSpell);
             }
+
+            var sll = new Spell(new SpellStats
+            {
+                DamageOnHit = 5,
+                ManaUsage = 10,
+                Range = 10,
+                CastCooldown = 1,
+                ProjectileSpeed = 10,
+                Spread = 0
+            }, (Element)Random.Range(1, 6), Team.Friendly, new List<SpellModifier> {SpellModifier.AllModifiers.Find((m) => m.Name == "Frozen"), SpellModifier.AllModifiers.Find((m) => m.Name == "Burning"), SpellModifier.AllModifiers.Find((m) => m.Name == "Stun"), SpellModifier.AllModifiers.Find((m) => m.Name == "Poison")});
+
+            Locator.Inventory.AddToHotbar(sll);
         }
 
         public void SetActiveSpellSlot(int slot)
