@@ -24,7 +24,7 @@ namespace Core
 
             Locator.ProvideLevelManager(this);
 
-            currentLevel = 1;
+            currentLevel = 10;
             currentXP = 0;
             xpToLevelUp = 20;
 

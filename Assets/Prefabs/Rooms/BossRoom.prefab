@@ -5530,7 +5530,7 @@ MonoBehaviour:
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
   ChestsContainer: {fileID: 0}
-  SpawnEnemiesOnEnter: 1
+  SpawnEnemiesOnEnter: 0
 --- !u!114 &2120572171488667110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5575,6 +5575,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1620af2281bd64db13df71568c40cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossRoomPrefab: {fileID: 0}
+  bossPrefabs:
+  - {fileID: 8317292360838696019, guid: a657f7a48c9468846b47bab057f668df, type: 3}
+  - {fileID: 4592982510597749199, guid: ca807c50f8f573144aceb8409c762ddb, type: 3}
+  - {fileID: 6374402636902462009, guid: 39db885435160124b89985627705db6f, type: 3}
+  bossRoomEnemyPrefabs:
+  - {fileID: 8317292360838696019, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
+  - {fileID: 4592982510597749199, guid: c0f5add313c4a5d4fb005fe191466c0b, type: 3}
+  - {fileID: 6374402636902462009, guid: f3d740be63a0d9b45ba240140b51c1d5, type: 3}
 --- !u!1001 &356737225083586748
 PrefabInstance:
   m_ObjectHideFlags: 0
