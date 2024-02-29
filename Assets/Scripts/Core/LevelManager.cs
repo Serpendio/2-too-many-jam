@@ -18,7 +18,8 @@ namespace Core
         private int maxHealthIncreasePerLevelUp;
         private int maxManaIncreasePerLevelUp;
 
-        [HideInInspector] public UnityEvent PlayerLevelUp = new();
+        [HideInInspector] public UnityEvent<int> PlayerLevelUp = new();
+        [HideInInspector] public UnityEvent<float, float> OnExperienceChanged = new();
 
         private void Awake() {
 
@@ -45,13 +46,16 @@ namespace Core
         public void addXP(int val) {
             currentXP += val;
             //While-loop in case player levels up more than once in same frame
+            bool levelledUp = false;
             while (currentXP > xpToLevelUp)
             {
                 currentXP -= xpToLevelUp;
                 currentLevel += 1;
                 xpToLevelUp += currentLevel * 10;
+                levelledUp = true;
             }
-            PlayerLevelUp.Invoke();
+            if (levelledUp) { PlayerLevelUp.Invoke(currentLevel); }
+            OnExperienceChanged.Invoke(currentXP, xpToLevelUp);
         }
 
         public int getMaxHealthIncreasePerLevelUp() {

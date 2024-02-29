@@ -88,11 +88,11 @@ namespace Spells
 #endif
 
         private void Start() {
-            Locator.LevelManager.PlayerLevelUp.AddListener(() =>
+            Locator.LevelManager.PlayerLevelUp.AddListener((int level) =>
             {
                 //Update max hotbar size every maxLevel / maxHotbarSize levels to ensure even distribution between level ups
                 //(e.g. every 5 levels for max level = 30, max hotbar size = 6)
-                if (Locator.LevelManager.getCurrentLevel() % (Locator.LevelManager.getMaxLevel() / 6) == 0) {
+                if (level % (Locator.LevelManager.getMaxLevel() / 6) == 0) {
                     IncreaseHotbarSize();
                 }
             });

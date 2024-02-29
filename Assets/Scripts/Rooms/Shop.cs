@@ -80,11 +80,11 @@ namespace Rooms
 
 
         private void Start() {
-            Core.Locator.LevelManager.PlayerLevelUp.AddListener(() =>
+            Core.Locator.LevelManager.PlayerLevelUp.AddListener((int level) =>
             {
                 //Update max tier every maxLevel / maxPossibleTier levels to ensure even distribution between level ups
                 //(e.g. every 10 levels for max level = 30, maxTier = 3)
-                if (Core.Locator.LevelManager.getCurrentLevel() % (Core.Locator.LevelManager.getMaxLevel() / maxPossibleTier) == 0) {
+                if (level % (Core.Locator.LevelManager.getMaxLevel() / maxPossibleTier) == 0) {
                     currentMaxTier += 1;
                 }
 

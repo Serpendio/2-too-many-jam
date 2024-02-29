@@ -8,9 +8,9 @@ namespace UI
     public class StatBar : MonoBehaviour
     {
         [SerializeField] private Image _bar;
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] protected TextMeshProUGUI _text;
 
-        public void SetFill(float value, float max)
+        public virtual void SetFill(float value, float max)
         {
             _bar.gameObject.CancelTweens();
             _bar.gameObject.AddTween(new ImageFillAmountTween
