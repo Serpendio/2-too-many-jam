@@ -125,8 +125,9 @@ namespace Creature
         public void SetActiveSpellSlot(int slot)
         {
             if (slot < 0 || slot >= Locator.Inventory.MaxEquippedSpells) return;
-            _activeSpellSlot = slot;
+            if (Locator.Inventory.GetHotbarSlot(slot) == null) return;
             
+            _activeSpellSlot = slot;
             OnHotbarSlotChanged.Invoke(slot);
         }
 

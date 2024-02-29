@@ -20,6 +20,7 @@ namespace UI
         private void Awake()
         {
             _inventorySlotPrefab = Resources.Load<InventorySlot>("Prefabs/UI/InventorySlot");
+            ToggleVisibility(false);
         }
 
         public void ToggleVisibility(bool visible)
