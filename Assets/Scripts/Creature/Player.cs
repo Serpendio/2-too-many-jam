@@ -98,8 +98,8 @@ namespace Creature
 
             Locator.LevelManager.PlayerLevelUp.AddListener((_) =>
             {
-                SetMaxHealth(maxHealth + Locator.LevelManager.getMaxHealthIncreasePerLevelUp());
-                SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp());
+                SetMaxHealth(maxHealth + Locator.LevelManager.getMaxHealthIncreasePerLevelUp(), true);
+                SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp(), true);
             });
 
             for (var i = 0; i < 4; i++)

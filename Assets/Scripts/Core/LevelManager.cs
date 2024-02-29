@@ -39,6 +39,14 @@ namespace Core
             return xpToLevelUp;
         }
 
+        private void FixedUpdate()
+        {
+            //Cheat code
+            if (Input.GetKeyDown(KeyCode.L)) {
+                addXP(1);
+            }
+        }
+
         public void addXP(int val) {
             currentXP += val;
             //While-loop in case player levels up more than once in same frame
@@ -47,7 +55,7 @@ namespace Core
             {
                 currentXP -= xpToLevelUp;
                 currentLevel += 1;
-                xpToLevelUp += currentLevel * 10;
+                xpToLevelUp = currentLevel * 10;
                 levelledUp = true;
             }
             if (levelledUp) { PlayerLevelUp.Invoke(currentLevel); }

@@ -141,6 +141,8 @@ namespace Rooms
                 {
                     _currentRoom.Entered = true;
 
+                    Core.Locator.Player.SetHealth(Core.Locator.Player.health + Core.Locator.Player.maxHealth/10); //Increase player's health by 10% of maxHealth
+
                     if (_currentRoom.SpawnEnemiesOnEnter)
                     {
                         // Generate enemies on random tiles in the room, not too close to player
@@ -148,8 +150,8 @@ namespace Rooms
 
                         // Get number of enemies to spawn based on some arbitrary amount according to room size and player level
                         // If player level is maxLevel/2, levelEnemyWeighting = 1
-                        float levelEnemyWeighting = (2 * Locator.LevelManager.getCurrentLevel()) / Locator.LevelManager.getMaxLevel();
-                        int enemiesToSpawn = (int)(2 + ((spawnablePositions.Count / 30) * levelEnemyWeighting));
+                        float levelEnemyWeighting = (5 * Locator.LevelManager.getCurrentLevel()) / Locator.LevelManager.getMaxLevel();
+                        int enemiesToSpawn = (int)(2 + ((spawnablePositions.Count / 30) * levelEnemyWeighting)) * 3;
 
                         for (var i = 0; i < enemiesToSpawn; i++)
                         {
