@@ -20,6 +20,12 @@ namespace UI
             BuildBar();
             PopulateSlots();
 
+            Locator.Player.OnHotbarSlotChanged.AddListener(_ =>
+            {
+                BuildBar();
+                PopulateSlots();
+            });
+            
             Locator.Inventory.OnItemUpdate.AddListener(_ =>
             {
                 BuildBar();
