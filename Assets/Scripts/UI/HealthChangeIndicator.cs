@@ -18,7 +18,7 @@ namespace UI
             transform.position += new Vector3(Random.Range(-0.1f, 0.25f), Random.Range(-0.1f, 0.25f), 0);
             
             _text.color = Change > 0 ? Color.green : Color.red;
-            _text.text = $"{(Change > 0 ? "+" : "")}{Change}";
+            _text.text = $"{(Change > 0 ? "+" : "")}{Change:N0}";
             
             // Tween pos
             gameObject.AddTween(new PositionTween

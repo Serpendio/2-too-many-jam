@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: BarrierT1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Barrier
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Description>k__BackingField: Block enemy projectiles along the spell's path
+  <Icon>k__BackingField: {fileID: 21300000, guid: 021eb65c8b2c91745af178fbd365895e, type: 3}
+  SetDescriptive: 1
+  Verb: blocking
+  SetNoun: 1
+  Noun: barrier
   Tier: 0
   Stats: 0
   ModifierMethod: 0

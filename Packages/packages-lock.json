@@ -7,6 +7,13 @@
       "dependencies": {},
       "hash": "8a8fa5a9659a6d63f196391c71e06c4286c8acd7"
     },
+    "com.gilzoide.rounded-corners": {
+      "version": "1.0.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
     "com.github.superunitybuild.buildtool": {
       "version": "7.0.0",
       "depth": 0,
@@ -20,13 +27,6 @@
       "source": "git",
       "dependencies": {},
       "hash": "f8a1aedbf0bc7c4aebe0f52300b002912690ce1a"
-    },
-    "com.nobi.roundedcorners": {
-      "version": "https://github.com/kirevdokimov/Unity-UI-Rounded-Corners.git",
-      "depth": 0,
-      "source": "git",
-      "dependencies": {},
-      "hash": "88623988179d35ce2da93b7740d6e7be59fcc971"
     },
     "com.unity.2d.animation": {
       "version": "10.1.0",
@@ -181,7 +181,7 @@
       }
     },
     "com.unity.ide.rider": {
-      "version": "3.0.27",
+      "version": "3.0.28",
       "depth": 0,
       "source": "registry",
       "dependencies": {

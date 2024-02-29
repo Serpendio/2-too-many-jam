@@ -149,7 +149,7 @@ namespace Rooms
 
                         // Get number of enemies to spawn based on some arbitrary amount according to room size and player level
                         // If player level is maxLevel/2, levelEnemyWeighting = 1
-                        float levelEnemyWeighting = (2 * Core.Locator.LevelManager.getCurrentLevel()) / Core.Locator.LevelManager.getMaxLevel();
+                        float levelEnemyWeighting = (2 * Locator.LevelManager.getCurrentLevel()) / Locator.LevelManager.getMaxLevel();
                         int enemiesToSpawn = (int)(2 + ((spawnablePositions.Count / 30) * levelEnemyWeighting));
 
                         for (var i = 0; i < enemiesToSpawn; i++)

@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Currency;
 using Core;
+using Currency;
 using UnityEngine;
 
 namespace Creature

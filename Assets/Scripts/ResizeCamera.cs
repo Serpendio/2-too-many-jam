@@ -1,12 +1,12 @@
 using Core;
+using Rooms;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Rooms;
 
 public class ResizeCamera : MonoBehaviour
 {
-    bool followPlayerY = false;
-    bool followPlayerX = false;
+    bool followPlayerY;
+    bool followPlayerX;
 
     Bounds bounds;
     float screenAspect;
@@ -23,7 +23,7 @@ public class ResizeCamera : MonoBehaviour
         cam = GetComponent<Camera>();
         transform.position = new Vector3(0, 0, -10);
 
-        Room.OnEnteredRoom.AddListener((room) => {
+        Room.OnEnteredRoom.AddListener(room => {
             cameraExtents = new Vector2(cam.orthographicSize * cam.aspect, cam.orthographicSize);
 
             Tilemap tilemap = room.GetComponent<Tilemap>();

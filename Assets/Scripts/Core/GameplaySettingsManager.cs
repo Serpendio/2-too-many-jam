@@ -9,6 +9,9 @@ namespace Core
 
         public PotentiallyRandomFloat ChestDropValue;
         
+        public int InitialMaxEquippedSpells = 3;
+        public int InitialMaxInventorySlots = 10;
+        
         private void Awake()
         {
             Locator.ProvideGameplaySettingsManager(this);

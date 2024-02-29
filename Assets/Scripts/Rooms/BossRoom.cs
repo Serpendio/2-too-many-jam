@@ -27,7 +27,6 @@ public class BossRoom : MonoBehaviour
 
     private void Start()
     {
-
         room = GetComponent<Room>();
         spawnablePositions = room.GenerateSpawnablePositions();
 
@@ -43,10 +42,8 @@ public class BossRoom : MonoBehaviour
 
         bossEnemy.OnDeath.AddListener(() =>
         {
-            Debug.Log("YIppe");
             bossRoomComplete = true;
             if (Core.Locator.StageManager.getStage() < Core.Locator.StageManager.getMaxStage()) {
-                Debug.Log("Wagoo");
                 Core.Locator.StageManager.NextStage();
             }
             else {
@@ -54,7 +51,7 @@ public class BossRoom : MonoBehaviour
             }
         });
 
-        StartCoroutine("RecurrentSpawn");
+        StartCoroutine(nameof(RecurrentSpawn));
     }
 
 

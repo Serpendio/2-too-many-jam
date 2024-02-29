@@ -1,9 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Events;
-
 
 namespace Core
 {
@@ -25,7 +21,7 @@ namespace Core
 
             Locator.ProvideLevelManager(this);
 
-            currentLevel = 10;
+            currentLevel = 1;
             currentXP = 0;
             xpToLevelUp = 20;
 
@@ -70,5 +66,4 @@ namespace Core
             return maxLevel;
         }
     }
-
 }

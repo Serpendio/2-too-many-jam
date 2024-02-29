@@ -13,8 +13,12 @@ MonoBehaviour:
   m_Name: GiantT1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Giant
-  <Description>k__BackingField: 
-  <Icon>k__BackingField: {fileID: 0}
+  <Description>k__BackingField: Projectiles are 50% larger
+  <Icon>k__BackingField: {fileID: 21300000, guid: d290b8e1e9d16994285860e553acde36, type: 3}
+  SetDescriptive: 1
+  Verb: giant
+  SetNoun: 0
+  Noun: 
   Tier: 0
   Stats: 0
   ModifierMethod: 0
@@ -27,6 +31,7 @@ MonoBehaviour:
     Spread: 0
   ExplodeOnHit: 0
   ExplosionRadius: 0
+  TimeToLive: 0
   Piercing: 0
   PierceTimes: 0
   Bouncing: 0
@@ -41,3 +46,12 @@ MonoBehaviour:
   DeltaHomingAngle: 0
   Giant: 1
   ExtraSize: 1.5
+  BurstFire: 0
+  HowManyShots: 0
+  Orbital: 0
+  ShotRadius: 0
+  Tornado: 0
+  PullPower: 0
+  PullRadius: 0
+  Barrier: 0
+  SizeOfBarrier: 0

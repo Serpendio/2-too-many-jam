@@ -86,8 +86,8 @@ MonoBehaviour:
     constantsFileLocation: Assets\SuperUnityBuild
   _productParameters:
     buildCounter: 0
-    buildVersion: 0.3.0
-    versionTemplate: 0.3.0
+    buildVersion: 0.3.1
+    versionTemplate: 0.3.1
     autoGenerate: 0
     syncWithPlayerSettings: 1
   _releaseTypeList:

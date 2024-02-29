@@ -65,13 +65,13 @@ namespace Rooms
             ChestsContainer = new GameObject("Chests").transform;
             ChestsContainer.parent = transform;
 
-            lampTiles = new Tile[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
+            lampTiles = new[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
                                     Resources.Load<Tile>("Tiles/wall_tile_lamp_left"),
                                     Resources.Load<Tile>("Tiles/wall_tile_lamp_right"),
                                     Resources.Load<Tile>("Tiles/wall_tile_lamp_bottom")};
 
-            posOffsets = new Vector3[] {Vector3.down, Vector3.right, Vector3.left, Vector3.up};
-            rotationOffsets = new int[] {0, 90, 270, 180};
+            posOffsets = new[] {Vector3.down, Vector3.right, Vector3.left, Vector3.up};
+            rotationOffsets = new[] {0, 90, 270, 180};
 
 
             // Iterate through tiles, if tile is wall, random chance to add lamp tile on higher level
@@ -116,7 +116,7 @@ namespace Rooms
                             }
                             
                             //Check that there isn't already a chest, door, or wall at potential spot - it makes sense i swear! :-]
-                            bool freeSpot = Core.Locator.CreatureManager.creatures.Where(c => c is Chest && c.isActiveAndEnabled && c.transform.position == new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i]).Count() == 0 && doors.Where(d => posOffsets.ToList().ConvertAll(o => o += new Vector3(x + 0.5f, y + 0.5f, 0) + posOffsets[i]).Contains(d.transform.position)).Count() == 0 && !Physics2D.OverlapCircle(new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i], 0.1f);
+                            bool freeSpot = Locator.CreatureManager.creatures.Where(c => c is Chest && c.isActiveAndEnabled && c.transform.position == new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i]).Count() == 0 && doors.Where(d => posOffsets.ToList().ConvertAll(o => o += new Vector3(x + 0.5f, y + 0.5f, 0) + posOffsets[i]).Contains(d.transform.position)).Count() == 0 && !Physics2D.OverlapCircle(new Vector3(x + 0.5f, y + 0.5f, 1) + posOffsets[i], 0.1f);
                             if (spawnChest && freeSpot) {
                                 Chest chest = Instantiate(_chestPrefab, new Vector3(x + 0.5f, y + 0.5f, 0f) + posOffsets[i], Quaternion.Euler(0, 0, rotationOffsets[i]));
                                 chest.transform.parent = ChestsContainer;
@@ -135,7 +135,7 @@ namespace Rooms
             enemy.OnDeath.AddListener(() =>
             {
                 //Give player some XP based on enemy's type
-                Core.Locator.LevelManager.addXP(enemy.getXPDropAmount());
+                Locator.LevelManager.addXP(enemy.getXPDropAmount());
 
                 var skull = Instantiate(_deathSkullPrefab, enemy.transform.position, Quaternion.identity);
                 skull.transform.parent = SkullsContainer;

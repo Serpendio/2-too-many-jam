@@ -1,8 +1,9 @@
+using System.Collections.Generic;
+using System.Linq;
+using Core;
 using Creature;
 using Spells;
 using Spells.Modifiers;
-using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 namespace Rooms
@@ -73,7 +74,7 @@ namespace Rooms
 
                 }
                 itemIcon.GetComponent<ShopItem>().itemID = randType;
-                itemIcon.transform.parent = this.transform;
+                itemIcon.transform.parent = transform;
                 itemIcon.transform.position = itemLocations[i];
             }
         }

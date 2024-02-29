@@ -1,6 +1,8 @@
-using System;
+using System.Collections.Generic;
+using System.Linq;
 using Core;
 using Spells;
+using Spells.Modifiers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -10,13 +12,20 @@ using UnityEngine.Serialization;
 namespace Creature
 {
     [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(TrailRenderer))]
     public class Player : CreatureBase
     {
         private PlayerInput _playerInput;
         private InputAction _moveAction;
         private InputAction _dashAction;
         private InputAction _castAction;
+        private InputAction _openInventoryAction;
+        private InputAction _closeInventoryAction;
+        private InputAction _hotbarSlot1Action;
+        private InputAction _hotbarSlot2Action;
+        private InputAction _hotbarSlot3Action;
+        private InputAction _hotbarSlot4Action;
+        private InputAction _hotbarSlot5Action;
+        private InputAction _hotbarSlot6Action;
 
         [SerializeField] protected float moveSpeed;
 
@@ -35,12 +44,16 @@ namespace Creature
         public float ManaRegenPerSecond = 15f;
         public float ManaRegenStartDelay = 0.5f;
         private float _lastManaReductionTime;
-        
+
         [field: SerializeField] public float mana { get; private set; }
         [field: SerializeField] public float maxMana { get; private set; }
 
         [HideInInspector] public UnityEvent<float, float> OnManaChanged = new();
 
+        public Spell ActiveSpell => Locator.Inventory.GetHotbarSlot(_activeSpellSlot);
+
+        public UnityEvent<int> OnHotbarSlotChanged = new();
+        
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
@@ -53,25 +66,29 @@ namespace Creature
             _dashAction = _playerInput.actions["Dash"];
             _castAction = _playerInput.actions["Cast"];
 
+            _openInventoryAction = _playerInput.actions["OpenInventory"];
+            _closeInventoryAction = _playerInput.actions["CloseInventory"];
+
+            _hotbarSlot1Action = _playerInput.actions["HotbarSlot1"];
+            _hotbarSlot2Action = _playerInput.actions["HotbarSlot2"];
+            _hotbarSlot3Action = _playerInput.actions["HotbarSlot3"];
+            _hotbarSlot4Action = _playerInput.actions["HotbarSlot4"];
+            _hotbarSlot5Action = _playerInput.actions["HotbarSlot5"];
+            _hotbarSlot6Action = _playerInput.actions["HotbarSlot6"];
+
             _dashAction.performed += Dash;
             _castAction.performed += Cast;
+            _openInventoryAction.performed += OpenInventory;
+            _closeInventoryAction.performed += CloseInventory;
+            
+            _hotbarSlot1Action.performed += _ => SetActiveSpellSlot(0);
+            _hotbarSlot2Action.performed += _ => SetActiveSpellSlot(1);
+            _hotbarSlot3Action.performed += _ => SetActiveSpellSlot(2);
+            _hotbarSlot4Action.performed += _ => SetActiveSpellSlot(3);
+            _hotbarSlot5Action.performed += _ => SetActiveSpellSlot(4);
+            _hotbarSlot6Action.performed += _ => SetActiveSpellSlot(5);
 
             LastDashTime = -DashCooldown;
-
-            /*var initSpell = new Spell(new SpellStats
-            {
-                DamageOnHit = 10,
-                CastCooldown = 1,
-                ManaUsage = 10,
-                ProjectileSpeed = 20,
-                Range = 10,
-            }, Element.None, Team);
-
-            //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Multishot"));
-            //initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Bounce"));
-            initSpell.AddModifier(SpellModifier.AllModifiers.Find(m => m.Tier == ModifierTier.Tier1 && m.Name == "Chain"));
-
-            Inventory.MoveSpellToEquipped(0, initSpell);*/
         }
 
         protected override void Start()
@@ -79,14 +96,51 @@ namespace Creature
             base.Start();
             SetMana(maxMana);
 
-            Core.Locator.LevelManager.PlayerLevelUp.AddListener((_) =>
+            Locator.LevelManager.PlayerLevelUp.AddListener((_) =>
             {
-                SetMaxHealth(maxHealth + Core.Locator.LevelManager.getMaxHealthIncreasePerLevelUp());
-                SetMaxMana(maxMana + Core.Locator.LevelManager.getMaxManaIncreasePerLevelUp());
+                SetMaxHealth(maxHealth + Locator.LevelManager.getMaxHealthIncreasePerLevelUp());
+                SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp());
             });
-    }
 
-    public void SetMana(float value)
+            for (var i = 0; i < 4; i++)
+            {
+                var modifiers = new List<SpellModifier>();
+                while (Random.value <= 0.6f)
+                {
+                    var randomNewModifier = SpellModifier.AllModifiers
+                        .Where(m => !modifiers.Contains(m))
+                        .OrderBy(_ => Random.value)
+                        .FirstOrDefault();
+                    
+                    if (randomNewModifier == null) break;
+                    
+                    modifiers.Add(randomNewModifier);
+                }
+                
+                var randSpell = new Spell(new SpellStats
+                {
+                    DamageOnHit = 5,
+                    ManaUsage = 10,
+                    Range = 10,
+                    CastCooldown = 1,
+                    ProjectileSpeed = 10,
+                    Spread = 0
+                }, (Element)Random.Range(1, 6), Team.Friendly, modifiers);
+
+                Locator.Inventory.AddToHotbar(randSpell);
+            }
+        }
+
+        public void SetActiveSpellSlot(int slot)
+        {
+            if (slot < 0 || slot >= Locator.Inventory.MaxEquippedSpells) return;
+            if (Locator.Inventory.GetHotbarSlot(slot) == null) return;
+            
+            _activeSpellSlot = slot;
+            OnHotbarSlotChanged.Invoke(slot);
+        }
+
+        public void SetMana(float value)
         {
             mana = Mathf.Clamp(value, 0, maxMana);
             OnManaChanged.Invoke(mana, maxMana);
@@ -105,7 +159,7 @@ namespace Creature
                 OnManaChanged.Invoke(mana, maxMana);
             }
         }
-        
+
         private void Update()
         {
             if (mana < maxMana && Time.time - _lastManaReductionTime > ManaRegenStartDelay)
@@ -130,7 +184,7 @@ namespace Creature
             {
                 AudioManager.Instance.PlaySFX("Walking");
             }
-            else if (AudioManager.Instance.sfxSource.isPlaying == true && Rb.velocity.sqrMagnitude <= 1)
+            else if (AudioManager.Instance.sfxSource.isPlaying && Rb.velocity.sqrMagnitude <= 1)
             {
                 AudioManager.Instance.sfxSource.Stop(); // Stops all SFX - Not ideal
             }
@@ -138,15 +192,29 @@ namespace Creature
             UpdateMoveDir(move, move.magnitude > 0);
         }
 
+        public void Dash(InputAction.CallbackContext context)
+        {
+            //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
+            if (context.performed && CanDash && Rb.velocity.magnitude > 0.01f)
+            {
+                LastDashTime = Time.time;
+                OnDash.Invoke();
+
+                var move = _moveAction.ReadValue<Vector2>();
+                Rb.AddForce(dashPower * move.normalized, ForceMode2D.Impulse);
+                AudioManager.Instance.PlaySFX("Air Attack"); // Play SFX, Currently Air Attack
+            }
+        }
+
         public void Cast(InputAction.CallbackContext context)
         {
-            var activeSpell = Locator.Inventory.GetEquippedSpell(_activeSpellSlot);
+            if (ActiveSpell == null) return;
 
-            if (activeSpell != null && context.performed && activeSpell.CooldownOver && mana >= activeSpell.ComputedStats.ManaUsage)
+            if (context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
-                
-                SetMana(mana - activeSpell.ComputedStats.ManaUsage);
+
+                SetMana(mana - ActiveSpell.ComputedStats.ManaUsage);
                 _lastManaReductionTime = Time.time;
 
                 // Get direction from player to mouse
@@ -155,19 +223,26 @@ namespace Creature
                 var dir = (mousePos - transform.position).normalized;
 
                 var overseer = gameObject.AddComponent<SpellProjectileOverseer>();
-                overseer.Spell = activeSpell;
+                overseer.Spell = ActiveSpell;
                 overseer.CastDirection = dir;
 
-                activeSpell.LastCastTime = Time.time;
+                ActiveSpell.LastCastTime = Time.time;
             }
         }
 
-        public void Dash(InputAction.CallbackContext context)
+        public void OpenInventory(InputAction.CallbackContext context)
         {
-            //0.01f instead of 0 because Rb.velocity.magnitude when player is standing still is ~10^-13
-            if (context.performed && CanDash && Rb.velocity.magnitude > 0.01f)
+            if (context.performed)
             {
-                Dash();
+                _playerInput.SwitchCurrentActionMap("UI");
+            }
+        }
+
+        public void CloseInventory(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                _playerInput.SwitchCurrentActionMap("Player");
             }
         }
 
@@ -177,20 +252,13 @@ namespace Creature
             SceneManager.LoadScene("EndScene");
         }
 
-        private void Dash()
-        {
-            LastDashTime = Time.time;
-            OnDash.Invoke();
-
-            var move = _moveAction.ReadValue<Vector2>();
-            Rb.AddForce(dashPower * move.normalized, ForceMode2D.Impulse);
-            AudioManager.Instance.PlaySFX("Air Attack"); // Play SFX, Currently Air Attack
-        }
-
         private void OnDisable()
         {
             _dashAction.performed -= Dash;
             _castAction.performed -= Cast;
+
+            _openInventoryAction.performed -= OpenInventory;
+            _closeInventoryAction.performed -= CloseInventory;
         }
     }
 }
