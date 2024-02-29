@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using Inventory;
 using Spells;
+using Tweens;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +14,8 @@ namespace UI
         private List<InventorySlot> _slots = new();
         
         private bool _isVisible;
+
+        [SerializeField] private Transform _hotbarUI;
 
         private void Awake()
         {
@@ -30,7 +31,7 @@ namespace UI
         public void ToggleVisibility()
         {
             _isVisible = !_isVisible;
-
+            
             gameObject.SetActive(_isVisible);
             Time.timeScale = _isVisible ? 0 : 1;
 
@@ -39,6 +40,20 @@ namespace UI
                 BuildGrid();
                 PopulateSlots();
             }
+
+            var hotbarRt = (RectTransform)_hotbarUI;
+            hotbarRt.pivot = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
+            hotbarRt.anchorMin = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
+            hotbarRt.anchorMax = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
+            
+            hotbarRt.gameObject.AddTween(new AnchoredPositionTween
+            {
+                from = hotbarRt.anchoredPosition,
+                to = new Vector2(_isVisible ? -80 : 0, 32),
+                duration = 0.2f,
+                easeType = EaseType.CubicOut,
+                useUnscaledTime = true
+            });
         }
 
         private void BuildGrid()

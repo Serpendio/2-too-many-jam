@@ -10,7 +10,6 @@ using UnityEngine.Serialization;
 namespace Creature
 {
     [RequireComponent(typeof(PlayerInput))]
-    [RequireComponent(typeof(TrailRenderer))]
     public class Player : CreatureBase
     {
         private PlayerInput _playerInput;
