@@ -41,7 +41,6 @@ namespace UI
 
         private void Awake()
         {
-            Debug.Log("Inventory Slot Awake");
             _outline = GetComponent<Outline>();
             _tooltipTrigger = GetComponent<TooltipTrigger>();
             _parentCanvas = GetComponentInParent<Canvas>();
