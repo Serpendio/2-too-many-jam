@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Core;
+using Inventory;
 using Spells;
 using Tweens;
 using UnityEngine;
@@ -12,15 +14,48 @@ namespace UI
         [SerializeField] private GridLayoutGroup _grid;
 
         private List<InventorySlot> _slots = new();
-        
+
         private bool _isVisible;
 
         [SerializeField] private Transform _hotbarUI;
+
+        public InventorySlot MixSlotA;
+        public InventorySlot MixSlotB;
+
+        public Button MixButton;
 
         private void Awake()
         {
             _inventorySlotPrefab = Resources.Load<InventorySlot>("Prefabs/UI/InventorySlot");
             ToggleVisibility(false);
+            
+            Locator.Inventory.OnItemUpdate.AddListener(_ =>
+            {
+                BuildGrid();
+                PopulateSlots();
+            });
+
+            MixSlotA.OnItemChanged.AddListener(OnMixSlotChanged);
+            MixSlotB.OnItemChanged.AddListener(OnMixSlotChanged);
+
+            MixButton.onClick.AddListener(() =>
+            {
+                if (MixSlotA.Item is Spell spellA && MixSlotB.Item is Spell spellB)
+                {
+                    MixSlotA.SetItem(null);
+                    MixSlotB.SetItem(null);
+                    
+                    Locator.Inventory.CombineSpells(spellA, spellB);
+                }
+            });
+        }
+
+        private void OnMixSlotChanged(IInventoryItem item)
+        {
+            if (MixSlotA.Item is Spell spellA && MixSlotB.Item is Spell spellB)
+            {
+                MixButton.interactable = spellA != spellB && spellA.Element == spellB.Element;
+            }
         }
 
         public void ToggleVisibility(bool visible)
@@ -32,7 +67,7 @@ namespace UI
         public void ToggleVisibility()
         {
             _isVisible = !_isVisible;
-            
+
             gameObject.SetActive(_isVisible);
             Time.timeScale = _isVisible ? 0 : 1;
 
@@ -46,7 +81,7 @@ namespace UI
             hotbarRt.pivot = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
             hotbarRt.anchorMin = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
             hotbarRt.anchorMax = _isVisible ? new Vector2(1f, 0f) : new Vector2(0.5f, 0);
-            
+
             hotbarRt.gameObject.AddTween(new AnchoredPositionTween
             {
                 from = hotbarRt.anchoredPosition,

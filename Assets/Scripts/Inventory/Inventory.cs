@@ -29,11 +29,7 @@ namespace Inventory
             .FindAll(i => i is Spell { IsOnHotbar: true })
             .ConvertAll(i => (Spell)i);
 
-        public readonly UnityEvent<IInventoryItem> OnItemAdded = new();
-        public readonly UnityEvent<IInventoryItem> OnItemRemoved = new();
-
-        public readonly UnityEvent<Spell> OnHotbarItemAdded = new();
-        public readonly UnityEvent<Spell> OnHotbarItemRemoved = new();
+        public readonly UnityEvent<IInventoryItem> OnItemUpdate = new();
 
         public int MaxInventorySlots;
         public int MaxEquippedSpells;
@@ -63,13 +59,13 @@ namespace Inventory
                     .Where(item => item is not Spell { IsOnHotbar: true })
                     .ToList()
                     .FindIndex(item => item.GridIndex == i) > -1;
-                
+
                 if (!itemUsingIndex) return i;
             }
 
             return -1;
         }
-        
+
         public int GetUnusedHotbarIndex()
         {
             for (var i = 0; i < MaxEquippedSpells; i++)
@@ -78,7 +74,7 @@ namespace Inventory
                     .Where(item => item is Spell { IsOnHotbar: true })
                     .ToList()
                     .FindIndex(item => item.GridIndex == i) > -1;
-                
+
                 if (!itemUsingIndex) return i;
             }
 
@@ -97,21 +93,20 @@ namespace Inventory
             // no space in inventory
             if (item.GridIndex == -1)
             {
-                Debug.LogWarning(
-                    $"No more space in inventory, item {item.Name} not added! Shouldn't have been able to do that!");
+                Debug.LogError($"No more space in inventory, item {item.Name} not added!");
                 return;
             }
 
             Items.Add(item);
-            OnItemAdded.Invoke(item);
+            OnItemUpdate.Invoke(item);
         }
 
         public void RemoveFromInventory(IInventoryItem item)
         {
             Items.Remove(item);
-            OnItemRemoved.Invoke(item);
+            OnItemUpdate.Invoke(item);
         }
-        
+
         public void AddToHotbar(Spell spell)
         {
             if (spell.GridIndex == -1 || Hotbar.FindIndex(i => i.GridIndex == spell.GridIndex) != -1)
@@ -122,26 +117,28 @@ namespace Inventory
             // no space in hotbar
             if (spell.GridIndex == -1)
             {
-                Debug.LogWarning(
-                    $"No more space in hotbar, adding spell {spell.Name} to inventory instead.");
+                Debug.LogWarning($"No more space in hotbar, adding spell {spell.Name} to inventory instead.");
                 AddToInventory(spell);
                 return;
             }
 
             spell.IsOnHotbar = true;
             Items.Add(spell);
-            OnHotbarItemAdded.Invoke(spell);
+            OnItemUpdate.Invoke(spell);
         }
 
-        // public void Combine()
-        // {
-        //     if (_items[_invSlots[0].RelatedSlot] is Spell spell)
-        //     {
-        //         AddToInventory(spell);
-        //         RemoveFromInventory(_invSlots[0].RelatedSlot);
-        //         RemoveFromInventory(_invSlots[1].RelatedSlot);
-        //     }
-        // }
+        public void CombineSpells(Spell spellA, Spell spellB)
+        {
+            if (spellA == null || spellB == null) return;
+
+            // Debug.Log($"Combining {spellA.Name} with {spellB.Name}");
+            var combinedSpell = spellA.CombinedWith(spellB);
+            RemoveFromInventory(spellA);
+            RemoveFromInventory(spellB);
+
+            // Debug.Log($"Created {combinedSpell.Name}");
+            AddToHotbar(combinedSpell);
+        }
 
         public Spell GetHotbarSlot(int activeSpellSlot) => Hotbar.Find(s => s.GridIndex == activeSpellSlot);
     }

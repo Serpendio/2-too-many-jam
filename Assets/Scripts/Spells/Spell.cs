@@ -160,5 +160,11 @@ namespace Spells
             
             return name;
         }
+        
+        public Spell CombinedWith(Spell other)
+        {
+            var combinedSpell = new Spell(BaseStats + other.BaseStats, Element, Team, Modifiers.Concat(other.Modifiers).Distinct().OrderBy(_ => Random.value).ToList());
+            return combinedSpell;
+        }
     }
 }

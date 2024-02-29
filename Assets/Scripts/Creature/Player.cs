@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Core;
 using Spells;
 using Spells.Modifiers;
@@ -101,13 +102,19 @@ namespace Creature
                 SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp());
             });
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 4; i++)
             {
                 var modifiers = new List<SpellModifier>();
-                while (Random.value > 0.4f)
+                while (Random.value <= 0.6f)
                 {
-                    var randomModifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
-                    modifiers.Add(randomModifier);
+                    var randomNewModifier = SpellModifier.AllModifiers
+                        .Where(m => !modifiers.Contains(m))
+                        .OrderBy(_ => Random.value)
+                        .FirstOrDefault();
+                    
+                    if (randomNewModifier == null) break;
+                    
+                    modifiers.Add(randomNewModifier);
                 }
                 
                 var randSpell = new Spell(new SpellStats

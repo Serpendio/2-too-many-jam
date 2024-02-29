@@ -4,6 +4,7 @@ using Inventory;
 using Spells;
 using Spells.Modifiers;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -30,17 +31,22 @@ namespace UI
         [SerializeField] private Image _baseImage;
         [SerializeField] private Transform _modifierBase;
 
+        public UnityEvent<IInventoryItem> OnItemChanged = new();
+
         private TooltipTrigger _tooltipTrigger;
 
         private Outline _outline;
 
         private bool _dragInProgress;
 
+        private Canvas _parentCanvas;
+
         private void Awake()
         {
             _outline = GetComponent<Outline>();
             _tooltipTrigger = GetComponent<TooltipTrigger>();
-
+            _parentCanvas = GetComponentInParent<Canvas>();
+            
             SetItem(null);
         }
 
@@ -53,8 +59,11 @@ namespace UI
             _baseImage.enabled = item != null;
 
             foreach (Transform child in _modifierBase) Destroy(child.gameObject);
-
+            
             Item = item;
+            
+            OnItemChanged.Invoke(item);
+            
             if (Item == null) return;
 
             _tooltipTrigger.Content = $"<size=120%><b>{Item.Name}</b></size>\n{Item.Description}\n\n";
@@ -89,7 +98,7 @@ namespace UI
                 _tooltipTrigger.Content += $"\nRange: {baseStats.Range} ({rangeDiff})";
 
                 _tooltipTrigger.Content += "\n\n-";
-                
+
                 foreach (var modifier in spell.Modifiers)
                 {
                     var modifierImage = new GameObject(modifier.Name, typeof(Image)).GetComponent<Image>();
@@ -103,8 +112,7 @@ namespace UI
                     _tooltipTrigger.Content += $"\n\n<b>{modifier.Name}</b>\n{modifier.Description}";
                 }
 
-                if ((Group != InventoryGroup.Hotbar && spell.IsOnHotbar) ||
-                    (Group == InventoryGroup.Hotbar && spell == Locator.Player.ActiveSpell))
+                if (spell == Locator.Player.ActiveSpell)
                 {
                     _outline.effectColor = new Color(0.9f, 0.5f, 0.2f);
                 }
@@ -130,6 +138,9 @@ namespace UI
                         item.GridIndex = otherSlot.transform.GetSiblingIndex();
                     else
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                    
+                    otherSlot.SetItem(item);
+                    SetItem(otherItem);
                     break;
                 }
                 case InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Hotbar:
@@ -138,6 +149,9 @@ namespace UI
                         item.GridIndex = otherSlot.transform.GetSiblingIndex();
                     else
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
+                    
+                    otherSlot.SetItem(item);
+                    SetItem(otherItem);
                     break;
                 }
                 case InventoryGroup.Items when otherSlot.Group == InventoryGroup.Hotbar:
@@ -153,7 +167,9 @@ namespace UI
                         (item.GridIndex, otherItem.GridIndex) = (otherItem.GridIndex, item.GridIndex);
                         (spell.IsOnHotbar, ((Spell)otherItem).IsOnHotbar) = (true, false);
                     }
-
+                    
+                    otherSlot.SetItem(item);
+                    SetItem(otherItem);
                     break;
                 }
                 case InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Items:
@@ -170,12 +186,25 @@ namespace UI
                         (otherSpell.IsOnHotbar, ((Spell)item).IsOnHotbar) = (true, false);
                     }
 
+                    otherSlot.SetItem(item);
+                    SetItem(otherItem);
+                    break;
+                }
+                case InventoryGroup.Items or InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Mix:
+                {
+                    if (item is not Spell spell) return;
+                    
+                    otherSlot.SetItem(item);
+                    break;
+                }
+                case InventoryGroup.Mix when otherSlot.Group is InventoryGroup.Items or InventoryGroup.Hotbar:
+                {
+                    if (otherItem is not Spell spell) return;
+                    
+                    SetItem(otherItem);
                     break;
                 }
             }
-
-            otherSlot.SetItem(item);
-            SetItem(otherItem);
         }
 
         public void OnBeginDrag(PointerEventData eventData)
@@ -183,7 +212,7 @@ namespace UI
             if (Item == null) return;
             _dragInProgress = true;
 
-            // _imagesContainer.transform.parent = null;
+            _imagesContainer.transform.SetParent(_parentCanvas.transform);
 
             _canvasGroup.alpha = 0.5f;
             _canvasGroup.blocksRaycasts = false;
@@ -200,8 +229,7 @@ namespace UI
         {
             if (!_dragInProgress) return;
             _dragInProgress = false;
-
-            // _imagesContainer.transform.parent = transform;
+            _imagesContainer.transform.SetParent(transform);
             _imagesContainer.position = transform.position;
 
             if (eventData.pointerCurrentRaycast.gameObject.TryGetComponent<InventorySlot>(out var other))
