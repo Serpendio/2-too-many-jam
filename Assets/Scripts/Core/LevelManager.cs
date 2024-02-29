@@ -39,7 +39,7 @@ namespace Core
             return xpToLevelUp;
         }
 
-        private void FixedUpdate()
+        private void Update()
         {
             //Cheat code
             if (Input.GetKeyDown(KeyCode.L)) {
