@@ -12,11 +12,18 @@ namespace Inventory
         public int GoldAmount { get; private set; }
 
         public readonly UnityEvent<int> OnGoldChanged = new();
+        public int ShardAmount { get; private set; }
+        public readonly UnityEvent<int> OnSpellShardChanged = new();
 
         public void AddGold(int val)
         {
             GoldAmount += val;
             OnGoldChanged.Invoke(GoldAmount);
+        }
+
+        public void AddSpellShards(int val) {
+            ShardAmount += val;
+            OnSpellShardChanged.Invoke(ShardAmount);
         }
     }
 
