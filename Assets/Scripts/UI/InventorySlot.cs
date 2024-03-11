@@ -50,6 +50,9 @@ namespace UI
 
         public void SetItem(IInventoryItem item)
         {
+            // for some reason this can just . not run (some setActive shit?)
+            if (_outline == null) Awake();
+            
             _outline.effectColor = Color.clear;
             _tooltipTrigger.Content = null;
 
@@ -230,9 +233,12 @@ namespace UI
             _imagesContainer.transform.SetParent(transform);
             _imagesContainer.position = transform.position;
 
-            if (eventData.pointerCurrentRaycast.gameObject.TryGetComponent<InventorySlot>(out var other))
+            if (eventData.pointerCurrentRaycast.gameObject != null)
             {
-                Swap(other);
+                if (eventData.pointerCurrentRaycast.gameObject.TryGetComponent<InventorySlot>(out var other))
+                {
+                    Swap(other);
+                }
             }
 
             _canvasGroup.alpha = 1;
