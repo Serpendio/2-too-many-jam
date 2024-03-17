@@ -68,7 +68,11 @@ namespace Rooms
                     
                     //Shard(s)
                     case 4:
+                        int shardAmount = Random.Range(3,10);
+                        int shardCost = shardAmount * 10;
                         itemIcon = Instantiate(itemIconPrefabs[2]);
+                        itemIcon.GetComponent<ShopItem>().cost = shardCost;
+                        itemIcon.GetComponent<ShopItem>().shardAmount = shardAmount;
                         break;
 
                 }

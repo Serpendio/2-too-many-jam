@@ -15,6 +15,7 @@ namespace Rooms
 
         [HideInInspector] public IInventoryItem item;
         [HideInInspector] public int cost;
+        [HideInInspector] public int shardAmount; //For shards only
 
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.CompareTag("Player") && Locator.Inventory.Currency.GoldAmount >= cost)
@@ -34,7 +35,7 @@ namespace Rooms
 
                     case 2:
                         //Shard(s)
-                        //To be added
+                        Core.Locator.Inventory.Currency.AddSpellShards(shardAmount);
                         break;
 
                     case 3:
