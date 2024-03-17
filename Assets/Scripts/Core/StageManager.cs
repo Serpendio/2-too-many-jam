@@ -5,21 +5,15 @@ namespace Core
 {
     public class StageManager : MonoBehaviour
     {
-        private int stage;
-        private int levelsPerStage;
-        private int maxStage;
+        public int Stage = 1;
+        public int LevelsPerStage = 10;
+        public int MaxStage = 3;
 
         private void Awake()
         {
             Locator.ProvideStageManager(this);
-            stage = 1;
-            levelsPerStage = 10;
-            maxStage = 3;
         }
 
-        public int getStage() { return stage; }
-        public int getLevelsPerStage() { return levelsPerStage; }
-        public int getMaxStage() { return maxStage; }
-        public void NextStage() => stage += 1;
+        public void AdvanceStage() => Stage += 1;
     }
 }

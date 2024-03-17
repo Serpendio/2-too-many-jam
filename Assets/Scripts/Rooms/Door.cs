@@ -1,4 +1,5 @@
 using System.Linq;
+using Core;
 using Creature;
 using UnityEngine;
 using UnityEngine.Events;
@@ -37,7 +38,7 @@ namespace Rooms
         public Door GetLinkedDoor()
         {
             var targetCoord = GetLinkedMapCoord();
-            var targetRoom = WorldGenerator.Instance.WorldRooms.FirstOrDefault(r => r.MapCoord == targetCoord);
+            var targetRoom = Locator.WorldGenerator.WorldRooms.FirstOrDefault(r => r.MapCoord == targetCoord);
             return targetRoom == null ? null : targetRoom.doors.FirstOrDefault(d => d.direction == GetOpposite(direction));
         }
         
