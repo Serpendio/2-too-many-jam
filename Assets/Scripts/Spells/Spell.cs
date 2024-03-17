@@ -5,6 +5,7 @@ using System.Linq;
 using Creature;
 using Inventory;
 using Spells.Modifiers;
+using Tweens;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -30,15 +31,26 @@ namespace Spells
         public float Range;
         public float Spread;
 
+        //Returns average of two values based on weight, weight is applied towards the higher of the two values
+        //(so it's like a normal average but with a bit of a boost towards the higher end)
+        public static float WeightedToHigherValueAverage(float val1, float val2, float weight) {
+            float maxVal = Mathf.Max(val1, val2);
+            float minVal = val1 == maxVal ? val2 : val1; //Slightly faster than Mathf.Min() i think?
+            float weightedSum = maxVal * weight + minVal;
+            return weightedSum / (val1 + val2);
+        }
+
+        public const float weightTowardsHigherValue = 1.2f; //Used in SpellStats operator+ below
+
         public static SpellStats operator +(SpellStats a, SpellStats b) =>
             new()
             {
-                DamageOnHit = a.DamageOnHit + b.DamageOnHit,
-                CastCooldown = a.CastCooldown + b.CastCooldown,
-                ManaUsage = a.ManaUsage + b.ManaUsage,
-                ProjectileSpeed = a.ProjectileSpeed + b.ProjectileSpeed,
-                Range = a.Range + b.Range,
-                Spread = a.Spread + b.Spread
+                DamageOnHit = WeightedToHigherValueAverage(a.DamageOnHit, b.DamageOnHit, weightTowardsHigherValue),
+                CastCooldown = WeightedToHigherValueAverage(a.CastCooldown, b.CastCooldown, weightTowardsHigherValue),
+                ManaUsage = WeightedToHigherValueAverage(a.ManaUsage, b.ManaUsage, weightTowardsHigherValue),
+                ProjectileSpeed = WeightedToHigherValueAverage(a.ProjectileSpeed, b.ProjectileSpeed, weightTowardsHigherValue),
+                Range = WeightedToHigherValueAverage(a.Range, b.Range, weightTowardsHigherValue),
+                Spread = WeightedToHigherValueAverage(a.Range, b.Range, weightTowardsHigherValue)
             };
         
         public static SpellStats operator -(SpellStats a, SpellStats b) =>
@@ -166,4 +178,6 @@ namespace Spells
             return combinedSpell;
         }
     }
+
+
 }
