@@ -37,7 +37,7 @@ namespace Spells
             float maxVal = Mathf.Max(val1, val2);
             float minVal = val1 == maxVal ? val2 : val1; //Slightly faster than Mathf.Min() i think?
             float weightedSum = maxVal * weight + minVal;
-            return weightedSum / (val1 + val2);
+            return weightedSum / 2;
         }
 
         public const float weightTowardsHigherValue = 1.2f; //Used in SpellStats operator+ below
