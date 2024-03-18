@@ -206,7 +206,7 @@ MonoBehaviour:
   OnHealthChanged:
     m_PersistentCalls:
       m_Calls: []
-  moveSpeed: 0
   Team: 1
+  activeDebuffs: 
   openSprite: {fileID: 21300000, guid: 56f7fe7a05d0b85488d29ea68dbfb5c1, type: 3}
   emptySprite: {fileID: 21300000, guid: 0414fa7cb07afd942838d8591a2c71bc, type: 3}

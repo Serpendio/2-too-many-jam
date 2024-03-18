@@ -161,7 +161,7 @@ namespace Creature
             gameObject.AddTween(new SpriteRendererColorTween
             {
                 from = Color.white,
-                to = new Color(1f, 0.2f, 0.2f, 0.6667f),
+                to = new Color(1f, 0.334f, 0.334f),
                 duration = 0.05f,
                 easeType = EaseType.CubicInOut,
                 usePingPong = true,

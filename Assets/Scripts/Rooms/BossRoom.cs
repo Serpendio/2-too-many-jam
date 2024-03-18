@@ -1,9 +1,9 @@
+using System.Collections;
+using System.Collections.Generic;
 using Core;
 using Creature;
 using Currency;
 using Rooms;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossRoom : MonoBehaviour
@@ -21,8 +21,7 @@ public class BossRoom : MonoBehaviour
     private float timeBetweenEnemySpawns;
 
     private bool bossRoomComplete;
-
-
+    
     //Stage 1: Mouse
     //Stage 2: Imp
     //Stage 3: Bird
@@ -43,21 +42,19 @@ public class BossRoom : MonoBehaviour
         bossRoomComplete = false;
 
         //Spawn boss
-        EnemyBase bossEnemy = Instantiate(bossPrefabs[Core.Locator.StageManager.getStage() - 1], room.EnemiesContainer).GetComponent<EnemyBase>();
+        EnemyBase bossEnemy = Instantiate(bossPrefabs[Locator.StageManager.Stage - 1], room.EnemiesContainer).GetComponent<EnemyBase>();
         bossEnemy.transform.position = room.Tilemap.cellBounds.center; //Center of room
-        bossEnemy.target = Core.Locator.Player;
+        bossEnemy.target = Locator.Player;
         room.RegisterEnemy(bossEnemy);
 
         bossEnemy.OnDeath.AddListener(() =>
         {
             bossRoomComplete = true;
-            if (Core.Locator.StageManager.getStage() < Core.Locator.StageManager.getMaxStage()) {
-                Core.Locator.StageManager.NextStage();
+            if (Locator.StageManager.Stage < Locator.StageManager.MaxStage) {
+                Locator.StageManager.AdvanceStage();
                 DropMoneyAndShards();
             }
-            else {
-                //Win screen or smth
-            }
+            //Win screen or smth
         });
 
         StartCoroutine(nameof(RecurrentSpawn));
@@ -71,24 +68,23 @@ public class BossRoom : MonoBehaviour
             int enemiesToSpawn = room.EnemiesContainer.childCount + 6 < maxEnemies ? Random.Range(2, 6) : maxEnemies - room.EnemiesContainer.childCount;
 
             for (int i = 0; i < enemiesToSpawn; i++) {
-                EnemyBase enemy = Instantiate(bossRoomEnemyPrefabs[Core.Locator.StageManager.getStage() - 1], room.EnemiesContainer).GetComponent<EnemyBase>();
+                EnemyBase enemy = Instantiate(bossRoomEnemyPrefabs[Locator.StageManager.Stage - 1], room.EnemiesContainer).GetComponent<EnemyBase>();
                 Vector3 randomPos = spawnablePositions[Random.Range(0, spawnablePositions.Count)];
                 enemy.transform.position = randomPos;
-                enemy.target = Core.Locator.Player;
+                enemy.target = Locator.Player;
 
                 room.RegisterEnemy(enemy);
             }
 
             yield return new WaitForSeconds(timeBetweenEnemySpawns);
         }
-        yield break;
     }
 
     void DropMoneyAndShards()
     {
         List<CoinDrop> _coinDrops = new List<CoinDrop>();
         List<ShardDrop> _shardDrops = new List<ShardDrop>();
-        var totalValue = Locator.GameplaySettingsManager.ChestDropValue.GetValue() * 4 * Core.Locator.StageManager.getStage(); //Multiply by 4 and by stage for boss
+        var totalValue = Locator.GameplaySettingsManager.ChestDropValue.GetValue() * 4 * Locator.StageManager.Stage; //Multiply by 4 and by stage for boss
 
         var droppedValue = 0f;
         while (droppedValue < totalValue)

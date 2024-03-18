@@ -9,8 +9,6 @@ namespace Rooms
 {
     public class WorldGenerator : MonoBehaviour
     {
-        public static WorldGenerator Instance { get; private set; }
-
         [SerializeField] private CanvasGroup _fadeToBlack;
         [SerializeField] private NavMeshSurface _navMeshSurface;
 
@@ -27,10 +25,12 @@ namespace Rooms
 
         [SerializeField] private Player _player;
 
+        public bool QueueBossRoom;
+        
         private void Awake()
         {
-            Instance = this;
-
+            Locator.ProvideWorldGenerator(this);
+            
             _navMeshSurface.hideEditorLogs = true;
 
             Door.OnPlayerEnterDoor.AddListener((door, _) =>
@@ -57,14 +57,25 @@ namespace Rooms
             WorldRooms.Add(_currentRoom);
 
             GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true, true);
+            
+            Locator.LevelManager.OnPlayerLevelUp.AddListener((level) =>
+            {
+                if (level == Locator.StageManager.LevelsPerStage * Locator.StageManager.Stage)
+                {
+                    Debug.Log("Queueing boss room");
+                    QueueBossRoom = true;
+                }
+                else
+                {
+                    Debug.Log("NOT queueing boss room");
+                }
+            });
         }
 
         private Room GenerateNewRoom(Door comingFrom = null)
         {
             Room room;
-            //TEMP:
-            //Check if user should enter boss room : currentLevel == levelsPerStage * currentStage (e.g.: 20 == 10 * 2)
-            if (Core.Locator.LevelManager.getCurrentLevel() == (Core.Locator.StageManager.getLevelsPerStage() * Core.Locator.StageManager.getStage())) {
+            if (QueueBossRoom) {
                 room = bossRoomPrefab;
             }
             else {

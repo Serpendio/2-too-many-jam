@@ -99,12 +99,12 @@ namespace Spells
             if (TornadoPower > 0)
             {
                 var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
-                    .Where(c => c.Team != Spell.Team).Where(c =>
-                        (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
+                    .Where(c => c is not Chest)
+                    .Where(c => c.Team != Spell.Team)
+                    .Where(c => (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
                 foreach (var creature in creaturesToPull)
                 {
-                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position,
-                        TornadoPower * Time.deltaTime);
+                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position, TornadoPower * Time.deltaTime);
                 }
             }
 

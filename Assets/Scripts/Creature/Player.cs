@@ -96,7 +96,7 @@ namespace Creature
             base.Start();
             SetMana(maxMana);
 
-            Locator.LevelManager.PlayerLevelUp.AddListener((_) =>
+            Locator.LevelManager.OnPlayerLevelUp.AddListener((_) =>
             {
                 SetMaxHealth(maxHealth + Locator.LevelManager.getMaxHealthIncreasePerLevelUp(), true);
                 SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp(), true);

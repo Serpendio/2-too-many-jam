@@ -16,7 +16,7 @@ namespace UI
         {
             _text = GetComponentInChildren<TextMeshProUGUI>();
             UpdateBar(Core.Locator.LevelManager.getCurrentLevel());
-            Core.Locator.LevelManager.PlayerLevelUp.AddListener(UpdateBar);
+            Core.Locator.LevelManager.OnPlayerLevelUp.AddListener(UpdateBar);
         }
 
         private void Awake()

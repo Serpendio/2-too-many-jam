@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Serialization;
 
 namespace Core
 {
@@ -14,7 +15,7 @@ namespace Core
         private int maxHealthIncreasePerLevelUp;
         private int maxManaIncreasePerLevelUp;
 
-        [HideInInspector] public UnityEvent<int> PlayerLevelUp = new();
+        [HideInInspector] public UnityEvent<int> OnPlayerLevelUp = new();
         [HideInInspector] public UnityEvent<float, float> OnExperienceChanged = new();
 
         private void Awake() {
@@ -41,24 +42,24 @@ namespace Core
 
         private void Update()
         {
+#if UNITY_EDITOR
             //Cheat code
             if (Input.GetKeyDown(KeyCode.L)) {
-                addXP(1);
+                addXP(5);
             }
+#endif
         }
 
         public void addXP(int val) {
             currentXP += val;
             //While-loop in case player levels up more than once in same frame
-            bool levelledUp = false;
-            while (currentXP > xpToLevelUp)
+            while (currentXP >= xpToLevelUp)
             {
                 currentXP -= xpToLevelUp;
                 currentLevel += 1;
                 xpToLevelUp = currentLevel * 10;
-                levelledUp = true;
+                OnPlayerLevelUp.Invoke(currentLevel);
             }
-            if (levelledUp) { PlayerLevelUp.Invoke(currentLevel); }
             OnExperienceChanged.Invoke(currentXP, xpToLevelUp);
         }
 
