@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Pierce
   <Description>k__BackingField: Pass through and damage 1 extra enemy before dissipating
-  <Icon>k__BackingField: {fileID: 21300000, guid: 56ffc08df5df7c44bb09d96a9734f656, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: f865c01366acb7b4181eb26ce9d2e4c4, type: 3}
   SetDescriptive: 1
   Verb: piercing
   SetNoun: 1

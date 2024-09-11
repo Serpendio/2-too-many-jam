@@ -69,15 +69,15 @@ namespace Spells
                 _rb.velocity = Quaternion.Euler(
                     0,
                     0,
-                    -Mathf.Rad2Deg * Spell.ComputedStats.ProjectileSpeed * Time.deltaTime / OrbitRadius + offsetAngle
+                    -Mathf.Rad2Deg * Spell.ComputedStats.ProjectileSpeed * Time.fixedDeltaTime / OrbitRadius// + offsetAngle
                 ) * _rb.velocity;
 
-                transform.position += (Vector3)Locator.Player.Rb.velocity * Time.fixedDeltaTime;
+                //transform.position += (Vector3)Locator.Player.Rb.velocity * Time.fixedDeltaTime;
             }
 
             // rotate to face velocity
             var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle + 90);
         }
 
         private void Update()
