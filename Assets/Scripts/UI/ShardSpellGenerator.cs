@@ -1,14 +1,12 @@
+using System.Collections.Generic;
+using System.Linq;
+using Core;
 using Creature;
 using Spells;
 using Spells.Modifiers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
-using System.Linq.Expressions;
-using UnityEditor.Experimental.GraphView;
 
-public class ShardSpellGenerator : MonoBehaviour
+public class ShardSpellGenerator
 {
     public enum ShardTiers
     {
@@ -18,7 +16,7 @@ public class ShardSpellGenerator : MonoBehaviour
         Wowza
     }
 
-    private Dictionary<ShardTiers, int> shardTierPrices = new Dictionary<ShardTiers, int>
+    public static Dictionary<ShardTiers, int> ShardTierPrices = new()
     {
         {ShardTiers.Okay, 10},
         {ShardTiers.Good, 20},
@@ -26,9 +24,10 @@ public class ShardSpellGenerator : MonoBehaviour
         {ShardTiers.Wowza, 40},
     };
 
-    public void GenerateSpellFromShard(Spells.Element element, ShardTiers tier)
+    public static void GenerateSpellFromShard(ShardTiers tier)
     {
-        Core.Locator.Inventory.Currency.AddSpellShards(-shardTierPrices[tier]);
+        Element element = (Element)Random.Range(1, 6);
+        Locator.Inventory.Currency.AddSpellShards(-ShardTierPrices[tier]);
 
         //Generate spell
         const int chanceToBeElementSpecificModifier = 30;
@@ -56,11 +55,12 @@ public class ShardSpellGenerator : MonoBehaviour
                 {
                     //Add unique modifier(s)
                     //80% chance of being tier 1, 20% of being tier 2
-                    int randModifierTier = GetWeightedRandomInteger(80, 1, 20, 2);
-                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m) && m.Tier == (ModifierTier)randModifierTier).ToList();
+                    // int randModifierTier = GetWeightedRandomInteger(80, 1, 20, 2);
+                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m)).ToList();
+                    if (uniqueModifiers.Count == 0) continue;
                     spell.Modifiers.Add(uniqueModifiers[Random.Range(0, uniqueModifiers.Count)]);
                 }
-                Core.Locator.Inventory.AddToHotbar(spell);
+                Locator.Inventory.AddToHotbar(spell);
             break;
             }
 
@@ -80,11 +80,12 @@ public class ShardSpellGenerator : MonoBehaviour
 
                 for (int i = 0; i < numModifiers; i++)
                 {
-                    int randModifierTier = GetWeightedRandomInteger(20, 1, 75, 2, 5, 3);
-                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m) && m.Tier == (ModifierTier)randModifierTier).ToList();
+                    // int randModifierTier = GetWeightedRandomInteger(20, 1, 75, 2, 5, 3);
+                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m)).ToList();
+                    if(uniqueModifiers.Count == 0) continue;
                     spell.Modifiers.Add(uniqueModifiers[Random.Range(0, uniqueModifiers.Count)]);
                 }
-                Core.Locator.Inventory.AddToHotbar(spell);
+                Locator.Inventory.AddToHotbar(spell);
                 break;
             }
 
@@ -104,11 +105,12 @@ public class ShardSpellGenerator : MonoBehaviour
 
                 for (int i = 0; i < numModifiers; i++)
                 {
-                    int randModifierTier = GetWeightedRandomInteger(15, 1, 45, 2, 40, 3);
-                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m) && m.Tier == (ModifierTier)randModifierTier).ToList();
+                    // int randModifierTier = GetWeightedRandomInteger(15, 1, 45, 2, 40, 3);
+                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m)).ToList();
+                    if (uniqueModifiers.Count == 0) continue;
                     spell.Modifiers.Add(uniqueModifiers[Random.Range(0, uniqueModifiers.Count)]);
                 }
-                Core.Locator.Inventory.AddToHotbar(spell);
+                Locator.Inventory.AddToHotbar(spell);
                 break;
             }
 
@@ -127,20 +129,21 @@ public class ShardSpellGenerator : MonoBehaviour
 
                 for (int i = 0; i < numModifiers; i++)
                 {
-                    int randModifierTier = GetWeightedRandomInteger(5, 1, 25, 2, 70, 3);
-                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m) && m.Tier == (ModifierTier)randModifierTier).ToList();
+                    // int randModifierTier = GetWeightedRandomInteger(5, 1, 25, 2, 70, 3);
+                    List<SpellModifier> uniqueModifiers = SpellModifier.AllModifiers.Where(m => !spell.Modifiers.Contains(m)).ToList();
+                    if(uniqueModifiers.Count == 0) continue;
                     spell.Modifiers.Add(uniqueModifiers[Random.Range(0, uniqueModifiers.Count)]);
                 }
-                Core.Locator.Inventory.AddToHotbar(spell);
+                Locator.Inventory.AddToHotbar(spell);
                 break;
             }
         }
     }
 
-    private int GetWeightedRandomInteger(int p0, int v0, int p1, int v1, int p2=0, int v2=0, int p3=0, int v3=0) //Percentage chances (p0,p1,p2,p3) to return v0, v1, v2, or v3 respectively
+    private static int GetWeightedRandomInteger(int p0, int v0, int p1, int v1, int p2=0, int v2=0, int p3=0, int v3=0) //Percentage chances (p0,p1,p2,p3) to return v0, v1, v2, or v3 respectively
     {
-        float rand = Random.value;
-        return rand <= p0 ? v0 : (rand <= p0+p1 ? v1 : (rand <= p0+p1+p2 ? v2 : v3));
+        float percent = Random.value * 100;
+        return percent <= p0 ? v0 : (percent <= p0+p1 ? v1 : (percent <= p0+p1+p2 ? v2 : v3));
     }
 }
 

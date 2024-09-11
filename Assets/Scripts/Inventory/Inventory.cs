@@ -36,6 +36,9 @@ namespace Inventory
             .FindAll(i => i is Spell { IsOnHotbar: true })
             .ConvertAll(i => (Spell)i);
 
+        public bool HasSpaceForItem => Locator.Inventory.Items.Count <
+                                       Locator.Inventory.MaxInventorySlots + Locator.Inventory.MaxEquippedSpells;
+
         public readonly UnityEvent<IInventoryItem> OnItemUpdate = new();
 
         public int MaxInventorySlots;
