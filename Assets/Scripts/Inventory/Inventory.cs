@@ -48,6 +48,14 @@ namespace Inventory
 #if UNITY_EDITOR
         // unity doesnt run constructors for inspector variables because fuck me i guess so no more of this
         // [SerializeField] private List<Spell> _initialDebugSpells = new();
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.M))
+            {
+                Currency.AddGold(50);
+            }
+        }
 #endif
 
         private void Awake()

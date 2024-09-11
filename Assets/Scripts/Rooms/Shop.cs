@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Core;
 using Creature;
 using Spells;
 using Spells.Modifiers;
@@ -33,51 +34,46 @@ namespace Rooms
                 chosenitemIndices.Add(randType);
 
 
-                GameObject itemIcon = new GameObject();
+                GameObject itemIcon = Instantiate(itemIconPrefabs[randType], transform.GetChild(0));
                 switch (randType)
                 {
                     //Spell
                     case 0:
                         int spellCost;
                         Spell spell = GenerateRandomSpell(out spellCost);
-                        itemIcon = Instantiate(itemIconPrefabs[0]);
                         itemIcon.GetComponent<ShopItem>().item = spell;
                         itemIcon.GetComponent<ShopItem>().cost = spellCost;
                         break;
 
-                    
-                    //----Possibly pointless cases, keeping them here for maintainability----//
-                    //Health refill
-                    case 1:
-                        itemIcon = Instantiate(itemIconPrefabs[3]);
-                        break;
-
-                    //Total health increase
-                    case 2:
-                        itemIcon = Instantiate(itemIconPrefabs[4]);
-                        break;
-
                     //Modifier
-                    case 3:
-                        int modifierCost = 0;
+                    case 1:
                         SpellModifier modifier = SpellModifier.AllModifiers[Random.Range(0, SpellModifier.AllModifiers.Count)];
-                        itemIcon = Instantiate(itemIconPrefabs[1]);
+                        int modifierCost = (20 + Random.Range(-2, 3)) * (1 + (int)modifier.Tier);
                         itemIcon.GetComponent<ShopItem>().item = modifier;
                         itemIcon.GetComponent<ShopItem>().cost = modifierCost;
                         break;
-                    
+
                     //Shard(s)
-                    case 4:
-                        int shardAmount = Random.Range(3,10);
+                    case 2:
+                        int shardAmount = Random.Range(5,16);
                         int shardCost = shardAmount * 10;
-                        itemIcon = Instantiate(itemIconPrefabs[2]);
                         itemIcon.GetComponent<ShopItem>().cost = shardCost;
                         itemIcon.GetComponent<ShopItem>().shardAmount = shardAmount;
                         break;
 
+                    //Health refill
+                    case 3:
+                        itemIcon.GetComponent<ShopItem>().cost = 80 * (int)Locator.Player.maxHealth / 50;
+                        break;
+
+                    //Max health increase
+                    case 4:
+                        itemIcon.GetComponent<ShopItem>().cost = 70 * (int)Locator.Player.maxHealth / 50;
+                        break;
+
                 }
                 itemIcon.GetComponent<ShopItem>().itemID = randType;
-                itemIcon.transform.parent = transform;
+                itemIcon.GetComponent<ShopItem>().Setup();
                 itemIcon.transform.position = itemLocations[i];
             }
         }
@@ -110,6 +106,12 @@ namespace Rooms
                 Range = Random.Range(5, 25),
             }, randElement, Team.Friendly);
 
+            cost = (int)(spell.BaseStats.DamageOnHit +
+                (3 - spell.BaseStats.CastCooldown) * 10 +
+                30 - spell.BaseStats.ManaUsage +
+                spell.BaseStats.ProjectileSpeed / 2 +
+                spell.BaseStats.Range);
+
             int randNumModifiers = Random.Range(0, 3);
             for (int i = 0; i < randNumModifiers; i++)
             {
@@ -120,8 +122,9 @@ namespace Rooms
                 
                 var randomModifier = uniqueModifiers[Random.Range(0, uniqueModifiers.Count)];
                 spell.AddModifier(randomModifier);
+                cost += (20 + Random.Range(-2, 3)) * (1 + (int)randomModifier.Tier);
             }
-            cost = 0; //TEMP
+
             return spell;
         }
     }
