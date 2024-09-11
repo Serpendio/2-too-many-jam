@@ -136,14 +136,78 @@ namespace Spells
         {
             if (other.TryGetComponent(out SpellProjectile proj) && BarrierSize > 0)
             {
-                if (proj.Spell.Team == Spell.Team) return;
+                if (proj.Spell.Team == Spell.Team) { return; }
                 proj.Dissipate();
             }
 
             if (other.TryGetComponent(out CreatureBase creature))
             {
-                if (creature.Team == Spell.Team) return; // better safe than sorry
-                creature.TakeDamage(Spell.ComputedStats.DamageOnHit);
+                if (creature.Team == Spell.Team) { return; } // better safe than sorry
+
+                float damage = Spell.ComputedStats.DamageOnHit;
+                //Apply elemental modifier
+                if (Spell.Element == Element.Water) {
+                    //Water beats fire
+                    if (creature.element == Element.Fire)
+                    {
+                        damage *= 2;
+                    }
+                    //Water loses to lightning
+                    else if (creature.element == Element.Lightning)
+                    {
+                        damage /= 2;
+                    }
+                }
+                if (Spell.Element == Element.Earth) {
+                    //Earth beats lightning
+                    if (creature.element == Element.Lightning) {
+                        damage *= 2;
+                    }
+                    //Earth loses to air
+                    if (creature.element == Element.Air) {
+                        damage /= 2;
+                    }
+                }
+                if (Spell.Element == Element.Fire)
+                {
+                    //Fire beats air
+                    if (creature.element == Element.Air)
+                    {
+                        damage *= 2;
+                    }
+                    //Fire loses to water
+                    if (creature.element == Element.Water)
+                    {
+                        damage /= 2;
+                    }
+                }
+                if (Spell.Element == Element.Lightning)
+                {
+                    //Lightning beats water
+                    if (creature.element == Element.Water)
+                    {
+                        damage *= 2;
+                    }
+                    //Lightning loses to earth
+                    if (creature.element == Element.Earth)
+                    {
+                        damage /= 2;
+                    }
+                }
+                if (Spell.Element == Element.Air)
+                {
+                    //Air beats earth
+                    if (creature.element == Element.Earth)
+                    {
+                        damage *= 2;
+                    }
+                    //Air loses to fire
+                    if (creature.element == Element.Fire)
+                    {
+                        damage /= 2;
+                    }
+                }
+                creature.TakeDamage(damage);
 
                 if (ChainTimesRemaining > 0)
                 {

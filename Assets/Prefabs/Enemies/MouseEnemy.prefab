@@ -200,6 +200,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   Team: 1
+  element: 2
   activeDebuffs: 
   Agent: {fileID: 158024836645491187}
   target: {fileID: 0}
@@ -208,9 +209,8 @@ MonoBehaviour:
   attackRange: 1
   attackDamage: 3
   Spell:
-    <Name>k__BackingField: Spit
-    <Description>k__BackingField: 
-    <Icon>k__BackingField: {fileID: 0}
+    <GridIndex>k__BackingField: 0
+    IsOnHotbar: 0
     BaseStats:
       DamageOnHit: 3
       CastCooldown: 2

@@ -4,6 +4,7 @@ using Tweens;
 using UI;
 using UnityEngine.Events;
 using System.Collections;
+using Spells;
 
 namespace Creature
 {
@@ -43,6 +44,8 @@ namespace Creature
         [HideInInspector] public UnityEvent<float, float> OnHealthChanged = new();
 
         public Team Team;
+
+        public Element element;
 
 
         //----TO ADD A NEW DEBUFF:----//
