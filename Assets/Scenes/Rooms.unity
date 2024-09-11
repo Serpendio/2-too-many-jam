@@ -1538,6 +1538,7 @@ MonoBehaviour:
   - {fileID: 2626327600802606849, guid: f4a77e81606afbe4a8d8d17c19e70b67, type: 3}
   - {fileID: 2626327600802606849, guid: e9c552ccb52cb12449deab7bf142ebf6, type: 3}
   - {fileID: 2626327600802606849, guid: 56383c37020409d4d886de558187fabe, type: 3}
+  - {fileID: 2626327600802606849, guid: 36db2c45c97836b4f960311500353957, type: 3}
   bossRoomPrefab: {fileID: 2626327600802606849, guid: d28a1ad8d9ecf6e4294d4f641ee03033, type: 3}
   _weightedSpawnPool:
     Items:

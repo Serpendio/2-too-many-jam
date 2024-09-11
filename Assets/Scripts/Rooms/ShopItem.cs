@@ -1,5 +1,7 @@
 using Core;
 using Inventory;
+using TMPro;
+using UI;
 using UnityEngine;
 
 namespace Rooms
@@ -17,6 +19,26 @@ namespace Rooms
         [HideInInspector] public int cost;
         [HideInInspector] public int shardAmount; //For shards only
 
+        public void Setup()
+        {
+            transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = cost.ToString();
+            switch (itemID)
+            {
+                case 0:
+                    //Spell
+
+                case 1:
+                    //Modifier
+                    transform.GetComponent<InventorySlot>().SetItem(item);
+                    break;
+
+                case 2:
+                    //Shard(s)
+                    transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = shardAmount.ToString();
+                    break;
+            }
+        }
+
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.CompareTag("Player") && Locator.Inventory.Currency.GoldAmount >= cost)
             {
@@ -25,8 +47,6 @@ namespace Rooms
                 {
                     case 0:
                         //Spell
-                        Locator.Inventory.AddToInventory(item);
-                        break;
 
                     case 1:
                         //Modifier
@@ -35,7 +55,7 @@ namespace Rooms
 
                     case 2:
                         //Shard(s)
-                        Core.Locator.Inventory.Currency.AddSpellShards(shardAmount);
+                        Locator.Inventory.Currency.AddSpellShards(shardAmount);
                         break;
 
                     case 3:
