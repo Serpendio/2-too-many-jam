@@ -30,6 +30,7 @@ namespace UI
 
         [SerializeField] private Image _baseImage;
         [SerializeField] private Transform _modifierBase;
+        [SerializeField] private float radialSize = 24;
 
         public UnityEvent<IInventoryItem> OnItemChanged = new();
 
@@ -107,7 +108,7 @@ namespace UI
                     modifierImage.sprite = modifier.Icon;
 
                     var rect = modifierImage.GetComponent<RectTransform>();
-                    rect.sizeDelta = new Vector2(24, 24);
+                    rect.sizeDelta = new Vector2(radialSize, radialSize);
                     rect.localScale = Vector3.one;
 
                     _tooltipTrigger.Content += $"\n\n<b>{modifier.Name}</b>\n{modifier.Description}";

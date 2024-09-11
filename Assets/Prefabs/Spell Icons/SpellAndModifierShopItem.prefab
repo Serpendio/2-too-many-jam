@@ -244,6 +244,22 @@ PrefabInstance:
       propertyPath: Radius
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1380019670396203612, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380019670396203612, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380019670396203612, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1380019670396203612, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1790895019238863090, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
       propertyPath: m_Name
       value: SpellAndModifierShopItem
@@ -340,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7794427143086947823, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
+      propertyPath: radialSize
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 543583403351967521, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
     - {fileID: 531500562462245066, guid: 29d0f74390bfdb24bafcfdfc41464301, type: 3}
@@ -394,7 +414,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
