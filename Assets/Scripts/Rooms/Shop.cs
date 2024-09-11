@@ -74,8 +74,14 @@ namespace Rooms
                 }
                 itemIcon.GetComponent<ShopItem>().itemID = randType;
                 itemIcon.GetComponent<ShopItem>().Setup();
+                itemIcon.GetComponent<ShopItem>().shop = this;
                 itemIcon.transform.position = itemLocations[i];
             }
+        }
+
+        public void CloseShop()
+        {
+            Destroy(transform.GetChild(0).gameObject);
         }
 
 
