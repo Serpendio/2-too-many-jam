@@ -118,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: <maxHealth>k__BackingField
-      value: 360
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2412630101394709530, guid: 96c0bb6f1f1fbf141a94a3ac3221ed1b, type: 3}
       propertyPath: Spell.Modifiers.Array.size
