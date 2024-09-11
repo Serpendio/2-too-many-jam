@@ -15,6 +15,8 @@ public class EnemyPointer : MonoBehaviour
         _cam = Camera.main;
         _cs = GetComponentInParent<CanvasScaler>();
         _image = GetComponent<Image>();
+
+        _image.enabled = false;
     }
 
     // Points to closest enemy to player, if further than 10 units away

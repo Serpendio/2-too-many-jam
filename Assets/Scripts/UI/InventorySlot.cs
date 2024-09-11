@@ -193,15 +193,11 @@ namespace UI
                 }
                 case InventoryGroup.Items or InventoryGroup.Hotbar when otherSlot.Group == InventoryGroup.Mix:
                 {
-                    if (item is not Spell spell) return;
-
                     otherSlot.SetItem(item);
                     break;
                 }
                 case InventoryGroup.Mix when otherSlot.Group is InventoryGroup.Items or InventoryGroup.Hotbar:
                 {
-                    if (otherItem is not Spell spell) return;
-
                     SetItem(otherItem);
                     break;
                 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Core;
 using Spells;
+using Spells.Modifiers;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -151,5 +152,14 @@ namespace Inventory
         }
 
         public Spell GetHotbarSlot(int activeSpellSlot) => Hotbar.Find(s => s.GridIndex == activeSpellSlot);
+
+        public void AddModifierToSpell(Spell spell, SpellModifier modifier)
+        {
+            if (spell == null || modifier == null) return;
+
+            spell.AddModifier(modifier);
+            RemoveFromInventory(modifier);
+            OnItemUpdate.Invoke(spell);
+        }
     }
 }
