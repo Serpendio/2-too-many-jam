@@ -102,19 +102,19 @@ namespace Creature
                 SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp(), true);
             });
 
-            for (var i = 0; i < 4; i++)
+            for (var i = 0; i < 3; i++)
             {
                 var modifiers = new List<SpellModifier>();
-                modifiers.Add(SpellModifier.AllModifiers.Find(m => m.Name == "Orbit"));
-                while (Random.value > 0.4f)
-                {
+
+                int numModifiers = Random.value <= 0.8f ? 1 : 2; //80% chance of 1 modifier, 20% chance of 2 modifiers
+                for (int k = 0; k < numModifiers; ++k) {
                     var randomNewModifier = SpellModifier.AllModifiers
                         .Where(m => !modifiers.Contains(m))
                         .OrderBy(_ => Random.value)
                         .FirstOrDefault();
-                    
+
                     if (randomNewModifier == null) break;
-                    
+
                     modifiers.Add(randomNewModifier);
                 }
                 
