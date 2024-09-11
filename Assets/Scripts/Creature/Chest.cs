@@ -66,9 +66,6 @@ namespace Creature
                         }
                     });
                 }
-
-
-
             }
             
             Locator.CreatureManager.RemoveCreature(this);

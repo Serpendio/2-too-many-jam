@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using Core;
 using Creature;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -35,9 +36,7 @@ namespace Spells
 
         public float TravelDistance;
         public float StartLive;
-
-        public Vector3 PrevPlayerPos;
-
+        
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -48,42 +47,37 @@ namespace Spells
         {
             StartLive = Time.time;
 
-            dissipated = false;
+            if (BarrierSize > 0) transform.localScale += new Vector3(BarrierSize, 0, 0);
+            if (GiantSize > 0) transform.localScale += new Vector3(GiantSize, GiantSize, 0);
 
-            if (BarrierSize > 0)
-            {
-                transform.localScale += (Vector3)(Vector2.Perpendicular(CastDirection) * BarrierSize);
-            }
-
-            if (OrbitRadius > 0)
-            {
-                _rb.velocity = new Vector3(Spell.ComputedStats.ProjectileSpeed, 0, 0);
-                transform.position += (Vector3.down * OrbitRadius) + (Vector3.down * 0.5f);
-                PrevPlayerPos = Overseer.transform.position;
-            }
-            else
-            {
-                _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
-            }
+            _rb.velocity = Spell.ComputedStats.ProjectileSpeed * CastDirection;
+            
+            if (OrbitRadius > 0) transform.position += (Vector3)CastDirection * OrbitRadius;
 
             _particleSystem.textureSheetAnimation.SetSprite(0, Spell.ElementSprites[Spell.Element]);
-
-            if (GiantSize > 0)
-            {
-                _rb.transform.localScale += new Vector3(GiantSize, GiantSize, 0);
-            }
         }
 
         private void FixedUpdate()
         {
             if (OrbitRadius > 0)
             {
-                // TODO - Slight offset when moving around, no clue why
-                _rb.velocity = Quaternion.Euler(0, 0,
-                    Mathf.Rad2Deg * Time.deltaTime * Spell.ComputedStats.ProjectileSpeed / OrbitRadius) * _rb.velocity;
-                transform.position += Overseer.transform.position - PrevPlayerPos;
-                PrevPlayerPos = Overseer.transform.position;
+                // Calculate the angle between the player and the projectile
+                Vector2 playerToProjectile = transform.position - Locator.Player.transform.position;
+                float offsetAngle = Vector2.Angle(Vector2.right, playerToProjectile);
+
+                // Add the offset angle to the rotation
+                _rb.velocity = Quaternion.Euler(
+                    0,
+                    0,
+                    -Mathf.Rad2Deg * Spell.ComputedStats.ProjectileSpeed * Time.deltaTime / OrbitRadius + offsetAngle
+                ) * _rb.velocity;
+
+                transform.position += (Vector3)Locator.Player.Rb.velocity * Time.fixedDeltaTime;
             }
+
+            // rotate to face velocity
+            var angle = Mathf.Atan2(_rb.velocity.y, _rb.velocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         private void Update()
@@ -99,12 +93,16 @@ namespace Spells
             if (TornadoPower > 0)
             {
                 var creaturesToPull = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
-                    .Where(c => c.Team != Spell.Team).Where(c =>
-                        (c.transform.position - transform.position).sqrMagnitude < TornadoRadius * TornadoRadius);
+                    .Where(c => c is not Chest)
+                    .Where(c => c.Team != Spell.Team)
+                    .Where(c => (c.transform.position - transform.position).magnitude < TornadoRadius);
                 foreach (var creature in creaturesToPull)
                 {
-                    creature.transform.position = Vector3.MoveTowards(creature.transform.position, transform.position,
-                        TornadoPower * Time.deltaTime);
+                    creature.transform.position = Vector3.MoveTowards(
+                        creature.transform.position,
+                        transform.position,
+                        TornadoPower * Time.deltaTime
+                    );
                 }
             }
 
@@ -153,7 +151,7 @@ namespace Spells
                     var newCreature = FindObjectsByType<CreatureBase>(FindObjectsSortMode.None)
                         .Where(c => c.Team != Spell.Team && c != creature)
                         .Where(c => (c.transform.position - transform.position).sqrMagnitude < ChainSqrRadius)
-                        .OrderBy(c => Random.value).FirstOrDefault();
+                        .OrderBy(_ => Random.value).FirstOrDefault();
 
                     if (newCreature != null)
                     {
@@ -208,7 +206,7 @@ namespace Spells
                     ProjectileSpeed = 0,
                     Range = 1,
                 }, Spell.Element, Spell.Team);
-                
+
                 explosionProjectile.AliveTime = AliveTime;
                 explosionProjectile.PiercesRemaining = 999;
                 explosionProjectile.GetComponent<BoxCollider2D>().enabled = false;

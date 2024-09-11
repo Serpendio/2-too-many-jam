@@ -49,7 +49,7 @@ MonoBehaviour:
   BurstFire: 0
   HowManyShots: 0
   Orbital: 1
-  ShotRadius: 2.5
+  ShotRadius: 2
   Tornado: 0
   PullPower: 0
   PullRadius: 0

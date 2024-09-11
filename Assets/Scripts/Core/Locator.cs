@@ -1,4 +1,5 @@
 ﻿using Creature;
+using Rooms;
 using UI;
 using UnityEngine.Events;
 
@@ -13,7 +14,8 @@ namespace Core
         public static LevelManager LevelManager { get; private set; }
         public static StageManager StageManager { get; private set; }
         public static TooltipManager TooltipManager { get; private set; }
-
+        public static WorldGenerator WorldGenerator { get; private set; }
+        
         public static UnityEvent<Player> OnPlayerChanged = new();
         public static UnityEvent<Inventory.Inventory> OnInventoryChanged = new();
         public static UnityEvent<GameplaySettingsManager> OnGameplaySettingsManagerChanged = new();
@@ -21,7 +23,8 @@ namespace Core
         public static UnityEvent<LevelManager> OnLevelManagerChanged = new();
         public static UnityEvent<StageManager> OnStageManagerChanged = new();
         public static UnityEvent<TooltipManager> OnTooltipManagerChanged = new();
-
+        public static UnityEvent<WorldGenerator> OnWorldGeneratorChanged = new();
+        
         public static void ProvidePlayer(Player player)
         {
             Player = player;
@@ -62,6 +65,12 @@ namespace Core
         {
             TooltipManager = tooltipManager;
             OnTooltipManagerChanged.Invoke(tooltipManager);
+        }
+        
+        public static void ProvideWorldGenerator(WorldGenerator worldGenerator)
+        {
+            WorldGenerator = worldGenerator;
+            OnWorldGeneratorChanged.Invoke(worldGenerator);
         }
     }
 }

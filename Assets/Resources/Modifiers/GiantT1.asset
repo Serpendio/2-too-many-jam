@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GiantT1
   m_EditorClassIdentifier: 
   <Name>k__BackingField: Giant
-  <Description>k__BackingField: Projectiles are 50% larger
+  <Description>k__BackingField: Projectiles are twice as large
   <Icon>k__BackingField: {fileID: 21300000, guid: d290b8e1e9d16994285860e553acde36, type: 3}
   SetDescriptive: 1
   Verb: giant
@@ -45,7 +45,7 @@ MonoBehaviour:
   Homing: 0
   DeltaHomingAngle: 0
   Giant: 1
-  ExtraSize: 1.5
+  ExtraSize: 1
   BurstFire: 0
   HowManyShots: 0
   Orbital: 0

@@ -1276,7 +1276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5316535522452634cb0caa196e512fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerLevelUp:
+  OnPlayerLevelUp:
     m_PersistentCalls:
       m_Calls: []
   OnExperienceChanged:
@@ -1308,6 +1308,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc716d4ba43a35d41a45cd8387634b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stage: 1
+  LevelsPerStage: 10
+  MaxStage: 3
 --- !u!1 &580640015
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1571,7 @@ MonoBehaviour:
   WorldRooms: []
   hueVariety: 1
   _player: {fileID: 1715962468}
+  QueueBossRoom: 0
 --- !u!1 &765329287
 GameObject:
   m_ObjectHideFlags: 0
