@@ -18,6 +18,7 @@ namespace Rooms
         [HideInInspector] public IInventoryItem item;
         [HideInInspector] public int cost;
         [HideInInspector] public int shardAmount; //For shards only
+        [HideInInspector] public Shop shop;
 
         public void Setup()
         {
@@ -42,7 +43,6 @@ namespace Rooms
         private void OnTriggerEnter2D(Collider2D collision) {
             if (collision.gameObject.CompareTag("Player") && Locator.Inventory.Currency.GoldAmount >= cost)
             {
-                Locator.Inventory.Currency.AddGold(-cost);
                 switch (itemID)
                 {
                     case 0:
@@ -50,6 +50,9 @@ namespace Rooms
 
                     case 1:
                         //Modifier
+                        if (!Locator.Inventory.HasSpaceForItem)
+                            return;
+
                         Locator.Inventory.AddToInventory(item);
                         break;
 
@@ -69,6 +72,8 @@ namespace Rooms
                         Locator.Player.SetMaxHealth(Locator.Player.maxHealth + healthIncrease, true);
                         break;
                 }
+                Locator.Inventory.Currency.AddGold(-cost);
+                shop.CloseShop();
                 Destroy(gameObject);
             }
         }
