@@ -57,7 +57,7 @@ namespace Core
             {
                 currentXP -= xpToLevelUp;
                 currentLevel += 1;
-                xpToLevelUp = currentLevel * 10;
+                xpToLevelUp = currentLevel * 5;
                 OnPlayerLevelUp.Invoke(currentLevel);
             }
             OnExperienceChanged.Invoke(currentXP, xpToLevelUp);

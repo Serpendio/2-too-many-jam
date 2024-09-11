@@ -156,6 +156,7 @@ namespace Rooms
                         float levelEnemyWeighting = 5f * Locator.LevelManager.getCurrentLevel() / Locator.LevelManager.getMaxLevel();
                         //int enemiesToSpawn = (int)(2 + spawnablePositions.Count / 30f * levelEnemyWeighting) * 3;
                         int enemiesToSpawn = 2 * Core.Locator.LevelManager.getCurrentLevel();
+                        enemiesToSpawn = Mathf.Clamp(enemiesToSpawn, enemiesToSpawn, spawnablePositions.Count/3); //Don't let more than a third of spawnable positions have enemies
 
                         for (var i = 0; i < enemiesToSpawn; i++)
                         {   
