@@ -14,7 +14,7 @@ namespace Core
 
         private int _tiers = 4;
 
-        private void Awake()
+        private void Start()
         {
             Locator.Inventory.Currency.OnSpellShardChanged.AddListener(OnShardChanged);
             _flaskFillImage.fillAmount = 0;
