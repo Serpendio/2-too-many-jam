@@ -96,7 +96,7 @@ namespace Creature
             base.Start();
             SetMana(maxMana);
 
-            Locator.LevelManager.OnPlayerLevelUp.AddListener((_) =>
+            Locator.LevelManager.OnPlayerLevelUp.AddListener(_ =>
             {
                 SetMaxHealth(maxHealth + Locator.LevelManager.getMaxHealthIncreasePerLevelUp(), true);
                 SetMaxMana(maxMana + Locator.LevelManager.getMaxManaIncreasePerLevelUp(), true);
@@ -105,7 +105,8 @@ namespace Creature
             for (var i = 0; i < 4; i++)
             {
                 var modifiers = new List<SpellModifier>();
-                while (Random.value <= 0.6f)
+                modifiers.Add(SpellModifier.AllModifiers.Find(m => m.Name == "Orbit"));
+                while (Random.value > 0.4f)
                 {
                     var randomNewModifier = SpellModifier.AllModifiers
                         .Where(m => !modifiers.Contains(m))

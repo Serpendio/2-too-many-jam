@@ -58,17 +58,9 @@ namespace Rooms
 
             GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true, true);
             
-            Locator.LevelManager.OnPlayerLevelUp.AddListener((level) =>
+            Locator.LevelManager.OnPlayerLevelUp.AddListener(level =>
             {
-                if (level == Locator.StageManager.LevelsPerStage * Locator.StageManager.Stage)
-                {
-                    Debug.Log("Queueing boss room");
-                    QueueBossRoom = true;
-                }
-                else
-                {
-                    Debug.Log("NOT queueing boss room");
-                }
+                if (level == Locator.StageManager.LevelsPerStage * Locator.StageManager.Stage) QueueBossRoom = true;
             });
         }
 
