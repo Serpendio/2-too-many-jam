@@ -127,7 +127,7 @@ namespace Inventory
             // no space in hotbar
             if (spell.GridIndex == -1)
             {
-                Debug.LogWarning($"No more space in hotbar, adding spell {spell.Name} to inventory instead.");
+                //Debug.LogWarning($"No more space in hotbar, adding spell {spell.Name} to inventory instead.");
                 AddToInventory(spell);
                 return;
             }
