@@ -2,6 +2,7 @@
 using Core;
 using Inventory;
 using Spells;
+using Spells.Modifiers;
 using Tweens;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,7 +29,7 @@ namespace UI
         {
             _inventorySlotPrefab = Resources.Load<InventorySlot>("Prefabs/UI/InventorySlot");
             ToggleVisibility(false);
-            
+
             Locator.Inventory.OnItemUpdate.AddListener(_ =>
             {
                 BuildGrid();
@@ -44,8 +45,26 @@ namespace UI
                 {
                     MixSlotA.SetItem(null);
                     MixSlotB.SetItem(null);
-                    
+
                     Locator.Inventory.CombineSpells(spellA, spellB);
+                }
+
+                // spell and modifier
+                if (MixSlotA.Item is SpellModifier modifier && MixSlotB.Item is Spell spell)
+                {
+                    MixSlotA.SetItem(null);
+                    MixSlotB.SetItem(null);
+
+                    Locator.Inventory.AddModifierToSpell(spell, modifier);
+                }
+
+                // modifier and spell
+                if (MixSlotA.Item is Spell spell2 && MixSlotB.Item is SpellModifier modifier2)
+                {
+                    MixSlotA.SetItem(null);
+                    MixSlotB.SetItem(null);
+
+                    Locator.Inventory.AddModifierToSpell(spell2, modifier2);
                 }
             });
         }
@@ -55,6 +74,18 @@ namespace UI
             if (MixSlotA.Item is Spell spellA && MixSlotB.Item is Spell spellB)
             {
                 MixButton.interactable = spellA != spellB && spellA.Element == spellB.Element;
+            }
+            else if (MixSlotA.Item is SpellModifier modifier && MixSlotB.Item is Spell spell)
+            {
+                MixButton.interactable = true;
+            }
+            else if (MixSlotA.Item is Spell spell2 && MixSlotB.Item is SpellModifier modifier2)
+            {
+                MixButton.interactable = true;
+            }
+            else
+            {
+                MixButton.interactable = false;
             }
         }
 
