@@ -9,14 +9,14 @@ namespace UI
         public override void SetFill(float value, float max)
         {
             base.SetFill(value, max);
-            UpdateBar((int)Core.Locator.LevelManager.getCurrentLevel());
+            UpdateBar(Locator.LevelManager.getCurrentLevel());
         }
 
         private void Start()
         {
             _text = GetComponentInChildren<TextMeshProUGUI>();
-            UpdateBar(Core.Locator.LevelManager.getCurrentLevel());
-            Core.Locator.LevelManager.OnPlayerLevelUp.AddListener(UpdateBar);
+            UpdateBar(Locator.LevelManager.getCurrentLevel());
+            Locator.LevelManager.OnPlayerLevelUp.AddListener(UpdateBar);
         }
 
         private void Awake()

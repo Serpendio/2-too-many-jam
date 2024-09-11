@@ -1,6 +1,4 @@
 using Core;
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -14,8 +12,8 @@ namespace UI
         private void Start()
         {
             _text = GetComponent<TextMeshProUGUI>();
-            UpdateCounter(Core.Locator.Inventory.Currency.ShardAmount);
-            Core.Locator.Inventory.Currency.OnSpellShardChanged.AddListener(UpdateCounter);
+            UpdateCounter(Locator.Inventory.Currency.ShardAmount);
+            Locator.Inventory.Currency.OnSpellShardChanged.AddListener(UpdateCounter);
         }
 
         private void UpdateCounter(int val)

@@ -97,7 +97,7 @@ namespace UI
             foreach (Transform child in _grid.transform) Destroy(child.gameObject);
             _slots.Clear();
 
-            for (var i = 0; i < Core.Locator.Inventory.MaxInventorySlots; i++)
+            for (var i = 0; i < Locator.Inventory.MaxInventorySlots; i++)
             {
                 var slot = Instantiate(_inventorySlotPrefab, _grid.transform);
                 slot.Group = InventoryGroup.Items;
@@ -107,7 +107,7 @@ namespace UI
 
         private void PopulateSlots()
         {
-            var items = Core.Locator.Inventory.Items;
+            var items = Locator.Inventory.Items;
             foreach (var item in items)
             {
                 if (item is Spell { IsOnHotbar: true }) continue;
