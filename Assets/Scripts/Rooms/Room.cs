@@ -78,7 +78,7 @@ namespace Rooms
             var createdLamps = new List<Vector3Int>();
 
             int spawnedChests = 0;
-            int maximumPossibleChests = 2;
+            int maximumPossibleChests = GenerateSpawnablePositions().Count/175;
 
             for (var x = tilemapBounds.xMin; x < tilemapBounds.xMax; x++)
             {

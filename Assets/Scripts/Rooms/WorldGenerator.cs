@@ -150,12 +150,8 @@ namespace Rooms
                     {
                         // Generate enemies on random tiles in the room, not too close to player
                         var spawnablePositions = _currentRoom.GenerateSpawnablePositions();
-
-                        // Get number of enemies to spawn based on some arbitrary amount according to room size and player level
-                        // If player level is maxLevel/2, levelEnemyWeighting = 1
-                        float levelEnemyWeighting = 5f * Locator.LevelManager.getCurrentLevel() / Locator.LevelManager.getMaxLevel();
-                        //int enemiesToSpawn = (int)(2 + spawnablePositions.Count / 30f * levelEnemyWeighting) * 3;
-                        int enemiesToSpawn = 2 * Core.Locator.LevelManager.getCurrentLevel();
+                        float lnlvl = Mathf.Log(Core.Locator.LevelManager.getCurrentLevel());
+                        int enemiesToSpawn = (int)(((lnlvl + 2) * (lnlvl + 2)) / 2); //f(x) = ((ln(x)+2)^2)/2
                         enemiesToSpawn = Mathf.Clamp(enemiesToSpawn, enemiesToSpawn, spawnablePositions.Count/3); //Don't let more than a third of spawnable positions have enemies
 
                         for (var i = 0; i < enemiesToSpawn; i++)
