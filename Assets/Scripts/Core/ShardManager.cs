@@ -1,5 +1,4 @@
-using Spells;
-using Spells.Modifiers;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +15,6 @@ namespace Core
 
         private void Start()
         {
-            Locator.Inventory.Currency.OnSpellShardChanged.AddListener(OnShardChanged);
             _flaskFillImage.fillAmount = 0;
             _makeSpellButton.interactable = false;
 
@@ -28,6 +26,10 @@ namespace Core
             });
         }
 
+        private void OnEnable()
+        {
+        }
+
         private void Update()
         {
 #if UNITY_EDITOR
@@ -37,6 +39,7 @@ namespace Core
             }
 #endif
 
+            UpdateShardView();
             // check if inventory is full, if so, make button not interactable
             _makeSpellButton.interactable = Locator.Inventory.HasSpaceForItem
                                             && Locator.Inventory.Currency.ShardAmount >= _shardsPerTier;
@@ -60,9 +63,9 @@ namespace Core
         //     _flaskFillImage.gameObject.CancelTweens();
         // }
 
-        private void OnShardChanged(int shardAmount)
+        private void UpdateShardView()
         {
-            var fillAmount = (float)shardAmount / (_shardsPerTier * (_tiers + 1));
+            var fillAmount = (float)Locator.Inventory.Currency.ShardAmount / (_shardsPerTier * (_tiers + 1));
             _flaskFillImage.fillAmount = fillAmount;
         }
     }

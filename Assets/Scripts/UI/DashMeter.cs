@@ -11,6 +11,8 @@ namespace UI
         [SerializeField] private Image _barImage;
         private CanvasGroup _canvasGroup;
 
+        private Camera _cam;
+        
         private CanvasScaler _cs;
 
         private float _hiddenAlpha = 0f;
@@ -20,6 +22,7 @@ namespace UI
             _canvasGroup = GetComponent<CanvasGroup>();
             _canvasGroup.alpha = _hiddenAlpha;
 
+            _cam = Camera.main;
             _cs = GetComponentInParent<CanvasScaler>();
         }
 
@@ -31,8 +34,7 @@ namespace UI
         private void Update()
         {
             // Show underneath player
-            var screenPoint = Camera.main.WorldToScreenPoint(Locator.Player.transform.position - (Vector3.up * 0.6f));
-            
+            var screenPoint = _cam.WorldToScreenPoint(Locator.Player.transform.position - (Vector3.up * 0.6f));
             transform.position = screenPoint / _cs.scaleFactor;
         }
 
