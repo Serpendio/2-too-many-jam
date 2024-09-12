@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: 1
-  LevelsPerStage: 10
+  LevelsPerStage: 5
   MaxStage: 3
 --- !u!1 &580640015
 GameObject:

@@ -69,6 +69,7 @@ namespace Rooms
             Room room;
             if (QueueBossRoom) {
                 room = bossRoomPrefab;
+                QueueBossRoom = false;
             }
             else {
                 room = nextRoom > _roomPrefabs.Count - 1
