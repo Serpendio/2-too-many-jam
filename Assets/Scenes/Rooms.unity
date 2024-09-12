@@ -1292,7 +1292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Stage: 1
-  LevelsPerStage: 5
+  LevelsPerStage: 10
   MaxStage: 3
 --- !u!1 &580640015
 GameObject:
@@ -1538,8 +1538,8 @@ MonoBehaviour:
   - {fileID: 2626327600802606849, guid: f4a77e81606afbe4a8d8d17c19e70b67, type: 3}
   - {fileID: 2626327600802606849, guid: e9c552ccb52cb12449deab7bf142ebf6, type: 3}
   - {fileID: 2626327600802606849, guid: 56383c37020409d4d886de558187fabe, type: 3}
-  - {fileID: 2626327600802606849, guid: 36db2c45c97836b4f960311500353957, type: 3}
   bossRoomPrefab: {fileID: 2626327600802606849, guid: d28a1ad8d9ecf6e4294d4f641ee03033, type: 3}
+  _shopPrefab: {fileID: 2626327600802606849, guid: 36db2c45c97836b4f960311500353957, type: 3}
   _weightedSpawnPool:
     Items:
     - weight: 6
@@ -1556,6 +1556,9 @@ MonoBehaviour:
   hueVariety: 1
   _player: {fileID: 1715962468}
   QueueBossRoom: 0
+  _shopMinRoomGap: 2
+  _shopMaxRoomGap: 6
+  _shopGenChance: 0.2
 --- !u!1 &765329287
 GameObject:
   m_ObjectHideFlags: 0
@@ -1775,7 +1778,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 136.6, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &904721779

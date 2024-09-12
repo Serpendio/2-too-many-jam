@@ -27,7 +27,7 @@ namespace UI
 
         [SerializeField] private Transform _imagesContainer;
         [SerializeField] private CanvasGroup _canvasGroup;
-        [SerializeField] private Image _cooldownSpinner; // fill amount based on remaining spell cooldown if item is a spell
+        [SerializeField] private Image _cooldownSpinner;
 
         [SerializeField] private Image _baseImage;
         [SerializeField] private Transform _modifierBase;
