@@ -6,6 +6,7 @@ using Spells.Modifiers;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.LowLevel;
 using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
@@ -53,7 +54,7 @@ namespace Creature
         public Spell ActiveSpell => Locator.Inventory.GetHotbarSlot(_activeSpellSlot);
 
         public UnityEvent<int> OnHotbarSlotChanged = new();
-        
+
         // Awake is called even before Start() is called.
         protected override void Awake()
         {
@@ -77,10 +78,10 @@ namespace Creature
             _hotbarSlot6Action = _playerInput.actions["HotbarSlot6"];
 
             _dashAction.performed += Dash;
-            _castAction.performed += Cast;
+            // _castAction.performed += AttemptCast;
             _openInventoryAction.performed += OpenInventory;
             _closeInventoryAction.performed += CloseInventory;
-            
+
             _hotbarSlot1Action.performed += _ => SetActiveSpellSlot(0);
             _hotbarSlot2Action.performed += _ => SetActiveSpellSlot(1);
             _hotbarSlot3Action.performed += _ => SetActiveSpellSlot(2);
@@ -107,7 +108,8 @@ namespace Creature
                 var modifiers = new List<SpellModifier>();
 
                 int numModifiers = Random.value <= 0.8f ? 1 : 2; //80% chance of 1 modifier, 20% chance of 2 modifiers
-                for (int k = 0; k < numModifiers; ++k) {
+                for (int k = 0; k < numModifiers; ++k)
+                {
                     var randomNewModifier = SpellModifier.AllModifiers
                         .Where(m => !modifiers.Contains(m))
                         .OrderBy(_ => Random.value)
@@ -117,7 +119,7 @@ namespace Creature
 
                     modifiers.Add(randomNewModifier);
                 }
-                
+
                 var randSpell = new Spell(new SpellStats
                 {
                     DamageOnHit = 5,
@@ -136,7 +138,7 @@ namespace Creature
         {
             if (slot < 0 || slot >= Locator.Inventory.MaxEquippedSpells) return;
             if (Locator.Inventory.GetHotbarSlot(slot) == null) return;
-            
+
             _activeSpellSlot = slot;
             OnHotbarSlotChanged.Invoke(slot);
         }
@@ -166,6 +168,11 @@ namespace Creature
             if (mana < maxMana && Time.time - _lastManaReductionTime > ManaRegenStartDelay)
             {
                 SetMana(mana + ManaRegenPerSecond * Time.deltaTime);
+            }
+
+            if (Input.GetMouseButton((int)MouseButton.Left))
+            {
+                AttemptCast();
             }
         }
 
@@ -207,11 +214,11 @@ namespace Creature
             }
         }
 
-        public void Cast(InputAction.CallbackContext context)
+        public void AttemptCast()
         {
             if (ActiveSpell == null) return;
 
-            if (context.performed && ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
+            if (ActiveSpell.CooldownOver && mana >= ActiveSpell.ComputedStats.ManaUsage)
             {
                 TriggerAttackAnim();
 
@@ -256,7 +263,7 @@ namespace Creature
         private void OnDisable()
         {
             _dashAction.performed -= Dash;
-            _castAction.performed -= Cast;
+            // _castAction.performed -= AttemptCast;
 
             _openInventoryAction.performed -= OpenInventory;
             _closeInventoryAction.performed -= CloseInventory;

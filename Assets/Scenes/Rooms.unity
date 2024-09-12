@@ -1538,8 +1538,8 @@ MonoBehaviour:
   - {fileID: 2626327600802606849, guid: f4a77e81606afbe4a8d8d17c19e70b67, type: 3}
   - {fileID: 2626327600802606849, guid: e9c552ccb52cb12449deab7bf142ebf6, type: 3}
   - {fileID: 2626327600802606849, guid: 56383c37020409d4d886de558187fabe, type: 3}
-  - {fileID: 2626327600802606849, guid: 36db2c45c97836b4f960311500353957, type: 3}
   bossRoomPrefab: {fileID: 2626327600802606849, guid: d28a1ad8d9ecf6e4294d4f641ee03033, type: 3}
+  _shopPrefab: {fileID: 2626327600802606849, guid: 36db2c45c97836b4f960311500353957, type: 3}
   _weightedSpawnPool:
     Items:
     - weight: 6
@@ -1556,6 +1556,9 @@ MonoBehaviour:
   hueVariety: 1
   _player: {fileID: 1715962468}
   QueueBossRoom: 0
+  _shopMinRoomGap: 2
+  _shopMaxRoomGap: 6
+  _shopGenChance: 0.2
 --- !u!1 &765329287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3672,6 +3675,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 765329291}
     m_Modifications:
+    - target: {fileID: 710848709219339153, guid: 82d49d7890eab53438bd5e14c5e5b507, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: faa8439b27aa40142a3de238bb4957fa, type: 2}
+    - target: {fileID: 710848709219339153, guid: 82d49d7890eab53438bd5e14c5e5b507, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -290654201903558946, guid: faa8439b27aa40142a3de238bb4957fa, type: 2}
+    - target: {fileID: 710848709219339153, guid: 82d49d7890eab53438bd5e14c5e5b507, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3870831216529971617, guid: 82d49d7890eab53438bd5e14c5e5b507, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

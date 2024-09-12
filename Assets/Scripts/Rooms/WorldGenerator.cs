@@ -1,9 +1,11 @@
 using System.Collections.Generic;
+using System.Linq;
 using Core;
 using Creature;
 using NavMeshPlus.Components;
 using Tweens;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace Rooms
 {
@@ -15,6 +17,7 @@ namespace Rooms
         [SerializeField] private int nextRoom;
         [SerializeField] private List<Room> _roomPrefabs;
         [SerializeField] private Room bossRoomPrefab;
+        [SerializeField] private Room _shopPrefab;
 
         [SerializeField] private WeightedSpawnPool _weightedSpawnPool = new();
 
@@ -26,11 +29,17 @@ namespace Rooms
         [SerializeField] private Player _player;
 
         public bool QueueBossRoom;
-        
+
+        // arbitrary, up for balance discussion
+        [SerializeField] private int _shopMinRoomGap = 2;
+        [SerializeField] private int _shopMaxRoomGap = 6;
+        [SerializeField] [Range(0, 1)] private float _shopGenChance = 0.2f;
+        private int _roomsSinceShop;
+
         private void Awake()
         {
             Locator.ProvideWorldGenerator(this);
-            
+
             _navMeshSurface.hideEditorLogs = true;
 
             Door.OnPlayerEnterDoor.AddListener((door, _) =>
@@ -57,7 +66,7 @@ namespace Rooms
             WorldRooms.Add(_currentRoom);
 
             GoThroughDoor(_currentRoom.doors[Random.Range(0, _currentRoom.doors.Count)], true, true);
-            
+
             Locator.LevelManager.OnPlayerLevelUp.AddListener(level =>
             {
                 if (level == Locator.StageManager.LevelsPerStage * Locator.StageManager.Stage) QueueBossRoom = true;
@@ -67,15 +76,32 @@ namespace Rooms
         private Room GenerateNewRoom(Door comingFrom = null)
         {
             Room room;
-            if (QueueBossRoom) {
+            if (QueueBossRoom)
+            {
                 room = bossRoomPrefab;
+                QueueBossRoom = false;
+
+                _roomsSinceShop = _shopMaxRoomGap; // give em a treat :3
             }
-            else {
+            else if (_roomsSinceShop >= _shopMaxRoomGap)
+            {
+                room = _shopPrefab;
+                _roomsSinceShop = 0;
+            }
+            else if (_roomsSinceShop >= _shopMinRoomGap && Random.value <= _shopGenChance)
+            {
+                room = _shopPrefab;
+                _roomsSinceShop = 0;
+            }
+            else
+            {
                 room = nextRoom > _roomPrefabs.Count - 1
                     ? _roomPrefabs[Random.Range(0, _roomPrefabs.Count)]
                     : _roomPrefabs[nextRoom];
+                
+                _roomsSinceShop++;
             }
-
+            
             var roomObj = Instantiate(room, transform);
 
             roomObj.MapCoord = comingFrom != null
@@ -144,7 +170,9 @@ namespace Rooms
                 {
                     _currentRoom.Entered = true;
 
-                    Core.Locator.Player.SetHealth(Core.Locator.Player.health + Core.Locator.Player.maxHealth/10); //Increase player's health by 10% of maxHealth
+                    Core.Locator.Player.SetHealth(Core.Locator.Player.health +
+                                                  Core.Locator.Player.maxHealth /
+                                                  10); //Increase player's health by 10% of maxHealth
 
                     if (_currentRoom.SpawnEnemiesOnEnter)
                     {
@@ -152,10 +180,10 @@ namespace Rooms
                         var spawnablePositions = _currentRoom.GenerateSpawnablePositions();
                         float lnlvl = Mathf.Log(Core.Locator.LevelManager.getCurrentLevel());
                         int enemiesToSpawn = (int)(((lnlvl + 2) * (lnlvl + 2)) / 2); //f(x) = ((ln(x)+2)^2)/2
-                        enemiesToSpawn = Mathf.Clamp(enemiesToSpawn, enemiesToSpawn, spawnablePositions.Count/3); //Don't let more than a third of spawnable positions have enemies
+                        enemiesToSpawn = Mathf.Min(enemiesToSpawn, spawnablePositions.Count / 3); //Don't let more than a third of spawnable positions have enemies
 
                         for (var i = 0; i < enemiesToSpawn; i++)
-                        {   
+                        {
                             var creaturePrefab = _weightedSpawnPool.GetRandom();
 
                             var enemy = Instantiate(creaturePrefab, _currentRoom.EnemiesContainer);
@@ -178,6 +206,5 @@ namespace Rooms
             if (instant) toBlackTween.onEnd.Invoke(null);
             else _fadeToBlack.gameObject.AddTween(toBlackTween);
         }
-
     }
 }
