@@ -6665,11 +6665,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Tilemap: {fileID: 0}
+  glow: {fileID: 7198659788468117716, guid: 416b2585632603041be738e6dac3b61e, type: 3}
   Entered: 0
   MapCoord: {x: 0, y: 0}
   SkullsContainer: {fileID: 0}
   EnemiesContainer: {fileID: 0}
   ChestsContainer: {fileID: 0}
+  glowContainer: {fileID: 0}
   SpawnEnemiesOnEnter: 1
 --- !u!114 &2120572171488667110
 MonoBehaviour:

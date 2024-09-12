@@ -17,6 +17,7 @@ namespace Rooms
     {
         [HideInInspector] public List<Door> doors;
         [HideInInspector] public Tilemap Tilemap;
+        [SerializeField] private GameObject glow;
 
         [HideInInspector] public bool Entered;
 
@@ -32,6 +33,7 @@ namespace Rooms
         [HideInInspector] public Transform SkullsContainer;
         [HideInInspector] public Transform EnemiesContainer;
         [HideInInspector] public Transform ChestsContainer;
+        [HideInInspector] public Transform glowContainer;
 
         public bool SpawnEnemiesOnEnter = true;
 
@@ -63,6 +65,9 @@ namespace Rooms
             
             ChestsContainer = new GameObject("Chests").transform;
             ChestsContainer.parent = transform;
+
+            glowContainer = new GameObject("Glow").transform;
+            glowContainer.parent = transform;
 
             lampTiles = new[] {Resources.Load<Tile>("Tiles/wall_tile_lamp_top"),
                                     Resources.Load<Tile>("Tiles/wall_tile_lamp_left"),
@@ -112,6 +117,7 @@ namespace Rooms
                             if (spawnLamp && Tilemap.GetColliderType(pos - new Vector3Int(0, 0, 1) + Vector3Int.FloorToInt(posOffsets[i])) == Tile.ColliderType.None) {
                                 Tilemap.SetTile(pos, lampTiles[i]);
                                 createdLamps.Add(pos);
+                                Instantiate(glow, new Vector3(x + 0.5f, y + 0.5f, 0f) + posOffsets[i] / 2, Quaternion.Euler(0, 0, 180 + rotationOffsets[i]), glowContainer);
                             }
                             
                             //Check that there isn't already a chest, door, or wall at potential spot - it makes sense i swear! :-]
