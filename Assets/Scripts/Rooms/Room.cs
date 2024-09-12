@@ -90,7 +90,7 @@ namespace Rooms
                 for (var y = tilemapBounds.yMin; y < tilemapBounds.yMax; y++)
                 {
                     var pos = new Vector3Int(x, y, 1);
-                    bool spawnLamp = Random.value > 0.9f && !createdLamps.Any(l => Vector3.Distance(l, pos) < 4);
+                    bool spawnLamp = Random.value >= 0.85f && !createdLamps.Any(l => Vector3.Distance(l, pos) < 4);
                     
                     bool spawnChest = Random.value > 0.9f && spawnedChests < maximumPossibleChests;
                     
