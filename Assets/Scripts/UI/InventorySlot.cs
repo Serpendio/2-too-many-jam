@@ -27,6 +27,7 @@ namespace UI
 
         [SerializeField] private Transform _imagesContainer;
         [SerializeField] private CanvasGroup _canvasGroup;
+        [SerializeField] private Image _cooldownSpinner; // fill amount based on remaining spell cooldown if item is a spell
 
         [SerializeField] private Image _baseImage;
         [SerializeField] private Transform _modifierBase;
@@ -49,11 +50,23 @@ namespace UI
             SetItem(null);
         }
 
+        private void Update()
+        {
+            if (_cooldownSpinner != null && Item is Spell spell)
+            {
+                var time = Time.time;
+                var lastCastTime = spell.LastCastTime;
+                var progress = Mathf.Clamp01((time - lastCastTime) / spell.BaseStats.CastCooldown);
+                if(progress == 1) _cooldownSpinner.fillAmount = 0;
+                else _cooldownSpinner.fillAmount = progress;
+            }
+        }
+
         public void SetItem(IInventoryItem item)
         {
             // for some reason this can just . not run (some setActive shit?)
             if (_outline == null) Awake();
-            
+
             _outline.effectColor = Color.clear;
             _tooltipTrigger.Content = null;
 
