@@ -67,6 +67,8 @@ namespace UI
             // for some reason this can just . not run (some setActive shit?)
             if (_outline == null) Awake();
 
+            _cooldownSpinner.fillAmount = 0;
+
             _outline.effectColor = Color.clear;
             _tooltipTrigger.Content = null;
 

@@ -40,6 +40,33 @@ MonoBehaviour:
     enabled: 0
   platformName: PC
   targetGroup: 1
+--- !u!114 &-6016220288665074414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0acaf75cc66fc934ea46bf602fc7c245, type: 3}
+  m_Name: WebGL
+  m_EditorClassIdentifier: 
+  enabled: 1
+  distributionList:
+    distributions: []
+  architectures:
+  - target: 20
+    name: WebGL
+    enabled: 1
+    binaryNameFormat: '{0}'
+  variants: []
+  scriptingBackends:
+  - scriptingImplementation: 1
+    name: IL2CPP
+    enabled: 1
+  platformName: WebGL
+  targetGroup: 13
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,23 +111,24 @@ MonoBehaviour:
   _platformList:
     platforms:
     - {fileID: -7947315255176080017}
+    - {fileID: -6016220288665074414}
   _projectConfigurations:
     configSet:
-      _Buckets: 01000000ffffffff000000000200000003000000ffffffffffffffff
-      _HashCodes: 99a10c317dfc5350efc7971f13b7e252000000000000000000000000
-      _Next: ffffffffffffffffffffffffffffffff000000000000000000000000
-      _Count: 4
-      _Version: 4
+      _Buckets: 03000000ffffffff000000000200000006000000ffffffff05000000
+      _HashCodes: 99a10c317dfc5350efc7971f56d06a20133854710bf8e20e13b7e252
+      _Next: ffffffffffffffffffffffff01000000ffffffff04000000ffffffff
+      _Count: 7
+      _Version: 7
       _FreeList: -1
       _FreeCount: 0
       _Keys:
       - Main/PC/Windows x64 (App)/Mono
       - Main/PC/Windows x64 (App)
       - Main/PC
+      - Main/WebGL/WebGL/IL2CPP
+      - Main/WebGL/WebGL
+      - Main/WebGL
       - Main
-      - 
-      - 
-      - 
       _Values:
       - enabled: 1
         childKeys: []
@@ -111,14 +139,17 @@ MonoBehaviour:
         childKeys:
         - Main/PC/Windows x64 (App)
       - enabled: 1
+        childKeys: []
+      - enabled: 1
+        childKeys:
+        - Main/WebGL/WebGL/IL2CPP
+      - enabled: 1
+        childKeys:
+        - Main/WebGL/WebGL
+      - enabled: 1
         childKeys:
         - Main/PC
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
-      - enabled: 1
-        childKeys: []
+        - Main/WebGL
     showViewOptions: 0
     showConfigs: 0
     showBuildInfo: 0
