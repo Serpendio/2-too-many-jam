@@ -180,7 +180,7 @@ namespace Rooms
                         var spawnablePositions = _currentRoom.GenerateSpawnablePositions();
                         float lnlvl = Mathf.Log(Core.Locator.LevelManager.getCurrentLevel());
                         int enemiesToSpawn = (int)(((lnlvl + 2) * (lnlvl + 2)) / 2); //f(x) = ((ln(x)+2)^2)/2
-                        enemiesToSpawn = Mathf.Min(enemiesToSpawn, spawnablePositions.Count / 3); //Don't let more than a third of spawnable positions have enemies
+                        enemiesToSpawn = Mathf.Clamp(enemiesToSpawn, 2, spawnablePositions.Count / 3); //Don't let more than a third of spawnable positions have enemies
 
                         for (var i = 0; i < enemiesToSpawn; i++)
                         {
