@@ -3,7 +3,13 @@ guid: ac1eede580c10ee4a942777195ba7a3a
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Tilemap: {instanceID: 0}
+  - glow: {fileID: 7198659788468117716, guid: 416b2585632603041be738e6dac3b61e, type: 3}
+  - SkullsContainer: {instanceID: 0}
+  - EnemiesContainer: {instanceID: 0}
+  - ChestsContainer: {instanceID: 0}
+  - glowContainer: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
